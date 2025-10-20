@@ -523,7 +523,7 @@ namespace SMACatastro.catastroRevision
                 EDIFICIO = txtEdificio.Text.Trim();
                 DEPTO = txtDepto.Text.Trim();
                 string OBSERVACION = txtInfoDesbloqueo.Text.Trim();
-                string USUARIO = Program.nombre_usuario;
+                string USUARIO = Program.acceso_usuario;
 
                 AREAOPERACION = Program.cIdAreaBloqueoC;
                 OPERACIONBLOQUEODESBLOQUEO = 1; //OPERACIÓN BLOQUEO EN MI PROCEDIMIENTO 
@@ -570,7 +570,7 @@ namespace SMACatastro.catastroRevision
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("OCURRIÓ UN ERROR, COMUNICATE CON EL ADMINISTRADOR" + ex, "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 util.CapturarPantallaConInformacion(ex);
                 System.Threading.Thread.Sleep(500);
                 con.cerrar_interno();
@@ -600,7 +600,7 @@ namespace SMACatastro.catastroRevision
                 DEPTO = txtDepto.Text.Trim();
                 //Tipo de validacion de bloqueo que se va a mandar
                 string OBSERVACION = txtInfoDesbloqueo.Text.Trim();
-                string USUARIO = Program.nombre_usuario;
+                string USUARIO = Program.acceso_usuario;
                 AREAOPERACION = Program.cIdAreaBloqueoC;
                 OPERACIONBLOQUEODESBLOQUEO = 2; //OPERACIÓN BLOQUEO
                                                 //Usuario que va a aparecer en la base de datos
@@ -643,7 +643,7 @@ namespace SMACatastro.catastroRevision
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("OCURRIÓ UN ERROR, COMUNICATE CON EL ADMINISTRADOR" + ex, "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 util.CapturarPantallaConInformacion(ex);
                 System.Threading.Thread.Sleep(500);
                 con.cerrar_interno();

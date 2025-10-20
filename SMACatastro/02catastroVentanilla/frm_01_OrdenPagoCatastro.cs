@@ -979,7 +979,7 @@ namespace SMAIngresos.Catastro
                 con.open_c_interno();
                 ////cambiar por el otro procedimiento almacenado 
                 ///
-                SqlCommand cmd = new SqlCommand("N19_CONSULTA_PREDIO_PRUEBA", con.cnn_interno); //nombre del procedimiento almacenado que vamos a utilizar
+                SqlCommand cmd = new SqlCommand("N19_CONSULTA_PREDIO", con.cnn_interno); //nombre del procedimiento almacenado que vamos a utilizar
                 cmd.CommandType = CommandType.StoredProcedure; //Se le indica que es un procedimiento almacenado
  
                 cmd.Parameters.Add("@estado2", SqlDbType.VarChar, 2).Value = 15;

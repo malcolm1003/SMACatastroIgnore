@@ -67,11 +67,11 @@ namespace AccesoBase
         {
             constructor_interno = new SqlConnectionStringBuilder();
 
-            // desarrollo
-            //constructor_interno.DataSource = "25.52.13.234";
-            //constructor_interno.UserID = "sa";
-            //constructor_interno.Password = "Songui2025";
-            //constructor_interno.InitialCatalog = "DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBRE";
+            //desarrollo
+            constructor_interno.DataSource = "25.52.13.234";
+            constructor_interno.UserID = "sa";
+            constructor_interno.Password = "Songui2025";
+            constructor_interno.InitialCatalog = "DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBRE";
 
             /////charly
             //constructor_interno.DataSource = "KALUSHA10\\SONGUI2005";
@@ -91,10 +91,10 @@ namespace AccesoBase
             //constructor_interno.Password = "Songui2025";
             //constructor_interno.InitialCatalog = "DB_INTMIOD_ATENCO_DESARROLLO";
 
-            constructor_interno.DataSource = "192.168.0.22\\PROYECTO_SONGUI";
-            constructor_interno.UserID = "sa";
-            constructor_interno.Password = "Songui2019";
-            constructor_interno.InitialCatalog = "DB_INTMIOD_ATENCO";
+            //constructor_interno.DataSource = "192.168.0.22\\PROYECTO_SONGUI";
+            //constructor_interno.UserID = "sa";
+            //constructor_interno.Password = "Songui2019";
+            //constructor_interno.InitialCatalog = "DB_INTMIOD_ATENCO";
 
             //constructor_interno.DataSource = "25.51.96.16\\SAPATEST";
             //constructor_interno.UserID = "sa";

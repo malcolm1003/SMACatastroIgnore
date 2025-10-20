@@ -817,7 +817,6 @@ namespace SMACatastro.catastroCartografia
                 dgResultado.SelectionMode = DataGridViewSelectionMode.FullRowSelect; //SELECCIONAR TODA LA FILA 
                 dgResultado.MultiSelect = false; // Solo permitir selección de una fila a la vez
 
-
                 dgResultado.Columns[0].Width = 300; //NOMBRE
                 dgResultado.Columns[1].Width = 200; //alta
                 dgResultado.Columns[2].Width = 200; //CAMBIOS

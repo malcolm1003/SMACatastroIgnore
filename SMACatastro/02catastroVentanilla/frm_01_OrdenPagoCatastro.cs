@@ -442,14 +442,13 @@ namespace SMAIngresos.Catastro
             }
             else
             {
-                /*
+                /* //código que ya no se ocupa 
                 if (lblConcepto.SelectedItem.ToString().Substring(14, 3) != "IVA")
                 {
                     NUM_ITEMS = 0;
                     NUM_ITEMS = Convert.ToInt32(lblConcepto.SelectedIndex.ToString());
                     lblConceptoCobro.Text = lblConcepto.SelectedItem.ToString();
                     lblPrecioCosto.Text = lblCosto.Items[NUM_ITEMS].ToString();
-
                     lbxTipoServicio.Enabled = false;
                     lblConceptoCobro.Enabled = false;
                     cboCantidad.Enabled = false;
@@ -463,9 +462,6 @@ namespace SMAIngresos.Catastro
                 */
                 }
             }
-        
-
-
         private void cmdCancelarLista_Click(object sender, EventArgs e)
         {
             NUM_ITEMS = 0;

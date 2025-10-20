@@ -1,0 +1,869 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props" Condition="Exists('..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2E61910B-0EE2-436C-93FE-1D38B6A8B316}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SMACatastro</RootNamespace>
+    <AssemblyName>SMACatastro</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Produccion\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Produccion\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icono_principal.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.6.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=8.1.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.8.1.1\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=8.1.0.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.Interfaces.8.1.0\lib\net462\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="GMap.NET.Core, Version=2.1.7.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <HintPath>..\packages\GMap.NET.Core.2.1.7\lib\net472\GMap.NET.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="GMap.NET.WindowsForms, Version=2.1.7.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <HintPath>..\packages\GMap.NET.WinForms.2.1.7\lib\net472\GMap.NET.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.30.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.30.0\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.3.8.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.3.8\lib\net462\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.3.8.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.3.8\lib\net462\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=3.1.0.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.3.1.0\lib\net462\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Marmat.Forms.Skin, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Marmat.Forms.Skin.2.2.0\lib\net461\Marmat.Forms.Skin.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialSkin, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PersianMaterialSkin.2.0.3\lib\net45\MaterialSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.7, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.7\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.3.0.1\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Practices.CompositeUI, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\Microsoft.Practices.CompositeUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.CompositeUI.WinForms, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\Microsoft.Practices.CompositeUI.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51206.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.160.1000.6\lib\net462\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=9.3.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.9.3.0\lib\net462\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.6.0.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.6.0\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CodeDom, Version=9.0.0.7, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.CodeDom.9.0.7\lib\net462\System.CodeDom.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=9.0.0.7, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.9.0.7\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlClient, Version=4.6.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.8.3\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite, Version=1.0.115.5, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.115.5, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.115.5\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.115.5, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.115.5\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=9.0.0.7, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.9.0.7\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Pipelines, Version=9.0.0.7, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.9.0.7\lib\net462\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Xml, Version=8.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Xml.8.0.2\lib\net462\System.Security.Cryptography.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.3\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.FontIcons, Version=4.5.0.0, Culture=neutral, PublicKeyToken=20b4b0547069c4f8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Telerik.FontIcons.4.5.0\lib\netstandard2.0\Telerik.FontIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.SvgIcons, Version=4.5.0.0, Culture=neutral, PublicKeyToken=20b4b0547069c4f8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Telerik.SvgIcons.4.5.0\lib\netstandard2.0\Telerik.SvgIcons.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls, Version=2012.1.321.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\Telerik.WinControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.CompositeUI, Version=2012.1.321.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\Telerik.WinControls.CompositeUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.GridView, Version=2012.1.321.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\Telerik.WinControls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.RadChart, Version=2012.1.321.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\Telerik.WinControls.RadChart.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.RadDock, Version=2012.1.321.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\Telerik.WinControls.RadDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.UI, Version=2012.1.321.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\Telerik.WinControls.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="TelerikCommon, Version=2012.1.321.20, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\packages\TelerikWinCompositeUI.2012.1.321.20\lib\TelerikCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="USLibV4, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\USLibV4.1.0.0\lib\net40\USLibV4.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="ZstdSharp, Version=0.8.5.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZstdSharp.Port.0.8.5\lib\net462\ZstdSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="00formaInicio\frm_07_MenuGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="00formaInicio\frm_07_MenuGeneral.Designer.cs">
+      <DependentUpon>frm_07_MenuGeneral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="00formaInicio\pantalla.cs" />
+    <Compile Include="01catastroCartografia\frmImportacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="01catastroCartografia\frmImportacion.Designer.cs">
+      <DependentUpon>frmImportacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="01catastroCartografia\frmCatastro01UbicacionAlta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="01catastroCartografia\frmCatastro01UbicacionAlta.Designer.cs">
+      <DependentUpon>frmCatastro01UbicacionAlta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="01catastroCartografia\frmCatastro02UnidadesConstruccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="01catastroCartografia\frmCatastro02UnidadesConstruccion.Designer.cs">
+      <DependentUpon>frmCatastro02UnidadesConstruccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="01catastroCartografia\frmCatastro03BusquedaCatastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="01catastroCartografia\frmCatastro03BusquedaCatastro.Designer.cs">
+      <DependentUpon>frmCatastro03BusquedaCatastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="03catastroRevision\frmBloqueoDesbloqueo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="03catastroRevision\frmBloqueoDesbloqueo.Designer.cs">
+      <DependentUpon>frmBloqueoDesbloqueo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="03catastroRevision\frmColoniaPorClave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="03catastroRevision\frmColoniaPorClave.Designer.cs">
+      <DependentUpon>frmColoniaPorClave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="04catastroSistemas\frmMovimientosSistemas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="04catastroSistemas\frmMovimientosSistemas.Designer.cs">
+      <DependentUpon>frmMovimientosSistemas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="05catastroGeneral\frmCatastro04ReporteCartografia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="05catastroGeneral\frmCatastro04ReporteCartografia.Designer.cs">
+      <DependentUpon>frmCatastro04ReporteCartografia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="05catastroGeneral\frmConsultaProcesos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="05catastroGeneral\frmConsultaProcesos.Designer.cs">
+      <DependentUpon>frmConsultaProcesos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="03catastroRevision\frmActualizar3en1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="03catastroRevision\frmActualizar3en1.Designer.cs">
+      <DependentUpon>frmActualizar3en1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="03catastroRevision\frmAutorizacionTramites.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="03catastroRevision\frmAutorizacionTramites.Designer.cs">
+      <DependentUpon>frmAutorizacionTramites.cs</DependentUpon>
+    </Compile>
+    <Compile Include="03catastroRevision\frmCatastroCambioNombre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="03catastroRevision\frmCatastroCambioNombre.Designer.cs">
+      <DependentUpon>frmCatastroCambioNombre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="01catastroCartografia\frmCambiosClveCat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="01catastroCartografia\frmCambiosClveCat.Designer.cs">
+      <DependentUpon>frmCambiosClveCat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="03catastroRevision\frmTresenUno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="03catastroRevision\frmTresenUno.Designer.cs">
+      <DependentUpon>frmTresenUno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="04catastroSistemas\frmAreasHomogeneas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="04catastroSistemas\frmAreasHomogeneas.Designer.cs">
+      <DependentUpon>frmAreasHomogeneas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="04catastroSistemas\frmCalles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="04catastroSistemas\frmCalles.Designer.cs">
+      <DependentUpon>frmCalles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="04catastroSistemas\frmColonias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="04catastroSistemas\frmColonias.Designer.cs">
+      <DependentUpon>frmColonias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="04catastroSistemas\frmLocalidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="04catastroSistemas\frmLocalidades.Designer.cs">
+      <DependentUpon>frmLocalidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="04catastroSistemas\frmManzanas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="04catastroSistemas\frmManzanas.Designer.cs">
+      <DependentUpon>frmManzanas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02catastroVentanilla\frmVentanilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="02catastroVentanilla\frmVentanilla.Designer.cs">
+      <DependentUpon>frmVentanilla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02catastroVentanilla\frm_01_OrdenPagoCatastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="02catastroVentanilla\frm_01_OrdenPagoCatastro.Designer.cs">
+      <DependentUpon>frm_01_OrdenPagoCatastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="00formaInicio\frm_00_Inicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="00formaInicio\frm_00_Inicio.Designer.cs">
+      <DependentUpon>frm_00_Inicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="00formaInicio\frm_00_Logo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="00formaInicio\frm_00_Logo.Designer.cs">
+      <DependentUpon>frm_00_Logo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="00formaInicio\frm_01_Usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="00formaInicio\frm_01_Usuarios.Designer.cs">
+      <DependentUpon>frm_01_Usuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="00formaInicio\frm_02_MenuGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="00formaInicio\frm_02_MenuGeneral.Designer.cs">
+      <DependentUpon>frm_02_MenuGeneral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="00formaInicio\frm_03_MenuCartografia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="00formaInicio\frm_03_MenuCartografia.Designer.cs">
+      <DependentUpon>frm_03_MenuCartografia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="00formaInicio\frm_05_MenuRevision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="00formaInicio\frm_05_MenuRevision.Designer.cs">
+      <DependentUpon>frm_05_MenuRevision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="00formaInicio\frm_04_MenuVentanilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="00formaInicio\frm_04_MenuVentanilla.Designer.cs">
+      <DependentUpon>frm_04_MenuVentanilla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="00formaInicio\frm_06_MenuSistemas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="00formaInicio\frm_06_MenuSistemas.Designer.cs">
+      <DependentUpon>frm_06_MenuSistemas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formaReporte\frmCertificado3en1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formaReporte\frmCertificado3en1.Designer.cs">
+      <DependentUpon>frmCertificado3en1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formaReporte\frmRCertificaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formaReporte\frmRCertificaciones.Designer.cs">
+      <DependentUpon>frmRCertificaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formaReporte\mostrarComparativaJefatura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formaReporte\mostrarComparativaJefatura.Designer.cs">
+      <DependentUpon>mostrarComparativaJefatura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formaReporte\mostraReporteFolios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formaReporte\mostraReporteFolios.Designer.cs">
+      <DependentUpon>mostraReporteFolios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formaReporte\mostrarFoliosAutorizadosPendientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formaReporte\mostrarFoliosAutorizadosPendientes.Designer.cs">
+      <DependentUpon>mostrarFoliosAutorizadosPendientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formaReporte\MostrarOrden.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formaReporte\MostrarOrden.Designer.cs">
+      <DependentUpon>MostrarOrden.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formaReporte\MostrarPagoCatastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formaReporte\MostrarPagoCatastro.Designer.cs">
+      <DependentUpon>MostrarPagoCatastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formaReporte\mostrarReporteCartografia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formaReporte\mostrarReporteCartografia.Designer.cs">
+      <DependentUpon>mostrarReporteCartografia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formaReporte\mostrarReporteJefatura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formaReporte\mostrarReporteJefatura.Designer.cs">
+      <DependentUpon>mostrarReporteJefatura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formaReporte\mostrarReporteRevision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formaReporte\mostrarReporteRevision.Designer.cs">
+      <DependentUpon>mostrarReporteRevision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formaReporte\mostrarReporteSistemas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formaReporte\mostrarReporteSistemas.Designer.cs">
+      <DependentUpon>mostrarReporteSistemas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrueba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrueba.Designer.cs">
+      <DependentUpon>frmPrueba.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="00formaInicio\frm_07_MenuGeneral.resx">
+      <DependentUpon>frm_07_MenuGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="01catastroCartografia\frmCatastro01UbicacionAlta.resx">
+      <DependentUpon>frmCatastro01UbicacionAlta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="01catastroCartografia\frmCatastro02UnidadesConstruccion.resx">
+      <DependentUpon>frmCatastro02UnidadesConstruccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="01catastroCartografia\frmCatastro03BusquedaCatastro.resx">
+      <DependentUpon>frmCatastro03BusquedaCatastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="01catastroCartografia\frmImportacion.resx">
+      <DependentUpon>frmImportacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="03catastroRevision\frmBloqueoDesbloqueo.resx">
+      <DependentUpon>frmBloqueoDesbloqueo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="03catastroRevision\frmColoniaPorClave.resx">
+      <DependentUpon>frmColoniaPorClave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="04catastroSistemas\frmMovimientosSistemas.resx">
+      <DependentUpon>frmMovimientosSistemas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="05catastroGeneral\frmCatastro04ReporteCartografia.resx">
+      <DependentUpon>frmCatastro04ReporteCartografia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="05catastroGeneral\frmConsultaProcesos.resx">
+      <DependentUpon>frmConsultaProcesos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="03catastroRevision\frmActualizar3en1.resx">
+      <DependentUpon>frmActualizar3en1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="03catastroRevision\frmAutorizacionTramites.resx">
+      <DependentUpon>frmAutorizacionTramites.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="03catastroRevision\frmCatastroCambioNombre.resx">
+      <DependentUpon>frmCatastroCambioNombre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="01catastroCartografia\frmCambiosClveCat.resx">
+      <DependentUpon>frmCambiosClveCat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="03catastroRevision\frmTresenUno.resx">
+      <DependentUpon>frmTresenUno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="04catastroSistemas\frmAreasHomogeneas.resx">
+      <DependentUpon>frmAreasHomogeneas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="04catastroSistemas\frmCalles.resx">
+      <DependentUpon>frmCalles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="04catastroSistemas\frmColonias.resx">
+      <DependentUpon>frmColonias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="04catastroSistemas\frmLocalidades.resx">
+      <DependentUpon>frmLocalidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="04catastroSistemas\frmManzanas.resx">
+      <DependentUpon>frmManzanas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="02catastroVentanilla\frmVentanilla.resx">
+      <DependentUpon>frmVentanilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="02catastroVentanilla\frm_01_OrdenPagoCatastro.resx">
+      <DependentUpon>frm_01_OrdenPagoCatastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="00formaInicio\frm_00_Inicio.resx">
+      <DependentUpon>frm_00_Inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="00formaInicio\frm_00_Logo.resx">
+      <DependentUpon>frm_00_Logo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="00formaInicio\frm_01_Usuarios.resx">
+      <DependentUpon>frm_01_Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="00formaInicio\frm_02_MenuGeneral.resx">
+      <DependentUpon>frm_02_MenuGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="00formaInicio\frm_03_MenuCartografia.resx">
+      <DependentUpon>frm_03_MenuCartografia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="00formaInicio\frm_05_MenuRevision.resx">
+      <DependentUpon>frm_05_MenuRevision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="00formaInicio\frm_04_MenuVentanilla.resx">
+      <DependentUpon>frm_04_MenuVentanilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="00formaInicio\frm_06_MenuSistemas.resx">
+      <DependentUpon>frm_06_MenuSistemas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formaReporte\frmCertificado3en1.resx">
+      <DependentUpon>frmCertificado3en1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formaReporte\frmRCertificaciones.resx">
+      <DependentUpon>frmRCertificaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formaReporte\mostrarComparativaJefatura.resx">
+      <DependentUpon>mostrarComparativaJefatura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formaReporte\mostraReporteFolios.resx">
+      <DependentUpon>mostraReporteFolios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formaReporte\mostrarFoliosAutorizadosPendientes.resx">
+      <DependentUpon>mostrarFoliosAutorizadosPendientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formaReporte\MostrarOrden.resx">
+      <DependentUpon>MostrarOrden.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formaReporte\MostrarPagoCatastro.resx">
+      <DependentUpon>MostrarPagoCatastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formaReporte\mostrarReporteCartografia.resx">
+      <DependentUpon>mostrarReporteCartografia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formaReporte\mostrarReporteJefatura.resx">
+      <DependentUpon>mostrarReporteJefatura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formaReporte\mostrarReporteRevision.resx">
+      <DependentUpon>mostrarReporteRevision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formaReporte\mostrarReporteSistemas.resx">
+      <DependentUpon>mostrarReporteSistemas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formaReporte\repOrdenPago.rdlc" />
+    <EmbeddedResource Include="formaReporte\ReporteCartografia.rdlc" />
+    <EmbeddedResource Include="formaReporte\reporteComparativaJefatura.rdlc" />
+    <EmbeddedResource Include="formaReporte\reporteFoliosPendientesAutorizados.rdlc" />
+    <EmbeddedResource Include="formaReporte\reporteJefatura.rdlc" />
+    <EmbeddedResource Include="formaReporte\ReporteSistemas.rdlc" />
+    <EmbeddedResource Include="formaReporte\rptCertificado3en1.rdlc" />
+    <EmbeddedResource Include="formaReporte\rptCertificados.rdlc" />
+    <EmbeddedResource Include="formaReporte\rptCertificadosCveValor.rdlc" />
+    <EmbeddedResource Include="formaReporte\rptRevision.rdlc" />
+    <EmbeddedResource Include="formaReporte\rptVenta.rdlc" />
+    <EmbeddedResource Include="frmPrueba.resx">
+      <DependentUpon>frmPrueba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet.xsc">
+      <DependentUpon>DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet.xss">
+      <DependentUpon>DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3d-blanco-1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo_songui_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_2025.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apagado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apagado1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icono-cliente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AccesoBase\AccesoBase.csproj">
+      <Project>{7cd562c1-dbeb-40df-af65-4738c9187b56}</Project>
+      <Name>AccesoBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilerias\Utilerias.csproj">
+      <Project>{a3c8269a-228a-4eae-a196-7f8fea39dd87}</Project>
+      <Name>Utilerias</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\administradorG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buscar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guardar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mapa %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\casa %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edificio-de-oficinas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\entrega.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cartografia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inspeccion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\migrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mapa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\actualizar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edificio-de-la-ciudad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\marcador-de-posicion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo san mateo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo san mateo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\goma-de-borrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\salvar %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nuevo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\goma-de-borrar-small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mapa %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cartografia1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ventanas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ventanas %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\revision.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\computadora-de-escritorio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sombrero.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\napoleon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\administrador2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FILTRO BLANCO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lupa-de-busqueda-con-una-cruz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FILTRO BLANCO1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flecha-hacia-la-derecha.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flecha-hacia-la-derecha1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lupa-de-busqueda-con-una-cruz-blanco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CAND48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\candadocerrado48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\excelsalir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\candadocerrado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CANDADOABIERTO3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eliminar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flecha-hacia-abajo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\excelsalir1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pdf 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flecha-hacia-la-derecha2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flecha-hacia-la-izquierda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\semaforoArriba-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\semaforoDerecho-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\semforoIzquierdo-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icono_principal.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.5\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+</Project>

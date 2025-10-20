@@ -1,0 +1,4763 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Marmat.Forms.Skin</name>
+    </assembly>
+    <members>
+        <member name="T:Marmat.Forms.Skin.Breadcrumb">
+            <summary>
+            面包屑控件
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.Breadcrumb.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.Breadcrumb.GetItemParent(Marmat.Forms.Skin.BreadcrumbItem)">
+            <summary>
+            获取子项的父级，返回值为null则表示未查到父级
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Breadcrumb.DefaultSize">
+            <summary>
+            获取默认大小
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Breadcrumb.BackColor">
+            <summary>
+            获取或设置背景颜色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Breadcrumb.SelectedColor">
+            <summary>
+            获取或设置选中色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Breadcrumb.IntervalChar">
+            <summary>
+            获取或设置分割符
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Breadcrumb.Items">
+            <summary>
+            获取 GroupButton 中的项
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.Breadcrumb.ItemClicked">
+            <summary>
+            在单击 BreadcrumbItem 后发生
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.BreadcrumbArgs.Item">
+            <summary>
+            点击的Item
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.BreadcrumbItem.Tag">
+            <summary>
+             获取或设置包含有关控件的数据的对象。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.BreadcrumbItem.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.BreadcrumbItem.Text">
+            <summary>
+            显示文本
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.BreadcrumbItem.AllowClick">
+            <summary>
+            是否允许点击
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.BreadcrumbItemCollection">
+            <summary>
+            Breadcrumb 的集合
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.BreadcrumbItemCollection.#ctor(System.Windows.Forms.Control)">
+            <summary>
+            Breadcrumb 的集合
+            </summary>
+            <param name="control"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ButtonGroup.RefreshSize">
+            <summary>
+            刷新控件的Size
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ButtonGroup.GetFouseColor(System.Drawing.Rectangle,Marmat.Forms.Skin.ButtonGroupItem)">
+            <summary>
+            获取焦点颜色
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ButtonGroup.DrawTextAndIcon(System.Drawing.Graphics,Marmat.Forms.Skin.ButtonGroupItem,System.Int32)">
+            <summary>
+            绘制Icon与Text
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ButtonGroup.OnMouseMove(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            鼠标在控件可视区域移动
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ButtonGroup.OnMouseLeave(System.EventArgs)">
+            <summary>
+            鼠标离开控件可视区域
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ButtonGroup.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            鼠标点击
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ButtonGroup.OnMouseUp(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            鼠标抬起
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ButtonGroup.DefaultSize">
+            <summary>
+            获取默认大小
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ButtonGroup.AutoSize">
+            <summary>
+            获取或设置自动大小
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ButtonGroup.Round">
+            <summary>
+            获取或设置圆角，如果为true则 Circle 属性设置无效
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ButtonGroup.Buttons">
+            <summary>
+            获取 GroupButton 中的项
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.ButtonGroup.ItemClicked">
+            <summary>
+            在单击 ButtonGroupItem 后发生
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ButtonGroup.Circle">
+            <summary>
+            获取或设置 按钮组的圆角程度（不能超过控件高度的一半）
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.ButtonGroupDesigner">
+            <summary>
+             扩展 ButtonGroup 的设计模式行为。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ButtonGroupDesigner.SelectionRules">
+            <summary>
+            获取指示组件的移动功能的选择规则。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ButtonGroupEventArgs.Item">
+            <summary>
+            ButtonGroup的子项
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ButtonGroupItem.Name">
+            <summary>
+            按钮名称
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ButtonGroupItem.Image">
+            <summary>
+            按钮图标
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ButtonGroupItem.TextImageRelation">
+            <summary>
+            图标在右边显示
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ButtonGroupItem.Width">
+            <summary>
+            获取或设置按钮宽度
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ButtonGroupItem.Text">
+            <summary>
+            获取或设置按钮文本
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ButtonGroupItem.BackColor">
+            <summary>
+            获取或设置控件的背景色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ButtonGroupItem.Tag">
+            <summary>
+            获取或设置包含有关控件的数据的对象。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ButtonGroupItem.Enabled">
+            <summary>
+            获取或设置一个值，该值指示控件是否可以对用户交互作出响应。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ButtonGroupItem.ThemeStyle">
+            <summary>
+            获取或设置组件的主题样式。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ButtonGroupItem.ShouldSerializeBackColor">
+            <summary>
+            是否需要序列化  BackColor 属性
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ButtonGroupItem.ResetBackColor">
+            <summary>
+             将 BackColor 属性重置为其默认值。。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.ButtonGroupItemCollection">
+            <summary>
+            按钮组的集合
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.SkinButton">
+            <summary>
+            Skin按钮
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.SkinButton.#ctor">
+            <summary>
+            构建 button 的实例。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.SkinButton.down_status">
+            <summary>
+            鼠标是否按下
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.SkinButton.enter_status">
+            <summary>
+            鼠标是否在当前组件内。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.SkinButton.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.Control.Paint 事件。
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.SkinButton.OnMouseEnter(System.EventArgs)">
+            <summary>
+            鼠标进入
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.SkinButton.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            鼠标点击
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.SkinButton.OnMouseLeave(System.EventArgs)">
+            <summary>
+            鼠标离开
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.SkinButton.OnMouseUp(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            鼠标抬起
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="P:Marmat.Forms.Skin.SkinButton.DialogResult">
+            <summary>
+              获取或设置单击按钮时返回给父窗体的值。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.SkinButton.NotifyDefault(System.Boolean)">
+            <summary>
+            通知某个控件是默认按钮，以便相应调整其外观和行为。
+            </summary>
+            <param name="value">如果控件要用作默认按钮，值为 true；反之，值为 false。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.SkinButton.PerformClick">
+            <summary>
+            为该控件生成 System.Windows.Forms.Control.Click 事件。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.SkinButton.ShouldSerializeBackColor">
+            <summary>
+            是否需要序列化  BackColor 属性
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.SkinButton.ResetBackColor">
+            <summary>
+             将 BackColor 属性重置为其默认值。。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.SkinButton.ShouldSerializeForeColor">
+            <summary>
+            是否需要序列化  BackColor 属性
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.SkinButton.ResetForeColor">
+            <summary>
+             将 BackColor 属性重置为其默认值。。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.SkinButton.ForeColor">
+            <summary>
+            获取或设置控件的前景色。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.SkinButton.Circle">
+            <summary>
+            按钮的圆角程度（不能超过控件高度的一半）。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.SkinButton.Round">
+            <summary>
+            是否开启圆角按钮，如果为true则 Circle 属性设置无效
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.SkinButton.Loading">
+            <summary>
+            是否加载中状态。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.SkinButton.BackColor">
+            <summary>
+            按钮的背景色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.SkinButton.Text">
+            <summary>
+            获取或设置与此控件关联的文本。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.SkinButton.DefaultSize">
+            <summary>
+            默认大小
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.SkinButton.Image">
+            <summary>
+            获取或设置按钮的显示图像。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.SkinButton.ThemeStyle">
+            <summary>
+            获取或设置组件的主题样式。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.SkinButton.IconOnRight">
+            <summary>
+            图标在右边显示,此属性只有在同时显示Text与Icon时有效
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.SkinButton.Plain">
+            <summary>
+            获取或设置是否为朴素按钮。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.CardPanel">
+            <summary>
+            卡片容器
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.CardPanel.GetFouseColor(System.Drawing.Rectangle,Marmat.Forms.Skin.CardPanelItem)">
+            <summary>
+            获取焦点色
+            </summary>
+            <param name="rec"></param>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.CardPanel.ShouldSerializeBackColor">
+            <summary>
+            是否需要序列化  BackColor 属性
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.CardPanel.ResetBackColor">
+            <summary>
+             将 BackColor 属性重置为其默认值。。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.CardPanel.TitleMargin">
+            <summary>
+            获取或设置SkinCard的标题外边距
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.CardPanel.Text">
+            <summary>
+            与控件关联的文本
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.CardPanel.HideTitle">
+            <summary>
+            获取或设置 隐藏标题
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.CardPanel.BorderColor">
+            <summary>
+            获取或设置SkinCard的边框颜色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.CardPanel.Font">
+            <summary>
+            获取或设置控件显示的文字的字体。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.CardPanel.Buttons">
+            <summary>
+            获取 SkinCard 中的操作按钮
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.CardPanelItem.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.CardPanelItem.Text">
+            <summary>
+            与控件关联的文本
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.TextImageRelation">
+            <summary>
+            指定控件上的文本和图像彼此之间的相对位置。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.TextImageRelation.TextBeforeImage">
+            <summary>
+            指定文本水平显示在控件图像的前方
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.TextImageRelation.ImageBeforeText">
+            <summary>
+            指定图像水平显示在控件文本的前方。 
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.DropDownControlHost.Opened">
+            <summary>
+            在打开 System.Windows.Forms.ToolStripDropDown 时发生。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.DropDownControlHost.Opening">
+            <summary>
+            System.Windows.Forms.ToolStripDropDown 控件正打开时发生。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.DropDownControlHost.ShowDropDown(System.Windows.Forms.Control)">
+            <summary>
+            显示下拉窗体
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.DropDownControlHost.ShowDropDown(System.Windows.Forms.Control,System.Drawing.Point)">
+            <summary>
+            显示下拉窗体
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.DropDownControlHost.CloseDropDown">
+            <summary>
+            关闭下拉窗口
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.ControlExtension">
+            <summary>
+            基于 Control 的扩展支持。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ControlExtension.DragParentForm(System.Windows.Forms.Control)">
+            <summary>
+            开启拖拽窗口的支持。
+            </summary>
+            <param name="dragControl">需要支持拖动的控件实例</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ControlExtension.CloseDragParentForm(System.Windows.Forms.Control)">
+            <summary>
+            关闭拖拽窗口的支持。
+            </summary>
+            <param name="dragControl">需要支持拖动的控件实例</param>
+        </member>
+        <member name="T:Marmat.Forms.Skin.DrawFormButtonEventArgs">
+            <summary>
+            为 DrawFormButton 事件提供数据。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.DrawFormButtonEventArgs.#ctor(System.Drawing.Graphics,System.Drawing.Rectangle,Marmat.Forms.Skin.FormButton)">
+            <summary>
+            构建事件
+            </summary>
+            <param name="graphics">用于绘制该项的 System.Drawing.Graphics。</param>
+            <param name="clipRect">表示绘画所在的矩形的 System.Drawing.Rectangle。</param>
+            <param name="item">正在绘制的按钮的实例对象。</param>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DrawFormButtonEventArgs.Graphics">
+            <summary>
+            获取用于进行绘制的图形。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DrawFormButtonEventArgs.ClipRectangle">
+            <summary>
+            获取要在其中进行绘画的矩形。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DrawFormButtonEventArgs.Item">
+            <summary>
+            获取正在绘制的按钮的实例。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.Form.back_bitmap">
+            <summary>
+            背景绘制的临时图像，用于绘制客户区
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.Form.DrawCaption(System.IntPtr,Marmat.Forms.Skin.FormMouseState)">
+            <summary>
+            绘制标题
+            </summary>
+            <param name="hwnd"></param>
+            <param name="state"></param>
+        </member>
+        <member name="F:Marmat.Forms.Skin.Form._borderPen">
+            <summary>
+            窗口边框的画笔
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.Form.DrawFormBorder(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            绘制窗口边框
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.Form.WndProc(System.Windows.Forms.Message@)">
+            <summary>
+            处理 Windows 消息。
+            </summary>
+            <param name="m">要处理的 Windows System.Windows.Forms.Message。</param>
+        </member>
+        <member name="F:Marmat.Forms.Skin.Form.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.Form.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.Form.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.Form.FormButtonClick">
+            <summary>
+            在自定义皮肤下，点击系统按钮时执行。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.Form.DrawFormButton">
+            <summary>
+            绘制窗口按钮时执行。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.Form.DrawSkinForm">
+            <summary>
+            绘制窗口皮肤时执行
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Form.CaptionContextMenu">
+            <summary>
+            点击标题创建的菜单
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.Form.OnCaptionContextMenu(System.Int32,System.Int32)">
+            <summary>
+            显示标题的菜单
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Form.CloseButtonImage">
+            <summary>
+            设置或返回关闭按钮的皮肤图片。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Form.MaximumButtonImage">
+            <summary>
+            设置或返回最大化按钮的皮肤图片。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Form.RestoreButtonImage">
+            <summary>
+            设置或返回恢复默认大小按钮的皮肤图片。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Form.MinimumButtonImage">
+            <summary>
+            设置或返回最小化按钮的皮肤图片。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Form.HelpButtonImage">
+            <summary>
+            设置或返回帮助按钮的皮肤图片。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Form.DrawClientArea">
+            <summary>
+            是否绘制客户端区域
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Form.DropShadowEnabled">
+            <summary>
+            获取或设置一个值，该值指示显示 Form 时是否出现三维阴影效果。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Form.FormButtonCollection">
+            <summary>
+            获取或设置窗口的系统按钮。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Form.SkinBackgroundImage">
+            <summary>
+            获取或设置一个值，该值指示显示 Form 的图片皮肤。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.FormButton">
+            <summary>
+            窗体按钮项
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.FormButton.Normal">
+            <summary>
+            设置或返回默认显示图像。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.FormButton.Hover">
+            <summary>
+            设置或返回鼠标移过时显示的图像。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.FormButton.Down">
+            <summary>
+            设置或返回鼠标按下后显示的图像。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.FormButton.Size">
+            <summary>
+            按钮的矩形大小。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.FormButton.Name">
+            <summary>
+            按钮的名称。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.FormButton.ToolTip">
+            <summary>
+            获取或设置鼠标移入时的提示文本。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.FormButton.Visible">
+            <summary>
+            获取或设置该按钮是否可见。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.FormButtonClickEventArgs">
+            <summary>
+            窗体按钮项的点击事件的事件数据
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.FormButtonClickEventArgs.#ctor(Marmat.Forms.Skin.FormButton,System.Drawing.Rectangle)">
+            <summary>
+            构建实例对象。
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="P:Marmat.Forms.Skin.FormButtonClickEventArgs.Item">
+            <summary>
+            当前项。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.FormButtonClickEventArgs.ClientRectangle">
+            <summary>
+            获取表示控件的工作区的矩形。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.FormMouseState">
+            <summary>
+            在窗口的非客户区的鼠标状态。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.FormMouseState.None">
+            <summary>
+            默认
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.FormMouseState.Hover">
+            <summary>
+            移入
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.FormMouseState.Down">
+            <summary>
+            按下
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.ISkinControl">
+            <summary>
+            Skin控件的基类接口
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.LayoutView">
+            <summary>
+            布局视图控件。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.LayoutView.#ctor">
+            <summary>
+            初始化 Marmat.Forms.Skin.LayoutView 类的新实例。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.LayoutView.RowSpacing">
+            <summary>
+            行间距
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.LayoutView.ColumnSpacing">
+            <summary>
+            列间距
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.LayoutView.ItemSize">
+            <summary>
+            项的高度
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.LayoutView.Items">
+            <summary>
+            获取 Marmat.Forms.Skin.LayoutView 的项。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.LayoutView.DrawItem">
+            <summary>
+            在所有者绘制的 Marmat.Forms.Skin.LayoutView 在视觉外观更改时发生。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.LayoutView.MeasureItem">
+            <summary>
+            创建所有者描述的 Marmat.Forms.Skin.LayoutView 和确定列表项的大小时发生。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.LayoutView.SelectedIndexChanged">
+            <summary>
+            选中SelectedIndex 属性更改后发生。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.LayoutView.ItemClick">
+            <summary>
+            点击项时触发的事件。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.LayoutView.ItemDoubleClick">
+            <summary>
+            双击项时触发的事件。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.LayoutView.SelectedItem">
+            <summary>
+            获取或设置当前选中项。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.LayoutView.SelectedIndex">
+            <summary>
+            获取或设置 Marmat.Forms.Skin.LayoutView 中当前选定项的从零开始的索引。       
+            </summary>
+            <remarks>当前选定项的从零开始的索引。 如果未选定任何项，则返回值为负一 (-1)。</remarks>
+        </member>
+        <member name="T:Marmat.Forms.Skin.ItemEventArgs">
+            <summary>
+            为 Marmat.Forms.Skin.ListBox.ItemClick 事件提供数据。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ItemEventArgs.#ctor(System.Object)">
+            <summary>
+            初始化 Marmat.Forms.Skin.ItemEventArgs 类的新实例。
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ItemEventArgs.Item">
+            <summary>
+            获取触发当前事件的项对象。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.ListBox">
+            <summary>
+            提供一个列表控件。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ListBox.#ctor">
+            <summary>
+            初始化 Marmat.Forms.Skin.ListBox 类的新实例。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ListBox.ItemHeight">
+            <summary>
+            获取或设置 Marmat.Forms.Skin.ListBox 中项的高度。
+            </summary>
+            <returns>控件中项的高度（以像素为单位）。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ListBox.DisplayMember">
+            <summary>
+            获取或设置要为此 Marmat.Forms.Skin.ListControl 显示的属性。
+            </summary>        
+            <returns>一个 System.String，指定 System.Windows.Forms.ListControl.DataSource 属性指定的集合中包含的对象属性的名称。默认值为空字符串("")。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ListBox.Items">
+            <summary>
+            获取 Marmat.Forms.Skin.ListBox 的项。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.ListBox.DrawItem">
+            <summary>
+            在所有者绘制的 System.Windows.Forms.ListBox 在视觉外观更改时发生。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.ListBox.MeasureItem">
+            <summary>
+            创建所有者描述的 System.Windows.Forms.ListBox 和确定列表项的大小时发生。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.ListBox.SelectedIndexChanged">
+            <summary>
+            选中SelectedIndex 属性更改后发生。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ListBox.SelectedItem">
+            <summary>
+            获取或设置当前选中项。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ListBox.SelectedIndex">
+            <summary>
+            获取或设置 System.Windows.Forms.ListBox 中当前选定项的从零开始的索引。       
+            </summary>
+            <remarks>当前选定项的从零开始的索引。 如果未选定任何项，则返回值为负一 (-1)。</remarks>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ListBox.SetItemVisible(System.Int32)">
+            <summary>
+            确保指定节点可见。
+            </summary>
+            <param name="index"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ListBox.ProcessDialogKey(System.Windows.Forms.Keys)">
+            <summary>
+            如果按下的是向上向下键,并且列表集合不为空的情况下,拦截焦点转移事件。
+            </summary>
+            <param name="keyData"></param>
+            <returns></returns>
+        </member>
+        <member name="E:Marmat.Forms.Skin.ListBox.ItemClick">
+            <summary>
+            项点击时触发。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.ObjectCollection">
+            <summary>
+            表示 Marmat.Forms.Skin.ListBox 中项的集合。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ObjectCollection.#ctor(System.Windows.Forms.Control)">
+            <summary>
+            初始化 Marmat.Forms.Skin.ObjectCollection 的新实例。
+            </summary>
+            <param name="owner"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ObjectCollection.#ctor">
+            <summary>
+            初始化 Marmat.Forms.Skin.ObjectCollection 的新实例。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ObjectCollection.Item(System.Int32)">
+            <summary>
+            获取或设置指定索引处的元素。
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ObjectCollection.Count">
+            <summary>
+            获取 System.Collections.Generic.List`1 中包含的元素数。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ObjectCollection.Add(System.Object)">
+            <summary>
+            将对象添加到 System.Collections.Generic.List`1 的结尾处。
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ObjectCollection.AddRange(System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            将指定集合的元素添加到 System.Collections.Generic.List`1 的末尾。
+            </summary>
+            <param name="collection"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ObjectCollection.AddRange(System.Collections.IEnumerable)">
+            <summary>
+            将指定集合的元素添加到 System.Collections.Generic.List`1 的末尾。
+            </summary>
+            <param name="collection"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ObjectCollection.Clear">
+            <summary>
+            从 System.Collections.Generic.List`1 中移除所有元素。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ObjectCollection.Contains(System.Object)">
+            <summary>
+            确定某元素是否在 System.Collections.Generic.List`1 中。
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ObjectCollection.CopyTo(System.Array,System.Int32)">
+            <summary>
+            从目标数组的指定索引处开始，将整个 System.Collections.Generic.List`1 复制到兼容的一维数组。
+            </summary>
+            <param name="array"></param>
+            <param name="index"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ObjectCollection.GetEnumerator">
+            <summary>
+            返回循环访问 System.Collections.Generic.List`1 的枚举数。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ObjectCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            返回循环访问 System.Collections.Generic.List`1 的枚举数。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ObjectCollection.IndexOf(System.Object)">
+            <summary>
+            搜索指定的对象，并返回整个 System.Collections.Generic.List`1 中第一个匹配项的从零开始的索引。
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ObjectCollection.Insert(System.Int32,System.Object)">
+            <summary>
+            将元素插入 System.Collections.Generic.List`1 的指定索引处。
+            </summary>
+            <param name="index"></param>
+            <param name="item"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ObjectCollection.Remove(System.Object)">
+            <summary>
+            从 System.Collections.Generic.List`1 中移除特定对象的第一个匹配项。
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ObjectCollection.RemoveAt(System.Int32)">
+            <summary>
+            移除 System.Collections.Generic.List`1 的指定索引处的元素。
+            </summary>
+            <param name="index"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ObjectCollection.FindIndex(System.Predicate{System.Object})">
+            <summary>
+            搜索与指定谓词所定义的条件相匹配的元素，并返回整个 System.Collections.Generic.List`1 中第一个匹配元素的从零开始的索引。
+            </summary>
+            <param name="match"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Marmat.Forms.Skin.NoneBorderForm">
+            <summary>
+            带阴影的无边框窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.NoneBorderForm._borderPen">
+            <summary>
+            窗口边框的画笔
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.NoneBorderForm.#ctor">
+            <summary>
+            构建 带阴影的无边框窗口 实例。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.NoneBorderForm.Padding">
+            <summary>
+            获取或设置控件内的空白。
+            </summary>
+            <returns>表示控件的内部间距特征的 System.Windows.Forms.Padding。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.NoneBorderForm.ControlBox">
+            <summary>
+            获取或设置一个值，该值指示在该窗体的标题栏中是否显示控件框。
+            </summary>
+            <returns>true 如果窗体的窗体; 右上角显示控件框否则为false。 默认值为 true。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.NoneBorderForm.CloseButton">
+            <summary>
+            设置或返回关闭按钮的皮肤图片。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.NoneBorderForm.MaximumButton">
+            <summary>
+            设置或返回最大化按钮的皮肤图片。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.NoneBorderForm.RestoreButton">
+            <summary>
+            设置或返回恢复默认大小按钮的皮肤图片。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.NoneBorderForm.MinimumButton">
+            <summary>
+            设置或返回最小化按钮的皮肤图片。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.NoneBorderForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.NoneBorderForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.NoneBorderForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.Progress">
+            <summary>
+            进度条
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.Progress.#ctor">
+            <summary>
+            进度条
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.Progress.ShouldSerializeBackColor">
+            <summary>
+            是否需要序列化  BackColor 属性
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.Progress.ResetBackColor">
+            <summary>
+             将 BackColor 属性重置为其默认值。。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Progress.Percentage">
+            <summary>
+            百分比（必填）可选值 0~100
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Progress.TextInside">
+            <summary>
+            进度条显示文字内置在进度条内 如果宽度不够则不显示
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Progress.Round">
+            <summary>
+            是否开启圆角按钮，如果为true则 Circle 属性设置无效
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Progress.BackColor">
+            <summary>
+            背景色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Progress.ThemeStyle">
+            <summary>
+            获取或设置组件的主题样式。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.Progress.PercentageChange">
+            <summary>
+            进度改变后执行
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Progress.DefaultSize">
+            <summary>
+            获取控件默认大小
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.ScrollableControlExtension">
+            <summary>
+            滚动条的消息处理。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ScrollableControlExtension.#ctor(System.Windows.Forms.ScrollableControl)">
+            <summary>
+            构建滚动条的消息处理实例。
+            </summary>
+            <param name="control"></param>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ScrollableControlExtension.Control">
+            <summary>
+            需要处理的滚动条控件。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ScrollableControlExtension.BorderStyle">
+            <summary>
+            获取或设置用户控件的边框样式。
+            </summary>
+            <returns>System.Windows.Forms.BorderStyle 值之一。 默认值为 System.Windows.Forms.BorderStyle.None。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ScrollableControlExtension.BorderColor">
+            <summary>
+            获取或设置控件的边框颜色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ScrollableControlExtension.ClipRectangle">
+            <summary>
+            获取控件的客户区矩形
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ScrollableControlExtension.VirtualScroll">
+            <summary>
+            是否开启虚拟滚动条
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ScrollableControlExtension.vertical_scroll_rect">
+            <summary>
+            垂直滚动条的矩形位置。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ScrollableControlExtension.horizontal_scroll_rect">
+            <summary>
+            水平滚动条的矩形位置。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ScrollableControlExtension.vertical_scroll_foucs">
+            <summary>
+            垂直滚动条的焦点状态。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ScrollableControlExtension.horizontal_scroll_foucs">
+            <summary>
+            水平滚动条的焦点状态。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ScrollableControlExtension.vertical_scroll_Rectangle">
+            <summary>
+            垂直滚动条的矩形区域。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ScrollableControlExtension.horizontal_scroll_Rectangle">
+            <summary>
+            水平滚动条的矩形区域。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ScrollableControlExtension.drag_vertical_scroll">
+            <summary>
+            是否正在拖拽垂直滚动条。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ScrollableControlExtension.drag_horizontal_scroll">
+            <summary>
+            是否正在拖拽水平滚动条。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ScrollableControlExtension.drag_scroll_value">
+            <summary>
+            准备拖拽时滚动条的值。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ScrollableControlExtension.drag_scroll_location">
+            <summary>
+            准备拖拽时鼠标的坐标。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ScrollableControlExtension.scrollBorderSize">
+            <summary>
+            滚动边框的大小
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ScrollableControlExtension.scrollSize">
+            <summary>
+            滚动条的大小。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ScrollableControlExtension.DefaultBrush">
+            <summary>
+            滚动条默认状态下的画刷
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ScrollableControlExtension.HoverBrush">
+            <summary>
+            滚动条处于焦点下的画刷
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.ScrollableControlExtension.PaintScrollBackgroundImage">
+            <summary>
+            绘制滚动条背景图时发生。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ScrollableControlExtension.SetScrollBorder(System.Int32)">
+            <summary>
+            设置滚动区域的边框大小。
+            </summary>
+            <param name="width">边框的宽度。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ScrollableControlExtension.SetScrollSize(System.Int32)">
+            <summary>
+            设置滚动条的大小。
+            </summary>
+            <param name="width">滚动条的宽度/高度。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ScrollableControlExtension.BeforeWndProc(System.Windows.Forms.Message@,System.Object@)">
+            <summary>
+            处理 Windows 消息之前执行,用于修改 Windows 消息内容。
+            </summary>
+            <param name="m"></param>
+            <param name="arguments"></param>
+            <returns>如果返回true,则需要用户执行 WndProc 函数</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ScrollableControlExtension.AfterWndProc(System.Windows.Forms.Message,System.Object)">
+            <summary>
+            处理 Windows 消息之后执行。
+            </summary>
+            <param name="m"></param>
+            <param name="arguments"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ScrollableControlExtension.set_vertical_scroll_value(System.Int32)">
+            <summary>
+            设置垂直滚动条的值。
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ScrollableControlExtension.GetScrollInfo">
+            <summary>
+            获取滚动条消息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ScrollableControlExtension.SetControlScrollLocation(Marmat.Forms.Skin.Scrollinfo,System.Int32)">
+            <summary>
+            设置控件的滚动条的位置
+            </summary>
+            <param name="scrollInfo"></param>
+            <param name="pos"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ScrollableControlExtension.InvalidateScroll(System.Windows.Forms.Message)">
+            <summary>
+            刷新滚动条区域
+            </summary>
+            <param name="m"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ScrollableControlExtension.InvalidateScroll(System.IntPtr)">
+            <summary>
+            刷新滚动条区域
+            </summary>
+            <param name="hwnd"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ScrollableControlExtension.OnPaintScrollBackgroundImage(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            绘制滚动条的背景图
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="T:Marmat.Forms.Skin.ScrollControl">
+            <summary>
+            滚动控件
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ScrollControl.scrollableControlExtension">
+            <summary>
+            滚动图的扩展支持。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ScrollControl.#ctor">
+            <summary>
+            初始化 Marmat.Forms.Skin.ScrollControl 类的新实例。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ScrollControl.BorderStyle">
+            <summary>
+            获取或设置用户控件的边框样式。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ScrollControl.BorderColor">
+            <summary>
+            获取或设置控件的边框颜色
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ScrollControl.SetScrollSize(System.Int32)">
+            <summary>
+            设置滚动条的大小。
+            </summary>
+            <param name="width">滚动条的宽度/高度。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ScrollControl.WndProc(System.Windows.Forms.Message@)">
+            <summary>
+            处理windows消息
+            </summary>
+            <param name="m"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ScrollControl.ShouldSerializeBorderColor">
+            <summary>
+            是否需要序列化  BorderColor 属性
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ScrollControl.ResetBorderColor">
+            <summary>
+             将 BorderColor 属性重置为其默认值。。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.Steps">
+            <summary>
+            步骤条组件
+            引导用户按照流程完成任务的分步导航条，可根据实际应用场景设定步骤，步骤不得少于 2 步
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.Steps.#ctor">
+            <summary>
+             初始化 Marmat.Forms.Skin.Steps 类的新实例。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Steps.BackColor">
+            <summary>
+             获取或设置控件的背景色。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Steps.Orientation">
+            <summary>
+            获取或设置一个值，该值指示 System.Windows.Forms.SplitContainer 面板处于水平方向还是垂直方向。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Steps.Active">
+            <summary>
+            获取或设置当前激活步骤
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Steps.ProcessStatus">
+            <summary>
+            获取或设置当前步骤的状态
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Steps.Items">
+            <summary>
+            获取或设置 Steps 组件的步骤集合。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Steps.FinishStatus">
+            <summary>
+            获取或设置结束步骤的状态
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.Steps.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.Control.Paint 事件。
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.Steps.OnMeasureItem(System.Drawing.Graphics,System.Int32)">
+            <summary>
+            创建所有者描述的 System.Windows.Forms.ListBox 和确定列表项的大小时发生。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.Steps.OnDrawItem(System.Windows.Forms.DrawItemEventArgs)">
+            <summary>
+            引发 DrawItem 事件。
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="E:Marmat.Forms.Skin.Steps.MeasureItem">
+            <summary>
+            创建所有者描述的 System.Windows.Forms.ListBox 和确定列表项的大小时发生。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.Steps.DrawItem">
+            <summary>
+            在所有者绘制的 System.Windows.Forms.ListBox 在视觉外观更改时发生。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.StepsItem">
+            <summary>
+            步骤组件的列表项的对象描述。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.StepsItem.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.StepsItem.Description">
+            <summary>
+            描述性文字
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.StepsItem.Image">
+            <summary>
+            图标
+            </summary>        
+        </member>
+        <member name="P:Marmat.Forms.Skin.StepsItem.Status">
+            <summary>
+            设置当前步骤的状态，不设置则根据 steps 确定状态
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.StepsItem.Tag">
+            <summary>
+            用户的自定义数据。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.StepsStatusEnum">
+            <summary>
+            步骤的状态表示的枚举
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.StepsStatusEnum.Default">
+            <summary>
+            默认状态
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.StepsStatusEnum.Wait">
+            <summary>
+            等待
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.StepsStatusEnum.Process">
+            <summary>
+            进行中
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.StepsStatusEnum.Finish">
+            <summary>
+            结束
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.StepsStatusEnum.Error">
+            <summary>
+            错误
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.StepsStatusEnum.Success">
+            <summary>
+            完成
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Switch.DefaultSize">
+            <summary>
+            默认大小
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Switch.UnselectedColor">
+            <summary>
+            获取或设置未选中时背景色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Switch.SelectedColor">
+            <summary>
+            选中时背景色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Switch.Circle">
+            <summary>
+            圆角的程度
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Switch.Checked">
+            <summary>
+            获取或设置一个值，该值指示 System.Windows.Forms.CheckBox 是否处于选中状态。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.TabControl">
+            <summary>
+            管理相关的选项卡页集。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TabControl.#ctor">
+            <summary>
+            初始化 Marmat.Forms.Skin.TabControl 类的新实例。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TabControl.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.Control.Paint 事件。
+            </summary>
+            <param name="e">包含事件数据的 System.Windows.Forms.PaintEventArgs。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TabControl.ResetItemSize">
+            <summary>
+            重置。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.TabControl.SelectedTabChanging">
+            <summary>
+            SelectedTab 属性值更改前发生。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.TabControl.SelectedTabChanged">
+            <summary>
+            SelectedTab 属性值更改时发生。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.TabControl.DrawItem">
+            <summary>
+            需要绘制它的每一个选项卡时发生。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabControl.TabPages">
+            <summary>
+            获取该选项卡控件中选项卡页的集合。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabControl.Font">
+            <summary>
+            获取或设置控件显示的文字的字体。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabControl.Interval">
+            <summary>
+            获取或设置页签标头显示之间的间隔。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabControl.Offset">
+            <summary>
+            获取或设置首个页签显示的偏移。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabControl.Alignment">
+            <summary>
+            获取或设置选项卡在其中对齐的控件区域（例如，顶部边缘）。
+            </summary>
+            <returns>System.Windows.Forms.TabAlignment 值之一。 默认值为 Top。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabControl.ImageList">
+            <summary>
+            获取或设置在控件的选项卡上显示的图像。
+            </summary>
+            <returns>System.Windows.Forms.ImageList，指定在选项卡上显示的图像。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabControl.Padding">
+            <summary>
+            获取该选项卡控件的标签处的间距。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabControl.ItemSize">
+            <summary>
+            获取或设置控件的选项卡的大小。
+            </summary>
+            <returns>System.Drawing.Size，它表示选项卡的大小。 默认为自动调整选项卡的大小以适应选项卡上的图标和标签。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TabControl.refreshLayout">
+            <summary>
+            刷新布局
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabControl.SelectedTab">
+            <summary>
+            获取或设置当前选定的选项卡页。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabControl.ShowTabs">
+            <summary>
+                ''' 获取或设置是否显示选项卡的标题。
+                ''' </summary>
+                ''' <returns></returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabControl.Controls">
+            <summary>
+            获取包含在控件内的控件的集合。
+            </summary>
+            <returns>System.Windows.Forms.Control.ControlCollection，它表示控件内包含的控件的集合。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabControl.BackColor">
+            <summary>
+            获取或设置控件的背景色。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabControl.Cursor">
+            <summary>
+            获取或设置当鼠标指针位于控件上时显示的光标。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.TabPage.scrollableControlExtension">
+            <summary>
+            滚动图的扩展支持。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabPage.BorderColor">
+            <summary>
+            获取或设置选项卡的边框颜色。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabPage.Size">
+            <summary>
+                ''' 获取或设置控件的高度和宽度。
+                ''' </summary>
+                ''' <returns> System.Drawing.Size，表示控件的高度和宽度（以像素为单位）。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabPage.Image">
+            <summary>
+            获取或设置选项卡上的图像。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabPage.ImageIndex">
+            <summary>
+                ''' 获取或设置在该选项卡上显示的图像的索引。
+                ''' </summary>
+                ''' <returns>中的图像的从零开始索引System.Windows.Forms.TabControl.ImageList，它显示在选项卡。默认值为 -1，表示没有图像。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabPage.FocusImageIndex">
+            <summary>
+                ''' 获取或设置在该选项卡作为焦点时显示的图像的索引。
+                ''' </summary>
+                ''' <returns>中的图像的从零开始索引System.Windows.Forms.TabControl.ImageList，它显示在选项卡。默认值为 -1，表示没有图像。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabPage.ImageKey">
+            <summary>
+                ''' 获取或设置关联 System.Windows.Forms.TabControl.ImageList 的 System.Windows.Forms.TabControl中的图像的键访问器。
+                ''' </summary>
+                ''' <returns>一个表示图像的键的字符串。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabPage.FocusImageKey">
+            <summary>
+                ''' 获取或设置关联 System.Windows.Forms.TabControl.ImageList 的 System.Windows.Forms.TabControl中的图像的键访问器。
+                ''' </summary>
+                ''' <returns>一个表示图像的键的字符串。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabPage.TabVisible">
+            <summary>
+            获取或设置tab页面是否可见。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabPage.Text">
+            <summary>
+            获取或设置与此控件关联的文本。
+            </summary>
+            <returns>与此控件关联的文本。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TabPage.ResetText">
+            <summary>
+            重置文本。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.TabPageChangedEventArgs">
+            <summary>
+            为 Marmat.Forms.TabControl.SelectedTabChanged 提供事件数据。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TabPageChangedEventArgs.#ctor(Marmat.Forms.Skin.TabPage,Marmat.Forms.Skin.TabPage)">
+            <summary>
+                ''' 初始化 Marmat.Forms.TabPageChangedEventArgs 类的新实例。
+                ''' </summary>
+                ''' <param name="prevPage">上一个的选项卡页</param>
+                ''' <param name="page">当前正在处理的选项卡页</param>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabPageChangedEventArgs.PrevPage">
+            <summary>
+            获取上一个的选项卡页。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabPageChangedEventArgs.Page">
+            <summary>
+            获取当前正在处理的选项卡页。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.TabPageChangingEventArgs">
+            <summary>
+            为 Marmat.Forms.TabControl.SelectedTabChanging 提供事件数据。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TabPageChangingEventArgs.#ctor(Marmat.Forms.Skin.TabPage,Marmat.Forms.Skin.TabPage)">
+            <summary>
+            初始化 Marmat.Forms.TabPageChangingEventArgs 类的新实例。
+            </summary>
+            <param name="prevPage">上一个的选项卡页</param>
+            <param name="page">当前正在处理的选项卡页</param>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabPageChangingEventArgs.Cancel">
+            <summary>
+            获取或设置指示是否应取消事件的值。
+            </summary>
+            <returns>如果应取消事件，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TabPageCollection.Add">
+            <summary>
+            添加一个新的页签。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TabPageCollection.Add(System.String)">
+            <summary>
+            添加一个新的页签。
+            </summary>
+            <param name="text">页签的标题</param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TabPageCollection.Add(Marmat.Forms.Skin.TabPage)">
+            <summary>
+            将页签的实例添加到 TabControl 控件中。
+            </summary>
+            <param name="tabPage">待添加的页签</param>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabPageCollection.Item(System.Int32)">
+            <summary>
+            获取或设置指定索引处的元素。
+            </summary>
+            <param name="index">要获取的选项卡页的从零开始的索引。</param>
+            <returns>位于指定索引处的 Marmat.Forms.Skin.TabPage。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabPageCollection.Item(System.String)">
+            <summary>
+            获取带有来自集合的指定键的选项卡页。
+            </summary>
+            <param name="key">要检索的选项卡页的名称。</param>
+            <returns>具有指定键的 Marmat.Forms.Skin.TabPage。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TabPageCollection.Count">
+            <summary>
+            获取集合中选项卡页的数目。
+            </summary>
+            <returns>集合中选项卡页的数目。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TabPageCollection.Contains(Marmat.Forms.Skin.TabPage)">
+            <summary>
+            确定指定的选项卡页是否在集合中。
+            </summary>
+            <param name="page">要在集合中查找的 Marmat.Forms.Skin.TabPage。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TabPageCollection.ContainsKey(System.String)">
+            <summary>
+            确定集合是否包含带有指定键的选项卡页。
+            </summary>
+            <param name="key">要搜索的选项卡页的名称。</param>
+            <returns>若要指示在集合中找到了带有指定键的选项卡页，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TabPageCollection.Remove(Marmat.Forms.Skin.TabPage)">
+            <summary>
+            从集合中移除 Marmat.Forms.Skin.TabPage。
+            </summary>
+            <param name="page">要移除的 System.Windows.Forms.TabPage。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TabPageCollection.Clear">
+            <summary>
+            从集合中清除所有的 Marmat.Forms.Skin.TabPage。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TabPageCollection.GetEnumerator">
+            <summary>
+            返回一个循环访问集合的枚举器。
+            </summary>
+            <returns>用于循环访问集合的枚举数。</returns>
+        </member>
+        <member name="T:Marmat.Forms.Skin.TextBox">
+            <summary>
+            表示 Windows 文本框控件。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TextBox.CreateParams">
+            <summary>
+            获取创建控件句柄时所需要的创建参数。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.DrawTreeNodeEventArgs">
+            <summary>
+            为 System.Windows.Forms.TreeView.DrawNode 事件提供数据。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.DrawTreeNodeEventArgs.#ctor(System.Drawing.Graphics,Marmat.Forms.Skin.TreeNode,System.Drawing.Rectangle,System.Windows.Forms.TreeNodeStates)">
+            <summary>
+            初始化 System.Windows.Forms.DrawTreeNodeEventArgs 类的新实例。
+            </summary>
+            <param name="graphics">System.Drawing.Graphics 在其上绘制图面。</param>
+            <param name="node">要绘制的 System.Windows.Forms.TreeNode。</param>
+            <param name="bounds">System.Drawing.Rectangle 在其中进行绘制。</param>
+            <param name="state">按位组合 System.Windows.Forms.TreeNodeStates 值，该值指示当前状态的 System.Windows.Forms.TreeNode 绘制。</param>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DrawTreeNodeEventArgs.DrawDefault">
+            <summary>
+            获取或设置一个值，该值指示是否 System.Windows.Forms.TreeNode 应由操作系统绘制，而不是由所有者描述的。
+            </summary>
+            <remarks>true 如果应由操作系统 绘制节点; false 如果该节点将绘制在事件处理程序。 默认值为 false。</remarks>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DrawTreeNodeEventArgs.Graphics">
+            <summary>
+            获取 System.Drawing.Graphics 用于绘制对象 System.Windows.Forms.TreeNode。
+            </summary>
+            <remarks>一个 System.Drawing.Graphics 用于绘制 System.Windows.Forms.TreeNode。</remarks>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DrawTreeNodeEventArgs.Node">
+            <summary>
+            获取 System.Windows.Forms.TreeNode 绘制。
+            </summary>
+            <remarks>要绘制的 System.Windows.Forms.TreeNode。</remarks>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DrawTreeNodeEventArgs.Bounds">
+            <summary>
+            获取大小和位置 System.Windows.Forms.TreeNode 绘制。
+            </summary>
+            <remarks> 一个 System.Drawing.Rectangle 表示的边界 System.Windows.Forms.TreeNode 绘制。</remarks>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DrawTreeNodeEventArgs.State">
+            <summary>
+            获取的当前状态 System.Windows.Forms.TreeNode 绘制。
+            </summary>
+            <remarks>按位组合 System.Windows.Forms.TreeNodeStates 值，该值指示当前状态的 System.Windows.Forms.TreeNode。</remarks>
+        </member>
+        <member name="T:Marmat.Forms.Skin.MeasureTreeNodeEventArgs">
+            <summary>
+            为 System.Windows.Forms.TreeView.MeasureNode 事件提供数据。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.MeasureTreeNodeEventArgs.#ctor(Marmat.Forms.Skin.TreeNode,System.Drawing.Size,System.Windows.Forms.TreeNodeStates)">
+            <summary>
+            初始化 System.Windows.Forms.MeasureTreeNodeEventArgs 类的新实例。
+            </summary>
+            <param name="node">要绘制的 System.Windows.Forms.TreeNode。</param>
+            <param name="size">System.Drawing.Rectangle 在其中进行绘制。</param>
+            <param name="state">按位组合 System.Windows.Forms.TreeNodeStates 值，该值指示当前状态的 System.Windows.Forms.TreeNode 绘制。</param>
+        </member>
+        <member name="P:Marmat.Forms.Skin.MeasureTreeNodeEventArgs.Node">
+            <summary>
+            获取 System.Windows.Forms.TreeNode 绘制。
+            </summary>
+            <remarks>要绘制的 System.Windows.Forms.TreeNode。</remarks>
+        </member>
+        <member name="P:Marmat.Forms.Skin.MeasureTreeNodeEventArgs.Size">
+            <summary>
+            获取大小和位置 System.Windows.Forms.TreeNode 绘制。
+            </summary>
+            <remarks> 一个 System.Drawing.Rectangle 表示的边界 System.Windows.Forms.TreeNode 绘制。</remarks>
+        </member>
+        <member name="P:Marmat.Forms.Skin.MeasureTreeNodeEventArgs.State">
+            <summary>
+            获取的当前状态 System.Windows.Forms.TreeNode 绘制。
+            </summary>
+            <remarks>按位组合 System.Windows.Forms.TreeNodeStates 值，该值指示当前状态的 System.Windows.Forms.TreeNode。</remarks>
+        </member>
+        <member name="T:Marmat.Forms.Skin.TreeNode">
+            <summary>
+            表示节点的 System.Windows.Forms.TreeView。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.TreeNode.isExpanded">
+            <summary>
+            获取一个值，该值指示树节点是否处于展开状态。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.TreeNode.isSelected">
+            <summary>
+            获取一个值，该值指示树节点是否处于选定状态。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.TreeNode.isVisible">
+            <summary>
+            获取一个值，该值指示树节点为可见或部分可见。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.TreeNode.parentCollection">
+            <summary>
+            节点所在的集合中。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNode.#ctor">
+            <summary>
+            初始化 System.Windows.Forms.TreeNode 类的新实例。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNode.#ctor(System.String)">
+            <summary>
+            新实例初始化 System.Windows.Forms.TreeNode 类，具有指定的标签文本。
+            </summary>
+            <param name="text">标签 System.Windows.Forms.TreeNode.Text 节点的树节点。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNode.#ctor(System.String,Marmat.Forms.Skin.TreeNode[])">
+            <summary>
+            新实例初始化 System.Windows.Forms.TreeNode 用指定的标签文本和子树节点的类。
+            </summary>
+            <param name="text">标签 System.Windows.Forms.TreeNode.Text 节点的树节点。</param>
+            <param name="children">子数组 System.Windows.Forms.TreeNode 对象。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNode.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            新实例初始化 System.Windows.Forms.TreeNode 用指定的标签文本以及当树节点处于选定和未选定状态时要显示的图像的类。
+            </summary>
+            <param name="text">标签 System.Windows.Forms.TreeNode.Text 节点的树节点。</param>
+            <param name="imageIndex">索引值 System.Drawing.Image 若要取消选定的树节点时显示。</param>
+            <param name="selectedImageIndex">索引值 System.Drawing.Image 选中树节点时显示。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNode.#ctor(System.String,System.Int32,System.Int32,Marmat.Forms.Skin.TreeNode[])">
+            <summary>
+            新实例初始化 System.Windows.Forms.TreeNode 用指定的标签文本、 子树节点，以及当树节点处于选定和未选定状态时要显示的图像的类。
+            </summary>
+            <param name="text">标签 System.Windows.Forms.TreeNode.Text 节点的树节点。</param>
+            <param name="imageIndex">索引值 System.Drawing.Image 若要取消选定的树节点时显示。</param>
+            <param name="selectedImageIndex">索引值 System.Drawing.Image 选中树节点时显示。</param>
+            <param name="children">子数组 System.Windows.Forms.TreeNode 对象。</param>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.Index">
+            <summary>
+            获取树节点的树节点集合中的位置。
+            </summary>
+            <returns>一个表示树节点中的位置的从零开始的索引值 System.Windows.Forms.TreeNode.Nodes 集合。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.IsExpanded">
+            <summary>
+            获取一个值，该值指示树节点是否处于展开状态。
+            </summary>
+            <returns>true 如果树节点处于展开状态，则否则为 false。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.IsSelected">
+            <summary>
+            获取一个值，该值指示树节点是否处于选定状态。
+            </summary>
+            <returns>true 如果树节点处于选定状态，则否则为 false。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.IsVisible">
+            <summary>
+            获取一个值，该值指示树节点为可见或部分可见。
+            </summary>
+            <returns>true 如果树节点是可见的还是部分可见，则否则为 false。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.LastNode">
+            <summary>
+            获取最后一个子树节点。
+            </summary>
+            <returns>一个 System.Windows.Forms.TreeNode 表示最后一个子树节点。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.Level">
+            <summary>
+            获取从零开始的树节点的深度 System.Windows.Forms.TreeView 控件。
+            </summary>
+            <returns>中的树节点的从零开始深度 System.Windows.Forms.TreeView 控件。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.NextNode">
+            <summary>
+            获取下一个同级树节点。
+            </summary>
+            <returns>一个 System.Windows.Forms.TreeNode 表示下一个同级树节点。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.NodeFont">
+            <summary>
+            获取或设置用于在树节点标签上显示文本的字体。
+            </summary>
+            <returns>System.Drawing.Font 用于在树节点标签上显示文本。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.PrevNode">
+            <summary>
+            获取上一个同级树节点。
+            </summary>
+            <returns>一个 System.Windows.Forms.TreeNode 代表上一个同级树节点。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.Parent">
+            <summary>
+            获取当前的树节点的树节点的父级。
+            </summary>
+            <returns>一个 System.Windows.Forms.TreeNode ，表示当前的树节点的父节点。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.ImageKey">
+            <summary>
+            获取或设置当节点处于选定状态时，与此树节点关联的图像的键。
+            </summary>
+            <returns>当节点处于选定状态时，与此树节点关联的图像的键。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.SelectedImageIndex">
+            <summary>
+            获取或设置当树节点处于选定状态时显示的图像的图像列表索引值。
+            </summary>
+            <returns>一个表示中的图像位置的从零开始的索引值 System.Windows.Forms.ImageList。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.SelectedImageKey">
+            <summary>
+            获取或设置处于选定状态时，树节点中显示的图像的键。
+            </summary>
+            <returns>当树节点处于选定状态时显示的图像的键。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.StateImageKey">
+            <summary>
+            获取或设置用于指示的状态的图像的键 System.Windows.Forms.TreeNode 时父 System.Windows.Forms.TreeView
+            具有其 System.Windows.Forms.TreeView.CheckBoxes 属性设置为 false。
+            </summary>
+            <returns>用于指示的状态的图像的键 System.Windows.Forms.TreeNode。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.StateImageIndex">
+            <summary>
+            获取或设置用于指示的状态的图像的索引 System.Windows.Forms.TreeNode 时父 System.Windows.Forms.TreeView
+            具有其 System.Windows.Forms.TreeView.CheckBoxes 属性设置为 false。
+            </summary>
+            <returns>用于指示的状态的图像的索引 System.Windows.Forms.TreeNode。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.Tag">
+            <summary>
+            获取或设置包含有关树中节点的数据的对象。
+            </summary>
+            <returns>System.Object ，其中包含有关树中节点的数据。 默认值为 null。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.Text">
+            <summary>
+            获取或设置树节点的标签中显示的文本。
+            </summary>
+            <returns>显示的树节点标签中的文本。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.ToolTipText">
+            <summary>
+            获取或设置当鼠标指针悬停时显示的文本 System.Windows.Forms.TreeNode。
+            </summary>
+            <returns>获取当鼠标指针悬停时显示的文本 System.Windows.Forms.TreeNode。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.Nodes">
+            <summary>
+            获取的集合 System.Windows.Forms.TreeNode 分配给当前树节点对象。
+            </summary>
+            <returns>一个 System.Windows.Forms.TreeNodeCollection ，表示分配给当前树节点的树节点。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.ImageIndex">
+            <summary>
+            获取或设置树节点处于选定状态时显示的图像的图像列表索引值。
+            </summary>
+            <returns>一个表示在分配的图像位置的从零开始的索引值 System.Windows.Forms.ImageList。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.ForeColor">
+            <summary>
+            获取或设置树节点的前景色。
+            </summary>
+            <returns>前台 System.Drawing.Color 节点的树节点。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.FullPath">
+            <summary>
+            获取当前的树节点从根树节点的路径。
+            </summary>
+            <returns>从根树节点到当前的树节点的路径。</returns>
+            <exception cref="T:System.InvalidOperationException:">此节点不包含在 System.Windows.Forms.TreeView。</exception>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.BackColor">
+            <summary>
+            获取或设置树节点的背景色。
+            </summary>
+            <returns>后台 System.Drawing.Color 节点的树节点。 默认值为 System.Drawing.Color.Empty。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.Bounds">
+            <summary>
+            获取树节点的边界。
+            </summary>
+            <returns>System.Drawing.Rectangle 表示树节点的边界。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.Checked">
+            <summary>
+            获取或设置一个值，指示树节点是否处于选中状态。
+            </summary>
+            <returns>true 如果树节点处于选中状态，则否则为 false。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.TreeView">
+            <summary>
+            获取父树节点分配给树视图。
+            </summary>
+            <returns>一个 System.Windows.Forms.TreeView 表示树节点分配到的父树视图或 null 如果该节点尚未分配给树视图。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.ContextMenuStrip">
+            <summary>
+            获取或设置与此树节点关联的快捷菜单。
+            </summary>
+            <returns>System.Windows.Forms.ContextMenuStrip 与树节点关联。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.FirstNode">
+            <summary>
+            获取树节点集合中的第一个子树节点。
+            </summary>
+            <returns>第一个子级 System.Windows.Forms.TreeNode 中 System.Windows.Forms.TreeNode.Nodes 集合。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.Name">
+            <summary>
+            获取或设置树节点的名称。
+            </summary>
+            <returns>一个 System.String ，它表示树节点的名称。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNode.ContextMenu">
+            <summary>
+            获取与此树节点关联的快捷菜单。
+            </summary>
+            <returns>System.Windows.Forms.ContextMenu 树节点与该键相关联。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNode.Collapse(System.Boolean)">
+            <summary>
+            折叠 System.Windows.Forms.TreeNode 并可选择折叠其子级。
+            </summary>
+            <param name="ignoreChildren">true 将子节点保留在其当前状态; false 可折叠子节点。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNode.Collapse">
+            <summary>
+            折叠树节点。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNode.Expand">
+            <summary>
+            展开树节点。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNode.ExpandAll">
+            <summary>
+            展开所有子树节点。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNode.Remove">
+            <summary>
+            从树视图控件中移除当前树节点。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNode.Toggle">
+            <summary>
+            切换到任何一个的树节点展开或折叠状态。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.TreeNodeCollection">
+            <summary>
+            表示 System.Windows.Forms.TreeNode 对象集合。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNodeCollection.Item(System.String)">
+            <summary>
+            从集合中获取具有指定键的树节点。
+            </summary>
+            <param name="key">名称 System.Windows.Forms.TreeNode 若要从集合中检索。</param>
+            <returns>具有指定键的 System.Windows.Forms.TreeNode。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNodeCollection.Item(System.Int32)">
+            <summary>
+            获取或设置 System.Windows.Forms.TreeNode 指定索引处的集合中的位置。
+            </summary>
+            <param name="index">索引的位置 System.Windows.Forms.TreeNode 集合中。</param>
+            <returns>System.Windows.Forms.TreeNode 指定索引处的集合中的位置。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNodeCollection.IsReadOnly">
+            <summary>
+            获取一个值，该值指示集合是否为只读。
+            </summary>
+            <returns>如果该集合为只读，则为 true；否则为 false。 默认值为 false。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNodeCollection.Count">
+            <summary>
+            获取的总数 System.Windows.Forms.TreeNode 集合中的对象。
+            </summary>
+            <returns>总次数 System.Windows.Forms.TreeNode 集合中的对象。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.Add(Marmat.Forms.Skin.TreeNode)">
+            <summary>
+            将先前创建的树节点添加到树节点集合的末尾。
+            </summary>
+            <param name="node">要添加到集合中的 System.Windows.Forms.TreeNode。</param>
+            <returns>从零开始的索引值 System.Windows.Forms.TreeNode 添加到树节点集合。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.Add(System.String)">
+            <summary>
+            当前的树节点集合的末尾添加新的树节点与指定的标签文本。
+            </summary>
+            <param name="text">显示的标签文本 System.Windows.Forms.TreeNode。</param>
+            <returns>一个 System.Windows.Forms.TreeNode 表示添加到集合中的树节点。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.Add(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            创建具有指定的键、 文本和图像的树节点并将其添加到集合。
+            </summary>
+            <param name="key">树节点的名称。</param>
+            <param name="text">要在树节点中显示的文本。</param>
+            <param name="imageIndex">若要在树节点中显示的图像的索引。</param>
+            <param name="selectedImageIndex">若要为选定状态时，树节点中显示的图像的索引。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.Add(System.String,System.String)">
+            <summary>
+            创建具有指定的键和文本，新的树节点并将其添加到集合。
+            </summary>
+            <param name="key">树节点的名称。</param>
+            <param name="text">要在树节点中显示的文本。</param>
+            <returns> System.Windows.Forms.TreeNode 已添加到集合。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.Add(System.String,System.String,System.String)">
+            <summary>
+            创建具有指定的键、 文本和图像，树节点并将其添加到集合。
+            </summary>
+            <param name="key">树节点的名称。</param>
+            <param name="text">要在树节点中显示的文本。</param>
+            <param name="imageKey">要在树节点中显示的图像。</param>
+            <returns>System.Windows.Forms.TreeNode 已添加到集合。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.Add(System.String,System.String,System.Int32)">
+            <summary>
+            创建具有指定的键、 文本和图像，树节点并将其添加到集合。
+            </summary>
+            <param name="key">树节点的名称。</param>
+            <param name="text">要在树节点中显示的文本。</param>
+            <param name="imageIndex">若要在树节点中显示的图像的索引。</param>
+            <returns>System.Windows.Forms.TreeNode 已添加到集合。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.Add(System.String,System.String,System.String,System.String)">
+            <summary>
+            创建具有指定的键、 文本和图像的树节点并将其添加到集合。
+            </summary>
+            <param name="key">树节点的名称。</param>
+            <param name="text">要在树节点中显示的文本。</param>
+            <param name="imageKey">若要在树节点中显示的图像的键。</param>
+            <param name="selectedImageKey">当节点处于选定状态时要显示的图像的键。</param>
+            <returns>System.Windows.Forms.TreeNode 已添加到集合。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.AddRange(Marmat.Forms.Skin.TreeNode[])">
+            <summary>
+            向集合添加先前创建的树节点的数组。
+            </summary>
+            <param name="nodes">一个数组 System.Windows.Forms.TreeNode 对象表示要添加到集合的树节点。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.Clear">
+            <summary>
+            从集合中移除所有树节点。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.Contains(Marmat.Forms.Skin.TreeNode)">
+            <summary>
+            确定指定的树节点是否是集合的成员。
+            </summary>
+            <param name="node">System.Windows.Forms.TreeNode 要在集合中查找。</param>
+            <returns>true 如果 System.Windows.Forms.TreeNode 是集合的成员; 否则为 false。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.ContainsKey(System.String)">
+            <summary>
+            确定集合是否包含具有指定键的树节点。
+            </summary>
+            <param name="key">要搜索的 System.Windows.Forms.TreeNode 的名称。</param>
+            <returns>true 若要指示该集合包含 System.Windows.Forms.TreeNode 具有指定键; 否则为 false。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.Find(System.String,System.Boolean)">
+            <summary>
+            查找具有指定键，也可以选择搜索的子节点的树节点。
+            </summary>
+            <param name="key">要搜索的树节点的名称。</param>
+            <param name="searchAllChildren">true 若要搜索的树节点，则子节点否则为 false。</param>
+            <returns>一个数组 System.Windows.Forms.TreeNode 对象其 System.Windows.Forms.TreeNode.Name 属性指定的键相匹配。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.GetEnumerator">
+            <summary>
+            返回可用于循环访问树节点集合的枚举。
+            </summary>
+            <returns>System.Collections.IEnumerator 表示树节点集合。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.IndexOf(Marmat.Forms.Skin.TreeNode)">
+            <summary>
+            返回集合中指定的树节点的索引。
+            </summary>
+            <param name="node">要在集合中查找的 System.Windows.Forms.TreeNode。</param>
+            <returns>在树节点集合; 中找到的项的从零开始的索引否则为-1。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.IndexOfKey(System.String)">
+            <summary>
+            返回具有指定键的树节点中的第一个匹配项的索引。
+            </summary>
+            <param name="key">要搜索的树节点的名称。</param>
+            <returns>具有指定键的树节点的第一个匹配项的从零开始索引如果找到，则否则为-1。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.Insert(System.Int32,System.String,System.String,System.String)">
+            <summary>
+            创建具有指定的键、 文本和图像，树节点并将其插入集合中的指定索引处。
+            </summary>
+            <param name="index">要插入节点的集合中的位置。</param>
+            <param name="key">树节点的名称。</param>
+            <param name="text">要在树节点中显示的文本。</param>
+            <param name="imageKey">若要在树节点中显示的图像的键。</param>
+            <returns>System.Windows.Forms.TreeNode 已插入集合中。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.Insert(System.Int32,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            创建具有指定的键、 文本和图像的树节点并将其插入集合中的指定索引处。
+            </summary>
+            <param name="index">要插入节点的集合中的位置。</param>
+            <param name="key">树节点的名称。</param>
+            <param name="text">要在树节点中显示的文本。</param>
+            <param name="imageIndex">若要在树节点中显示的图像的索引。</param>
+            <param name="selectedImageIndex">要为选定状态时，树节点中显示的图像的索引。</param>
+            <returns>System.Windows.Forms.TreeNode 已插入集合中。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.Insert(System.Int32,System.String,System.String,System.Int32)">
+            <summary>
+            创建具有指定的键、 文本和图像，树节点并将其插入集合中的指定索引处。
+            </summary>
+            <param name="index">要插入节点的集合中的位置。</param>
+            <param name="key">树节点的名称。</param>
+            <param name="text">要在树节点中显示的文本。</param>
+            <param name="imageIndex">若要在树节点中显示的图像的索引。</param>
+            <returns>System.Windows.Forms.TreeNode 已插入集合中。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.Insert(System.Int32,System.String,System.String)">
+            <summary>
+            使用指定的文本和密钥，创建的树节点并将其插入到集合。
+            </summary>
+            <param name="index">要插入节点的集合中的位置。</param>
+            <param name="key">树节点的名称。</param>
+            <param name="text">要在树节点中显示的文本。</param>
+            <returns>System.Windows.Forms.TreeNode 已插入集合中。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.Insert(System.Int32,Marmat.Forms.Skin.TreeNode)">
+            <summary>
+            将现有的树节点插入到树节点集合中指定的位置。
+            </summary>
+            <param name="index">要插入的树节点的集合中的索引的位置。</param>
+            <param name="node">System.Windows.Forms.TreeNode 要插入到集合。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.Insert(System.Int32,System.String,System.String,System.String,System.String)">
+            <summary>
+            创建具有指定的键、 文本和图像的树节点并将其插入集合中的指定索引处。
+            </summary>
+            <param name="index">要插入节点的集合中的位置。</param>
+            <param name="key">树节点的名称。</param>
+            <param name="text">要在树节点中显示的文本。</param>
+            <param name="imageKey">若要在树节点中显示的图像的键。</param>
+            <param name="selectedImageKey">要为选定状态时，树节点中显示的图像的键。</param>
+            <returns>System.Windows.Forms.TreeNode 已插入集合中。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.Insert(System.Int32,System.String)">
+            <summary>
+            创建具有指定文本的树节点并将其插入指定索引处。
+            </summary>
+            <param name="index">要插入节点的集合中的位置。</param>
+            <param name="text">要在树节点中显示的文本。</param>
+            <returns>System.Windows.Forms.TreeNode 已插入集合中。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.Remove(Marmat.Forms.Skin.TreeNode)">
+            <summary>
+            从树节点集合中移除指定的树节点。
+            </summary>
+            <param name="node">要移除的 System.Windows.Forms.TreeNode。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.RemoveAt(System.Int32)">
+            <summary>
+            从指定索引处的树节点集合中移除的树节点。
+            </summary>
+            <param name="index">索引 System.Windows.Forms.TreeNode 中删除。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeCollection.RemoveByKey(System.String)">
+            <summary>
+            从集合中移除具有指定键的树节点。
+            </summary>
+            <param name="key">要从集合中移除的树节点的名称。</param>
+        </member>
+        <member name="T:Marmat.Forms.Skin.TreeNodeMouseClickEventArgs">
+            <summary>
+            提供有关 System.Windows.Forms.TreeView.NodeMouseClick 和 System.Windows.Forms.TreeView.NodeMouseDoubleClick 事件的数据。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeMouseClickEventArgs.#ctor(Marmat.Forms.Skin.TreeNode,System.Windows.Forms.MouseButtons,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            初始化 System.Windows.Forms.TreeNodeMouseClickEventArgs 类的新实例。
+            </summary>
+            <param name="node">被单击的节点。</param>
+            <param name="button">System.Windows.Forms.MouseButtons 成员之一。</param>
+            <param name="clicks">发生的单击的数目。</param>
+            <param name="x">单击发生处的 x 坐标。</param>
+            <param name="y">单击发生处的 y 坐标。</param>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNodeMouseClickEventArgs.Node">
+            <summary>
+            获取被单击的节点。
+            </summary>
+            <returns>被单击的 System.Windows.Forms.TreeNode。</returns>
+        </member>
+        <member name="T:Marmat.Forms.Skin.TreeNodeMouseHoverEventArgs">
+            <summary>
+            为 System.Windows.Forms.TreeView.NodeMouseHover 事件提供数据。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeNodeMouseHoverEventArgs.#ctor(Marmat.Forms.Skin.TreeNode)">
+            <summary>
+            初始化 System.Windows.Forms.TreeNodeMouseHoverEventArgs 类的新实例。
+            </summary>
+            <param name="node">鼠标指针当前停留在其上的 System.Windows.Forms.TreeNode。</param>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeNodeMouseHoverEventArgs.Node">
+            <summary>
+            获取鼠标指针当前停留在其上的节点。
+            </summary>
+            <returns>鼠标指针当前停留在其上的 System.Windows.Forms.TreeNode。</returns>
+        </member>
+        <member name="T:Marmat.Forms.Skin.TreeView">
+            <summary>
+            显示标记的每个表示项的分层集合 Marmat.Forms.Skin.TreeNode。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.ResetItemHeight">
+            <summary>
+            将  Marmat.Forms.Skin.TreeView.Value 属性重置为其默认值。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.ShouldSerializeItemHeight">
+            <summary>
+            是否应该序列化 ItemHeight 属性。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="E:Marmat.Forms.Skin.TreeView.BeforeCheck">
+            <summary>
+            在选中树节点复选框前发生。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.TreeView.AfterCheck">
+            <summary>
+            在选中树节点复选框后发生。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.TreeView.BeforeCollapse">
+            <summary>
+            在折叠树节点前发生。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.TreeView.AfterCollapse">
+            <summary>
+            在折叠树节点后发生。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.TreeView.BeforeExpand">
+            <summary>
+            在展开树节点前发生。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.TreeView.AfterExpand">
+            <summary>
+            在展开树节点后发生。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.TreeView.DrawNode">
+            <summary>
+            发生时 System.Windows.Forms.TreeView 绘制和 System.Windows.Forms.TreeView.DrawMode
+            属性设置为 System.Windows.Forms.TreeViewDrawMode 值而不 System.Windows.Forms.TreeViewDrawMode.Normal。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.TreeView.MeasureNode">
+            <summary>
+            当需要策略节点矩形大小时,在所有者描述模式下发生。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.TreeView.NodeMouseHover">
+            <summary>
+            当鼠标悬停时发生 System.Windows.Forms.TreeNode。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.TreeView.BeforeSelect">
+            <summary>
+            在选定树节点前发生。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.TreeView.AfterSelect">
+            <summary>
+            在选定树节点后发生。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.TreeView.NodeMouseClick">
+            <summary>
+            当用户使用鼠标单击 System.Windows.Forms.TreeNode 时发生。
+            </summary>
+        </member>
+        <member name="E:Marmat.Forms.Skin.TreeView.NodeMouseDoubleClick">
+            <summary>
+            当用户双击时发生 System.Windows.Forms.TreeNode 使用鼠标。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.BeginUpdate">
+            <summary>
+            禁用任何树视图重绘。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.CollapseAll">
+            <summary>
+            折叠所有树节点。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.EndUpdate">
+            <summary>
+            启用树视图的重绘。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.ExpandAll">
+            <summary>
+            展开所有树节点。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.GetNodeAt(System.Drawing.Point)">
+            <summary>
+            检索位于指定点的树节点。
+            </summary>
+            <param name="pt">System.Drawing.Point 计算和检索的节点。</param>
+            <returns>System.Windows.Forms.TreeNode 树视图 （客户端） 坐标中的指定点处或 null 如果在该位置没有节点。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.GetNodeAt(System.Int32,System.Int32)">
+            <summary>
+            检索位于指定点（以坐标表示）的树节点。
+            </summary>
+            <param name="x">System.Drawing.Point.X 计算和检索的节点的位置。</param>
+            <param name="y">System.Drawing.Point.Y 计算和检索的节点的位置。</param>
+            <returns>System.Windows.Forms.TreeNode 中指定的位置，在树视图 （客户端） 坐标中，或 null 如果在该位置没有节点。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.GetNodeCount(System.Boolean)">
+            <summary>
+            检索分配给树视图控件的树节点数（可以选择性地包括所有子树中的树节点）。
+            </summary>
+            <param name="includeSubTrees">true 若要进行计数 System.Windows.Forms.TreeNode 项包含子树; 否则为 false。</param>
+            <returns>分配给树视图控件的树节点数（可以选择性地包括所有子树中的树节点）。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.OnAfterCheck(Marmat.Forms.Skin.TreeViewEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.TreeView.AfterCheck 事件。
+            </summary>
+            <param name="e">包含事件数据的 System.Windows.Forms.TreeViewEventArgs。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.OnAfterExpand(Marmat.Forms.Skin.TreeViewEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.TreeView.AfterExpand 事件。
+            </summary>
+            <param name="e">包含事件数据的 System.Windows.Forms.TreeViewEventArgs。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.OnAfterSelect(Marmat.Forms.Skin.TreeViewEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.TreeView.AfterSelect 事件。
+            </summary>
+            <param name="e">包含事件数据的 System.Windows.Forms.TreeViewEventArgs。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.OnBeforeCheck(Marmat.Forms.Skin.TreeViewCancelEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.TreeView.BeforeCheck 事件。
+            </summary>
+            <param name="e">包含事件数据的 System.Windows.Forms.TreeViewCancelEventArgs。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.OnBeforeExpand(Marmat.Forms.Skin.TreeViewCancelEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.TreeView.BeforeExpand 事件。
+            </summary>
+            <param name="e">包含事件数据的 System.Windows.Forms.TreeViewCancelEventArgs。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.OnBeforeSelect(Marmat.Forms.Skin.TreeViewCancelEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.TreeView.BeforeSelect 事件。
+            </summary>
+            <param name="e">包含事件数据的 System.Windows.Forms.TreeViewCancelEventArgs。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.OnDrawNode(Marmat.Forms.Skin.DrawTreeNodeEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.TreeView.DrawNode 事件。
+            </summary>
+            <param name="e">包含事件数据的 System.Windows.Forms.DrawTreeNodeEventArgs。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.OnMeasureNode(Marmat.Forms.Skin.MeasureTreeNodeEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.TreeView.MeasureNode 事件。
+            </summary>
+            <param name="e">包含事件数据的 System.Windows.Forms.DrawTreeNodeEventArgs。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.OnNodeMouseClick(Marmat.Forms.Skin.TreeNodeMouseClickEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.TreeView.NodeMouseClick 事件。
+            </summary>
+            <param name="e">包含事件数据的 System.Windows.Forms.TreeNodeMouseClickEventArgs。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.OnNodeMouseDoubleClick(Marmat.Forms.Skin.TreeNodeMouseClickEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.TreeView.NodeMouseDoubleClick 事件。
+            </summary>
+            <param name="e">包含事件数据的 System.Windows.Forms.TreeNodeMouseClickEventArgs。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.OnNodeMouseHover(Marmat.Forms.Skin.TreeNodeMouseHoverEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.TreeView.NodeMouseHover 事件。
+            </summary>
+            <param name="e">包含事件数据的 System.Windows.Forms.TreeNodeMouseHoverEventArgs。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.OnAfterCollapse(Marmat.Forms.Skin.TreeViewEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.TreeView.AfterCollapse 事件。
+            </summary>
+            <param name="e">包含事件数据的 System.Windows.Forms.TreeViewEventArgs。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeView.OnBeforeCollapse(Marmat.Forms.Skin.TreeViewCancelEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.TreeView.BeforeCollapse 事件。
+            </summary>
+            <param name="e">包含事件数据的 System.Windows.Forms.TreeViewCancelEventArgs。</param>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeView.BackColor">
+            <summary>
+            获取或设置控件的背景色。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeView.DrawMode">
+            <summary>
+            获取或设置绘制控件的模式。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeView.LineColor">
+            <summary>
+            获取或设置连接的节点的线条的颜色。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeView.ItemHeight">
+            <summary>
+            获取或设置树视图控件中每个树节点的高度。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeView.MouseMoveNode">
+            <summary>
+            获取鼠标所在的节点。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeView.Indent">
+            <summary>
+            获取或设置每个子树节点级别的缩进距离。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeView.Nodes">
+            <summary>
+            获取分配给树视图控件的树节点集合。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeView.HotTracking">
+            <summary>
+            获取或设置一个值，用以指示当鼠标指针移过树节点标签时，树节点标签是否具有超链接的外观。
+            </summary>
+            <remarks>true 如果树节点标签的超链接的外观将鼠标指针移过;否则为 false。 默认值为 false。</remarks>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeView.HideSelection">
+            <summary>
+            获取或设置一个值，用以指示选定的树节点是否即使在树视图已失去焦点时仍会保持突出显示。
+            </summary>
+            <remarks>true 如果未突出显示选定的树节点通过在树视图已失去焦点，则否则为 false。 默认值为 true。</remarks>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeView.CheckBoxes">
+            <summary>
+            获取或设置一个值，用以指示是否在树视图控件中的树节点旁显示复选框。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeView.ShowRootLines">
+            <summary>
+            获取或设置一个值，用以指示是否在树视图根处的树节点之间绘制连线。
+            </summary>
+            <remarks>true 如果在树视图中; 根处的树节点之间绘制线条否则为 false。 默认值为 true。</remarks>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeView.PathSeparator">
+            <summary>
+            获取或设置树节点路径所使用的分隔符串。
+            </summary>
+            <remarks>分隔符串树节点 System.Windows.Forms.TreeNode.FullPath 属性使用。 默认值为反斜杠字符 (\)。</remarks>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeView.ShowPlusMinus">
+            <summary>
+            获取或设置一个值，用以指示是否在包含子树节点的树节点旁显示加号 (+) 和减号 (-) 按钮。
+            </summary>
+            <remarks>true 如果在包含子树节点; 的树节点旁显示加号和减号按钮否则为 false。 默认值为 true。</remarks>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeView.ShowLines">
+            <summary>
+            获取或设置一个值，用以指示是否在树视图控件中的树节点之间绘制连线。
+            </summary>
+            <remarks>true 如果在树视图控件; 中的树节点之间绘制线条否则为 false。 默认值为 true。</remarks>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeView.SelectedNode">
+            <summary>
+            获取或设置当前在树视图控件中选定的树节点。
+            </summary>
+            <remarks>System.Windows.Forms.TreeNode 当前选定的树视图控件中。</remarks>
+        </member>
+        <member name="T:Marmat.Forms.Skin.TreeViewCancelEventArgs">
+            <summary>
+            将提供数据供 System.Windows.Forms.TreeView.BeforeCheck，System.Windows.Forms.TreeView.BeforeCollapse，System.Windows.Forms.TreeView.BeforeExpand，和 System.Windows.Forms.TreeView.BeforeSelect
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeViewCancelEventArgs.#ctor(Marmat.Forms.Skin.TreeNode,System.Boolean,System.Windows.Forms.TreeViewAction)">
+            <summary>
+            新实例初始化 System.Windows.Forms.TreeViewCancelEventArgs 用指定的树节点、 一个值，指定是否要取消该事件和引发事件的树视图操作的类型。
+            </summary>
+            <param name="node">System.Windows.Forms.TreeNode 事件响应。</param>
+            <param name="cancel">true 若要取消事件;否则为 false。</param>
+            <param name="action">其中一个 System.Windows.Forms.TreeViewAction 值，该值指示引发该事件的操作类型。</param>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeViewCancelEventArgs.Node">
+            <summary>
+            获取要选中、展开、折叠或选择的树节点。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeViewCancelEventArgs.Action">
+            <summary>
+            获取的类型 System.Windows.Forms.TreeView 引发事件的操作。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.TreeViewEventArgs">
+            <summary>
+            将提供数据供 System.Windows.Forms.TreeView.AfterCheck, ，System.Windows.Forms.TreeView.AfterCollapse,
+            ，System.Windows.Forms.TreeView.AfterExpand, ，或 System.Windows.Forms.TreeView.AfterSelect 事件 System.Windows.Forms.TreeView 控件。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeViewEventArgs.#ctor(Marmat.Forms.Skin.TreeNode)">
+            <summary>
+            新实例初始化 System.Windows.Forms.TreeViewEventArgs 指定的树节点的类。
+            </summary>
+            <param name="node">System.Windows.Forms.TreeNode 事件响应。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.TreeViewEventArgs.#ctor(Marmat.Forms.Skin.TreeNode,System.Windows.Forms.TreeViewAction)">
+            <summary>
+            新实例初始化 System.Windows.Forms.TreeViewEventArgs 类对于指定的树节点并具有指定类型引发该事件的操作。
+            </summary>
+            <param name="node">System.Windows.Forms.TreeNode 事件响应。</param>
+            <param name="action">一种 System.Windows.Forms.TreeViewAction ，引发的事件。</param>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeViewEventArgs.Node">
+            <summary>
+            获取已选中、展开、折叠或选定的树节点。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.TreeViewEventArgs.Action">
+            <summary>
+            获取引发该事件的操作的类型。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.TreeViewCancelEventHandler">
+            <summary>
+             表示将处理的方法 System.Windows.Forms.TreeView.BeforeCheck, ，System.Windows.Forms.TreeView.BeforeCollapse,
+             ，System.Windows.Forms.TreeView.BeforeExpand, ，或 System.Windows.Forms.TreeView.BeforeSelect</summary>
+             事件 System.Windows.Forms.TreeView。
+             <param name="sender">事件源。</param>
+            <param name="e">包含事件数据的 System.Windows.Forms.TreeViewCancelEventArgs。</param>
+        </member>
+        <member name="T:Marmat.Forms.Skin.TreeViewEventHandler">
+            <summary>
+            表示将处理的方法 System.Windows.Forms.TreeView.AfterCheck, ，System.Windows.Forms.TreeView.AfterCollapse,
+            System.Windows.Forms.TreeView.AfterExpand, ，或 System.Windows.Forms.TreeView.AfterSelect
+            事件 System.Windows.Forms.TreeView。
+            </summary>
+            <param name="sender">事件源。</param>
+            <param name="e">包含事件数据的 System.Windows.Forms.TreeViewEventArgs。</param>
+        </member>
+        <member name="T:Marmat.Forms.Skin.DrawTreeNodeEventHandler">
+            <summary>
+            表示将用来处理 System.Windows.Forms.TreeView.DrawNode 的 System.Windows.Forms.TreeView事件的方法。
+            </summary>
+            <param name="sender">事件源。</param>
+            <param name="e">包含事件数据的 System.Windows.Forms.DrawTreeNodeEventArgs。</param>
+        </member>
+        <member name="T:Marmat.Forms.Skin.MeasureNodeEventHandler">
+            <summary>
+            表示将用来处理 System.Windows.Forms.TreeView.DrawNode 的 System.Windows.Forms.TreeView事件的方法。
+            </summary>
+            <param name="sender">事件源。</param>
+            <param name="e">包含事件数据的 System.Windows.Forms.DrawTreeNodeEventArgs。</param>
+        </member>
+        <member name="T:Marmat.Forms.Skin.TreeNodeMouseHoverEventHandler">
+            <summary>
+            表示将用来处理 System.Windows.Forms.TreeView.NodeMouseHover 的 System.Windows.Forms.TreeView事件的方法。
+            </summary>
+            <param name="sender">事件源。</param>
+            <param name="e">一个 System.Windows.Forms.TreeNodeMouseHoverEventArgs 包含事件数据。</param>
+        </member>
+        <member name="T:Marmat.Forms.Skin.TreeNodeMouseClickEventHandler">
+            <summary>
+            表示将处理 System.Windows.Forms.TreeView.NodeMouseClick 的 System.Windows.Forms.TreeView.NodeMouseDoubleClick 和 System.Windows.Forms.TreeView 事件的方法。
+            </summary>
+            <param name="sender">事件源。</param>
+            <param name="e">包含事件数据的 System.Windows.Forms.TreeNodeMouseClickEventArgs。</param>
+        </member>
+        <member name="T:Marmat.Forms.Skin.Design.CollectionEditor">
+            <summary>
+             提供一个用户界面，该界面可以在设计时编辑大多数类型的集合。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.Design.CollectionEditor.#ctor(System.Type)">
+            <summary>
+            使用指定的集合类型初始化 System.ComponentModel.Design.CollectionEditor 类的新实例。
+            </summary>
+            <param name="type">此编辑器要编辑的集合的类型。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.Design.CollectionEditor.CreateCollectionForm">
+            <summary>
+            创建新的窗体，以显示和编辑当前集合。
+            </summary>
+            <returns>作为用于编辑集合的用户界面提供的 System.ComponentModel.Design.CollectionEditor.CollectionForm。</returns>
+        </member>
+        <member name="T:Marmat.Forms.Skin.Design.TabControlDesigner">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DirectUIContainer.Controls">
+            <summary>
+            获取包含在控件内的组件的集合。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.DirectUIContainer.CalculatingLayoutInformation">
+            <summary>
+            计算布局信息。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DirectUIControl.Left">
+            <summary>
+            获取或设置控件左边缘与其容器的工作区左边缘之间的距离（以像素为单位）。
+            </summary>
+            <returns>System.Int32 表示控件左边缘与其容器的工作区左边缘之间的距离（以像素为单位）。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DirectUIControl.Top">
+            <summary>
+            获取或设置控件上边缘与其容器的工作区上边缘之间的距离（以像素为单位）。
+            </summary>
+            <returns>System.Int32 表示控件下边缘与其容器的工作区上边缘之间的距离（以像素为单位）。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DirectUIControl.Width">
+            <summary>
+            获取或设置控件的宽度。
+            </summary>
+            <returns>控件的宽度（以像素为单位）。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DirectUIControl.Height">
+            <summary>
+            获取或设置控件的高度。
+            </summary>
+            <returns>控件的高度（以像素为单位）。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DirectUIControl.Name">
+            <summary>
+            获取或设置控件的名称。
+            </summary>
+            <returns>控件的名称。 默认值为空字符串("")。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DirectUIControl.Location">
+            <summary>
+            获取或设置该控件的左上角相对于其容器的左上角的坐标。
+            </summary>
+            <returns>System.Drawing.Point，表示控件的左上角相对于其容器的左上角。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DirectUIControl.Size">
+            <summary>
+            获取或设置控件的高度和宽度。
+            </summary>
+            <returns>System.Drawing.Size，表示控件的高度和宽度（以像素为单位）。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DirectUIControl.BackColor">
+            <summary>
+            获取或设置控件的背景色。
+            </summary>
+            <returns>表示控件背景色的 System.Drawing.Color。 默认为 System.Windows.Forms.Control.DefaultBackColor 属性的值。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DirectUIControl.Dock">
+            <summary>
+            获取或设置哪些控件边框停靠到其父控件并确定控件如何随其父级一起调整大小。
+            </summary>
+            <returns>System.Windows.Forms.DockStyle 值之一。 默认值为 System.Windows.Forms.DockStyle.None。</returns>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DirectUIControl.Anchor">
+            <summary>
+            获取或设置控件绑定到的容器的边缘并确定控件如何随其父级一起调整大小。
+            </summary>
+            <returns>System.Windows.Forms.AnchorStyles 值的按位组合。 默认值是 Top 和 Left。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.DirectUIControl.refreshLayout">
+            <summary>
+            刷新布局
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DirectUIControl.Parent">
+            <summary>
+            获取或设置控件的父容器。
+            </summary>
+            <returns> Marmat.Forms.Skin.DirectUIControl，表示控件的父控件或容器控件。</returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.DirectUIControl.OnMouseClick(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.Control.MouseClick 事件。
+            </summary>
+            <param name="e">包含事件数据的 System.Windows.Forms.MouseEventArgs。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.DirectUIControl.OnMouseDoubleClick(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.Control.MouseDoubleClick 事件。
+            </summary>
+            <param name="e">包含事件数据的 System.Windows.Forms.MouseEventArgs。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.DirectUIControl.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.Control.MouseDown 事件。
+            </summary>
+            <param name="e">包含事件数据的 System.Windows.Forms.MouseEventArgs。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.DirectUIControl.OnMouseUp(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.Control.MouseUp 事件。
+            </summary>
+            <param name="e">包含事件数据的 System.Windows.Forms.MouseEventArgs。</param>
+        </member>
+        <member name="M:Marmat.Forms.Skin.DirectUIControl.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            引发 System.Windows.Forms.Control.Paint 事件。
+            </summary>
+            <param name="e">包含事件数据的 System.Windows.Forms.PaintEventArgs。</param>
+        </member>
+        <member name="T:Marmat.Forms.Skin.DirectUIControlCollection">
+            <summary>
+            表示 Marmat.Forms.Skin.DirectUIControl 对象集合。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.DirectUIControlCollection.#ctor(Marmat.Forms.Skin.DirectUIContainer)">
+            <summary>
+            初始化 Marmat.Forms.Skin.ObjectCollection 的新实例。
+            </summary>
+            <param name="owner"></param>
+        </member>
+        <member name="T:Marmat.Forms.Skin.ColorExtension">
+            <summary>
+            基于 Color 的扩展实例
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ColorExtension.Blend(System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            获取两个颜色的叠加色
+            </summary>
+            <param name="baseColor">底层色</param>
+            <param name="parentColor">顶层色</param>
+            来源:https://blog.csdn.net/aa13058219642/article/details/80953341
+            <returns></returns>
+        </member>
+        <member name="T:Marmat.Forms.Skin.ImageExtension">
+            <summary>
+            基于 Image 的扩展实例
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ImageExtension.CutEllipse(System.Drawing.Image)">
+            <summary>
+            将图片剪裁成椭圆形图像。
+            </summary>
+            <param name="img">原始Image对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.ImageExtension.CutEllipse(System.Drawing.Image,System.Drawing.Rectangle,System.Drawing.Size)">
+            <summary>
+            将图片剪裁成椭圆形图像。
+            </summary>
+            <param name="img">原始Image对象</param>
+            <param name="rect">被切割图片的矩形范围</param>
+            <param name="size">椭圆的尺寸</param>
+            <returns></returns>
+        </member>
+        <member name="T:Marmat.Forms.Skin.RectangleBreadcrumbExtension">
+            <summary>
+            面包屑的绘制路径服务提供类。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.RectangleBreadcrumbExtension.GetBreadcrumbStartNodePath(System.Drawing.Rectangle)">
+            <summary>
+            根据给定的矩形生产面包屑的开始节点的绘制路径。
+            </summary>
+            <param name="rect">矩形对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.RectangleBreadcrumbExtension.GetBreadcrumbStartNodePath(System.Drawing.Rectangle,System.Int32)">
+            <summary>
+            根据给定的矩形生产面包屑的开始节点的绘制路径。
+            </summary>
+            <param name="rect">矩形对象</param>
+            <param name="indent">缩进距离，采用像素点作为缩进单位。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.RectangleBreadcrumbExtension.GetBreadcrumbMiddleNodePath(System.Drawing.Rectangle)">
+            <summary>
+            根据给定的矩形生产面包屑的中间节点的绘制路径。
+            </summary>
+            <param name="rect">矩形对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.RectangleBreadcrumbExtension.GetBreadcrumbMiddleNodePath(System.Drawing.Rectangle,System.Int32)">
+            <summary>
+            根据给定的矩形生产面包屑的中间节点的绘制路径。
+            </summary>
+            <param name="rect">矩形对象</param>
+            <param name="indent">缩进距离，采用像素点作为缩进单位。</param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.RectangleBreadcrumbExtension.GetBreadcrumbEndNodePath(System.Drawing.Rectangle)">
+            <summary>
+            根据给定的矩形生产面包屑的结束节点的绘制路径。
+            </summary>
+            <param name="rect">矩形对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.RectangleBreadcrumbExtension.GetBreadcrumbEndNodePath(System.Drawing.Rectangle,System.Int32)">
+            <summary>
+            根据给定的矩形生产面包屑的结束节点的绘制路径。
+            </summary>
+            <param name="rect">矩形对象</param>
+            <returns></returns>
+            <param name="indent">缩进距离，采用像素点作为缩进单位。</param>
+        </member>
+        <member name="T:Marmat.Forms.Skin.RectangleExtension">
+            <summary>
+            基于矩形的扩展实例
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.Skin.RectangleExtension.GetRoundPath(System.Drawing.Rectangle)">
+            <summary>
+            获取矩形适当的圆角路径。
+            </summary>
+            <param name="rect">矩形对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.RectangleExtension.GetRoundPath(System.Drawing.Rectangle,System.Single)">
+            <summary>
+            获取矩形的圆角路径。
+            </summary>
+            <param name="rect">矩形对象</param>
+            <param name="round">圆角大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.RectangleExtension.GetRoundPath(System.Drawing.Rectangle,System.Int32)">
+            <summary>
+            获取矩形的圆角路径。
+            </summary>
+            <param name="rect">矩形对象</param>
+            <param name="round">圆角大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.RectangleExtension.GetRoundPath(System.Drawing.Rectangle,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            获取矩形的圆角路径。
+            </summary>
+            <param name="rect">矩形对象</param>
+            <param name="leftTop">左上角的矩形对象</param>
+            <param name="rightTop">右上角的的圆角大小</param>
+            <param name="leftBottom">左下角的圆角大小</param>
+            <param name="rightBottom">右下角的圆角大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.Skin.RectangleExtension.GetRoundPath(System.Drawing.Rectangle,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            获取矩形的圆角路径。
+            </summary>
+            <param name="rect">矩形对象</param>
+            <param name="leftTop">左上角的矩形对象</param>
+            <param name="rightTop">右上角的的圆角大小</param>
+            <param name="leftBottom">左下角的圆角大小</param>
+            <param name="rightBottom">右下角的圆角大小</param>
+            <returns></returns>
+        </member>
+        <member name="T:Marmat.Forms.Skin.Properties.Resources">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.Culture">
+            <summary>
+              重写当前线程的 CurrentUICulture 属性，对
+              使用此强类型资源类的所有资源查找执行重写。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.breadcrumb_right">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.btn_close_disable">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.btn_close_down">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.btn_close_highlight">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.btn_loding">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.btn_max_down">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.btn_max_highlight">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.btn_max_normal">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.btn_mini_down">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.btn_mini_highlight">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.btn_mini_normal">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.btn_restore_down">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.btn_restore_highlight">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.btn_restore_normal">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.btn_set_hover">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.btn_set_normal">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.btn_set_press">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.btn_Skin_down">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.btn_Skin_highlight">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.btn_Skin_normal">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.button_default">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.Checked_False_hightlight">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.Checked_False_normal">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.Checked_True_highlight">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.Checked_True_normal">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.form_close_button">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.form_close_foucs_button">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.form_max_button">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.form_min_button">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.form_restore_down_button">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.form_restore_normal_button">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.loading">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.treeNode_expanded_False">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Properties.Resources.treeNode_expanded_True">
+            <summary>
+              查找 System.Drawing.Bitmap 类型的本地化资源。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.DefaultTheme">
+            <summary>
+            默认的主题样式
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DefaultTheme.Primary">
+            <inheritdoc/>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DefaultTheme.Success">
+            <inheritdoc/>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DefaultTheme.Warning">
+            <inheritdoc/>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DefaultTheme.Danger">
+            <inheritdoc/>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DefaultTheme.Info">
+            <inheritdoc/>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DefaultTheme.PrimaryText">
+            <inheritdoc/>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DefaultTheme.RegularText">
+            <inheritdoc/>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DefaultTheme.SecondaryText">
+            <inheritdoc/>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DefaultTheme.Placeholder">
+            <inheritdoc/>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DefaultTheme.BorderBase">
+            <inheritdoc/>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DefaultTheme.BorderLight">
+            <inheritdoc/>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DefaultTheme.BorderLighter">
+            <inheritdoc/>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DefaultTheme.BorderExtralight">
+            <inheritdoc/>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DefaultTheme.BackgroundB">
+            <inheritdoc/>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DefaultTheme.BackgroundW">
+            <inheritdoc/>
+        </member>
+        <member name="P:Marmat.Forms.Skin.DefaultTheme.Background">
+            <inheritdoc/>
+        </member>
+        <member name="T:Marmat.Forms.Skin.ITheme">
+            <summary>
+            主题样式
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ITheme.Primary">
+            <summary>
+            主题色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ITheme.Success">
+            <summary>
+            成功颜色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ITheme.Warning">
+            <summary>
+            警告颜色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ITheme.Danger">
+            <summary>
+            威胁颜色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ITheme.Info">
+            <summary>
+            信息颜色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ITheme.PrimaryText">
+            <summary>
+            主要文字颜色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ITheme.RegularText">
+            <summary>
+            常规文字颜色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ITheme.SecondaryText">
+            <summary>
+            次要文字颜色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ITheme.Placeholder">
+            <summary>
+            占位文字颜色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ITheme.BorderBase">
+            <summary>
+            一级边框颜色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ITheme.BorderLight">
+            <summary>
+            二级边框颜色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ITheme.BorderLighter">
+            <summary>
+            三级边框颜色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ITheme.BorderExtralight">
+            <summary>
+            四级边框颜色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ITheme.BackgroundB">
+            <summary>
+            基础黑色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ITheme.BackgroundW">
+            <summary>
+            基础白色
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.ITheme.Background">
+            <summary>
+            基础背景色
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.Theme">
+            <summary>
+            配置
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.Skin.Theme.Default">
+            <summary>
+            默认主题色
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.ThemeStyleEnum">
+            <summary>
+            button的颜色类别
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ThemeStyleEnum.Default">
+            <summary>
+            默认
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ThemeStyleEnum.Primary">
+            <summary>
+            主要按钮
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ThemeStyleEnum.Success">
+            <summary>
+            成功按钮
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ThemeStyleEnum.Info">
+            <summary>
+            信息按钮
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ThemeStyleEnum.Warning">
+            <summary>
+            警告按钮
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ThemeStyleEnum.Danger">
+            <summary>
+            危险按钮
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.Skin.ButtonTextStyleEnum">
+            <summary>
+            指定button的文本显示样式
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ButtonTextStyleEnum.Default">
+            <summary>
+            显示文本
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ButtonTextStyleEnum.TextAndIcon">
+            <summary>
+            同时显示文本和图标
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.Skin.ButtonTextStyleEnum.Icon">
+            <summary>
+            只显示图标
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.VirtualScrollableControl">
+            <summary>
+            虚拟滚动控件。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.VirtualScrollableControl.#ctor">
+            <summary>
+            构建 VirtualScrollableControl 实例
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.VirtualScrollableControl.ScrollableControl">
+            <summary>
+            滚动条的扩展对象
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.VirtualScrollableControl.WndProc(System.Windows.Forms.Message@)">
+            <summary>
+            处理 windows 消息。
+            </summary>
+            <param name="m"></param>
+        </member>
+        <member name="T:Marmat.Forms.VirtualScrollableControlExtension">
+            <summary>
+            虚拟滚动条的扩展支持。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.VirtualScrollableControlExtension.#ctor(System.Windows.Forms.Control)">
+            <summary>
+            构建滚动条的消息处理实例。
+            </summary>
+            <param name="control"></param>
+        </member>
+        <member name="F:Marmat.Forms.VirtualScrollableControlExtension.scrollBorderSize">
+            <summary>
+            滚动边框的大小
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.VirtualScrollableControlExtension.scrollSize">
+            <summary>
+            滚动条的大小。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.VirtualScrollableControlExtension.vertical_scroll_rect">
+            <summary>
+            垂直滚动条的矩形位置。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.VirtualScrollableControlExtension.horizontal_scroll_rect">
+            <summary>
+            水平滚动条的矩形位置。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.VirtualScrollableControlExtension.vertical_scroll_foucs">
+            <summary>
+            垂直滚动条的焦点状态。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.VirtualScrollableControlExtension.horizontal_scroll_foucs">
+            <summary>
+            水平滚动条的焦点状态。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.VirtualScrollableControlExtension.vertical_scroll_Rectangle">
+            <summary>
+            垂直滚动条的矩形区域。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.VirtualScrollableControlExtension.horizontal_scroll_Rectangle">
+            <summary>
+            水平滚动条的矩形区域。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.VirtualScrollableControlExtension.drag_vertical_scroll">
+            <summary>
+            是否正在拖拽垂直滚动条。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.VirtualScrollableControlExtension.drag_horizontal_scroll">
+            <summary>
+            是否正在拖拽水平滚动条。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.VirtualScrollableControlExtension.drag_scroll_value">
+            <summary>
+            准备拖拽时滚动条的值。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.VirtualScrollableControlExtension.drag_scroll_location">
+            <summary>
+            准备拖拽时鼠标的坐标。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.VirtualScrollableControlExtension.VScroll">
+            <summary>
+            获取或设置一个值，该值指示垂直滚动条是否可见。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.VirtualScrollableControlExtension.HScroll">
+            <summary>
+            获取或设置一个值，该值指示水平滚动条是否可见。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.VirtualScrollableControlExtension.VerticalScroll">
+            <summary>
+            获取与垂直滚动条关联的特征。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.VirtualScrollableControlExtension.HorizontalScroll">
+            <summary>
+            获取与水平滚动条关联的特征。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.VirtualScrollableControlExtension.Control">
+            <summary>
+            需要处理的滚动条控件。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.VirtualScrollableControlExtension.DefaultBrush">
+            <summary>
+            滚动条默认状态下的画刷
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.VirtualScrollableControlExtension.HoverBrush">
+            <summary>
+            滚动条处于焦点下的画刷
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.VirtualScrollableControlExtension.SetScrollBorderSize(System.Int32)">
+            <summary>
+            设置滚动区域的边框大小。
+            </summary>
+            <param name="width">边框的宽度。</param>
+        </member>
+        <member name="M:Marmat.Forms.VirtualScrollableControlExtension.SetScrollSize(System.Int32)">
+            <summary>
+            设置滚动条的大小。
+            </summary>
+            <param name="width">滚动条的宽度/高度。</param>
+        </member>
+        <member name="M:Marmat.Forms.VirtualScrollableControlExtension.BeforeWndProc(System.Windows.Forms.Message@,System.Object@)">
+            <summary>
+            处理 Windows 消息之前执行,用于修改 Windows 消息内容。
+            </summary>
+            <param name="m"></param>
+            <param name="arguments"></param>
+            <returns>如果返回true,则需要用户执行 WndProc 函数</returns>
+        </member>
+        <member name="M:Marmat.Forms.VirtualScrollableControlExtension.AfterWndProc(System.Windows.Forms.Message,System.Object)">
+            <summary>
+            处理 Windows 消息之后执行。
+            </summary>
+            <param name="m"></param>
+            <param name="arguments"></param>
+        </member>
+        <member name="M:Marmat.Forms.VirtualScrollableControlExtension.set_vertical_scroll_value(System.Int32)">
+            <summary>
+            设置垂直滚动条的值。
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Marmat.Forms.VirtualScrollableControlExtension.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+             引发 System.Windows.Forms.Control.Paint 事件。
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="T:Marmat.Forms.VirtualScrollProperties">
+            <summary>
+            虚拟滚动属性
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.VirtualScrollProperties.Enabled">
+            <summary>
+            获取或设置是否可以在容器上使用滚动条。       
+            </summary>
+            <remarks>如果可以使用滚动条，则为真;否则,假的。</remarks>
+        </member>
+        <member name="P:Marmat.Forms.VirtualScrollProperties.LargeChange">
+            <summary>
+            获取或设置移动滚动条以响应大滚动命令的距离。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.VirtualScrollProperties.Maximum">
+            <summary>
+            获取或设置可滚动范围的上限。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.VirtualScrollProperties.Minimum">
+            <summary>
+            获取或设置可滚动范围的下限。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.VirtualScrollProperties.SmallChange">
+            <summary>
+            获取或设置移动滚动条以响应小滚动的距离。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.VirtualScrollProperties.Value">
+            <summary>
+            获取或设置表示滚动的当前位置的数值。
+            </summary>
+        </member>
+        <member name="P:Marmat.Forms.VirtualScrollProperties.Visible">
+            <summary>
+            获取或设置用户是否可以看到滚动条。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.WinApi.DwmApi">
+            <summary>
+            是 Microsoft Desktop Window Manager API（桌面窗口管理器DWM 的公用界面）的动态链接库，属于正常文件，主要用作桌面效果（如 Aero 效果）的API。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.WinApi.DwmApi.DwmExtendFrameIntoClientArea(System.IntPtr,Marmat.Forms.WinApi.MARGINS@)">
+             <summary>
+             将窗口框架扩展到客户区域。
+            
+             </summary>
+             <param name="hWnd"></param>
+             <param name="pMarInset"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.WinApi.DwmApi.DwmSetWindowAttribute(System.IntPtr,System.Int32,System.Int32@,System.Int32)">
+            <summary>
+            设置窗口的桌面窗口管理器(DWM)非客户端呈现属性的值。有关编程指导和代码示例，请参见控制非客户端区域呈现。
+            </summary>
+            <param name="hwnd"></param>
+            <param name="attr"></param>
+            <param name="attrValue"></param>
+            <param name="attrSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.WinApi.DwmApi.DwmIsCompositionEnabled(System.Int32@)">
+            <summary>
+            获取一个值，该值指示是否启用桌面窗口管理器(DWM)组合。运行Windows 7或更早版本的计算机上的应用程序可以通过处理WM_DWMCOMPOSITIONCHANGED通知来侦听组合状态更改。
+            </summary>
+            <param name="pfEnabled"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Marmat.Forms.WinApi.Kernel32">
+            <summary>
+            是Windows中非常重要的32位动态链接库文件，属于内核级文件。它控制着系统的内存管理、数据的输入输出操作和中断处理，当Windows启动时，kernel32.dll就驻留在内存中特定的写保护区域，使别的程序无法占用这个内存区域。
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.WinApi.Kernel32.LoadLibrary(System.String)">
+            <summary>
+            载入指定的动态链接库，并将它映射到当前进程使用的地址空间。一旦载入，即可访问库内保存的资源
+            </summary>
+            <param name="lpFileName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Marmat.Forms.WinApi.MARGINS">
+            <summary>
+            由GetThemeMargins函数返回，用于定义应用了视觉样式的窗口的页边距。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MARGINS.leftWidth">
+            <summary>
+            保留其大小的左边框的宽度。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MARGINS.rightWidth">
+            <summary>
+            保留其大小的右边框的宽度。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MARGINS.topHeight">
+            <summary>
+            顶部边界的高度保持其大小。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MARGINS.bottomHeight">
+            <summary>
+            底边保持其大小的高度。
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.WinApi.MessageEnum">
+            <summary>
+            Windows 消息枚举
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NULL">
+            <summary>
+            空消息，此消息将被接收窗口忽略
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CREATE">
+            <summary>
+            应用程序创建一个窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_DESTROY">
+            <summary>
+            一个窗口被销毁
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MOVE">
+            <summary>
+            移动一个窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_SIZE">
+            <summary>
+            改变一个窗口的大小
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_ACTIVATE">
+            <summary>
+            一个窗口被激活或失去激活状态
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_SETFOCUS">
+            <summary>
+            获得焦点后
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_KILLFOCUS">
+            <summary>
+            失去焦点
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_ENABLE">
+            <summary>
+            应用程序Enable状态改变时产生
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_SETREDRAW">
+            <summary>
+            设置窗口是否能重画
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_SETTEXT">
+            <summary>
+            应用程序发送此消息来设置一个窗口的文本
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_GETTEXT">
+            <summary>
+            应用程序发送此消息来复制对应窗口的文本到缓冲区
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_GETTEXTLENGTH">
+            <summary>
+            得到与一个窗口有关的文本的长度（不包含空字符）
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_PAINT">
+            <summary>
+            要求一个窗口重绘自己
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CLOSE">
+            <summary>
+            当一个窗口或应用程序要关闭时发送一个信号
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_QUERYENDSESSION">
+            <summary>
+            用户选择结束对话框或应用程序自己调用ExitWindows()函数
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_QUIT">
+            <summary>
+            用来结束程序运行或应用程序调用Postquitmessage()函数来产生此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_QUERYOPEN">
+            <summary>
+            当用户窗口恢复以前的大小位置时，把此消息发送给某个图标
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_ERASEBKGND">
+            <summary>
+            当窗口背景必须被擦除时（例如在窗口改变大小时）
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_SYSCOLORCHANGE">
+            <summary>
+            当系统颜色改变时，发送此消息给所有顶级窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_ENDSESSION">
+            <summary>
+            当系统进程发出WM_QUERYENDSESSION消息后，此消息发送给应用程序
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_SHOWWINDOW">
+            <summary>
+            当隐藏或显示窗口是发送此消息给这个窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_ACTIVATEAPP">
+            <summary>
+            当某个窗口将被激活时，将被激活窗口和当前活动（即将失去激活）窗口会收到此消息，发此消息给应用程序哪个窗口是激活的，哪个是非激活的
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_FONTCHANGE">
+            <summary>
+            当系统的字体资源库变化时发送此消息给所有顶级窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_TIMECHANGE">
+            <summary>
+            当系统的时间变化时发送此消息给所有顶级窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CANCELMODE">
+            <summary>
+            发送此消息来取消某种正在进行的操作
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_SETCURSOR">
+            <summary>
+            如果鼠标引起光标在某个窗口中移动且鼠标输入没有被捕获时，发消息给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MOUSEACTIVATE">
+            <summary>
+            当光标在某个非激活的窗口中而用户正按着鼠标的某个键发送此消息给当前窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CHILDACTIVATE">
+            <summary>
+            发送此消息给MDI子窗口当用户点击此窗口的标题栏，或当窗口被激活、移动、改变大小
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_QUEUESYNC">
+            <summary>
+            此消息由基于计算机的训练程序发送，通过WH_JOURNALPALYBACK的Hook程序分离出用户输入消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_GETMINMAXINFO">
+            <summary>
+            当窗口要将要改变大小或位置时，发送此消息给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_PAINTICON">
+            <summary>
+            当窗口图标将要被重绘时，发送此消息给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_ICONERASEBKGND">
+            <summary>
+            在一个最小化窗口的图标在重绘前，当图标背景必须被重绘时，发送此消息给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NEXTDLGCTL">
+            <summary>
+            发送此消息给一个对话框程序以更改焦点位置
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_SPOOLERSTATUS">
+            <summary>
+            当打印管理列队增加或减少一条作业时发出此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_DRAWITEM">
+            <summary>
+            当Button，ComboBox，Listbox，Menu控件的外观改变时，发送此消息给这些控件的所有者
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MEASUREITEM">
+            <summary>
+            当Button，ComboBox，list box，ListView，Menu 项被创建时，发送此消息给控件的所有者
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_DELETEITEM">
+            <summary>
+            当ListBox 或 ComboBox 被销毁或当某些项通过发送LB_DELETESTRING、LB_RESETCONTENT、 CB_DELETESTRING、CB_RESETCONTENT 消息被删除时，发送此消息给控件的所有者
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_VKEYTOITEM">
+            <summary>
+            一个具有LBS_WANTKEYBOARDINPUT风格的ListBox控件发送此消息给它的所有者，以此来响应WM_KEYDOWN消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CHARTOITEM">
+            <summary>
+            一个具有LBS_WANTKEYBOARDINPUT风格的ListBox控件发送此消息给它的所有者，以此来响应WM_CHAR消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_SETFONT">
+            <summary>
+            应用程序绘制控件时，发送此消息得到以何种字体绘制控件中的文本
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_GETFONT">
+            <summary>
+            应用程序发送此消息得到当前控件绘制文本的字体
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_SETHOTKEY">
+            <summary>
+            应用程序发送此消息让一个窗口与一个热键相关联
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_GETHOTKEY">
+            <summary>
+            应用程序发送此消息来判断热键与某个窗口是否有关联
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_QUERYDRAGICON">
+            <summary>
+            此消息发送给最小化窗口，当此窗口将要被拖放而它的类中没有定义图标，应用程序就返回一个图标或光标的句柄，当用户拖放图标时系统显示这个图标或光标
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_COMPAREITEM">
+            <summary>
+            发送此消息来判定ComboBox或ListBox新增加的项的相对位置
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_COMPACTING">
+            <summary>
+            显示内存已经很少了
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_WINDOWPOSCHANGING">
+            <summary>
+            当调用SetWindowPos()函数改变窗口的大小和位置后，发送此消息给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_POWER">
+            <summary>
+            当系统将进入挂起状态时发送此消息给所有进程
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_COPYDATA">
+            <summary>
+            当一个应用程序传递数据给另一个应用程序时发送此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CANCELJOURNAL">
+            <summary>
+            当某个用户取消程序日志激活状态，发送此消息给应用程序
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NOTIFY">
+            <summary>
+            当某个控件的某个事件已经发生或这个控件需要得到一些信息时，发送此消息给它的父窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_INPUTLANGCHANGEREQUEST">
+            <summary>
+            当用户选择某种输入语言，或输入语言的热键改变
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_INPUTLANGCHANGE">
+            <summary>
+            当应用程序输入语言改变后发送此消息给受影响的最顶级窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_TCARD">
+            <summary>
+            当应用程序已经初始化Windows帮助例程时发送此消息给应用程序
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_HELP">
+            <summary>
+            当用户按下了F1，如果某个菜单是激活的，就发送此消息给此窗口关联的菜单，否则就发送给有焦点的窗口，如果当前都没有焦点，就把此消息发送给当前激活的窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_USERCHANGED">
+            <summary>
+            当用户已经登录或退出后发送此消息给所有的窗口，当用户登录或退出时系统更新用户的具体设置信息，在用户更新设置时系统马上发送此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NOTIFYFORMAT">
+            <summary>
+            公用控件和它们的父窗口通过此消息来判断在WM_NOTIFY消息中是使用ANSI还是UNICODE形式的结构，使用此控件能使某个控件与它的父控件进行相互通信
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CONTEXTMENU">
+            <summary>
+            当用户在某个窗口中点击右键，则发送此消息给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_STYLECHANGING">
+            <summary>
+            当将要调用SetWindowLong()函数窗口的一个或多个风格时，发送此消息给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_STYLECHANGED">
+            <summary>
+            当调用SetWindowLong()函数改变了窗口的一个或多个风格后，发送此消息给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_DISPLAYCHANGE">
+            <summary>
+            当显示器的分辨率改变后发送此消息给所有的窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_GETICON">
+            <summary>
+            发送此消息给某个窗口，返回与某个窗口有关联的大图标或小图标的句柄
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_SETICON">
+            <summary>
+            应用程序发送此消息让一个新的大图标或小图标与某个窗口关联
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NCCREATE">
+            <summary>
+            当某个窗口第一次被创建时，此消息在WM_CREATE消息被发送前发送
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NCDESTROY">
+            <summary>
+            此消息通知某个窗口，正在销毁非客户区
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NCCALCSIZE">
+            <summary>
+            当计算某个窗口的客户区大小和位置时发送此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NCHITTEST">
+            <summary>
+            移动鼠标，按住或释放鼠标时产生此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NCPAINT">
+            <summary>
+            当某个窗口的框架必须被绘制时，应用程序发送此消息给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NCACTIVATE">
+            <summary>
+            通过改变某个窗口的非客户区来表示窗口是处于激活还是非激活状态时，此消息被发送给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NCMOUSEMOVE">
+            <summary>
+            当光标在窗口的非客户区（窗口标题栏及边框）内移动时发送此消息给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NCLBUTTONDOWN">
+            <summary>
+            当光标在窗口的非客户区并按下鼠标左键时发送此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NCLBUTTONUP">
+            <summary>
+            当光标在窗口的非客户区并释放鼠标左键时发送此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NCLBUTTONDBLCLK">
+            <summary>
+            当光标在窗口的非客户区并双击鼠标左键时发送此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NCRBUTTONDOWN">
+            <summary>
+            当光标在窗口的非客户区并按下鼠标右键时发送此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NCRBUTTONUP">
+            <summary>
+            当光标在窗口的非客户区并释放鼠标右键时发送此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NCRBUTTONDBLCLK">
+            <summary>
+            当光标在窗口的非客户区并双击鼠标右键时发送此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NCMBUTTONDOWN">
+            <summary>
+            当光标在窗口的非客户区并按下鼠标中键时发送此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NCMBUTTONUP">
+            <summary>
+            当光标在窗口的非客户区并释放鼠标中键时发送此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_NCMBUTTONDBLCL">
+            <summary>
+            当光标在窗口的非客户区并双击鼠标中键时发送此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_KEYDOWN">
+            <summary>
+            按下一个非系统键（按下键时未按下“ALT”键）
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_KEYUP">
+            <summary>
+            释放一个非系统键
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CHAR">
+            <summary>
+            按下某键，当TranslateMessage()转发WM_KEYDOWN后发送本消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_DEADCHAR">
+            <summary>
+            释放某键，当TranslateMessage()转发WM_KEYUP后发送本消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_SYSKEYDOWN">
+            <summary>
+            当按住ALT键同时按下其他键时发送此消息给拥有键盘焦点的窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_SYSKEYUP">
+            <summary>
+            当释放一个键同时按住ALT键时发送此消息给拥有键盘焦点的窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_SYSCHAR">
+            <summary>
+            当TranslateMessage()转发WM_SYSKEYDOWN后发送此消息给拥有键盘焦点的窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_SYSDEADCHAR">
+            <summary>
+            当TranslateMessage()转发WM_SYSKEYUP后发送此消息给拥有键盘焦点的窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_INITDIALOG">
+            <summary>
+            在被显示前发送此消息对话框，通常用此消息初始化控件和执行其他任务
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_COMMAND">
+            <summary>
+            选择窗口菜单项或某个控件发送一条消息给它的父窗口或按下一个快捷键时产生此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_SYSCOMMAND">
+            <summary>
+            选择窗口菜单项或选择最大化或最小化时，发送此消息给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_TIMER">
+            <summary>
+            发生了定时器事件
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_HSCROLL">
+            <summary>
+            当窗口水平滚动条产生一个滚动事件时发送此消息给该窗口和滚动条的所有者
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_VSCROLL">
+            <summary>
+            当窗口垂直滚动条产生一个滚动事件时发送此消息给该窗口和滚动条的所有者
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_INITMENU">
+            <summary>
+            当一个菜单将要被激活时发送此消息，它发生在按下菜单项或按下菜单快捷键时，它允许程序在显示前更改菜单
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_INITMENUPOPUP">
+            <summary>
+            当一个下拉菜单或子菜单将要被激活时发送此消息，它允许显示前在修改菜单而不必更改整个菜单
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MENUSELECT">
+            <summary>
+            选择一条菜单项时发送此消息给菜单的所有者（一般是窗口）
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MENUCHAR">
+            <summary>
+            当菜单已被激活且用户按下了某个键（非快捷键），发送此消息给菜单的所有者
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_ENTERIDLE">
+            <summary>
+            当一个有模式对话框或菜单进入空闲状态时发送此消息给它的所有者，空闲状态指在处理完一条或几条先前的消息后，消息列队为空
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MENURBUTTONUP">
+            <summary>
+            当光标位于菜单项上时，释放鼠标右键产生此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MENUDRAG">
+            <summary>
+            当拖动菜单项时，发送此消息给拖放菜单的所有者
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MENUGETOBJECT">
+            <summary>
+            当光标移入菜单项或者从菜单项中心移到菜单项顶部或底部时，发送此消息给拖放菜单的所有者
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_UNINITMENUPOPUP">
+            <summary>
+            当下拉菜单或者子菜单被销毁时产生此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MENUCOMMAND">
+            <summary>
+            当用户选择菜单项时产生此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CHANGEUISTATE">
+            <summary>
+            应用程序发送此消息表明用户界面（UI）状态应当被改变
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_UPDATEUISTATE">
+            <summary>
+            应用程序发送此消息改变指定窗口及其子窗口的用户界面（UI）状态
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_QUERYUISTATE">
+            <summary>
+            应用程序发送此消息得到某个窗口的用户界面（UI）状态
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CTLCOLORMSGBOX">
+            <summary>
+            绘制消息框前发送此消息给它的父窗口，通过响应这条消息，父窗口可以通过使用给定的相关显示设备的句柄来设置消息框的文本和背景颜色
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CTLCOLOREDIT">
+            <summary>
+            绘制编辑型控件前发送此消息给它的父窗口，可用来设置编辑框的文本和背景颜色
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CTLCOLORLISTBOX">
+            <summary>
+            绘制列表框控件前发送此消息给它的父窗口，可用来设置编辑框的文本和背景颜色
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CTLCOLORBTN">
+            <summary>
+            绘制按钮控件前发送此消息给它的父窗口，可用来设置编辑框的文本和背景颜色
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CTLCOLORDLG">
+            <summary>
+            绘制对话框前发送此消息给它的父窗口，可用来设置编辑框的文本和背景颜色
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CTLCOLORSCROLLBAR">
+            <summary>
+            绘制滚动条控件前发送此消息给它的父窗口，可用来设置滚动条控件的文本和背景颜色
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CTLCOLORSTATIC">
+            <summary>
+            绘制静态控件前发送此消息给它的父窗口，可用来设置静态控件的文本和背景颜色
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MOUSEMOVE">
+            <summary>
+            鼠标移动
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_LBUTTONDOWN">
+            <summary>
+            按下鼠标左键
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_LBUTTONUP">
+            <summary>
+            释放鼠标左键
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_LBUTTONDBLCLK">
+            <summary>
+            双击鼠标左键
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_RBUTTONDOWN">
+            <summary>
+            按下鼠标右键
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_RBUTTONUP">
+            <summary>
+            释放鼠标右键
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_RBUTTONDBLCLK">
+            <summary>
+            双击鼠标右键
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MBUTTONDOWN">
+            <summary>
+            按下鼠标中键
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MBUTTONUP">
+            <summary>
+            释放鼠标中键
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MBUTTONDBLCLK">
+            <summary>
+            双击鼠标中键
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MOUSEWHEEL">
+            <summary>
+            当鼠标滚轮转动时发送此消息给当前获得焦点的窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_PARENTNOTIFY">
+            <summary>
+            当MDI子窗口被创建或被销毁，或当光标位于子窗口上且用户按了一下鼠标键时，发送此消息给它的父窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_ENTERMENULOOP">
+            <summary>
+            发送此消息通知应用程序的主窗口进程已经进入了菜单模式循环
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_EXITMENULOOP">
+            <summary>
+            发送此消息通知应用程序的主窗口进程已经退出了菜单模式循环
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_SIZING">
+            <summary>
+            调整窗口大小时发送此消息给窗口，通过此消息应用程序可以监视或修改窗口大小和位置
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CAPTURECHANGED">
+            <summary>
+            当窗口设定为不捕获鼠标事件时，发送此消息给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MOVING">
+            <summary>
+            移动窗口时发送此消息给窗口，通过此消息应用程序可以监视或修改窗口大小和位置
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_POWERBROADCAST">
+            <summary>
+            发送此消息给应用程序通知它有关电源管理事件
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_DEVICECHANGE">
+            <summary>
+            当设备的硬件配置改变时发送此消息给应用程序或设备驱动程序
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MDICREATE">
+            <summary>
+            应用程序发送此消息给多文档的客户窗口来创建一个MDI 子窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MDIDESTROY">
+            <summary>
+            应用程序发送此消息给多文档的客户窗口来关闭一个MDI 子窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MDIACTIVATE">
+            <summary>
+            应用程序发送此消息给多文档的客户窗口通知客户窗口激活另一个MDI子窗口，当客户窗口收到此消息后，它发出WM_MDIACTIVE消息给MDI子窗口（未激活）来激活它
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MDIRESTORE">
+            <summary>
+            应用程序发送此消息给MDI客户窗口通知子窗口恢复到原来大小
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MDINEXT">
+            <summary>
+            应用程序发送此消息给MDI客户窗口激活下一个或前一个窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MDIMAXIMIZE">
+            <summary>
+            应用程序发送此消息给MDI客户窗口以最大化一个MDI子窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MDITILE">
+            <summary>
+            应用程序发送此消息给MDI客户窗口以平铺方式重新排列所有MDI子窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MDICASCADE">
+            <summary>
+            应用程序发送此消息给MDI客户窗口以层叠方式重新排列所有MDI子窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MDIICONARRANGE">
+            <summary>
+            应用程序发送此消息给MDI客户窗口重新排列所有最小化的MDI子窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MDIGETACTIVE">
+            <summary>
+            应用程序发送此消息给MDI客户窗口以找到激活的子窗口的句柄
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MDISETMENU">
+            <summary>
+            应用程序发送此消息给MDI客户窗口用MDI菜单代替子窗口的菜单
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_ENTERSIZEMOVE">
+            <summary>
+            当窗口进入移动或改变大小模式循环时，发送此消息给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_EXITSIZEMOVE">
+            <summary>
+            当窗口退出移动或改变大小模式循环时，发送此消息给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_DROPFILES">
+            <summary>
+            当用户在应用程序窗口中拖动某个文件时，产生此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MDIREFRESHMENU">
+            <summary>
+            应用程序发送此消息给MDI客户窗口以刷新窗口菜单
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MOUSEHOVER">
+            <summary>
+            当光标在窗口客户区悬停超过TrackMouseEvent()指定的时间时，发送此消息给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_MOUSELEAVE">
+            <summary>
+            当光标离开窗口客户区超过TrackMouseEvent()指定的时间时，发送此消息给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CUT">
+            <summary>
+            应用程序发送此消息给一个编辑框或ComboBox以删除当前选择的文本
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_COPY">
+            <summary>
+            应用程序发送此消息给一个编辑框或ComboBox以复制当前选择的文本到剪贴板
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_PASTE">
+            <summary>
+            应用程序发送此消息给一个编辑框或ComboBox以从剪贴板中得到数据
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CLEAR">
+            <summary>
+            应用程序发送此消息给一个编辑框或ComboBox以清除当前选择的内容
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_UNDO">
+            <summary>
+            应用程序发送此消息给一个编辑框或ComboBox以撤消最后一次操作
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_DESTROYCLIPBOARD">
+            <summary>
+            当调用EmptyClipboard()清空剪贴板时，发送此消息给剪贴板所有者
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_DRAWCLIPBOARD">
+            <summary>
+            当剪贴板的内容变化时发送此消息给剪贴板观察链中的第一个窗口，它允许用剪贴板观察窗口来显示剪贴板的新内容
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_PAINTCLIPBOARD">
+            <summary>
+            当剪贴板包含CF_OWNERDIPLAY格式的数据且剪贴板观察窗口的客户区需要重绘时，发送此消息给剪贴板所有者
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_VSCROLLCLIPBOARD">
+            <summary>
+            当剪贴板包含CF_OWNERDIPLAY格式的数据且剪贴板观察窗口发生垂直滚动条事件时，剪贴板观察窗口发送此消息给剪贴板所有者
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_SIZECLIPBOARD">
+            <summary>
+            当剪贴板包含CF_OWNERDIPLAY格式的数据且剪贴板观察窗口的客户区域的大小已经改变时，剪贴板观察窗口发送此消息给剪贴板的所有者
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_ASKCBFORMATNAME">
+            <summary>
+            剪贴板观察窗口发送此消息给剪贴板所有者以获得CF_OWNERDISPLAY剪贴板格式的名字
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_CHANGECBCHAIN">
+            <summary>
+            当一个窗口从剪贴板观察链中移去时发送此消息给剪贴板观察链中的第一个窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_HSCROLLCLIPBOARD">
+            <summary>
+            当剪贴板包含CF_OWNERDIPLAY格式的数据且剪贴板观察窗口发生水平滚动条事件时，剪贴板观察窗口发送此消息给剪贴板所有者
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_QUERYNEWPALETTE">
+            <summary>
+            发送此消息给将要获得键盘焦点的窗口，此消息使窗口在获得焦点时同时有机会实现它的逻辑调色板
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_PALETTEISCHANGING">
+            <summary>
+            应用程序将要实现它的逻辑调色板时发送此消息通知所有应用程序
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_PALETTECHANGED">
+            <summary>
+            获得焦点的窗口实现它的逻辑调色板后发送此消息给所有顶级并重叠的窗口，以此来改变系统调色板
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_HOTKEY">
+            <summary>
+            当用户按下由RegisterHotKey()注册的热键时产生此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_PRINT">
+            <summary>
+            应用程序发送此消息给窗口，要求窗口在指定设备环境中绘制自己，一般情况下是打印机设备环境
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_PRINTCLIENT">
+            <summary>
+            应用程序发送此消息给窗口，要求窗口在指定设备环境中绘制窗口客户区，一般情况下是打印机设备环境
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_APP">
+            <summary>
+            帮助用户自定义消息，自定义消息可以为WM_APP+X，X为正整数
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.MessageEnum.WM_USER">
+            <summary>
+            帮助用户自定义消息，自定义消息可以为WM_USER+X，X为正整数
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.WinApi.Messages">
+            <summary>
+            windows 消息枚举
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.CS_DROPSHADOW">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.HTCLIENT">
+            <summary>
+            在客户区中。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.HTCAPTION">
+            <summary>
+            在标题条中。
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.WM_PAINT">
+            <summary>
+            要求一个窗口重绘自己
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.WM_NCCALCSIZE">
+            <summary>
+            当计算某个窗口的客户区大小和位置时发送此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.WM_NCPAINT">
+            <summary>
+            当某个窗口的框架必须被绘制时，应用程序发送此消息给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.WM_VSCROLL">
+            <summary>
+            当窗口垂直滚动条产生一个滚动事件时发送此消息给该窗口和滚动条的所有者
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.WM_CTLCOLORSCROLLBAR">
+            <summary>
+            绘制滚动条控件前发送此消息给它的父窗口，可用来设置滚动条控件的文本和背景颜色
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.WM_MOUSEMOVE">
+            <summary>
+            鼠标移动
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.WM_NCMOUSEMOVE">
+            <summary>
+            当光标在窗口的非客户区（窗口标题栏及边框）内移动时发送此消息给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.WM_NCLBUTTONDOWN">
+            <summary>
+            当光标在窗口的非客户区并按下鼠标左键时发送此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.WM_NCLBUTTONUP">
+            <summary>
+            当光标在窗口的非客户区并释放鼠标左键时发送此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.WM_NCLBUTTONDBLCLK">
+            <summary>
+            当光标在窗口的非客户区并双击鼠标左键时发送此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.WM_MOUSEWHEEL">
+            <summary>
+            当鼠标滚轮转动时发送此消息给当前获得焦点的窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.WM_LBUTTONDOWN">
+            <summary>
+            按下鼠标左键
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.WM_LBUTTONUP">
+            <summary>
+            释放鼠标左键
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.WM_RBUTTONDOWN">
+            <summary>
+            按下鼠标右键
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.WM_MBUTTONDOWN">
+            <summary>
+            按下鼠标中键
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.WM_NCHITTEST">
+            <summary>
+            移动鼠标，按住或释放鼠标时产生此消息
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.WM_MOUSELEAVE">
+            <summary>
+            当光标离开窗口客户区超过TrackMouseEvent()指定的时间时，发送此消息给该窗口
+            </summary>
+        </member>
+        <member name="F:Marmat.Forms.WinApi.Messages.WM_CAPTURECHANGED">
+            <summary>
+            当窗口设定为不捕获鼠标事件时，发送此消息给该窗口
+            </summary>
+        </member>
+        <member name="T:Marmat.Forms.WinApi.User32">
+            <summary>
+            win32的API处理函数
+            </summary>
+        </member>
+        <member name="M:Marmat.Forms.WinApi.User32.GetScrollInfo(System.IntPtr,System.Int32,Marmat.Forms.Skin.Scrollinfo@)">
+            <summary>
+            检索滚动条的参数,包括最小和最大滚动位置、页面大小和滚动框（拇指）的位置.
+            </summary>
+            <param name="hwnd">处理滚动条控件或窗口的一个标准的滚动条,根据不同的fnBar参数值.</param>
+            <param name="fnBar">指定要检索的参数为滚动条的类型.此参数可以是下列值之一.</param>
+            <param name="lpsi">指向SCROLLINFO结构.在调用GetScrollInfo,设置cbSize成员SIZEOF（SCROLLINFO）,并设置fMask成员指定要检索的滚动条参数.返回之前,函数将指定的参数复制到结构的适当成员.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.WinApi.User32.SetScrollInfo(System.IntPtr,System.Int32,Marmat.Forms.Skin.Scrollinfo@,System.Boolean)">
+            <summary>
+            设置滚动条的参数,包括最小和最大滚动位置、页面大小和滚动框的位置（拇指）.功能也重画滚动条
+            </summary>
+            <param name="hwnd"></param>
+            <param name="fnBar"></param>
+            <param name="lpsi"></param>
+            <param name="fRedraw"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.WinApi.User32.SendMessage(System.IntPtr,System.UInt32,System.IntPtr,System.IntPtr)">
+            <summary>
+            将指定的消息发送到一个或多个窗口，为指定的窗口调用窗口程序，直到窗口程序处理完消息再返回。
+            </summary>
+            <param name="hWnd"></param>
+            <param name="Msg"></param>
+            <param name="wParam"></param>
+            <param name="lParam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.WinApi.User32.SetCapture(System.IntPtr)">
+            <summary>
+            该函数在属于当前线程的指定窗口里设置鼠标捕获。一旦窗口捕获了鼠标，所有鼠标输入都针对该窗口，无论光标是否在窗口的边界内。同一时刻只能有一个窗口捕获鼠标。如果鼠标光标在另一个线程创建的窗口上，只有当鼠标键按下时系统才将鼠标输入指向指定的窗口。
+            </summary>
+            <param name="h"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.WinApi.User32.ReleaseCapture">
+            <summary>
+            从当前线程中的窗口释放鼠标捕获，并恢复通常的鼠标输入处理。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.WinApi.User32.GetWindowDC(System.IntPtr)">
+            <summary>
+            返回hWnd参数所指定的窗口的设备环境。
+            </summary>
+            <param name="hwnd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Marmat.Forms.WinApi.User32.ReleaseDC(System.Int32,System.Int32)">
+            <summary>
+            释放设备上下文环境(DC)供其他应用程序使用。函数的效果与设备上下文环境类型有关。它只释放公用的和设备上下文环境，对于类或私有的则无效。
+            </summary>
+            <param name="hwnd"></param>
+            <param name="hdc"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

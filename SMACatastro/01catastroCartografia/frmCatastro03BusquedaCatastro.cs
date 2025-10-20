@@ -1528,7 +1528,7 @@ namespace SMACatastro.catastroCartografia
 
         private void btnConsultaFilt_Click(object sender, EventArgs e)
         {
-            consultarFiltros();
+            consultarFiltros(); //consultar filtros 
         }
 
         private void btnCancelarFilt_Click(object sender, EventArgs e)

@@ -2587,7 +2587,7 @@ namespace SMACatastro.catastroSistemas
             con.cadena_sql_interno = con.cadena_sql_interno + "    AND cdv.FECHA_REV   >=  '" + fechaActualFormatoAñoUno + "'";
             con.cadena_sql_interno = con.cadena_sql_interno + "    AND cdv.FECHA_REV   <=  '" + fechaActualFormatoAñoDos + "'";
             con.cadena_sql_interno = con.cadena_sql_interno + "  ORDER BY cdv.HORA_REV DESC";
-
+            // todo bien
             DataTable LLENAR_GRID_1 = new DataTable();
             con.conectar_base_interno();
             con.open_c_interno();

@@ -312,7 +312,7 @@ namespace SMACatastro.catastroCartografia
 
                 if (lblPropiedadesValorCatastral.Text.Trim() == "") { lblPropiedadesValorCatastral.Text = "0.00"; }
                 else { lblPropiedadesValorCatastral.Text = string.Format("{0:#,##0.00}", double.Parse(lblPropiedadesValorCatastral.Text)); }
-
+                //código que se agregó para el código de la calle solicitado por giovanna
                 lblCodCalle.Text = con.leer_interno[30].ToString().Trim();
             }
 
@@ -369,12 +369,7 @@ namespace SMACatastro.catastroCartografia
                     cboUbicacion.Text = "NO DEFINIDO";
                     break;
             }
-
-
-
-
-
-            switch (ubicacionEntero)
+            switch (ubicacionEntero) //así va 
             {
                 case 1:
                     lblPredioUbicacion.Text = "1 tINTERMEDIO";
@@ -400,14 +395,7 @@ namespace SMACatastro.catastroCartografia
                 default:
                     cboUbicacion.Text = "NO DEFINIDO";
                     break;
-
-
-
-
-
-
             }
-
             ///////////////////////////rwvisar bloqueos
             ///
             int verificar = 0;
@@ -467,7 +455,7 @@ namespace SMACatastro.catastroCartografia
 
                     con.conectar_base_interno();
                     con.cadena_sql_interno = "";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "  SELECT COMENTARIO";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "            SELECT COMENTARIO";
                     con.cadena_sql_interno = con.cadena_sql_interno + "              FROM BLOQCVE_2";
                     con.cadena_sql_interno = con.cadena_sql_interno + "             WHERE estado = 15";
                     con.cadena_sql_interno = con.cadena_sql_interno + "               AND MUNICIPIO = " + Program.municipioV;
@@ -501,8 +489,6 @@ namespace SMACatastro.catastroCartografia
                     return; // Retornar false si ocurre un error
                 }
             }
-
-
             txtZona.Enabled = false;
             txtMzna.Enabled = false;
             txtLote.Enabled = false;
@@ -523,7 +509,6 @@ namespace SMACatastro.catastroCartografia
             btnConstComun.Enabled = true;
             btnConstLote.Enabled = true;
             cmdSalida.Enabled = false;
-
         }
 
         private void limpiarClave()
@@ -592,7 +577,7 @@ namespace SMACatastro.catastroCartografia
             txtNoInterior.Text = "";
 
             cboUbicacion.Items.Clear();
-
+            //llenar el combobox de la ubicacion
             cboUbicacion.Items.Add("1 INTERMEDIO");
             cboUbicacion.Items.Add("2 ESQUINERO");
             cboUbicacion.Items.Add("3 CABECERO");
@@ -656,12 +641,10 @@ namespace SMACatastro.catastroCartografia
             btnConstComun.Enabled = false;
             btnConstLote.Enabled = false;
         }
-
         private void frmCatastro03BusquedaCatastro_Activated(object sender, EventArgs e)
         {
             txtZona.Focus();
         }
-
         private void txtZona_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -671,7 +654,6 @@ namespace SMACatastro.catastroCartografia
                 return;
             }
         }
-
         private void txtMzna_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -681,7 +663,6 @@ namespace SMACatastro.catastroCartografia
                 return;
             }
         }
-
         private void txtLote_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -742,9 +723,6 @@ namespace SMACatastro.catastroCartografia
                 e.Handled = true;
             }
         }
-
-
-
         private void supTerreno_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Permitir números, punto decimal, coma y teclas de control
@@ -936,17 +914,14 @@ namespace SMACatastro.catastroCartografia
         {
             if (txtEdificioDos.Text.Length == 2) { txtDeptoDos.Focus(); }
         }
-
         private void txtDeptoDos_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             inicio();
         }
-
         private void btnMaps_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtLatitud.Text) || string.IsNullOrWhiteSpace(txtLongitud.Text))
@@ -960,12 +935,10 @@ namespace SMACatastro.catastroCartografia
             //return $"https://www.google.com/maps?q={latitud},{longitud}";
             Process.Start($"https://www.google.com/maps?q={latitud},{longitud}");
         }
-
         private void btnConsulta_Click(object sender, EventArgs e)
         {
             consulta();
         }
-
         private void inicioFiltro()
         {
             txtZona.Enabled = false;
@@ -1021,13 +994,7 @@ namespace SMACatastro.catastroCartografia
             btnConsultaFilt.Enabled = true;
             btnCancelarFilt.Enabled = true;
 
-        }
-
-
-
-
-
-
+        } //quitar esto 
         private void btnFiltro_Click(object sender, EventArgs e)
         {
             inicioFiltro();
@@ -1067,7 +1034,6 @@ namespace SMACatastro.catastroCartografia
             txtpersona.Text = "";
             txtpersona.Enabled = false;
         }
-
         private void btnBorrar3_Click(object sender, EventArgs e)
         {
             btnBorrar3.Enabled = true;
@@ -1103,7 +1069,7 @@ namespace SMACatastro.catastroCartografia
             txtNoInterior.Text = "";
             txtNoInterior.Enabled = false;
         }
-
+        //borrar las ubicaciones 
         private void btnBorrar7_Click(object sender, EventArgs e)
         {
             btnBorrar7.Enabled = true;
@@ -1111,7 +1077,7 @@ namespace SMACatastro.catastroCartografia
             cboUbicacion.SelectedIndex = -1;
             cboUbicacion.Enabled = false;
         }
-
+        //superficie de terreno
         private void btnBorrar8_Click(object sender, EventArgs e)
         {
             btnBorrar8.Enabled = true;
@@ -1121,7 +1087,7 @@ namespace SMACatastro.catastroCartografia
             supTerreno0.Enabled = false;
             supTerreno.Enabled = false;
         }
-
+        //borrar superficie de construcción
         private void btnBorrar9_Click(object sender, EventArgs e)
         {
             btnBorrar9.Enabled = true;
@@ -1131,7 +1097,7 @@ namespace SMACatastro.catastroCartografia
             txtSupCont0.Enabled = false;
             txtSupCont.Enabled = false;
         }
-
+        //borrar valores superficies terreno comun
         private void btnBorrar10_Click(object sender, EventArgs e)
         {
             btnBorrar10.Enabled = true;
@@ -1141,7 +1107,7 @@ namespace SMACatastro.catastroCartografia
             txtSupComun0.Enabled = false;
             txtSupComun.Enabled = false;
         }
-
+        //valores superficies construccion comun
         private void btnBorrar11_Click(object sender, EventArgs e)
         {
             btnBorrar11.Enabled = true;
@@ -1151,7 +1117,7 @@ namespace SMACatastro.catastroCartografia
             txtSupContComun0.Enabled = false;
             txtSupContComun.Enabled = false;
         }
-
+        //valores cat
         private void btnBorrar12_Click(object sender, EventArgs e)
         {
             btnBorrar12.Enabled = true;
@@ -1358,17 +1324,17 @@ namespace SMACatastro.catastroCartografia
             //----------------------------------------------------------------------------------------------------------------------------------------------------//
 
             con.cadena_sql_interno = "";
-            con.cadena_sql_interno = con.cadena_sql_interno + "SELECT   p.Municipio,   p.Zona,       p.Manzana,    p.Lote,        p.Edificio,    p.Depto, ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "         p.PmnProp,    pr.Domicilio, pr.Zona,       c.NomCalle,   pr.NumExt,     pr.CodPost,";
-            con.cadena_sql_interno = con.cadena_sql_interno + "        pr.Ubicacion,  pr.RegProp,   co.NomCol,    pr.SupTerrTot, pr.SupTerrCom, pr.SupCons,";
-            con.cadena_sql_interno = con.cadena_sql_interno + "        pr.SupConsCom, pr.Frente,    pr.Fondo,     pr.Desnivel,   pr.AreaInscr,   p.PtjeCondom,";
-            con.cadena_sql_interno = con.cadena_sql_interno + "        pr.Domicilio,   p.NumIntP,    p.STerrProp,  p.STerrCom,    p.SConsProp,   p.SConsCom,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "SELECT p.Municipio,   p.Zona,       p.Manzana,    p.Lote,        p.Edificio,    p.Depto, ";
+            con.cadena_sql_interno = con.cadena_sql_interno + "       p.PmnProp,    pr.Domicilio, pr.Zona,       c.NomCalle,   pr.NumExt,     pr.CodPost,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "       pr.Ubicacion,  pr.RegProp,   co.NomCol,    pr.SupTerrTot, pr.SupTerrCom, pr.SupCons,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "       pr.SupConsCom, pr.Frente,    pr.Fondo,     pr.Desnivel,   pr.AreaInscr,   p.PtjeCondom,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "       pr.Domicilio,   p.NumIntP,    p.STerrProp,  p.STerrCom,    p.SConsProp,   p.SConsCom,";
             con.cadena_sql_interno = con.cadena_sql_interno + "       svc.VALOR_TERRENO_P,";
             con.cadena_sql_interno = con.cadena_sql_interno + "       svc.VALOR_TERRENO_C,";
             con.cadena_sql_interno = con.cadena_sql_interno + "       svc.VALOR_CONSTRUCCION_P,";
             con.cadena_sql_interno = con.cadena_sql_interno + "       svc.VALOR_CONSTRUCCION_C,";
             con.cadena_sql_interno = con.cadena_sql_interno + "       svc.VALOR_CATASTRAL,";
-            con.cadena_sql_interno = con.cadena_sql_interno + "         p.cObsProp";
+            con.cadena_sql_interno = con.cadena_sql_interno + "       p.cObsProp";
             con.cadena_sql_interno = con.cadena_sql_interno + "  FROM PREDIOS pr, PROPIEDADES p, SONG_valoresCatastralesGenerales svc,";
             con.cadena_sql_interno = con.cadena_sql_interno + "       CALLES c, COLONIAS co, MANZANAS m, LOCALIDADES l";
             con.cadena_sql_interno = con.cadena_sql_interno + " WHERE pr.Estado = 15";
@@ -1515,27 +1481,18 @@ namespace SMACatastro.catastroCartografia
                 double numRegistro = Convert.ToDouble(dataGridView1.Rows.Count);
                 lblNumRegistro.Text = string.Format("{0:#,0}", numRegistro);
             }
-
             //----------------------------------------------------------------------------------------------------------------------------------------------------//
             //--------------------------------------------  bloqueamos los botones  ------------------------------------------------------------------------------//
             //----------------------------------------------------------------------------------------------------------------------------------------------------//
-
         }
-
-
-
-
-
         private void btnConsultaFilt_Click(object sender, EventArgs e)
         {
             consultarFiltros(); //consultar filtros 
         }
-
         private void btnCancelarFilt_Click(object sender, EventArgs e)
         {
             cancelarFiltroInicio();
         }
-
         private void cancelarFiltroInicio()
         {
             cancelarFiltro();
@@ -1553,8 +1510,6 @@ namespace SMACatastro.catastroCartografia
 
             rbIdenticiudadano.Focus();
         }
-
-
         private void cancelarFiltro()
         {
             btnBorrar1.Enabled = true;
@@ -1612,7 +1567,6 @@ namespace SMACatastro.catastroCartografia
 
             cboUbicacion.SelectedIndex = -1;
         }
-
         private void rboIdenticaClaCatastral_CheckedChanged(object sender, EventArgs e)
         {
             if (rboIdenticaClaCatastral.Checked == true)
@@ -1632,7 +1586,6 @@ namespace SMACatastro.catastroCartografia
                 txtZonaDos.Focus();
             }
         }
-
         private void rboSimilarClaCatastral_CheckedChanged(object sender, EventArgs e)
         {
             if (rboSimilarClaCatastral.Checked == true)
@@ -1652,7 +1605,6 @@ namespace SMACatastro.catastroCartografia
                 txtZonaDos.Focus();
             }
         }
-
         private void rbIdenticiudadano_CheckedChanged(object sender, EventArgs e)
         {
             if (rbIdenticiudadano.Checked == true)
@@ -1662,7 +1614,6 @@ namespace SMACatastro.catastroCartografia
                 txtpersona.Focus();
             }
         }
-
         private void rbSimilarciudadano_CheckedChanged(object sender, EventArgs e)
         {
             if (rbSimilarciudadano.Checked == true)
@@ -1672,7 +1623,6 @@ namespace SMACatastro.catastroCartografia
                 txtpersona.Focus();
             }
         }
-
         private void rboIdenticaCalle_CheckedChanged(object sender, EventArgs e)
         {
             if (rboIdenticaCalle.Checked == true)
@@ -1682,7 +1632,6 @@ namespace SMACatastro.catastroCartografia
                 txtCalle.Focus();
             }
         }
-
         private void rboSimilarCalle_CheckedChanged(object sender, EventArgs e)
         {
             if (rboSimilarCalle.Checked == true)
@@ -1702,7 +1651,6 @@ namespace SMACatastro.catastroCartografia
                 txtColonia.Focus();
             }
         }
-
         private void rboSimilarColonia_CheckedChanged(object sender, EventArgs e)
         {
             if (rboSimilarColonia.Checked == true)
@@ -1712,7 +1660,6 @@ namespace SMACatastro.catastroCartografia
                 txtColonia.Focus();
             }
         }
-
         private void rboIdenticaLocalidad_CheckedChanged(object sender, EventArgs e)
         {
             if (rboIdenticaLocalidad.Checked == true)
@@ -1742,7 +1689,6 @@ namespace SMACatastro.catastroCartografia
                 txtNoInterior.Focus();
             }
         }
-
         private void rboSimilarNoInterior_CheckedChanged(object sender, EventArgs e)
         {
             if (rboSimilarNoInterior.Checked == true)
@@ -1752,7 +1698,6 @@ namespace SMACatastro.catastroCartografia
                 txtNoInterior.Focus();
             }
         }
-
         private void rboIdenticaUbicacion_CheckedChanged(object sender, EventArgs e)
         {
             if (rboIdenticaUbicacion.Checked == true)
@@ -1762,7 +1707,6 @@ namespace SMACatastro.catastroCartografia
                 cboUbicacion.Focus();
             }
         }
-
         private void rboIdenticaSupTerreno_CheckedChanged(object sender, EventArgs e)
         {
             if (rboIdenticaSupTerreno.Checked == true)
@@ -1775,7 +1719,6 @@ namespace SMACatastro.catastroCartografia
                 supTerreno0.Focus();
             }
         }
-
         private void rboIdenticaSupConstruccion_CheckedChanged(object sender, EventArgs e)
         {
             if (rboIdenticaSupConstruccion.Checked == true)
@@ -1827,19 +1770,10 @@ namespace SMACatastro.catastroCartografia
                 txtValoresCatastrales0.Focus();
             }
         }
-
-
-
-
-
         private void txtZonaDos_Leave(object sender, EventArgs e)
         {
 
         }
-
-
-
-
         private void supTerreno0_Leave(object sender, EventArgs e)
         {
             if (supTerreno0.Text.Trim() == "") { supTerreno0.Text = "0.00"; }
@@ -1848,13 +1782,13 @@ namespace SMACatastro.catastroCartografia
 
         private void supTerreno_Leave(object sender, EventArgs e)
         {
-            if (supTerreno.Text.Trim() == "") { supTerreno.Text = "0.00"; }
+            if   (supTerreno.Text.Trim() == "") { supTerreno.Text = "0.00"; }
             else { supTerreno.Text = string.Format("{0:#,##0.00}", double.Parse(supTerreno.Text)); }
         }
 
         private void txtSupCont0_Leave(object sender, EventArgs e)
         {
-            if (txtSupCont0.Text.Trim() == "") { txtSupCont0.Text = "0.00"; }
+            if   (txtSupCont0.Text.Trim() == "") { txtSupCont0.Text = "0.00"; }
             else { txtSupCont0.Text = string.Format("{0:#,##0.00}", double.Parse(txtSupCont0.Text)); }
         }
 
@@ -1893,13 +1827,11 @@ namespace SMACatastro.catastroCartografia
             if (txtValoresCatastrales0.Text.Trim() == "") { txtValoresCatastrales0.Text = "0.00"; }
             else { txtValoresCatastrales0.Text = string.Format("{0:#,##0.00}", double.Parse(txtValoresCatastrales0.Text)); }
         }
-
         private void txtValoresCatastrales_Leave(object sender, EventArgs e)
         {
             if (txtValoresCatastrales.Text.Trim() == "") { txtValoresCatastrales.Text = "0.00"; }
             else { txtValoresCatastrales.Text = string.Format("{0:#,##0.00}", double.Parse(txtValoresCatastrales.Text)); }
         }
-
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
             string municipios = "0";
@@ -2102,7 +2034,6 @@ namespace SMACatastro.catastroCartografia
             Program.deptoV = txtDepto.Text.Trim();
             this.Close();
         }
-
         private void cmdSalida_Click(object sender, EventArgs e)
         {
             Program.municipioV = "";
@@ -2124,7 +2055,7 @@ namespace SMACatastro.catastroCartografia
         {
 
         }
-
+        //mover formulario de la parte superior 
         private void PanelBarraTitulo_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();

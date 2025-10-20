@@ -2594,7 +2594,7 @@ namespace SMACatastro.catastroSistemas
             SqlCommand cmd = new SqlCommand(con.cadena_sql_interno, con.cnn_interno);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
 
-            if (da.Fill(LLENAR_GRID_1) == 0)     //COMPROBAR SI LA BUSQUEDA OBTUVO UN DATO
+            if (da.Fill(LLENAR_GRID_1) == 0)     
             {
                 con.cerrar_interno();
                 MessageBox.Show("NO SE ENCONTRO DATOS DE LA BUSQUEDA", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);

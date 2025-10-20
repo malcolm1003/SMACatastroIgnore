@@ -326,6 +326,7 @@ namespace SMAIngresos.Catastro
             DialogResult resp = MessageBox.Show("¿ESTÁS SEGURO DE REALIZAR ESTA ÓRDEN DE PAGO?", "¡INFORMACIÓN!", MessageBoxButtons.YesNo);
             if (resp == DialogResult.Yes)
             {
+                //insertar y revisar el commit 
                 Insertar();
             }
         }

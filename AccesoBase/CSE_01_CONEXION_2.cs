@@ -63,7 +63,7 @@ namespace AccesoBase
             config.Save(ConfigurationSaveMode.Modified, true);
         }
 
-        public void conectar_base_interno()
+        public void conectar_base_interno() 
         {
             constructor_interno = new SqlConnectionStringBuilder();
 

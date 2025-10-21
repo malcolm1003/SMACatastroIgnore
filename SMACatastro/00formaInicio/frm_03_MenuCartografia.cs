@@ -17,25 +17,25 @@ namespace SMACatastro.formaInicio
             this.Close();
             Program.menuBotonBloqueo = 1;
         }
-
         private void cmdAltaCerCam_Click(object sender, EventArgs e)
         {
-            frm_03_MenuCartografia.ActiveForm.Opacity = 0.70;
+            Form formularioActual = Form.ActiveForm;
+            formularioActual.Opacity = 0.70;
+            formularioActual.Hide();
             catastroCartografia.frmCatastro01UbicacionAlta fs = new catastroCartografia.frmCatastro01UbicacionAlta();
             fs.ShowDialog();
-            //fs.Show();
-
-            frm_02_MenuGeneral.ActiveForm.Opacity = 1.0;
+            formularioActual.Show();
+            formularioActual.Opacity = 1.0;
         }
-
         private void cmdCobroManual_Click(object sender, EventArgs e)
         {
-            frm_03_MenuCartografia.ActiveForm.Opacity = 0.70;
-            frmCatastro03BusquedaCatastro fs = new frmCatastro03BusquedaCatastro();
+            Form formularioActual = Form.ActiveForm;
+            formularioActual.Opacity = 0.70;
+            formularioActual.Hide();
+            catastroCartografia.frmCatastro03BusquedaCatastro fs = new catastroCartografia.frmCatastro03BusquedaCatastro();
             fs.ShowDialog();
-            //fs.Show();
-
-            frm_02_MenuGeneral.ActiveForm.Opacity = 1.0;
+            formularioActual.Show();
+            formularioActual.Opacity = 1.0;
         }
 
         private void cmdCobroOrdenes_Click(object sender, EventArgs e)

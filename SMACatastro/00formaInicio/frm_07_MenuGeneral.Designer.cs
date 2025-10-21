@@ -167,6 +167,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frm_07_MenuGeneral";
             this.Text = "frm_06_MenuSistemas";
+            this.Load += new System.EventHandler(this.frm_07_MenuGeneral_Load);
             this.ResumeLayout(false);
 
         }

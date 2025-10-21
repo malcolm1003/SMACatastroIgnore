@@ -182,6 +182,18 @@ namespace SMACatastro.formaInicio
                 menu.Show();
                 return;
             }
+            if (txt_usuario.Text.Trim() == "BUSCAT" && txt_pass.Text.Trim() == "CATBUS")
+            {
+                formaInicio.frm_01_Usuarios WL = new formaInicio.frm_01_Usuarios(); WL.Hide();
+                this.Hide();
+                Program.acceso_nivel_acceso = 9; // nivel de acceso para busqueda general
+                Program.nombre_usuario = "BÚSQUEDA GENERAL";
+                Program.acceso_cargo = "BUSQUEDA CATASTRO";
+                Program.acceso_nombre_usuario = "ÚSUARIO DE BÚSQUEDA GENERAL";
+                frm_02_MenuGeneral menu = new frm_02_MenuGeneral();
+                menu.Show();
+                return;
+            }
 
             ///// conectamos a la base de datos
             try
@@ -244,6 +256,7 @@ namespace SMACatastro.formaInicio
 
                 Program.nombre_usuario = Convert.ToString(cmd.Parameters["@NOMBRE_USUARIO"].Value).Trim();
                 Program.acceso_usuario = @usuario_encripta;
+
 
                 if (validacion == 1)
                 {
@@ -323,7 +336,6 @@ namespace SMACatastro.formaInicio
 
         private void cmd_aceptar_Click(object sender, EventArgs e)
         {
-           
             acceso2();
         }
     }

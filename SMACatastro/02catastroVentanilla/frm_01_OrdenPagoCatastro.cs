@@ -27,7 +27,7 @@ namespace SMAIngresos.Catastro
         int mesActual = 0;
         int ValorCadena = 0;
         int predio, catastro, desarrollo, tipo_certi = 0;
-        int valorCadena = 0;    
+        int valorCadena = 0;
         public int NUM_ITEMS = 0;
         string fechaTexto = "";
         string fechaDD = "";
@@ -43,7 +43,7 @@ namespace SMAIngresos.Catastro
         double TERRENO1, TERRENO2, TERRENO3, TERRENO4, TERRENO5 = 0;
         double CONSTRUCCION1, CONSTRUCCION2, CONSTRUCCION3, CONSTRUCCION4, CONSTRUCCION5 = 0;
         int SELECCION_2, validacionPago = 0;
-        int PAGO_PREDIAL,  FOLIO_FACTURA, AÑO_PAGO = 0;
+        int PAGO_PREDIAL, FOLIO_FACTURA, AÑO_PAGO = 0;
         string idArea = "03";
         double valorCons = 0;
         double COSTO, COSTO2, COSTO3, COSTOTOTAL = 0;
@@ -285,7 +285,7 @@ namespace SMAIngresos.Catastro
             util.soloNumero(e);
         }
         private void txtLote_KeyPress(object sender, KeyPressEventArgs e)
-        { 
+        {
             util.soloNumero(e);
         }
 
@@ -460,8 +460,8 @@ namespace SMAIngresos.Catastro
                     lblCosto.Enabled = false;
                     cmdOrden.Enabled = false;
                 */
-                }
             }
+        }
         private void cmdCancelarLista_Click(object sender, EventArgs e)
         {
             NUM_ITEMS = 0;
@@ -495,7 +495,7 @@ namespace SMAIngresos.Catastro
         {
             inicio();
         }
-        void inicio ()
+        void inicio()
         {
             cmdNuevo.Enabled = false;
             txtZona.Enabled = true;
@@ -595,8 +595,8 @@ namespace SMAIngresos.Catastro
             txtZona.Enabled = false;
             txtManzana.Enabled = false;
             txtLote.Enabled = false;
-            txtEdificio .Enabled = false;
-            txtDepto .Enabled = false;
+            txtEdificio.Enabled = false;
+            txtDepto.Enabled = false;
             cmdConsulta.Enabled = false;
 
             txtFolioCatastro.Text = string.Empty;
@@ -660,7 +660,7 @@ namespace SMAIngresos.Catastro
             lblConcepto.Items.Clear();
             COSTO = 0;
             COSTO2 = 0;
-            COSTO3  = 0;
+            COSTO3 = 0;
 
             lblsubTotal.Text = "";
             lblivatota.Text = "";
@@ -766,12 +766,12 @@ namespace SMAIngresos.Catastro
         void Consulta()
         {
 
-            if (txtZona.Text == "")          { MessageBox.Show("NO SE TIENE LA ZONA", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error); txtZona.Focus(); return; }
-            if (txtManzana.Text == "")       { MessageBox.Show("NO SE TIENE LA MANZANA", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error); txtManzana.Focus(); return; }
-            if (txtLote.Text == "")          { MessageBox.Show("NO SE TIENE EL LOTE", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error); txtLote.Focus(); return; }
-            if (txtEdificio.Text == "")      { MessageBox.Show("NO SE TIENE EL EDIFICIO", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error); txtEdificio.Focus(); return; }
-            if (txtDepto.Text == "")         { MessageBox.Show("NO SE TIENE EL DEPARTAMENTO", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error); txtDepto.Focus(); return; }
-            if (cbo_serie.Text == "")        { MessageBox.Show("NO SE TIENE LA SERIE", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error); cbo_serie.Focus(); return; }
+            if (txtZona.Text == "") { MessageBox.Show("NO SE TIENE LA ZONA", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error); txtZona.Focus(); return; }
+            if (txtManzana.Text == "") { MessageBox.Show("NO SE TIENE LA MANZANA", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error); txtManzana.Focus(); return; }
+            if (txtLote.Text == "") { MessageBox.Show("NO SE TIENE EL LOTE", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error); txtLote.Focus(); return; }
+            if (txtEdificio.Text == "") { MessageBox.Show("NO SE TIENE EL EDIFICIO", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error); txtEdificio.Focus(); return; }
+            if (txtDepto.Text == "") { MessageBox.Show("NO SE TIENE EL DEPARTAMENTO", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error); txtDepto.Focus(); return; }
+            if (cbo_serie.Text == "") { MessageBox.Show("NO SE TIENE LA SERIE", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error); cbo_serie.Focus(); return; }
             if (txtFolioCatastro.Text == "") { MessageBox.Show("NO SE TIENE EL FOLIO", "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error); txtFolioCatastro.Focus(); return; }
 
             zona = Convert.ToInt32(txtZona.Text.Trim());
@@ -781,331 +781,383 @@ namespace SMAIngresos.Catastro
             depto = txtDepto.Text.Trim();
             folio_catastro = Convert.ToInt32(txtFolioCatastro.Text.Trim());
 
-            
+
             //////////////////////////////////
             //----VALIDAR SI ESTÁ BLOQUEADO
             //////////////////////////////////
-            con.conectar_base_interno();
-            con.cadena_sql_interno = " ";
-            con.cadena_sql_interno = con.cadena_sql_interno + " IF EXISTS ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       ( ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "  SELECT  ZONA";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    FROM BLOQCVE_2 ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   WHERE ESTADO = " + Program.PEstado;
-            con.cadena_sql_interno = con.cadena_sql_interno + "     AND MUNICIPIO = " + Program.municipioN;
-            con.cadena_sql_interno = con.cadena_sql_interno + "     AND ZONA      = " + zona;
-            con.cadena_sql_interno = con.cadena_sql_interno + "     AND MANZANA   = " + manzana;
-            con.cadena_sql_interno = con.cadena_sql_interno + "     AND LOTE      = " + lote;
-            con.cadena_sql_interno = con.cadena_sql_interno + "     AND EDIFICIO  = '" + edificio + "'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "     AND DEPTO     = '" + depto + "'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    )";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    BEGIN ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "     SELECT EXISTE = 1 ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    END  ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "     ELSE  ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       BEGIN ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "          SELECT EXISTE = 0 ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "     END  ";
-            con.open_c_interno();
-            con.cadena_sql_cmd_interno();
-            con.leer_interno = con.cmd_interno.ExecuteReader();
-
-            while (con.leer_interno.Read())
+            try
             {
-                existeBloqueo = Convert.ToInt32(con.leer_interno[0].ToString());
+                con.conectar_base_interno();
+                con.cadena_sql_interno = " ";
+                con.cadena_sql_interno = con.cadena_sql_interno + " IF EXISTS ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       ( ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "  SELECT  ZONA";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    FROM BLOQCVE_2 ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   WHERE ESTADO = " + Program.PEstado;
+                con.cadena_sql_interno = con.cadena_sql_interno + "     AND MUNICIPIO = " + Program.municipioN;
+                con.cadena_sql_interno = con.cadena_sql_interno + "     AND ZONA      = " + zona;
+                con.cadena_sql_interno = con.cadena_sql_interno + "     AND MANZANA   = " + manzana;
+                con.cadena_sql_interno = con.cadena_sql_interno + "     AND LOTE      = " + lote;
+                con.cadena_sql_interno = con.cadena_sql_interno + "     AND EDIFICIO  = '" + edificio + "'";
+                con.cadena_sql_interno = con.cadena_sql_interno + "     AND DEPTO     = '" + depto + "'";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    )";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    BEGIN ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "     SELECT EXISTE = 1 ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    END  ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "     ELSE  ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       BEGIN ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "          SELECT EXISTE = 0 ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "     END  ";
+                con.open_c_interno();
+                con.cadena_sql_cmd_interno();
+                con.leer_interno = con.cmd_interno.ExecuteReader();
+
+                while (con.leer_interno.Read())
+                {
+                    existeBloqueo = Convert.ToInt32(con.leer_interno[0].ToString());
+                }
+                //cerrar la conexión
+                con.cerrar_interno();
             }
-            //cerrar la conexión
-            con.cerrar_interno();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ejecutar la consulta: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                return; // Retornar false si ocurre un error
+            }
+
 
             //////////////////////
             //----VALIDAR SI EXISTE EN CARTOGRAFÍA 
             ///////////////////
 
-
-            if (existeBloqueo == 0)
+            try
             {
-                con.conectar_base_interno();
-                con.cadena_sql_interno = " ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "    IF EXISTS (SELECT ZONA ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "  FROM CAT_NEW_CARTOGRAFIA_2025 ";
-                con.cadena_sql_interno = con.cadena_sql_interno + " WHERE ESTADO = " + Program.PEstado;
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND MUNICIPIO = " + Program.municipioN;
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND ZONA      = " + zona;
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND MANZANA   = " + manzana;
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND LOTE      = " + lote;
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND EDIFICIO  = '" + edificio + "'";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND DEPTO     = '" + depto + "'";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND FOLIO_ORIGEN = " + folio_catastro;
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND TAMAÑO = 'U'";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND SERIE     = '" + Program.serie + "'";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND UBICACION IN (3, 5) ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   )";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   BEGIN ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "    SELECT EXISTE = 1 ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   END  ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "    ELSE  ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "      BEGIN ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "          SELECT EXISTE = 2 ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "    END  ";
-
-                con.open_c_interno();
-                con.cadena_sql_cmd_interno();
-                con.leer_interno = con.cmd_interno.ExecuteReader();
-
-                while (con.leer_interno.Read())
+                if (existeBloqueo == 0)
                 {
-                    existeCart = Convert.ToInt32(con.leer_interno[0].ToString());
+                    con.conectar_base_interno();
+                    con.cadena_sql_interno = " ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    IF EXISTS (SELECT ZONA ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "  FROM CAT_NEW_CARTOGRAFIA_2025 ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + " WHERE ESTADO = " + Program.PEstado;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND MUNICIPIO = " + Program.municipioN;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND ZONA      = " + zona;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND MANZANA   = " + manzana;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND LOTE      = " + lote;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND EDIFICIO  = '" + edificio + "'";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND DEPTO     = '" + depto + "'";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND FOLIO_ORIGEN = " + folio_catastro;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND TAMAÑO = 'U'";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND SERIE     = '" + Program.serie + "'";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND UBICACION IN (3, 5) ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   )";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   BEGIN ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    SELECT EXISTE = 1 ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   END  ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    ELSE  ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "      BEGIN ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "          SELECT EXISTE = 2 ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    END  ";
+
+                    con.open_c_interno();
+                    con.cadena_sql_cmd_interno();
+                    con.leer_interno = con.cmd_interno.ExecuteReader();
+
+                    while (con.leer_interno.Read())
+                    {
+                        existeCart = Convert.ToInt32(con.leer_interno[0].ToString());
+                    }
+
+                    //cerrar la conexión
+                    con.cerrar_interno();
                 }
-
-                //cerrar la conexión
-                con.cerrar_interno();
+                else
+                {
+                    MessageBox.Show("LA CLAVE CATASTRAL SE ENCUENTRA BLOQUEADA POR EL DEPARTAMENTO DE CATASTRO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("LA CLAVE CATASTRAL SE ENCUENTRA BLOQUEADA POR EL DEPARTAMENTO DE CATASTRO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                MessageBox.Show("Error al ejecutar la consulta: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                return; // Retornar false si ocurre un error
             }
-
 
             //////////////////////
             //----VALIDAR SI EXISTE EN CARTOGRAFÍA Y EN VENTANILLA
             ///////////////////
-            if (existeCart == 1)
+            try
             {
-                con.conectar_base_interno();
-                con.cadena_sql_interno = " ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "    IF EXISTS ( ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "SELECT ZONA ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "  FROM CAT_NEW_CARTOGRAFIA_2025 CN, CAT_DONDE_VA_2025 CD ";
-                con.cadena_sql_interno = con.cadena_sql_interno + " WHERE cn.ESTADO = " + Program.PEstado;
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND cn.MUNICIPIO = " + Program.municipioN;
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.ZONA      = " + zona;
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.MANZANA   = " + manzana;
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.LOTE      = " + lote;
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.EDIFICIO  = '" + edificio + "'";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.DEPTO     = '" + depto + "'";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.FOLIO_ORIGEN = " + folio_catastro;
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.TAMAÑO = 'U'";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.SERIE     = '" + Program.serie + "'";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.UBICACION IN (3, 5) ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND CD.VENTANILLA = 1";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.SERIE = CD.SERIE";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.FOLIO_ORIGEN = CD.FOLIO_ORIGEN";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   )";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   BEGIN ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "    SELECT EXISTE = 1 ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   END  ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "    ELSE  ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "     BEGIN ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "         SELECT EXISTE = 2 ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "    END  ";
-
-                con.open_c_interno();
-                con.cadena_sql_cmd_interno();
-                con.leer_interno = con.cmd_interno.ExecuteReader();
-
-                while (con.leer_interno.Read())
+                if (existeCart == 1)
                 {
-                    existeAmbas = Convert.ToInt32(con.leer_interno[0].ToString());
+                    con.conectar_base_interno();
+                    con.cadena_sql_interno = " ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    IF EXISTS ( ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "SELECT ZONA ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "  FROM CAT_NEW_CARTOGRAFIA_2025 CN, CAT_DONDE_VA_2025 CD ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + " WHERE cn.ESTADO = " + Program.PEstado;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND cn.MUNICIPIO = " + Program.municipioN;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.ZONA      = " + zona;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.MANZANA   = " + manzana;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.LOTE      = " + lote;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.EDIFICIO  = '" + edificio + "'";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.DEPTO     = '" + depto + "'";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.FOLIO_ORIGEN = " + folio_catastro;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.TAMAÑO = 'U'";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.SERIE     = '" + Program.serie + "'";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.UBICACION IN (3, 5) ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND CD.VENTANILLA = 1";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.SERIE = CD.SERIE";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND CN.FOLIO_ORIGEN = CD.FOLIO_ORIGEN";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   )";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   BEGIN ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    SELECT EXISTE = 1 ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   END  ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    ELSE  ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "     BEGIN ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "         SELECT EXISTE = 2 ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    END  ";
+
+                    con.open_c_interno();
+                    con.cadena_sql_cmd_interno();
+                    con.leer_interno = con.cmd_interno.ExecuteReader();
+
+                    while (con.leer_interno.Read())
+                    {
+                        existeAmbas = Convert.ToInt32(con.leer_interno[0].ToString());
+                    }
+                    //cerrar
+                    con.cerrar_interno();
                 }
-                //cerrar
-                con.cerrar_interno();
+                else
+                {
+                    MessageBox.Show("NO EXISTE EL FOLIO", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    limpiartodo();
+                    inicio(); //DUDA SI DEJAMOS ESTA CAJA AQUÍ PARA VER 
+                    return;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("NO EXISTE EL FOLIO", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                limpiartodo();
-                inicio(); //DUDA SI DEJAMOS ESTA CAJA AQUÍ PARA VER 
-                return;
+                MessageBox.Show("ERROR AL EJECUTAR LA CONSULTA, COMUNICATE CON SONGUI: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                return; // Retornar false si ocurre un error
             }
             /////////////////////////////////////////////////////////////////
             //---------------------------------VALIDAR SI YA EXISTE EL PAGOS
             /////////////////////////////////////////////////////////////////
-            if (existeAmbas == 1)
+            try
             {
-
-                con.conectar_base_interno();
-                con.cadena_sql_interno = " ";
-                con.cadena_sql_interno = con.cadena_sql_interno + " IF EXISTS ";
-                con.cadena_sql_interno = con.cadena_sql_interno + " ( ";
-                con.cadena_sql_interno = con.cadena_sql_interno + " SELECT ZONA";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   FROM TRES_EN_UNO_2025";
-                con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE ESTADO = " + Program.PEstado;
-                con.cadena_sql_interno = con.cadena_sql_interno + "    AND MUNICIPIO = " +Program.municipioN;
-                con.cadena_sql_interno = con.cadena_sql_interno + "    AND ZONA      = " + zona;
-                con.cadena_sql_interno = con.cadena_sql_interno + "    AND MANZANA   = " + manzana;
-                con.cadena_sql_interno = con.cadena_sql_interno + "    AND LOTE      = " + lote;
-                con.cadena_sql_interno = con.cadena_sql_interno + "    AND EDIFICIO  = '" + edificio + "'";
-                con.cadena_sql_interno = con.cadena_sql_interno + "    AND DEPTO     = '" + depto + "'";
-                con.cadena_sql_interno = con.cadena_sql_interno + "    AND FOLIO = " + folio_catastro;
-                con.cadena_sql_interno = con.cadena_sql_interno + "    AND STATUS_CATASTRO_PAGO = 1";
-                con.cadena_sql_interno = con.cadena_sql_interno + "  )";
-                con.cadena_sql_interno = con.cadena_sql_interno + "  BEGIN ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   SELECT PAGO = 1";
-                con.cadena_sql_interno = con.cadena_sql_interno + "  END ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   ELSE ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "    BEGIN ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "     SELECT PAGO = 0";
-                con.cadena_sql_interno = con.cadena_sql_interno + "    END";
-
-                con.open_c_interno();
-                con.cadena_sql_cmd_interno();
-                con.leer_interno = con.cmd_interno.ExecuteReader();
-                while (con.leer_interno.Read())
+                if (existeAmbas == 1)
                 {
-                    existePago = Convert.ToInt32(con.leer_interno[0].ToString());
-                }
+                    con.conectar_base_interno();
+                    con.cadena_sql_interno = " ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + " IF EXISTS ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + " ( ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + " SELECT ZONA";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   FROM TRES_EN_UNO_2025";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE ESTADO = " + Program.PEstado;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    AND MUNICIPIO = " + Program.municipioN;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    AND ZONA      = " + zona;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    AND MANZANA   = " + manzana;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    AND LOTE      = " + lote;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    AND EDIFICIO  = '" + edificio + "'";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    AND DEPTO     = '" + depto + "'";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    AND FOLIO = " + folio_catastro;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    AND STATUS_CATASTRO_PAGO = 1";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "  )";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "  BEGIN ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   SELECT PAGO = 1";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "  END ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   ELSE ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    BEGIN ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "     SELECT PAGO = 0";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    END";
 
-                //cerrar
-                con.cerrar_interno();
+                    con.open_c_interno();
+                    con.cadena_sql_cmd_interno();
+                    con.leer_interno = con.cmd_interno.ExecuteReader();
+                    while (con.leer_interno.Read())
+                    {
+                        existePago = Convert.ToInt32(con.leer_interno[0].ToString());
+                    }
+
+                    //cerrar
+                    con.cerrar_interno();
+                }
+                else
+                {
+                    MessageBox.Show("EL FOLIO NO ESTÁ AUTORIZADO POR VENTANILLA", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    limpiartodo();
+                    inicio();
+                    return;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("EL FOLIO NO ESTÁ AUTORIZADO POR VENTANILLA", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                limpiartodo();
-                inicio();
-                return;
+                MessageBox.Show("Error al ejecutar la consulta: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                return; // Retornar false si ocurre un error
             }
             //////////////////////////////////////////////////////////////////////////////////////
             //////----EN CASO DE NO TENER EL PAGO, GENERAR LA CONSULTA AL PROCEDIMIENTO ALMACENADO 
             //////////////////////////////////////////////////////////////////////////////////////
-                        
-            if (existePago == 0) //no existe el pago  
+            try
             {
-                con.conectar_base_interno();
-                con.open_c_interno();
-                ////cambiar por el otro procedimiento almacenado 
-                ///
-                SqlCommand cmd = new SqlCommand("N19_CONSULTA_PREDIO", con.cnn_interno); //nombre del procedimiento almacenado que vamos a utilizar
-                cmd.CommandType = CommandType.StoredProcedure; //Se le indica que es un procedimiento almacenado
- 
-                cmd.Parameters.Add("@estado2", SqlDbType.VarChar, 2).Value = 15;
-                cmd.Parameters.Add("@municipio2", SqlDbType.Int, 3).Value = 41;
-                cmd.Parameters.Add("@zona2", SqlDbType.Int, 2).Value = zona;
-                cmd.Parameters.Add("@manzana2", SqlDbType.Int, 3).Value = manzana;
-                cmd.Parameters.Add("@lote2", SqlDbType.Int, 2).Value = lote;
-                cmd.Parameters.Add("@edificio2", SqlDbType.Char, 2).Value = edificio;
-                cmd.Parameters.Add("@depto2", SqlDbType.Char, 4).Value = depto;
-                cmd.Connection = con.cnn_interno;
-                cmd.ExecuteNonQuery();
-                SqlDataReader rdr = cmd.ExecuteReader();
-                while (rdr.Read())
+                if (existePago == 0) //no existe el pago  
                 {
-                    lblTitular.Text = rdr["PMM_PROP"].ToString().Trim();
-                    lblCalle.Text = rdr["Domicilio"].ToString().Trim() + "   N° " + rdr["NUM_INTP"].ToString().Trim() + "   N° Ext " + rdr["NUM_EXT"].ToString().Trim();
-                    lblColonia.Text = rdr["Colonia"].ToString().Trim();
-                    //
-                    if (lblValTerrPriv.Text.Trim() == "") { lblValTerrPriv.Text = "0.0"; }
-                    if (lblValorConsPriv.Text.Trim() == "") { lblValorConsPriv.Text = "0.0"; }
+                    con.conectar_base_interno();
+                    con.open_c_interno();
+                    ////cambiar por el otro procedimiento almacenado 
+                    ///
+                    SqlCommand cmd = new SqlCommand("N19_CONSULTA_PREDIO", con.cnn_interno); //nombre del procedimiento almacenado que vamos a utilizar
+                    cmd.CommandType = CommandType.StoredProcedure; //Se le indica que es un procedimiento almacenado
 
-                    if (lblValTerrCom.Text.Trim() == "") { lblValTerrCom.Text = "0.0"; }
-                    if (lblValConsCom.Text.Trim() == "") { lblValConsCom.Text = "0.0"; }
+                    cmd.Parameters.Add("@estado2", SqlDbType.VarChar, 2).Value = 15;
+                    cmd.Parameters.Add("@municipio2", SqlDbType.Int, 3).Value = 41;
+                    cmd.Parameters.Add("@zona2", SqlDbType.Int, 2).Value = zona;
+                    cmd.Parameters.Add("@manzana2", SqlDbType.Int, 3).Value = manzana;
+                    cmd.Parameters.Add("@lote2", SqlDbType.Int, 2).Value = lote;
+                    cmd.Parameters.Add("@edificio2", SqlDbType.Char, 2).Value = edificio;
+                    cmd.Parameters.Add("@depto2", SqlDbType.Char, 4).Value = depto;
+                    cmd.Connection = con.cnn_interno;
+                    cmd.ExecuteNonQuery();
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        lblTitular.Text = rdr["PMM_PROP"].ToString().Trim();
+                        lblCalle.Text = rdr["Domicilio"].ToString().Trim() + "   N° " + rdr["NUM_INTP"].ToString().Trim() + "   N° Ext " + rdr["NUM_EXT"].ToString().Trim();
+                        lblColonia.Text = rdr["Colonia"].ToString().Trim();
+                        //
+                        if (lblValTerrPriv.Text.Trim() == "") { lblValTerrPriv.Text = "0.0"; }
+                        if (lblValorConsPriv.Text.Trim() == "") { lblValorConsPriv.Text = "0.0"; }
 
-                    if (lblValTotTerr.Text.Trim() == "") { lblValTotTerr.Text = "0.0"; }
-                    if (lblValTotCons.Text.Trim() == "") { lblValTotCons.Text = "0.0"; }
+                        if (lblValTerrCom.Text.Trim() == "") { lblValTerrCom.Text = "0.0"; }
+                        if (lblValConsCom.Text.Trim() == "") { lblValConsCom.Text = "0.0"; }
 
-                    if (lblValTotTerr.Text.Trim() == "") { lblValTotTerr.Text = "0.0"; }
-                    if (lblValTotCons.Text.Trim() == "") { lblValTotCons.Text = "0.0"; }
+                        if (lblValTotTerr.Text.Trim() == "") { lblValTotTerr.Text = "0.0"; }
+                        if (lblValTotCons.Text.Trim() == "") { lblValTotCons.Text = "0.0"; }
 
-                    TERRENO1 = Convert.ToDouble(rdr["SUP_TERR_TOT"].ToString().Trim());
-                    TERRENO2 = Convert.ToDouble(rdr["SUP_TERR_COM"].ToString().Trim());
+                        if (lblValTotTerr.Text.Trim() == "") { lblValTotTerr.Text = "0.0"; }
+                        if (lblValTotCons.Text.Trim() == "") { lblValTotCons.Text = "0.0"; }
 
-                    TERRENO3 = Convert.ToDouble(rdr["VALOR_TERRENO_P"].ToString().Trim());
-                    TERRENO4 = Convert.ToDouble(rdr["VALOR_TERRENO_C"].ToString().Trim());
+                        TERRENO1 = Convert.ToDouble(rdr["SUP_TERR_TOT"].ToString().Trim());
+                        TERRENO2 = Convert.ToDouble(rdr["SUP_TERR_COM"].ToString().Trim());
 
-                    TERRENO5 = TERRENO3 + TERRENO4;
-                    CONSTRUCCION1 = Convert.ToDouble(rdr["SUP_CONS"].ToString().Trim()); //SUP CONS 
-                    CONSTRUCCION2 = Convert.ToDouble(rdr["SUP_CONS_COM"].ToString().Trim()); //SUP CONS COM
-                    CONSTRUCCION3 = Convert.ToDouble(rdr["VALOR_CONSTRUCCION_P"].ToString().Trim()); //VALOR CONS P
-                    CONSTRUCCION4 = Convert.ToDouble(rdr["VALOR_CONSTRUCCION_C"].ToString().Trim()); //VALOR CONS C
-                    CONSTRUCCION5 = CONSTRUCCION3 + CONSTRUCCION4;
+                        TERRENO3 = Convert.ToDouble(rdr["VALOR_TERRENO_P"].ToString().Trim());
+                        TERRENO4 = Convert.ToDouble(rdr["VALOR_TERRENO_C"].ToString().Trim());
 
-                    lblSupTerrPriv.Text = String.Format("{0:#,##0.00}", TERRENO1);
-                    lblSupTerrComun.Text = String.Format("{0:#,##0.00}", TERRENO2);
-                    lblValTerrPriv.Text = String.Format("{0:#,##0.00}", TERRENO3);
-                    lblValTerrCom.Text = String.Format("{0:#,##0.00}", TERRENO4);
-                    lblValTotTerr.Text = String.Format("{0:#,##0.00}", TERRENO5);
+                        TERRENO5 = TERRENO3 + TERRENO4;
+                        CONSTRUCCION1 = Convert.ToDouble(rdr["SUP_CONS"].ToString().Trim()); //SUP CONS 
+                        CONSTRUCCION2 = Convert.ToDouble(rdr["SUP_CONS_COM"].ToString().Trim()); //SUP CONS COM
+                        CONSTRUCCION3 = Convert.ToDouble(rdr["VALOR_CONSTRUCCION_P"].ToString().Trim()); //VALOR CONS P
+                        CONSTRUCCION4 = Convert.ToDouble(rdr["VALOR_CONSTRUCCION_C"].ToString().Trim()); //VALOR CONS C
+                        CONSTRUCCION5 = CONSTRUCCION3 + CONSTRUCCION4;
 
-
-                    lblValTotCons.Text = String.Format("{0:#,##0.00}", CONSTRUCCION5);
-
-
-                    lblSupConsPriv.Text = rdr["SUP_CONS"].ToString().Trim();
-                    lblSupConsCom.Text = rdr["SUP_CONS_COM"].ToString().Trim();
+                        lblSupTerrPriv.Text = String.Format("{0:#,##0.00}", TERRENO1);
+                        lblSupTerrComun.Text = String.Format("{0:#,##0.00}", TERRENO2);
+                        lblValTerrPriv.Text = String.Format("{0:#,##0.00}", TERRENO3);
+                        lblValTerrCom.Text = String.Format("{0:#,##0.00}", TERRENO4);
+                        lblValTotTerr.Text = String.Format("{0:#,##0.00}", TERRENO5);
 
 
-                    lblValorConsPriv.Text = rdr["VALOR_CONSTRUCCION_P"].ToString().Trim();
-                    lblValConsCom.Text = rdr["VALOR_CONSTRUCCION_C"].ToString().Trim();
-
-                    lblSupConsPriv.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblSupConsPriv.Text.Trim()));
-                    lblSupConsCom.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblSupConsCom.Text.Trim()));
+                        lblValTotCons.Text = String.Format("{0:#,##0.00}", CONSTRUCCION5);
 
 
-                    lblValorConsPriv.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblValorConsPriv.Text.Trim()));
-                    lblValConsCom.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblValConsCom.Text.Trim()));
-                    lblValor.Text = rdr["VALOR_CATASTRAL"].ToString().Trim();
-                    lblValor.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblValor.Text.Trim()));
+                        lblSupConsPriv.Text = rdr["SUP_CONS"].ToString().Trim();
+                        lblSupConsCom.Text = rdr["SUP_CONS_COM"].ToString().Trim();
 
-                    lblObservaciones.Text = rdr["C_OBS_PROP"].ToString().Trim().ToUpper();
-                    lblCalle.Text = rdr["DOM_FIS"].ToString().Trim().ToUpper();
-                    txtInfComp.Focus();
-                    
+
+                        lblValorConsPriv.Text = rdr["VALOR_CONSTRUCCION_P"].ToString().Trim();
+                        lblValConsCom.Text = rdr["VALOR_CONSTRUCCION_C"].ToString().Trim();
+
+                        lblSupConsPriv.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblSupConsPriv.Text.Trim()));
+                        lblSupConsCom.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblSupConsCom.Text.Trim()));
+
+
+                        lblValorConsPriv.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblValorConsPriv.Text.Trim()));
+                        lblValConsCom.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblValConsCom.Text.Trim()));
+                        lblValor.Text = rdr["VALOR_CATASTRAL"].ToString().Trim();
+                        lblValor.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblValor.Text.Trim()));
+
+                        lblObservaciones.Text = rdr["C_OBS_PROP"].ToString().Trim().ToUpper();
+                        lblCalle.Text = rdr["DOM_FIS"].ToString().Trim().ToUpper();
+                        txtInfComp.Focus();
+
+                    }
+                    //cerrar la conexión
+
+                    con.cerrar_interno();
+
+                    double valor_terreno_m;
+                    double valor_terreno_comun_m;
+                    double valor_construccion_m;
+                    double valor_COMUN_m;
+
+                    con.conectar_base_interno();
+                    con.open_c_interno();
+                    //OBTENER LOS VALORES CATASTRALES PARA MANDARLOS AL GUARDAR EN LA ÓRDEN DE PAGO 
+                    SqlCommand cmd2 = new SqlCommand("songCalculoValorCat", con.cnn_interno);
+                    cmd2.CommandType = CommandType.StoredProcedure;
+                    cmd2.Parameters.Add("@ESTADO", SqlDbType.Int, 2).Value = 15;
+                    cmd2.Parameters.Add("@MUNICIPIO", SqlDbType.Int, 3).Value = Convert.ToInt32(lblMunicipio.Text.Trim());
+                    cmd2.Parameters.Add("@ZONA", SqlDbType.Int, 2).Value = Convert.ToInt32(txtZona.Text.Trim());
+                    cmd2.Parameters.Add("@MANZANA", SqlDbType.Int, 3).Value = Convert.ToInt32(txtManzana.Text.Trim());
+                    cmd2.Parameters.Add("@LOTE", SqlDbType.Int, 2).Value = Convert.ToInt32(txtLote.Text.Trim());
+                    cmd2.Parameters.Add("@EDIFICIO", SqlDbType.VarChar, 2).Value = txtEdificio.Text.Trim();
+                    cmd2.Parameters.Add("@DEPTO", SqlDbType.VarChar, 4).Value = txtDepto.Text.Trim();
+                    cmd2.Parameters.Add("@AÑO", SqlDbType.Int, 4).Value = Program.añoActual;
+
+                    cmd2.Parameters.Add("@valorTerrenoPropio", SqlDbType.Float, 9).Direction = ParameterDirection.Output;
+                    cmd2.Parameters.Add("@valorTerrenoComun", SqlDbType.Float, 9).Direction = ParameterDirection.Output;
+                    cmd2.Parameters.Add("@valorConstruccion", SqlDbType.Float, 9).Direction = ParameterDirection.Output;
+                    cmd2.Parameters.Add("@valorComun", SqlDbType.Float, 9).Direction = ParameterDirection.Output;
+                    cmd2.Parameters.Add("@valorCatastral", SqlDbType.Float, 9).Direction = ParameterDirection.Output;
+
+                    cmd2.Connection = con.cnn_interno;
+                    cmd2.ExecuteNonQuery();
+
+                    valor_terreno_m = Convert.ToDouble(cmd2.Parameters["@valorTerrenoPropio"].Value);
+                    valor_terreno_comun_m = Convert.ToDouble(cmd2.Parameters["@valorTerrenoComun"].Value);
+                    valor_construccion_m = Convert.ToDouble(cmd2.Parameters["@valorConstruccion"].Value);
+                    valor_COMUN_m = Convert.ToDouble(cmd2.Parameters["@valorComun"].Value);
+
+                    con.cerrar_interno();
+
+                    lblValTerrPriv.Text = valor_terreno_m.ToString("N2");
+                    lblValTerrCom.Text = valor_terreno_comun_m.ToString("N2");
+                    lblValorConsPriv.Text = valor_construccion_m.ToString("N2");
+                    lblValConsCom.Text = valor_COMUN_m.ToString("N2");
+
                 }
-                //cerrar la conexión
-                
-                con.cerrar_interno();
-
-                double valor_terreno_m;
-                double valor_terreno_comun_m;
-                double valor_construccion_m;
-                double valor_COMUN_m;
-
-                con.conectar_base_interno();
-                con.open_c_interno();
-
-                SqlCommand cmd2= new SqlCommand("songCalculoValorCat", con.cnn_interno);
-                cmd2.CommandType = CommandType.StoredProcedure;
-                cmd2.Parameters.Add("@ESTADO", SqlDbType.Int, 2).Value = 15;
-                cmd2.Parameters.Add("@MUNICIPIO", SqlDbType.Int, 3).Value = Convert.ToInt32(lblMunicipio.Text.Trim());
-                cmd2.Parameters.Add("@ZONA", SqlDbType.Int, 2).Value = Convert.ToInt32(txtZona.Text.Trim());
-                cmd2.Parameters.Add("@MANZANA", SqlDbType.Int, 3).Value = Convert.ToInt32(txtManzana.Text.Trim());
-                cmd2.Parameters.Add("@LOTE", SqlDbType.Int, 2).Value = Convert.ToInt32(txtLote.Text.Trim());
-                cmd2.Parameters.Add("@EDIFICIO", SqlDbType.VarChar, 2).Value = txtEdificio.Text.Trim();
-                cmd2.Parameters.Add("@DEPTO", SqlDbType.VarChar, 4).Value = txtDepto.Text.Trim();
-                cmd2.Parameters.Add("@AÑO", SqlDbType.Int, 4).Value = Program.añoActual;
-
-                cmd2.Parameters.Add("@valorTerrenoPropio", SqlDbType.Float, 9).Direction = ParameterDirection.Output;
-                cmd2.Parameters.Add("@valorTerrenoComun", SqlDbType.Float, 9).Direction = ParameterDirection.Output;
-                cmd2.Parameters.Add("@valorConstruccion", SqlDbType.Float, 9).Direction = ParameterDirection.Output;
-                cmd2.Parameters.Add("@valorComun", SqlDbType.Float, 9).Direction = ParameterDirection.Output;
-                cmd2.Parameters.Add("@valorCatastral", SqlDbType.Float, 9).Direction = ParameterDirection.Output;
-
-                cmd2.Connection = con.cnn_interno;
-                cmd2.ExecuteNonQuery();
-
-                valor_terreno_m = Convert.ToDouble(cmd2.Parameters["@valorTerrenoPropio"].Value);
-                valor_terreno_comun_m = Convert.ToDouble(cmd2.Parameters["@valorTerrenoComun"].Value);
-                valor_construccion_m = Convert.ToDouble(cmd2.Parameters["@valorConstruccion"].Value);
-                valor_COMUN_m = Convert.ToDouble(cmd2.Parameters["@valorComun"].Value);
-
-                con.cerrar_interno();
-
-                lblValTerrPriv.Text = valor_terreno_m.ToString("N2");
-                lblValTerrCom.Text = valor_terreno_comun_m.ToString("N2");
-                lblValorConsPriv.Text = valor_construccion_m.ToString("N2");
-                lblValConsCom.Text = valor_COMUN_m.ToString("N2");
-
-
+                else
+                {
+                    //CERRAR CONEXIÓON
+                    con.cerrar_interno();
+                    MessageBox.Show("YA ESTÁ GENERADO PREVIAMENTE EL PROCESO", "¡INFORMACIÓN!");
+                    limpiartodo();
+                    inicio();
+                    return;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                //CERRAR CONEXIÓON
+                MessageBox.Show("Error al ejecutar la consulta: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
                 con.cerrar_interno();
-                MessageBox.Show("YA ESTÁ GENERADO PREVIAMENTE EL PROCESO", "¡INFORMACIÓN!");
-                limpiartodo();
-                inicio();
-                return;
+                return; // Retornar false si ocurre un error
             }
+
             txtZona.Enabled = false;
             txtManzana.Enabled = false;
             txtLote.Enabled = false;
@@ -1206,9 +1258,9 @@ namespace SMAIngresos.Catastro
             //}
         }
 
-            //limpiartodo(); return;
-        
-        
+        //limpiartodo(); return;
+
+
         //////////////////////
         //----MÉTODO PARA GUARDAR // GENERAR LOS INSERTS 
         ///////////////////
@@ -1303,8 +1355,9 @@ namespace SMAIngresos.Catastro
                 //    return;
                 //}
             }
-            if( tipo_certi == 8)
+            if (tipo_certi == 8)
             {
+                //sacamos el ultimo año de pago y mes para obtenerlo y guardarlo 
                 con.conectar_base_interno();
                 con.cadena_sql_interno = "";
                 con.cadena_sql_interno = con.cadena_sql_interno + "  SELECT UltAnioPag, UltMesPag ";
@@ -1319,12 +1372,11 @@ namespace SMAIngresos.Catastro
                 con.cadena_sql_cmd_interno();
                 con.open_c_interno();
                 con.leer_interno = con.cmd_interno.ExecuteReader();
-                
+
                 while (con.leer_interno.Read())
                 {
                     AÑO_PAGO = Convert.ToInt32(con.leer_interno[0].ToString().Trim());
                     PAGO_PREDIAL = Convert.ToInt32(con.leer_interno[1].ToString().Trim()); //variable de hugo 
-                   
                 }
 
                 //cerrar la conexión
@@ -1368,7 +1420,7 @@ namespace SMAIngresos.Catastro
                 {
                     validacionPago = 0;
                 }
-                if(validacionPago != 1)
+                if (validacionPago != 1)
                 {
                     MessageBox.Show("NO SE PUEDE IMPRIMIR LA ÓRDEN DE PAGO DEL CERTIFICADO 3 EN 1, DEBIDO A QUE EL PAGO PREDIAL NO SE ENCUENTRA AL CORRIENTE ", "¡INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -1377,7 +1429,7 @@ namespace SMAIngresos.Catastro
                 {
                     con.conectar_base_interno();
                     con.cadena_sql_interno = "";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "  SELECT serie, folio ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "  SELECT top 1 serie, folio ";
                     con.cadena_sql_interno = con.cadena_sql_interno + "    FROM RECIBOS";
                     con.cadena_sql_interno = con.cadena_sql_interno + "   WHERE Municipio = " + Program.municipioN;
                     con.cadena_sql_interno = con.cadena_sql_interno + "     AND zona = " + zona;
@@ -1388,9 +1440,9 @@ namespace SMAIngresos.Catastro
                     con.cadena_sql_interno = con.cadena_sql_interno + "     AND Serie = " + util.scm(Program.serie);
                     con.cadena_sql_interno = con.cadena_sql_interno + "     AND UltAnioPag = " + AÑO_PAGO;
                     con.cadena_sql_interno = con.cadena_sql_interno + "     AND UltMesPag = " + PAGO_PREDIAL;
-                    con.cadena_sql_interno = con.cadena_sql_interno + "     AND Suerte IN('impuesto predial.', 'IMPUESTO PREDIAL')" ;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "     AND Suerte IN('impuesto predial.', 'IMPUESTO PREDIAL')";
                     con.cadena_sql_interno = con.cadena_sql_interno + "     AND Status IN('A', 'E')";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "     ORDER BY nNoRecib DESC " ;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "     ORDER BY nNoRecib DESC ";
 
                     con.cadena_sql_cmd_interno();
                     con.open_c_interno();
@@ -1400,12 +1452,11 @@ namespace SMAIngresos.Catastro
                     {
                         SERIEFACTURA = con.leer_interno[0].ToString().Trim();
                         FOLIO_FACTURA = Convert.ToInt32(con.leer_interno[1].ToString().Trim()); //variable de hugo 
-
                     }
 
                     //cerrar la conexión
                     con.cerrar_interno();
-                    
+
                 }
             }
             //VALIDAMOS QUE NO SE MANDEN DATOS VACÍOS
@@ -1448,7 +1499,6 @@ namespace SMAIngresos.Catastro
                     ultimoFolio = Convert.ToInt32(con.leer_interno[0].ToString().Trim());
                 }
             }
-
             //CERRAR CADENA
             con.cerrar_interno();
 
@@ -1644,174 +1694,173 @@ namespace SMAIngresos.Catastro
                 //CERRAR CONEXIÓN
                 con.cerrar_interno();
             }
-           
-                
-                    //CONVERTIMOS LOS VALORES A DOUBLE PARA FORMATEARLOS
-                    double supterr = Convert.ToDouble(lblSupTerrPriv.Text);
-                    lblSupTerrPriv.Text = supterr.ToString("###,###,###,##0.##");
-
-                    double supterrcom = Convert.ToDouble(lblSupTerrComun.Text);
-                    lblSupTerrComun.Text = supterrcom.ToString("###,###,###,##0.##"); //bien 
-
-                    double supconspriv = Convert.ToDouble(lblSupConsPriv.Text);
-                    lblSupConsPriv.Text = supconspriv.ToString("###,###,###,##0.##");
-
-                    double supconscom = Convert.ToDouble(lblSupConsCom.Text);
-                    lblSupConsCom.Text = supconscom.ToString("###,###,###,##0.##"); //bien 
-
-                    double valtotterr = Convert.ToDouble(lblValTotTerr.Text);
-                    lblValTotTerr.Text = valtotterr.ToString("###,###,###,##0.##");
-
-                    double valterrcom = Convert.ToDouble(lblValTerrCom.Text);
-                    lblValTerrCom.Text = valterrcom.ToString("###,###,###,##0.##");
-
-                    double valcoscom = Convert.ToDouble(lblValConsCom.Text);
-                    lblValConsCom.Text = valcoscom.ToString("###,###,###,##0.##"); //bien
-
-                    double valtotcons = Convert.ToDouble(lblValTotCons.Text);
-                    lblValTotCons.Text = valtotcons.ToString("###,###,###,##0.##"); //valor catastral 
-
-                    double valorcatastral = Convert.ToDouble(lblValor.Text);
-                    lblValor.Text = valorcatastral.ToString("###,###,###,##0.##"); //valor catastral
 
 
-                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    //------------------------------------- GENERAMOS LA CONSULTA PARA OBTENER EL ÚLTIMO MES Y AÑO DEL PAGO 
-                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //CONVERTIMOS LOS VALORES A DOUBLE PARA FORMATEARLOS
+            double supterr = Convert.ToDouble(lblSupTerrPriv.Text);
+            lblSupTerrPriv.Text = supterr.ToString("###,###,###,##0.##");
+
+            double supterrcom = Convert.ToDouble(lblSupTerrComun.Text);
+            lblSupTerrComun.Text = supterrcom.ToString("###,###,###,##0.##"); //bien 
+
+            double supconspriv = Convert.ToDouble(lblSupConsPriv.Text);
+            lblSupConsPriv.Text = supconspriv.ToString("###,###,###,##0.##");
+
+            double supconscom = Convert.ToDouble(lblSupConsCom.Text);
+            lblSupConsCom.Text = supconscom.ToString("###,###,###,##0.##"); //bien 
+
+            double valtotterr = Convert.ToDouble(lblValTotTerr.Text);
+            lblValTotTerr.Text = valtotterr.ToString("###,###,###,##0.##");
+
+            double valterrcom = Convert.ToDouble(lblValTerrCom.Text);
+            lblValTerrCom.Text = valterrcom.ToString("###,###,###,##0.##");
+
+            double valcoscom = Convert.ToDouble(lblValConsCom.Text);
+            lblValConsCom.Text = valcoscom.ToString("###,###,###,##0.##"); //bien
+
+            double valtotcons = Convert.ToDouble(lblValTotCons.Text);
+            lblValTotCons.Text = valtotcons.ToString("###,###,###,##0.##"); //valor catastral 
+
+            double valorcatastral = Convert.ToDouble(lblValor.Text);
+            lblValor.Text = valorcatastral.ToString("###,###,###,##0.##"); //valor catastral
+
+
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //------------------------------------- GENERAMOS LA CONSULTA PARA OBTENER EL ÚLTIMO MES Y AÑO DEL PAGO 
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
-                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    //------------------------------------- GENERAMOS EL INSERT EN LA TABLA DE 3 EN 1 2025, SERIE, FOLIO DE LA ÓRDEN
-                    ///////////////////////////////////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //------------------------------------- GENERAMOS EL INSERT EN LA TABLA DE 3 EN 1 2025, SERIE, FOLIO DE LA ÓRDEN
+            ///////////////////////////////////////////////////////////////////////////////////////////
 
 
-                    con.conectar_base_interno();
-                    con.cadena_sql_interno = "";
-                    con.cadena_sql_interno = con.cadena_sql_interno += "    INSERT INTO TRES_EN_UNO_2025";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    (";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    Fecha_alta,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    FOLIO,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    estado,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    municipio,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    zona,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    manzana,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    lote,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    edificio,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    depto,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    año,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    nombre_contri,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    domicilio_fis,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    colonia,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    descripcion_colonia,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    estado2,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    municipio2,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    zona2,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    manzana2,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    lote2,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    edificio2,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    depto2,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    tp,"; //terreno 1 
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    tc,"; //terreno 2
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    cp,"; //txt 
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    cc,"; //txt
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    valor_terreno,"; //terreno 3 
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    valor_terreno_comun,"; //terreno 4
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    valor_construccion,"; //txt_cons 4
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    valor_comun,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    observaciones,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    status_catastro,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    status_catastro_pago,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    año_predial,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    pago_predial,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    status_predio,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    status_aportacion,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    tipo_certificacion,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    clave_catastral,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    valor_clave_catastral,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    ID,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    SERIE, ";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    Serie_Orden,"; //DATOS QUE HUGO AGREGÓ 
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    Folio_Orden,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    mes_predial,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    seriePago,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    folioPago";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    )";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    Values";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    (";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    '" + fechaHoraSql + "' ,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    " + txtFolioCatastro.Text.ToString() + " ,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    15,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    41,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    " + Convert.ToInt32(txtZona.Text.ToString().Trim()) + " ,"; //
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    " + Convert.ToInt32(txtManzana.Text.ToString().Trim()) + " ,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    " + Convert.ToInt32(txtLote.Text.ToString().Trim()) + " ,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    '" + txtEdificio.Text.Trim() + "' ,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    '" + txtDepto.Text.Trim() + "' ,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    2025,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    '" + lblTitular.Text.Trim() + "' ,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    '" + lblCalle.Text.Trim() + "' ,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    0,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    '" + lblColonia.Text.Trim() + "' ,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    15,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    41,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    " + Convert.ToInt32(txtZona.Text.ToString().Trim()) + " ,"; //
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    " + Convert.ToInt32(txtManzana.Text.ToString().Trim()) + " ,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    " + Convert.ToInt32(txtLote.Text.ToString().Trim()) + " ,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    '" + txtEdificio.Text.Trim() + "' ,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    '" + txtDepto.Text.Trim() + "' ,";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    " + supterr + " ,"; //tp                                                                            
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    " + supterrcom + " ,"; //tc
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    " + supconspriv + " ,";//cp                     
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    " + supconscom + " ,"; //cc
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    " + valtotterr + " ,"; //valor terreno h
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    " + valterrcom + " ,"; //valor terreno comun i
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    " + valtotcons + " ,"; //valor cons j 
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    " + valcoscom + " ,";  //valor cons ,M
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    '" + txtInfComp.Text.ToString() + "' ,"; //observaciones
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    0,"; //status catastro
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    1,"; //status catastro pago
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    " + AÑO_PAGO + ","; //AÑO PREDIAL 
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    0,"; //pago predial 
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    0,"; //status predio
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    0, "; //status aportación
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    " + tipo_certi + " ,"; //tipo del traslado (5, 2, 6, 8) según sea el caso 
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    '" + clave_catastral + "' ,"; //observaciones
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    '" + valorcatastral + "' ,"; //observaciones
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    0,"; //ID
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    '" + cbo_serie.Text.Trim() + "', ";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    '" + Program.serieOrdenPago.ToString().Trim() + "', ";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    '" + ultimoFolio + "', "; //observaciones
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    " + PAGO_PREDIAL + ",";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    '" + SERIEFACTURA + "', "; // SERIE FACTURA 
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    " + FOLIO_FACTURA + ""; //observaciones
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    )";
-                    //falta agregar lo que dice hugo    
-                    con.cadena_sql_cmd_interno();
-                    con.open_c_interno();
-                    con.leer_interno = con.cmd_interno.ExecuteReader();
+            con.conectar_base_interno();
+            con.cadena_sql_interno = "";
+            con.cadena_sql_interno = con.cadena_sql_interno += "    INSERT INTO TRES_EN_UNO_2025";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    (";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    Fecha_alta,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    FOLIO,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    estado,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    municipio,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    zona,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    manzana,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    lote,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    edificio,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    depto,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    año,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    nombre_contri,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    domicilio_fis,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    colonia,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    descripcion_colonia,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    estado2,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    municipio2,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    zona2,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    manzana2,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    lote2,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    edificio2,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    depto2,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    tp,"; //terreno 1 
+            con.cadena_sql_interno = con.cadena_sql_interno + "    tc,"; //terreno 2
+            con.cadena_sql_interno = con.cadena_sql_interno + "    cp,"; //txt 
+            con.cadena_sql_interno = con.cadena_sql_interno + "    cc,"; //txt
+            con.cadena_sql_interno = con.cadena_sql_interno + "    valor_terreno,"; //terreno 3 
+            con.cadena_sql_interno = con.cadena_sql_interno + "    valor_terreno_comun,"; //terreno 4
+            con.cadena_sql_interno = con.cadena_sql_interno + "    valor_construccion,"; //txt_cons 4
+            con.cadena_sql_interno = con.cadena_sql_interno + "    valor_comun,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    observaciones,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    status_catastro,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    status_catastro_pago,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    año_predial,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    pago_predial,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    status_predio,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    status_aportacion,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    tipo_certificacion,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    clave_catastral,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    valor_clave_catastral,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    ID,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    SERIE, ";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    Serie_Orden,"; //DATOS QUE HUGO AGREGÓ 
+            con.cadena_sql_interno = con.cadena_sql_interno + "    Folio_Orden,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    mes_predial,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    seriePago,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    folioPago";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    )";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    Values";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    (";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    '" + fechaHoraSql + "' ,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    " + txtFolioCatastro.Text.ToString() + " ,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    15,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    41,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    " + Convert.ToInt32(txtZona.Text.ToString().Trim()) + " ,"; //
+            con.cadena_sql_interno = con.cadena_sql_interno + "    " + Convert.ToInt32(txtManzana.Text.ToString().Trim()) + " ,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    " + Convert.ToInt32(txtLote.Text.ToString().Trim()) + " ,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    '" + txtEdificio.Text.Trim() + "' ,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    '" + txtDepto.Text.Trim() + "' ,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    2025,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    '" + lblTitular.Text.Trim() + "' ,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    '" + lblCalle.Text.Trim() + "' ,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    0,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    '" + lblColonia.Text.Trim() + "' ,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    15,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    41,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    " + Convert.ToInt32(txtZona.Text.ToString().Trim()) + " ,"; //
+            con.cadena_sql_interno = con.cadena_sql_interno + "    " + Convert.ToInt32(txtManzana.Text.ToString().Trim()) + " ,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    " + Convert.ToInt32(txtLote.Text.ToString().Trim()) + " ,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    '" + txtEdificio.Text.Trim() + "' ,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    '" + txtDepto.Text.Trim() + "' ,";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    " + supterr + " ,"; //tp                                                                            
+            con.cadena_sql_interno = con.cadena_sql_interno + "    " + supterrcom + " ,"; //tc
+            con.cadena_sql_interno = con.cadena_sql_interno + "    " + supconspriv + " ,";//cp                     
+            con.cadena_sql_interno = con.cadena_sql_interno + "    " + supconscom + " ,"; //cc
+            con.cadena_sql_interno = con.cadena_sql_interno + "    " + valtotterr + " ,"; //valor terreno h
+            con.cadena_sql_interno = con.cadena_sql_interno + "    " + valterrcom + " ,"; //valor terreno comun i
+            con.cadena_sql_interno = con.cadena_sql_interno + "    " + valtotcons + " ,"; //valor cons j 
+            con.cadena_sql_interno = con.cadena_sql_interno + "    " + valcoscom + " ,";  //valor cons ,M
+            con.cadena_sql_interno = con.cadena_sql_interno + "    '" + txtInfComp.Text.ToString() + "' ,"; //observaciones
+            con.cadena_sql_interno = con.cadena_sql_interno + "    0,"; //status catastro
+            con.cadena_sql_interno = con.cadena_sql_interno + "    1,"; //status catastro pago
+            con.cadena_sql_interno = con.cadena_sql_interno + "    " + AÑO_PAGO + ","; //AÑO PREDIAL 
+            con.cadena_sql_interno = con.cadena_sql_interno + "    0,"; //pago predial 
+            con.cadena_sql_interno = con.cadena_sql_interno + "    0,"; //status predio
+            con.cadena_sql_interno = con.cadena_sql_interno + "    0, "; //status aportación
+            con.cadena_sql_interno = con.cadena_sql_interno + "    " + tipo_certi + " ,"; //tipo del traslado (5, 2, 6, 8) según sea el caso 
+            con.cadena_sql_interno = con.cadena_sql_interno + "    '" + clave_catastral + "' ,"; //observaciones
+            con.cadena_sql_interno = con.cadena_sql_interno + "    '" + valorcatastral + "' ,"; //observaciones
+            con.cadena_sql_interno = con.cadena_sql_interno + "    0,"; //ID
+            con.cadena_sql_interno = con.cadena_sql_interno + "    '" + cbo_serie.Text.Trim() + "', ";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    '" + Program.serieOrdenPago.ToString().Trim() + "', ";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    '" + ultimoFolio + "', "; //observaciones
+            con.cadena_sql_interno = con.cadena_sql_interno + "    " + PAGO_PREDIAL + ",";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    '" + SERIEFACTURA + "', "; // SERIE FACTURA 
+            con.cadena_sql_interno = con.cadena_sql_interno + "    " + FOLIO_FACTURA + ""; //observaciones
+            con.cadena_sql_interno = con.cadena_sql_interno + "    )";
+            //falta agregar lo que dice hugo    
+            con.cadena_sql_cmd_interno();
+            con.open_c_interno();
+            con.leer_interno = con.cmd_interno.ExecuteReader();
 
-                    //cerrar la conexión
-                    con.cerrar_interno();
+            //cerrar la conexión
+            con.cerrar_interno();
 
-                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    //--------------------------------------------------- GENERAMOS EL REPORTE DE LA ÓRDEN DE PAGO 
-                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        formaReporte.MostrarOrden mostrarReporteV = new formaReporte.MostrarOrden(); //mostrar orden es el que se utiliza, no reporte 
-                        mostrarReporteV.folioOrden = ultimoFolio;
-                        mostrarReporteV.serieOrden = Program.serieOrdenPago;
-                        //PARAMETROS QUE VOY A MANDAR DESDE AQUÍ PARA LA PANTALLA 
-                        mostrarReporteV.claveCat = clave_catastral;
-                        mostrarReporteV.serieCatastro = cbo_serie.Text.Trim();
-                        mostrarReporteV.folioCat = Convert.ToInt32(txtFolioCatastro.Text.Trim());
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //--------------------------------------------------- GENERAMOS EL REPORTE DE LA ÓRDEN DE PAGO 
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            formaReporte.MostrarOrden mostrarReporteV = new formaReporte.MostrarOrden(); //mostrar orden es el que se utiliza, no reporte 
+            mostrarReporteV.folioOrden = ultimoFolio;
+            mostrarReporteV.serieOrden = Program.serieOrdenPago;
+            //PARAMETROS QUE VOY A MANDAR DESDE AQUÍ PARA LA PANTALLA 
+            mostrarReporteV.claveCat = clave_catastral;
+            mostrarReporteV.serieCatastro = cbo_serie.Text.Trim();
+            mostrarReporteV.folioCat = Convert.ToInt32(txtFolioCatastro.Text.Trim());
 
-                        MessageBox.Show("PROCEDE A IMPRIMIR LA ORDEN DE PAGO", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        mostrarReporteV.ShowDialog();
-                        limpiartodo();
-                
-            
+            MessageBox.Show("PROCEDE A IMPRIMIR LA ORDEN DE PAGO", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            mostrarReporteV.ShowDialog();
+            limpiartodo();
         }
+
         private void chkSioNoRfc_CheckedChanged(object sender, EventArgs e)
         {
             if (chkSioNoRfc.Checked) // Realiza acciones cuando la casilla está marcada

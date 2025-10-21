@@ -238,7 +238,7 @@ namespace SMACatastro.catastroRevision
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR AL EJECUTAR LA CONSULTA " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR AL EJECUTAR LA CONSULTA DE BLOQUEO POR CATASTRO " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 util.CapturarPantallaConInformacion(ex);
                 System.Threading.Thread.Sleep(500);
                 con.cerrar_interno();
@@ -286,7 +286,7 @@ namespace SMACatastro.catastroRevision
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR AL EJECUTAR LA CONSULTA:" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR AL EJECUTAR LA CONSULTA DE BLOQUEO POR TESORERÍA:" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 util.CapturarPantallaConInformacion(ex);
                 System.Threading.Thread.Sleep(500);
                 con.cerrar_interno();
@@ -322,7 +322,7 @@ namespace SMACatastro.catastroRevision
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR AL EJECUTAR LA CONSULTA:" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("ERROR AL EJECUTAR LA CONSULTA DEL HISTORIAL DE CAMBIOS DE NOMBRE:" + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 util.CapturarPantallaConInformacion(ex);
                 System.Threading.Thread.Sleep(500);
                 con.cerrar_interno();
@@ -373,94 +373,105 @@ namespace SMACatastro.catastroRevision
             dgResultado.RowHeadersVisible = false;
 
 
-
-            //////PROCEDIMIENTO ALMACENADO PARA CONSULTAR LA INFORMACIÓN DE LA CLAVE CATASTRAL 
-            con.conectar_base_interno();
-            con.cadena_sql_interno = ""; //Se limpia la cadena de texto para dejarla vacia
-            con.open_c_interno();
-            SqlCommand cmd = new SqlCommand("SONGSP_CONSULTABLOQUEO", con.cnn_interno); //Nombre del procedimiento almacenado que va a utilizar, cuya funcion solo es darnos datos 
-            cmd.CommandType = CommandType.StoredProcedure; //Se le indica al sistema que el comando a utilzar será un procedimiento almacenado 
-            cmd.Parameters.Add("@ESTADO", SqlDbType.Int, 2).Value = Program.PEstado;
-            cmd.Parameters.Add("@MUNICIPIO", SqlDbType.Int, 2).Value = Program.municipioN;
-            cmd.Parameters.Add("@ZONA", SqlDbType.Int, 2).Value = Convert.ToInt32(txtZona.Text.ToString());
-            cmd.Parameters.Add("@MANZANA", SqlDbType.Int, 3).Value = Convert.ToInt32(txtManzana.Text.ToString());
-            cmd.Parameters.Add("@LOTE", SqlDbType.Int, 2).Value = Convert.ToInt32(txtLote.Text.ToString());
-            cmd.Parameters.Add("@EDIFICIO", SqlDbType.Char, 2).Value = txtEdificio.Text.Trim();
-            cmd.Parameters.Add("@DEPTO", SqlDbType.Char, 4).Value = txtDepto.Text.Trim();
-            cmd.Parameters.Add("@COMENTARIO", SqlDbType.VarChar, 100).Value = "";
-            cmd.Parameters.Add("@USUARIO", SqlDbType.VarChar, 30).Value = Program.nombre_usuario;
-            cmd.Parameters.Add("@VALIDACION", SqlDbType.Int, 1).Direction = ParameterDirection.Output;
-            cmd.Connection = con.cnn_interno;
-            cmd.ExecuteNonQuery();
-            SqlDataReader rdr = cmd.ExecuteReader();
-            while (rdr.Read())
+            try
             {
-                string valor = rdr[4].ToString(); //Convertimos la posición 4 del procedimiento almacenado a una cadena de texto 
-                if (valor == string.Empty) //en caso que sea vacio el valor o la cadena esté sin datos 
+                //////PROCEDIMIENTO ALMACENADO PARA CONSULTAR LA INFORMACIÓN DE LA CLAVE CATASTRAL 
+                con.conectar_base_interno();
+                con.cadena_sql_interno = ""; //Se limpia la cadena de texto para dejarla vacia
+                con.open_c_interno();
+                SqlCommand cmd = new SqlCommand("SONGSP_CONSULTABLOQUEO", con.cnn_interno); //Nombre del procedimiento almacenado que va a utilizar, cuya funcion solo es darnos datos 
+                cmd.CommandType = CommandType.StoredProcedure; //Se le indica al sistema que el comando a utilzar será un procedimiento almacenado 
+                cmd.Parameters.Add("@ESTADO", SqlDbType.Int, 2).Value = Program.PEstado;
+                cmd.Parameters.Add("@MUNICIPIO", SqlDbType.Int, 2).Value = Program.municipioN;
+                cmd.Parameters.Add("@ZONA", SqlDbType.Int, 2).Value = Convert.ToInt32(txtZona.Text.ToString());
+                cmd.Parameters.Add("@MANZANA", SqlDbType.Int, 3).Value = Convert.ToInt32(txtManzana.Text.ToString());
+                cmd.Parameters.Add("@LOTE", SqlDbType.Int, 2).Value = Convert.ToInt32(txtLote.Text.ToString());
+                cmd.Parameters.Add("@EDIFICIO", SqlDbType.Char, 2).Value = txtEdificio.Text.Trim();
+                cmd.Parameters.Add("@DEPTO", SqlDbType.Char, 4).Value = txtDepto.Text.Trim();
+                cmd.Parameters.Add("@COMENTARIO", SqlDbType.VarChar, 100).Value = "";
+                cmd.Parameters.Add("@USUARIO", SqlDbType.VarChar, 30).Value = Program.nombre_usuario;
+                cmd.Parameters.Add("@VALIDACION", SqlDbType.Int, 1).Direction = ParameterDirection.Output;
+                cmd.Connection = con.cnn_interno;
+                cmd.ExecuteNonQuery();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
                 {
-                    MessageBox.Show("NO EXISTE INFORMACIÓN CON ESA CLAVE CATASTRAL", "¡INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    con.cerrar_interno();
-                    limpiartodo();
-                    gMapControl1.Visible = false;
-                    btnMaps.Enabled = false;
-                    btnNuevo.Focus();
-                    return;
+                    string valor = rdr[4].ToString(); //Convertimos la posición 4 del procedimiento almacenado a una cadena de texto 
+                    if (valor == string.Empty) //en caso que sea vacio el valor o la cadena esté sin datos 
+                    {
+                        MessageBox.Show("NO EXISTE INFORMACIÓN CON ESA CLAVE CATASTRAL", "¡INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        con.cerrar_interno();
+                        limpiartodo();
+                        gMapControl1.Visible = false;
+                        btnMaps.Enabled = false;
+                        btnNuevo.Focus();
+                        return;
+                    }
+                    //es lo que va a realizar si el valor no es vacío
+                    lblTitular.Text = rdr["PMNPROPT"].ToString().Trim();
+                    lblDomicilio.Text = rdr["DOMFIST"].ToString().Trim().ToUpper();
+                    lblCalle.Text = rdr["NOMCALLET"].ToString().Trim();
+                    lblColonia.Text = rdr["NOMCOLT"].ToString().Trim();
+                    lblUsoDeSuelo.Text = rdr["DESCRUSOT"].ToString().Trim();
+                    lblEntCalle.Text = rdr["ENTCALLET"].ToString().Trim();
+                    lblYCalle.Text = rdr["YCALLET"].ToString().Trim();
+
+                    if (lblValTerrPriv.Text.Trim() == "") { lblValTerrPriv.Text = "0.0"; } //en caso de que sea vacio, que lo ponga en 0 
+                    if (lblValorConsPriv.Text.Trim() == "") { lblValorConsPriv.Text = "0.0"; } //en caso de que sea vacio, lo pone en 0 
+                    if (lblValTerrCom.Text.Trim() == "") { lblValTerrCom.Text = "0.0"; }
+                    if (lblValConsCom.Text.Trim() == "") { lblValConsCom.Text = "0.0"; }
+                    if (lblValTotTerr.Text.Trim() == "") { lblValTotTerr.Text = "0.0"; }
+                    if (lblValTotCons.Text.Trim() == "") { lblValTotCons.Text = "0.0"; }
+                    if (lblValTotTerr.Text.Trim() == "") { lblValTotTerr.Text = "0.0"; }
+                    if (lblValTotCons.Text.Trim() == "") { lblValTotCons.Text = "0.0"; }
+                    if (lblSupConsCom.Text.Trim() == "") { lblSupConsCom.Text = "0.0"; }
+                    if (lblSupConsPriv.Text.Trim() == "") { lblSupConsCom.Text = "0.0"; }
+                    TERRENO1 = Convert.ToDouble(rdr["STERRPROPT"].ToString().Trim());
+                    TERRENO2 = Convert.ToDouble(rdr["STERRCOMT"].ToString().Trim());
+                    TERRENO3 = Convert.ToDouble(rdr["VTERRPROPT"].ToString().Trim());
+                    TERRENO4 = Convert.ToDouble(rdr["VTERRCOMT"].ToString().Trim());
+                    TERRENO5 = TERRENO3 + TERRENO4;
+                    //////
+                    CONSTRUCCION1 = Convert.ToDouble(rdr["SCONSPROPT"].ToString().Trim()); //SUP CONS 
+                    CONSTRUCCION2 = Convert.ToDouble(rdr["SCONSCOMT"].ToString().Trim()); //SUP CONS COM
+                    CONSTRUCCION3 = Convert.ToDouble(rdr["VTERRPROPT"].ToString().Trim()); //VALOR CONS P
+                    CONSTRUCCION4 = Convert.ToDouble(rdr["VCONSPROPT"].ToString().Trim()); //VALOR CONS C
+                    CONSTRUCCION5 = CONSTRUCCION3 + CONSTRUCCION4;
+                    //COMENTARIO 
+                    lblSupTerrPriv.Text = String.Format("{0:#,##0.00}", TERRENO1);
+                    lblSupTerrComun.Text = String.Format("{0:#,##0.00}", TERRENO2);
+                    lblValTerrPriv.Text = String.Format("{0:#,##0.00}", TERRENO3);
+                    lblValTerrCom.Text = String.Format("{0:#,##0.00}", TERRENO4);
+                    lblValTotTerr.Text = String.Format("{0:#,##0.00}", TERRENO5);
+                    lblValTotCons.Text = String.Format("{0:#,##0.00}", CONSTRUCCION5);
+                    lblSupConsPriv.Text = rdr["SCONSPROPT"].ToString().Trim();
+                    lblSupConsCom.Text = rdr["SCONSCOMT"].ToString().Trim();
+                    lblValorConsPriv.Text = rdr["VCONSPROPT"].ToString().Trim();
+                    lblValConsCom.Text = rdr["VCONSCOMT"].ToString().Trim();
+                    lblSupConsPriv.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblSupConsPriv.Text.Trim()));
+                    lblSupConsCom.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblSupConsCom.Text.Trim()));
+                    lblValorConsPriv.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblValorConsPriv.Text.Trim()));
+                    lblValConsCom.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblValConsCom.Text.Trim()));
+                    lblValor.Text = rdr["NVALORFISCT"].ToString().Trim();
+                    lblValor.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblValor.Text.Trim()));
+                    lblObservaciones.Text = rdr["COBSPROP"].ToString().Trim().ToUpper();
+
+                    lbllNombreAnterior.Visible = true;
+                    lbllNombreAnterior.Text = rdr["PMNPROPT"].ToString().Trim().ToUpper();
                 }
-                //es lo que va a realizar si el valor no es vacío
-                lblTitular.Text = rdr["PMNPROPT"].ToString().Trim();
-                lblDomicilio.Text = rdr["DOMFIST"].ToString().Trim().ToUpper();
-                lblCalle.Text = rdr["NOMCALLET"].ToString().Trim();
-                lblColonia.Text = rdr["NOMCOLT"].ToString().Trim();
-                lblUsoDeSuelo.Text = rdr["DESCRUSOT"].ToString().Trim();
-                lblEntCalle.Text = rdr["ENTCALLET"].ToString().Trim();
-                lblYCalle.Text = rdr["YCALLET"].ToString().Trim();
 
-                if (lblValTerrPriv.Text.Trim() == "") { lblValTerrPriv.Text = "0.0"; } //en caso de que sea vacio, que lo ponga en 0 
-                if (lblValorConsPriv.Text.Trim() == "") { lblValorConsPriv.Text = "0.0"; } //en caso de que sea vacio, lo pone en 0 
-                if (lblValTerrCom.Text.Trim() == "") { lblValTerrCom.Text = "0.0"; }
-                if (lblValConsCom.Text.Trim() == "") { lblValConsCom.Text = "0.0"; }
-                if (lblValTotTerr.Text.Trim() == "") { lblValTotTerr.Text = "0.0"; }
-                if (lblValTotCons.Text.Trim() == "") { lblValTotCons.Text = "0.0"; }
-                if (lblValTotTerr.Text.Trim() == "") { lblValTotTerr.Text = "0.0"; }
-                if (lblValTotCons.Text.Trim() == "") { lblValTotCons.Text = "0.0"; }
-                if (lblSupConsCom.Text.Trim() == "") { lblSupConsCom.Text = "0.0"; }
-                if (lblSupConsPriv.Text.Trim() == "") { lblSupConsCom.Text = "0.0"; }
-                TERRENO1 = Convert.ToDouble(rdr["STERRPROPT"].ToString().Trim());
-                TERRENO2 = Convert.ToDouble(rdr["STERRCOMT"].ToString().Trim());
-                TERRENO3 = Convert.ToDouble(rdr["VTERRPROPT"].ToString().Trim());
-                TERRENO4 = Convert.ToDouble(rdr["VTERRCOMT"].ToString().Trim());
-                TERRENO5 = TERRENO3 + TERRENO4;
-                //////
-                CONSTRUCCION1 = Convert.ToDouble(rdr["SCONSPROPT"].ToString().Trim()); //SUP CONS 
-                CONSTRUCCION2 = Convert.ToDouble(rdr["SCONSCOMT"].ToString().Trim()); //SUP CONS COM
-                CONSTRUCCION3 = Convert.ToDouble(rdr["VTERRPROPT"].ToString().Trim()); //VALOR CONS P
-                CONSTRUCCION4 = Convert.ToDouble(rdr["VCONSPROPT"].ToString().Trim()); //VALOR CONS C
-                CONSTRUCCION5 = CONSTRUCCION3 + CONSTRUCCION4;
-                //COMENTARIO 
-                lblSupTerrPriv.Text = String.Format("{0:#,##0.00}", TERRENO1);
-                lblSupTerrComun.Text = String.Format("{0:#,##0.00}", TERRENO2);
-                lblValTerrPriv.Text = String.Format("{0:#,##0.00}", TERRENO3);
-                lblValTerrCom.Text = String.Format("{0:#,##0.00}", TERRENO4);
-                lblValTotTerr.Text = String.Format("{0:#,##0.00}", TERRENO5);
-                lblValTotCons.Text = String.Format("{0:#,##0.00}", CONSTRUCCION5);
-                lblSupConsPriv.Text = rdr["SCONSPROPT"].ToString().Trim();
-                lblSupConsCom.Text = rdr["SCONSCOMT"].ToString().Trim();
-                lblValorConsPriv.Text = rdr["VCONSPROPT"].ToString().Trim();
-                lblValConsCom.Text = rdr["VCONSCOMT"].ToString().Trim();
-                lblSupConsPriv.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblSupConsPriv.Text.Trim()));
-                lblSupConsCom.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblSupConsCom.Text.Trim()));
-                lblValorConsPriv.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblValorConsPriv.Text.Trim()));
-                lblValConsCom.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblValConsCom.Text.Trim()));
-                lblValor.Text = rdr["NVALORFISCT"].ToString().Trim();
-                lblValor.Text = String.Format("{0:#,##0.00}", Convert.ToDouble(lblValor.Text.Trim()));
-                lblObservaciones.Text = rdr["COBSPROP"].ToString().Trim().ToUpper();
-
-                lbllNombreAnterior.Visible = true;
-                lbllNombreAnterior.Text = rdr["PMNPROPT"].ToString().Trim().ToUpper();
+                //CERRAR LA CONEXIÓN 
+                con.cerrar_interno();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al executar el proceso de consulta/bloq" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
             }
 
-            //CERRAR LA CONEXIÓN 
-            con.cerrar_interno();
 
             ///esos label son para las fechas que ponemos de nombre actual a viejo LOS COLORES 
             label5.Visible = true;
@@ -479,30 +490,42 @@ namespace SMACatastro.catastroRevision
             txtEdificio.Enabled = false;
             btnConsulta.Enabled = false;
 
+            try
+            {
+                con.conectar_base_interno();
+                con.cadena_sql_interno = "";
+                con.cadena_sql_interno = con.cadena_sql_interno + "SELECT LATITUD, LONGITUD";
+                con.cadena_sql_interno = con.cadena_sql_interno + "  FROM SONG_GEOLOCALIZACION";
+                con.cadena_sql_interno = con.cadena_sql_interno + " WHERE Zona      = " + Convert.ToInt32(txtZona.Text.Trim());  //Se cocatena la zona que se mande 
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND Manzana   = " + Convert.ToInt32(txtManzana.Text.Trim());  //Se cocatena la manzana que se mande 
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND Lote      = " + Convert.ToInt32(txtLote.Text.Trim());  //Se cocatena el lote que se mande 
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND DEPTO     = '" + txtDepto.Text.Trim() + "'";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND EDIFICIO  = '" + txtEdificio.Text.Trim() + "'";
+                con.cadena_sql_cmd_interno();
+                con.open_c_interno();
+                con.leer_interno = con.cmd_interno.ExecuteReader();
+                while (con.leer_interno.Read())
+                {
+                    if (con.leer_interno[0].ToString().Trim() != "") //SE VALIDA QUE NO ESTÉ VACIO 
+                    {
+                        lblLatitud.Text = con.leer_interno[0].ToString().Trim(); //SE COLOCA LA LATITUD EN SU PROPIO LABEL 
+                        lblLongitud.Text = con.leer_interno[1].ToString().Trim(); //SE COLOCA LA LONGITUD EN SU PROPIO LABEL 
+                    }
+                }
+                ///CERRAR LA CADENA DE LA CONEXIÓN 
+                con.cerrar_interno();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al executar consulta de coords " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
+            }
 
             ///OBTENER LA GEOLOCALIZACIÓN, ES DECIR LATITUD Y LONGITUD DE LA SONG_GEOLOCALIZACIÓN
-            con.conectar_base_interno();
-            con.cadena_sql_interno = "";
-            con.cadena_sql_interno = con.cadena_sql_interno + "SELECT LATITUD, LONGITUD";
-            con.cadena_sql_interno = con.cadena_sql_interno + "  FROM SONG_GEOLOCALIZACION";
-            con.cadena_sql_interno = con.cadena_sql_interno + " WHERE Zona      = " + Convert.ToInt32(txtZona.Text.Trim());  //Se cocatena la zona que se mande 
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND Manzana   = " + Convert.ToInt32(txtManzana.Text.Trim());  //Se cocatena la manzana que se mande 
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND Lote      = " + Convert.ToInt32(txtLote.Text.Trim());  //Se cocatena el lote que se mande 
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND DEPTO     = '" + txtDepto.Text.Trim() + "'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND EDIFICIO  = '" + txtEdificio.Text.Trim() + "'";
-            con.cadena_sql_cmd_interno();
-            con.open_c_interno();
-            con.leer_interno = con.cmd_interno.ExecuteReader();
-            while (con.leer_interno.Read())
-            {
-                if (con.leer_interno[0].ToString().Trim() != "") //SE VALIDA QUE NO ESTÉ VACIO 
-                {
-                    lblLatitud.Text = con.leer_interno[0].ToString().Trim(); //SE COLOCA LA LATITUD EN SU PROPIO LABEL 
-                    lblLongitud.Text = con.leer_interno[1].ToString().Trim(); //SE COLOCA LA LONGITUD EN SU PROPIO LABEL 
-                }
-            }
-            ///CERRAR LA CADENA DE LA CONEXIÓN 
-            con.cerrar_interno();
+
             //EN CASO DE QUE SEA VACIO LA LATITUD Y LA LONGITUD, DESHABILITAMOS EL BOTÓN DE MAPAS Y NO SÉ VE EL MAPA. 
             if (string.IsNullOrWhiteSpace(lblLatitud.Text) || string.IsNullOrWhiteSpace(lblLongitud.Text))
             {
@@ -530,48 +553,60 @@ namespace SMACatastro.catastroRevision
         {
             if (txtNuevoNombre.Text == "") { MessageBox.Show("NO SE PUEDE REALIZAR EL CAMBIO DE NOMBRE SIN TEXTO", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning); txtNuevoNombre.Focus(); return; }
             if (txtNuevoNombre.Text.Length < 5) { MessageBox.Show("NO PUEDE SER TAN CORTO EL NUEVO NOMBRE DE LA CLAVE CATASTRAL", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning); txtNuevoNombre.Focus(); return; }
+            try
+            {
+                ZONA = Convert.ToInt32(txtZona.Text.ToString());
+                MANZANA = Convert.ToInt32(txtManzana.Text.ToString());
+                LOTE = Convert.ToInt32(txtLote.Text.ToString());
+                EDIFICIO = txtEdificio.Text.Trim();
+                DEPTO = txtDepto.Text.Trim();
+                USUARIO = Program.nombre_usuario;
+                OBSERVACION = "CAMBIO NOMBRE"; //SIEMPRE SE MANDA ESTE  DATO , PARA QUE LA OBSERVACION SEA SIEMPRE LA MISMA 
+                con.conectar_base_interno();
+                con.cadena_sql_interno = ""; //Se limpia la cadena de texto para dejarla vacia
+                con.open_c_interno();
+                SqlCommand cmd2 = new SqlCommand("SONGSP_CAMBIODENOMBREPROPIETARIO", con.cnn_interno); //Nombre del procedimiento almacenado que va a utilizar 
+                cmd2.CommandType = CommandType.StoredProcedure; //Se le indica al sistema que el comando a utilzar será un procedimiento almacenado 
+                cmd2.Parameters.Add("@ESTADO", SqlDbType.Int, 2).Value = Program.PEstado;
+                cmd2.Parameters.Add("@MUNICIPIO", SqlDbType.Int, 2).Value = Program.municipioN;
+                cmd2.Parameters.Add("@ZONA", SqlDbType.Int, 2).Value = ZONA;
+                cmd2.Parameters.Add("@MANZANA", SqlDbType.Int, 3).Value = MANZANA;
+                cmd2.Parameters.Add("@LOTE", SqlDbType.Int, 2).Value = LOTE;
+                cmd2.Parameters.Add("@EDIFICIO", SqlDbType.Char, 2).Value = EDIFICIO;
+                cmd2.Parameters.Add("@DEPTO", SqlDbType.Char, 4).Value = DEPTO;
+                cmd2.Parameters.Add("@NOMPROP", SqlDbType.Char, 100).Value = txtNuevoNombre.Text.Trim(); //nombreprop
+                cmd2.Parameters.Add("@OBSERVACION", SqlDbType.NChar, 250).Value = OBSERVACION;
+                cmd2.Parameters.Add("@USUARIO", SqlDbType.VarChar, 30).Value = USUARIO;
+                cmd2.Parameters.Add("@VALIDACION", SqlDbType.Int, 1).Direction = ParameterDirection.Output;
+                cmd2.Connection = con.cnn_interno;
+                cmd2.ExecuteNonQuery();
+                validacionCambio = Convert.ToInt32(cmd2.Parameters["@VALIDACION"].Value);
+                con.cerrar_interno();
+                string clavecatastro = Program.municipioN + "-" + ZONA + "-" + MANZANA + "-" + LOTE + "-" + EDIFICIO + "-" + DEPTO; //OBTENGO LA CLAVE CATASTRAL EN UNA SOLA VARIABLE PARA MOSTRARLA EN EL MESSAGEBOX
+                if (validacionCambio == 1) //en caso de generarse de forma correcta, se realizan las acciones colocadas en el procedimiento  
+                {
+                    MessageBox.Show("SE CAMBIÓ CORRECTAMENTE EL NOMBRE A LA CLAVE CATASTRAL: " + " " + clavecatastro + "", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    limpiartodo();
+                    return;
+                }
+                else ///AL ENTRAR AQUÍ ES PORQUE OCURRIÓ UN ERROR AL CAMBIAR EL NOMBRE
+                {
+                    MessageBox.Show("OCURRIÓ UN ERROR AL CAMBIAR DE NOMBRE EN LA CLAVE CATASTRAL: " + " " + clavecatastro, "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    limpiartodo();
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al executar el proceso de cambio de nombre" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
+            }
 
             //SACAR LOS VALORES Y CONVERTIRLOS 
-            ZONA = Convert.ToInt32(txtZona.Text.ToString());
-            MANZANA = Convert.ToInt32(txtManzana.Text.ToString());
-            LOTE = Convert.ToInt32(txtLote.Text.ToString());
-            EDIFICIO = txtEdificio.Text.Trim();
-            DEPTO = txtDepto.Text.Trim();
-            USUARIO = Program.nombre_usuario;
-            OBSERVACION = "CAMBIO NOMBRE"; //SIEMPRE SE MANDA ESTE  DATO , PARA QUE LA OBSERVACION SEA SIEMPRE LA MISMA 
-            con.conectar_base_interno();
-            con.cadena_sql_interno = ""; //Se limpia la cadena de texto para dejarla vacia
-            con.open_c_interno();
-            SqlCommand cmd2 = new SqlCommand("SONGSP_CAMBIODENOMBREPROPIETARIO", con.cnn_interno); //Nombre del procedimiento almacenado que va a utilizar 
-            cmd2.CommandType = CommandType.StoredProcedure; //Se le indica al sistema que el comando a utilzar será un procedimiento almacenado 
-            cmd2.Parameters.Add("@ESTADO", SqlDbType.Int, 2).Value = Program.PEstado;
-            cmd2.Parameters.Add("@MUNICIPIO", SqlDbType.Int, 2).Value = Program.municipioN;
-            cmd2.Parameters.Add("@ZONA", SqlDbType.Int, 2).Value = ZONA;
-            cmd2.Parameters.Add("@MANZANA", SqlDbType.Int, 3).Value = MANZANA;
-            cmd2.Parameters.Add("@LOTE", SqlDbType.Int, 2).Value = LOTE;
-            cmd2.Parameters.Add("@EDIFICIO", SqlDbType.Char, 2).Value = EDIFICIO;
-            cmd2.Parameters.Add("@DEPTO", SqlDbType.Char, 4).Value = DEPTO;
-            cmd2.Parameters.Add("@NOMPROP", SqlDbType.Char, 100).Value = txtNuevoNombre.Text.Trim(); //nombreprop
-            cmd2.Parameters.Add("@OBSERVACION", SqlDbType.NChar, 250).Value = OBSERVACION;
-            cmd2.Parameters.Add("@USUARIO", SqlDbType.VarChar, 30).Value = USUARIO;
-            cmd2.Parameters.Add("@VALIDACION", SqlDbType.Int, 1).Direction = ParameterDirection.Output;
-            cmd2.Connection = con.cnn_interno;
-            cmd2.ExecuteNonQuery();
-            validacionCambio = Convert.ToInt32(cmd2.Parameters["@VALIDACION"].Value);
-            con.cerrar_interno();
-            string clavecatastro = Program.municipioN + "-" + ZONA + "-" + MANZANA + "-" + LOTE + "-" + EDIFICIO + "-" + DEPTO; //OBTENGO LA CLAVE CATASTRAL EN UNA SOLA VARIABLE PARA MOSTRARLA EN EL MESSAGEBOX
-            if (validacionCambio == 1) //en caso de generarse de forma correcta, se realizan las acciones colocadas en el procedimiento  
-            {
-                MessageBox.Show("SE CAMBIÓ CORRECTAMENTE EL NOMBRE A LA CLAVE CATASTRAL: " + " " + clavecatastro + "", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                limpiartodo();
-                return;
-            }
-            else ///AL ENTRAR AQUÍ ES PORQUE OCURRIÓ UN ERROR AL CAMBIAR EL NOMBRE
-            {
-                MessageBox.Show("OCURRIÓ UN ERROR AL CAMBIAR DE NOMBRE EN LA CLAVE CATASTRAL: " + " " + clavecatastro, "¡ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                limpiartodo();
-                return;
-            }
+          
         }
         ///////////////////////////////////////////////////////
         //COLOCAR EN AMARILLO AL ENTRAR EN LA CAJA DE TEXTO

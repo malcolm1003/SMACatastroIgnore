@@ -253,33 +253,45 @@ namespace SMACatastro.catastroRevision
             if (txtDepto.Text == "") { MessageBox.Show("NECESITAS COLOCAR UN DEPTO", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error); txtDepto.Focus(); return; }
             if (txtDepto.Text.Length < 4) { MessageBox.Show("EL DEPTO NO PUEDE TENER MENOS DE 4 CARACTERES", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information); txtDepto.Focus(); return; }
 
+            try
+            {
+                con.conectar_base_interno();
+                con.cadena_sql_interno = "";
+                con.cadena_sql_interno = con.cadena_sql_interno + "SELECT LATITUD, LONGITUD";
+                con.cadena_sql_interno = con.cadena_sql_interno + "  FROM SONG_GEOLOCALIZACION";
+                con.cadena_sql_interno = con.cadena_sql_interno + " WHERE ESTADO    = " + Program.PEstado;
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND MUNICIPIO = " + Program.municipioN;
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND Zona      = " + Convert.ToInt32(txtZona.Text.Trim());  //Se cocatena la zona que se mande 
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND Manzana   = " + Convert.ToInt32(txtManzana.Text.Trim());  //Se cocatena la manzana que se mande 
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND Lote      = " + Convert.ToInt32(txtLote.Text.Trim());  //Se cocatena el lote que se mande 
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND DEPTO     = '" + txtDepto.Text.Trim() + "'";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND EDIFICIO  = '" + txtEdificio.Text.Trim() + "'";
+                con.cadena_sql_cmd_interno();
+                con.open_c_interno();
+                con.leer_interno = con.cmd_interno.ExecuteReader();
+                while (con.leer_interno.Read())
+                {
+                    if (con.leer_interno[0].ToString().Trim() != "")
+                    {
+                        mlatitud = Convert.ToDouble(con.leer_interno[0].ToString().Trim());
+                        mlongitud = Convert.ToDouble(con.leer_interno[1].ToString().Trim());
+                    }
+                }
+                ///CERRAR CONEXIÓN DE COORDENADAS
+                con.cerrar_interno();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al executar el proceso N19_CALCULO_CATASTRO" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
+            }
             ////////////////////////////////////////////////////////////////////////////////////////////////////////
             //////// OBTENER LAS COORDENADAS / LATITUD / LONGITUD DE LA CLAVE CATASTRAL         
             ////////////////////////////////////////////////////////////////////////////////////////////////////////
-            con.conectar_base_interno();
-            con.cadena_sql_interno = "";
-            con.cadena_sql_interno = con.cadena_sql_interno + "SELECT LATITUD, LONGITUD";
-            con.cadena_sql_interno = con.cadena_sql_interno + "  FROM SONG_GEOLOCALIZACION";
-            con.cadena_sql_interno = con.cadena_sql_interno + " WHERE ESTADO    = " + Program.PEstado;
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND MUNICIPIO = " + Program.municipioN;
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND Zona      = " + Convert.ToInt32(txtZona.Text.Trim());  //Se cocatena la zona que se mande 
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND Manzana   = " + Convert.ToInt32(txtManzana.Text.Trim());  //Se cocatena la manzana que se mande 
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND Lote      = " + Convert.ToInt32(txtLote.Text.Trim());  //Se cocatena el lote que se mande 
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND DEPTO     = '" + txtDepto.Text.Trim() + "'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND EDIFICIO  = '" + txtEdificio.Text.Trim() + "'";
-            con.cadena_sql_cmd_interno();
-            con.open_c_interno();
-            con.leer_interno = con.cmd_interno.ExecuteReader();
-            while (con.leer_interno.Read())
-            {
-                if (con.leer_interno[0].ToString().Trim() != "")
-                {
-                    mlatitud = Convert.ToDouble(con.leer_interno[0].ToString().Trim());
-                    mlongitud = Convert.ToDouble(con.leer_interno[1].ToString().Trim());
-                }
-            }
-            ///CERRAR CONEXIÓN DE COORDENADAS
-            con.cerrar_interno();
+            
             ////////////////////////////////////////////////////////////////////////////////////////////////////////
             ////////LATITUD / LONGITUD DIFERENTE A 0 (ES DECIR, SI TIENE COORDENADAS)
             ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -307,101 +319,25 @@ namespace SMACatastro.catastroRevision
                 gMapControl1.Visible = false;
                 MessageBox.Show("CLAVE CATASTRAL NO CUENTA CON COORDENADAS; RECOMENDAMOS PASAR AL ÁREA DE CARTOGRAFÍA PARA QUE LA COLOQUEN", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            ////////////////////////////////////////////////////////////////////////////////////////////////////////
-            ////////LLENAR INFORMACIÓN DE COLONIAS
-            ////////////////////////////////////////////////////////////////////////////////////////////////////////
-            con.conectar_base_interno();
-            con.cadena_sql_interno = "";
-            con.cadena_sql_interno = con.cadena_sql_interno + "SELECT C.COLONIA, C.NOMCOL";
-            con.cadena_sql_interno = con.cadena_sql_interno + "  FROM PREDIOS P, COLONIAS C";
-            con.cadena_sql_interno = con.cadena_sql_interno + " WHERE P.ESTADO    = " + Program.PEstado;
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND P.MUNICIPIO = " + Program.municipioN;
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND P.Zona      = " + Convert.ToInt32(txtZona.Text.Trim());  //Se cocatena la zona que se mande 
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND P.Manzana   = " + Convert.ToInt32(txtManzana.Text.Trim());  //Se cocatena la manzana que se mande 
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND P.Lote      = " + Convert.ToInt32(txtLote.Text.Trim());  //Se cocatena la manzana que se mande 
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND P.ESTADO    = C.ESTADO";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND P.MUNICIPIO = C.MUNICIPIO";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND P.COLONIA   = C.COLONIA";
-
-            con.cadena_sql_cmd_interno();
-            con.open_c_interno();
-            con.leer_interno = con.cmd_interno.ExecuteReader();
-            while (con.leer_interno.Read())
+            try
             {
-                if (con.leer_interno[0].ToString().Trim() != "")
-                {
-                    lblColonia.Text = con.leer_interno[0].ToString().Trim() + " - " + con.leer_interno[1].ToString().Trim(); //SOLO ESO PARA COLOCAR 
-                }
-            }
-            //CERRAR LA CONEXIÓN 
-            con.cerrar_interno();
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ////////LLENAR INFORMACIÓN DE COLONIAS
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            ////////////////////////////////////////////////////////////////////////////////////////////////////////
-            ////////  LLENAR DATAGRIDVIEW CON LOS RESULTADOS DE LA COLUMNA 
-            ////////////////////////////////////////////////////////////////////////////////////////////////////////
-            con.conectar_base_interno();
-            con.cadena_sql_interno = "";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   SELECT C.COLONIA, C.NOMCOL ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "     FROM MANZANAS M, COLONIAS C ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    WHERE M.ZONA      = " + Convert.ToInt32(txtZona.Text.Trim());
-            con.cadena_sql_interno = con.cadena_sql_interno + "      AND M.ESTADO    = C.ESTADO ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "      AND M.MUNICIPIO = C.MUNICIPIO ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "      AND M.COLONIA   = C.COLONIA ";
-            con.cadena_sql_interno = con.cadena_sql_interno + " GROUP BY C.COLONIA, C.NOMCOL  ";
-            con.cadena_sql_interno = con.cadena_sql_interno + " ORDER BY C.COLONIA";
-
-            DataTable LLENAR_GRID_1 = new DataTable();
-            con.conectar_base_interno();
-            con.open_c_interno();
-            SqlCommand cmd = new SqlCommand(con.cadena_sql_interno, con.cnn_interno);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            ///
-            if (da.Fill(LLENAR_GRID_1) == 0)//COMPROBAR SI LA BUSQUEDA OBTUVO UN DATO, en caso de ser igual a 0; marca error 
-            {
-                con.cerrar_interno();
-                MessageBox.Show("NO SE ENCONTRÓ INFORMACIÓN CON RESPECTO A LA BÚSQUEDA", "INFORMACIÓN");
-            }
-            else //en caso de encontrar un dato, se realiza toda la acción de abajo 
-            {
-                dgResultado.DataSource = LLENAR_GRID_1; //FORMA PARA LLENAR EL DATAGRIDVIEW CON LA CONSULTA 
-                con.cerrar_interno();
-                dgResultado.EnableHeadersVisualStyles = false; // Desactiva estilos predeterminados
-                dgResultado.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(159, 54, 151); //COLOR DEL ENCABEZADO CON RGB (revisar si es catastro o teso)
-                dgResultado.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold); //Microsoft sans serif para todas las celdas 
-                dgResultado.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 8); //FUENTE PARA LAS CELDAS 
-                dgResultado.ColumnHeadersDefaultCellStyle.ForeColor = Color.White; //COLOR DE LETRA DEL ENCABEZADO EN BLANCO 
-                foreach (DataGridViewColumn columna in dgResultado.Columns)
-                {
-                    columna.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                }
-                foreach (DataGridViewColumn columna in dgResultado.Columns)
-                {
-                    columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                }
-                dgResultado.SelectionMode = DataGridViewSelectionMode.FullRowSelect; //SELECCIONAR TODA LA FILA 
-                dgResultado.MultiSelect = false; // Solo permitir selección de una fila a la vez
-                dgResultado.Columns[0].Width = 80;
-                dgResultado.Columns[1].Width = 527;
-                //
-                // Deshabilitar edición
-                dgResultado.ReadOnly = true;
-                // Estilos visuales
-                dgResultado.DefaultCellStyle.SelectionBackColor = Color.Yellow; //AL SELECCIONAR UNA CELDA SE PONE DE COLOR AMARILLO 
-                dgResultado.DefaultCellStyle.SelectionForeColor = Color.Black; //COLOR NEGRO 
-                dgResultado.RowHeadersVisible = false; //QUITARLE LA PRIMER FILA BLANCA QUE SALE EN EL DATAGRIDVIEW 
-                //ME FALTA SACAR EL TOTAL , duda de cómo  ?
-                dgResultado.Enabled = true;
-
-
-                /////////////////////////////////////////lote ver si baja o aquí está bien 
                 con.conectar_base_interno();
                 con.cadena_sql_interno = "";
-                con.cadena_sql_interno = con.cadena_sql_interno + "SELECT COUNT (lote)";
-                con.cadena_sql_interno = con.cadena_sql_interno + "  FROM predios ";
-                con.cadena_sql_interno = con.cadena_sql_interno + " WHERE ESTADO    =    " + Program.PEstado;
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND MUNICIPIO =    " + Program.municipioN;
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND ZONA      =    " + Convert.ToInt32(txtZona.Text.ToString());
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND MANZANA   =    " + Convert.ToInt32(txtManzana.Text.ToString());
+                con.cadena_sql_interno = con.cadena_sql_interno + "SELECT C.COLONIA, C.NOMCOL";
+                con.cadena_sql_interno = con.cadena_sql_interno + "  FROM PREDIOS P, COLONIAS C";
+                con.cadena_sql_interno = con.cadena_sql_interno + " WHERE P.ESTADO    = " + Program.PEstado;
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND P.MUNICIPIO = " + Program.municipioN;
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND P.Zona      = " + Convert.ToInt32(txtZona.Text.Trim());  //Se cocatena la zona que se mande 
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND P.Manzana   = " + Convert.ToInt32(txtManzana.Text.Trim());  //Se cocatena la manzana que se mande 
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND P.Lote      = " + Convert.ToInt32(txtLote.Text.Trim());  //Se cocatena la manzana que se mande 
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND P.ESTADO    = C.ESTADO";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND P.MUNICIPIO = C.MUNICIPIO";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND P.COLONIA   = C.COLONIA";
+
                 con.cadena_sql_cmd_interno();
                 con.open_c_interno();
                 con.leer_interno = con.cmd_interno.ExecuteReader();
@@ -409,17 +345,118 @@ namespace SMACatastro.catastroRevision
                 {
                     if (con.leer_interno[0].ToString().Trim() != "")
                     {
-                        lblConteoLotes.Text = "N° LOTES DENTRO DE LA MANZANA QUE SERÍAN AFECTADOS: " + con.leer_interno[0].ToString().Trim();
+                        lblColonia.Text = con.leer_interno[0].ToString().Trim() + " - " + con.leer_interno[1].ToString().Trim(); //SOLO ESO PARA COLOCAR 
                     }
                 }
-                ///CERRAR LA CONEXIÓN
+                //CERRAR LA CONEXIÓN 
                 con.cerrar_interno();
-                //
-                deshabilitarClaveCatastral();
-                btnCambioLote.Enabled = true;
-                btnCambioManzana.Enabled = true;
-                btnBuscarClave.Enabled = false;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al executar " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
+            }
+       
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////  LLENAR DATAGRIDVIEW CON LOS RESULTADOS DE LA COLUMNA 
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////
+            try
+            {
+                con.conectar_base_interno();
+                con.cadena_sql_interno = "";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   SELECT C.COLONIA, C.NOMCOL ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "     FROM MANZANAS M, COLONIAS C ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    WHERE M.ZONA      = " + Convert.ToInt32(txtZona.Text.Trim());
+                con.cadena_sql_interno = con.cadena_sql_interno + "      AND M.ESTADO    = C.ESTADO ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "      AND M.MUNICIPIO = C.MUNICIPIO ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "      AND M.COLONIA   = C.COLONIA ";
+                con.cadena_sql_interno = con.cadena_sql_interno + " GROUP BY C.COLONIA, C.NOMCOL  ";
+                con.cadena_sql_interno = con.cadena_sql_interno + " ORDER BY C.COLONIA";
+
+                DataTable LLENAR_GRID_1 = new DataTable();
+                con.conectar_base_interno();
+                con.open_c_interno();
+                SqlCommand cmd = new SqlCommand(con.cadena_sql_interno, con.cnn_interno);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                ///
+                if (da.Fill(LLENAR_GRID_1) == 0)//COMPROBAR SI LA BUSQUEDA OBTUVO UN DATO, en caso de ser igual a 0; marca error 
+                {
+                    con.cerrar_interno();
+                    MessageBox.Show("NO SE ENCONTRÓ INFORMACIÓN CON RESPECTO A LA BÚSQUEDA", "INFORMACIÓN");
+                }
+                else //en caso de encontrar un dato, se realiza toda la acción de abajo 
+                {
+                    dgResultado.DataSource = LLENAR_GRID_1; //FORMA PARA LLENAR EL DATAGRIDVIEW CON LA CONSULTA 
+                    con.cerrar_interno();
+                    dgResultado.EnableHeadersVisualStyles = false; // Desactiva estilos predeterminados
+                    dgResultado.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(159, 54, 151); //COLOR DEL ENCABEZADO CON RGB (revisar si es catastro o teso)
+                    dgResultado.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold); //Microsoft sans serif para todas las celdas 
+                    dgResultado.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 8); //FUENTE PARA LAS CELDAS 
+                    dgResultado.ColumnHeadersDefaultCellStyle.ForeColor = Color.White; //COLOR DE LETRA DEL ENCABEZADO EN BLANCO 
+                    foreach (DataGridViewColumn columna in dgResultado.Columns)
+                    {
+                        columna.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    }
+                    foreach (DataGridViewColumn columna in dgResultado.Columns)
+                    {
+                        columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    }
+                    dgResultado.SelectionMode = DataGridViewSelectionMode.FullRowSelect; //SELECCIONAR TODA LA FILA 
+                    dgResultado.MultiSelect = false; // Solo permitir selección de una fila a la vez
+                    dgResultado.Columns[0].Width = 80;
+                    dgResultado.Columns[1].Width = 527;
+                    //
+                    // Deshabilitar edición
+                    dgResultado.ReadOnly = true;
+                    // Estilos visuales
+                    dgResultado.DefaultCellStyle.SelectionBackColor = Color.Yellow; //AL SELECCIONAR UNA CELDA SE PONE DE COLOR AMARILLO 
+                    dgResultado.DefaultCellStyle.SelectionForeColor = Color.Black; //COLOR NEGRO 
+                    dgResultado.RowHeadersVisible = false; //QUITARLE LA PRIMER FILA BLANCA QUE SALE EN EL DATAGRIDVIEW 
+                                                           //ME FALTA SACAR EL TOTAL , duda de cómo  ?
+                    dgResultado.Enabled = true;
+
+
+                    /////////////////////////////////////////lote ver si baja o aquí está bien 
+                    con.conectar_base_interno();
+                    con.cadena_sql_interno = "";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "SELECT COUNT (lote)";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "  FROM predios ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + " WHERE ESTADO    =    " + Program.PEstado;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND MUNICIPIO =    " + Program.municipioN;
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND ZONA      =    " + Convert.ToInt32(txtZona.Text.ToString());
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND MANZANA   =    " + Convert.ToInt32(txtManzana.Text.ToString());
+                    con.cadena_sql_cmd_interno();
+                    con.open_c_interno();
+                    con.leer_interno = con.cmd_interno.ExecuteReader();
+                    while (con.leer_interno.Read())
+                    {
+                        if (con.leer_interno[0].ToString().Trim() != "")
+                        {
+                            lblConteoLotes.Text = "N° LOTES DENTRO DE LA MANZANA QUE SERÍAN AFECTADOS: " + con.leer_interno[0].ToString().Trim();
+                        }
+                    }
+                    ///CERRAR LA CONEXIÓN
+                    con.cerrar_interno();
+                    //
+                    deshabilitarClaveCatastral();
+                    btnCambioLote.Enabled = true;
+                    btnCambioManzana.Enabled = true;
+                    btnBuscarClave.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al executar" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
+            }
+            
         }
         private void btnConsulta_Click(object sender, EventArgs e)
         {
@@ -550,11 +587,11 @@ namespace SMACatastro.catastroRevision
                 }
                 catch (Exception ex)
                 {
+                    MessageBox.Show(ex.Message, "Error al executar" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    util.CapturarPantallaConInformacion(ex);
+                    System.Threading.Thread.Sleep(500);
                     con.cerrar_interno();
-                    CapturarPantalla();
-                    MessageBox.Show(ex.Message, "ERROR AL EJECUTAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    CapturarPantalla();
-                    return; // Retornar false si ocurre un error
+                    // Retornar false si ocurre un error
                 }
             }
         }
@@ -615,11 +652,11 @@ namespace SMACatastro.catastroRevision
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "ERROR AL EJECUTAR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "Error al executar " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         util.CapturarPantallaConInformacion(ex);
                         System.Threading.Thread.Sleep(500);
                         con.cerrar_interno();
-                        return; // Retornar false si ocurre un error
+                        // Retornar false si ocurre un error
                     }
             }
         }

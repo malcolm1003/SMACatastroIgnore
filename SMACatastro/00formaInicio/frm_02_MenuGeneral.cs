@@ -200,6 +200,18 @@ namespace SMACatastro.formaInicio
                     btnSalir.Enabled = true;
                     btnSalir.BackColor = Color.FromArgb(237, 181, 17);
                 }
+                else if (Program.acceso_nivel_acceso == 9)
+                {
+                    
+                    label1.Text = "- CATASTRO - GENERAL   " + Program.VercionS;
+                    lblCargoUsuarioMenu.Text = " " + Program.acceso_cargo;
+                    btnCartografia.Enabled = false;
+                    btnVentanilla.Enabled = false;
+                    btnRevision.Enabled = false;
+                    btnGenerales.Enabled = true;
+                    btnSistemas.Enabled = false;
+                    btnSoporte.Enabled = false;
+                }
                 else
                 {
 
@@ -298,6 +310,20 @@ namespace SMACatastro.formaInicio
                 btnRevision.Enabled = false;
                 btnGenerales.Enabled = true;
                 btnSistemas.Enabled = true;
+                btnSoporte.Enabled = false;
+
+                btnSalir.Enabled = true;
+                btnSalir.BackColor = Color.FromArgb(237, 181, 17);
+            }
+            else if (Program.acceso_nivel_acceso == 9)   //general
+            {
+                label1.Text = "- CATASTRO - BÚSQUEDAS   " + Program.VercionS;
+                lblCargoUsuarioMenu.Text = " " + Program.acceso_cargo;
+                btnCartografia.Enabled = false;
+                btnVentanilla.Enabled = false;
+                btnRevision.Enabled = false;
+                btnGenerales.Enabled = true;
+                btnSistemas.Enabled = false;
                 btnSoporte.Enabled = false;
 
                 btnSalir.Enabled = true;

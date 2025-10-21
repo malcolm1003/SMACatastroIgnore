@@ -67,6 +67,12 @@ namespace SMACatastro.formaInicio
             //frm_02_MenuGeneral.ActiveForm.Opacity = 1.0;
         }
 
-      
+        private void frm_07_MenuGeneral_Load(object sender, EventArgs e)
+        {
+            if (Program.acceso_nivel_acceso == 9)
+            {
+                btnBajasCat.Enabled = false;
+            } 
+        }
     }
 }

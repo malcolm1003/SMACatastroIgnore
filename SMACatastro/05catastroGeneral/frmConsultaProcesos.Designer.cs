@@ -364,7 +364,7 @@
             this.btnCancela.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancela.Font = new System.Drawing.Font("Webdings", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.btnCancela.ForeColor = System.Drawing.Color.White;
-            this.btnCancela.Location = new System.Drawing.Point(1204, 52);
+            this.btnCancela.Location = new System.Drawing.Point(1204, 49);
             this.btnCancela.Name = "btnCancela";
             this.btnCancela.Size = new System.Drawing.Size(77, 64);
             this.btnCancela.TabIndex = 1789;
@@ -2783,7 +2783,7 @@
             this.btnSalida.Font = new System.Drawing.Font("Webdings", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.btnSalida.ForeColor = System.Drawing.Color.White;
             this.btnSalida.Image = global::SMACatastro.Properties.Resources.apagado;
-            this.btnSalida.Location = new System.Drawing.Point(1276, 52);
+            this.btnSalida.Location = new System.Drawing.Point(1276, 49);
             this.btnSalida.Name = "btnSalida";
             this.btnSalida.Size = new System.Drawing.Size(77, 64);
             this.btnSalida.TabIndex = 1788;
@@ -2800,7 +2800,7 @@
             this.btnBUscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBUscar.ForeColor = System.Drawing.Color.White;
             this.btnBUscar.Image = global::SMACatastro.Properties.Resources.buscar;
-            this.btnBUscar.Location = new System.Drawing.Point(1127, 52);
+            this.btnBUscar.Location = new System.Drawing.Point(1127, 49);
             this.btnBUscar.Name = "btnBUscar";
             this.btnBUscar.Size = new System.Drawing.Size(77, 64);
             this.btnBUscar.TabIndex = 1803;
@@ -2830,7 +2830,7 @@
             this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
             this.btnNuevo.Image = global::SMACatastro.Properties.Resources.nuevo;
-            this.btnNuevo.Location = new System.Drawing.Point(1052, 52);
+            this.btnNuevo.Location = new System.Drawing.Point(1052, 49);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(77, 64);
             this.btnNuevo.TabIndex = 1790;

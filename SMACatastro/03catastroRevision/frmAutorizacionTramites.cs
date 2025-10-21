@@ -814,203 +814,215 @@ namespace SMACatastro.catastroRevision
                 fecha_iniL = cboAño1.Text + cboMes1.Text + cboDia1.Text + " 00:00:00"; //fecha inicial con la hr, primeros momentos del día 
                 fecha_finL = cboAño2.Text + cboMes2.Text + cboDia2.Text + " 23:59:59"; //fecha final con la hr , ultimo momento del día 
             }
-            con.conectar_base_interno();
-            con.cadena_sql_interno = ""; //Limpiamos la cadena de conexión
-            con.cadena_sql_interno = con.cadena_sql_interno + "   SELECT cnc.SERIE, cnc.FOLIO, cnv.Municipio 'MUNICIPIO', cnc.Zona 'ZONA', cnc.MANZANA, cnc.Lote 'LOTE', ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "           cnc.Edificio 'EDIFICIO', cnc.Depto 'DEPTO',";
-            con.cadena_sql_interno = con.cadena_sql_interno + "           CAST(cnc.FECHA AS DATETIME) + ' ' + CAST(cnc.HORA AS DATETIME) AS 'FECHA_Y_HORA_CARTOGRAFIA', ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "           cnv.DESCRIPCION 'CONCEPTO VENTANILLA', CAST(cnv.FECHA AS DATETIME)+ ' ' + CAST(cnv.HORA AS DATETIME) AS 'FECHA_Y_HORA_VENTANILLA', ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "           CASE cdv.REVISO";
-            con.cadena_sql_interno = con.cadena_sql_interno + "               WHEN 0";
-            con.cadena_sql_interno = con.cadena_sql_interno + "               THEN 'PENDIENTE'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "               WHEN 1";
-            con.cadena_sql_interno = con.cadena_sql_interno + "               THEN 'APROBADO'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "           END 'ESTATUS'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "      FROM CAT_DONDE_VA_2025 cdv, CAT_NEW_CARTOGRAFIA_2025 cnc, CAT_NEW_VENTANILLA_2025 cnv";
-            con.cadena_sql_interno = con.cadena_sql_interno + "      WHERE cdv.CARTOGRAFIA = 1";
-            con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.VENTANILLA = 1";
-            con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.ELIMINADO = 0";
-            con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.SISTEMAS = 0";
-            if (rbNoAutorizado.Checked == true)
+            try
             {
-                con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.REVISO = 0";  //pendientes en reviso
-            }
-            if (rbAutorizado.Checked == true)
-            {
-                con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.REVISO = 1";  //autorizados reviso
-            }
-            if (rbSerieFolio.Checked == true)
-            {
-                con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.SERIE =" + util.scm(cboSerie.Text.Trim().ToString());  //serie oara jugar
-            }
-            if (rdSerFol.Checked == true)
-            {
-                con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.SERIE =" + util.scm(cbbSerieFOL.Text.Trim().ToString());  //serie oara jugar
-                con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.FOLIO_ORIGEN =" + Convert.ToInt32(txtFolio.Text.Trim());  //folio para jugar
-            }
-            if (rbRangosFolios.Checked == true)
-            {
-                con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.SERIE =" + util.scm(cbbRanSerie.Text.Trim().ToString());  //serie oara jugar
-                con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.FOLIO_ORIGEN >=" + Convert.ToInt32(TXTrango1Fol.Text.Trim());  //folio 1  para jugar
-                con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.FOLIO_ORIGEN <=" + Convert.ToInt32(TXTrango2Fol.Text.Trim());  //folio 2  para jugar
-            }
-            //*** seccion fija **//
-            con.cadena_sql_interno = con.cadena_sql_interno + "       AND cdv.FOLIO_ORIGEN = cnc.FOLIO_ORIGEN";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       AND cdv.SERIE = cnc.SERIE";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       AND cnc.ESTADO =" + Program.PEstado; //estado fijo
-            con.cadena_sql_interno = con.cadena_sql_interno + "       AND cnc.MUNICIPIO = " + Program.municipioN; //municipio fijo
-            //**  final de fijo **/
-
-            if (rbClave.Checked == true)/// tomar valores para clave catastral
-            {
-                if (txtZona.Text.Trim() == "")
+                con.conectar_base_interno();
+                con.cadena_sql_interno = ""; //Limpiamos la cadena de conexión
+                con.cadena_sql_interno = con.cadena_sql_interno + "   SELECT cnc.SERIE, cnc.FOLIO, cnv.Municipio 'MUNICIPIO', cnc.Zona 'ZONA', cnc.MANZANA, cnc.Lote 'LOTE', ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "           cnc.Edificio 'EDIFICIO', cnc.Depto 'DEPTO',";
+                con.cadena_sql_interno = con.cadena_sql_interno + "           CAST(cnc.FECHA AS DATETIME) + ' ' + CAST(cnc.HORA AS DATETIME) AS 'FECHA_Y_HORA_CARTOGRAFIA', ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "           cnv.DESCRIPCION 'CONCEPTO VENTANILLA', CAST(cnv.FECHA AS DATETIME)+ ' ' + CAST(cnv.HORA AS DATETIME) AS 'FECHA_Y_HORA_VENTANILLA', ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "           CASE cdv.REVISO";
+                con.cadena_sql_interno = con.cadena_sql_interno + "               WHEN 0";
+                con.cadena_sql_interno = con.cadena_sql_interno + "               THEN 'PENDIENTE'";
+                con.cadena_sql_interno = con.cadena_sql_interno + "               WHEN 1";
+                con.cadena_sql_interno = con.cadena_sql_interno + "               THEN 'APROBADO'";
+                con.cadena_sql_interno = con.cadena_sql_interno + "           END 'ESTATUS'";
+                con.cadena_sql_interno = con.cadena_sql_interno + "      FROM CAT_DONDE_VA_2025 cdv, CAT_NEW_CARTOGRAFIA_2025 cnc, CAT_NEW_VENTANILLA_2025 cnv";
+                con.cadena_sql_interno = con.cadena_sql_interno + "      WHERE cdv.CARTOGRAFIA = 1";
+                con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.VENTANILLA = 1";
+                con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.ELIMINADO = 0";
+                con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.SISTEMAS = 0";
+                if (rbNoAutorizado.Checked == true)
                 {
-                    if (txtManzana.Text.Trim() == "")
+                    con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.REVISO = 0";  //pendientes en reviso
+                }
+                if (rbAutorizado.Checked == true)
+                {
+                    con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.REVISO = 1";  //autorizados reviso
+                }
+                if (rbSerieFolio.Checked == true)
+                {
+                    con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.SERIE =" + util.scm(cboSerie.Text.Trim().ToString());  //serie oara jugar
+                }
+                if (rdSerFol.Checked == true)
+                {
+                    con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.SERIE =" + util.scm(cbbSerieFOL.Text.Trim().ToString());  //serie oara jugar
+                    con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.FOLIO_ORIGEN =" + Convert.ToInt32(txtFolio.Text.Trim());  //folio para jugar
+                }
+                if (rbRangosFolios.Checked == true)
+                {
+                    con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.SERIE =" + util.scm(cbbRanSerie.Text.Trim().ToString());  //serie oara jugar
+                    con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.FOLIO_ORIGEN >=" + Convert.ToInt32(TXTrango1Fol.Text.Trim());  //folio 1  para jugar
+                    con.cadena_sql_interno = con.cadena_sql_interno + "      AND cdv.FOLIO_ORIGEN <=" + Convert.ToInt32(TXTrango2Fol.Text.Trim());  //folio 2  para jugar
+                }
+                //*** seccion fija **//
+                con.cadena_sql_interno = con.cadena_sql_interno + "       AND cdv.FOLIO_ORIGEN = cnc.FOLIO_ORIGEN";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       AND cdv.SERIE = cnc.SERIE";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       AND cnc.ESTADO =" + Program.PEstado; //estado fijo
+                con.cadena_sql_interno = con.cadena_sql_interno + "       AND cnc.MUNICIPIO = " + Program.municipioN; //municipio fijo
+                                                                                                                      //**  final de fijo **/
+
+                if (rbClave.Checked == true)/// tomar valores para clave catastral
+                {
+                    if (txtZona.Text.Trim() == "")
                     {
-                        if (txtLote.Text.Trim() == "")
+                        if (txtManzana.Text.Trim() == "")
                         {
-                            if (txtEdificio.Text.Trim() == "")
+                            if (txtLote.Text.Trim() == "")
                             {
-                                if (txtDepto.Text.Trim() == "")
+                                if (txtEdificio.Text.Trim() == "")
                                 {
-                                    MessageBox.Show("SE DEBE DE INGRESAR ALGÚN DATO EN CLAVE CATASTRAL", "ERROR", MessageBoxButtons.OK);
-                                    return;
+                                    if (txtDepto.Text.Trim() == "")
+                                    {
+                                        MessageBox.Show("SE DEBE DE INGRESAR ALGÚN DATO EN CLAVE CATASTRAL", "ERROR", MessageBoxButtons.OK);
+                                        return;
+                                    }
                                 }
                             }
                         }
                     }
-                }
 
-                if (txtZona.Text.Trim() != "")
-                {
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    AND cnc.ZONA =" + txtZona.Text.ToString().Trim(); //concatenar zona
+                    if (txtZona.Text.Trim() != "")
+                    {
+                        con.cadena_sql_interno = con.cadena_sql_interno + "    AND cnc.ZONA =" + txtZona.Text.ToString().Trim(); //concatenar zona
+                    }
+                    if (txtManzana.Text.Trim() != "")
+                    {
+                        con.cadena_sql_interno = con.cadena_sql_interno + "    AND cnc.MANZANA =" + txtManzana.Text.ToString().Trim();
+                    }
+                    if (txtLote.Text.Trim() != "")
+                    {
+                        con.cadena_sql_interno = con.cadena_sql_interno + "    AND cnc.LOTE =" + txtLote.Text.ToString().Trim();
+                    }
+                    if (txtEdificio.Text.Trim() != "")
+                    {
+                        con.cadena_sql_interno = con.cadena_sql_interno + "    AND cnc.EDIFICIO ='" + txtEdificio.Text.ToString().Trim() + "'";
+                    }
+                    if (txtDepto.Text.Trim() != "")
+                    {
+                        con.cadena_sql_interno = con.cadena_sql_interno + "    AND cnc.DEPTO ='" + txtDepto.Text.ToString().Trim() + "'";
+                    }
                 }
-                if (txtManzana.Text.Trim() != "")
+                if (rbFechaIni.Checked == true)
                 {
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    AND cnc.MANZANA =" + txtManzana.Text.ToString().Trim();
+                    con.cadena_sql_interno = con.cadena_sql_interno + "  AND cnc.FECHA  >= ' " + fecha_iniL + " ' "; //agregarle la fecha inicial a la consulta; mayor a
+                    con.cadena_sql_interno = con.cadena_sql_interno + "  AND cnc.FECHA  <= ' " + fecha_finL + " ' "; //agregarle a la fecha final a la consulta ; menor a 
                 }
-                if (txtLote.Text.Trim() != "")
+                if (rbIdenticiudadano.Checked == true)
                 {
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    AND cnc.LOTE =" + txtLote.Text.ToString().Trim();
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   AND cnc.USUARIO = '" + cbbUsuarioCarto.Text.ToString().Trim() + "'"; //concatenar usuario cartografía
                 }
-                if (txtEdificio.Text.Trim() != "")
+                //** seccion fija **//
+                con.cadena_sql_interno = con.cadena_sql_interno + "       AND cnc.FOLIO_ORIGEN = cnv.FOLIO_ORIGEN";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       AND cnc.SERIE = cnv.SERIE";
+                //**  final de fijo **/
+                if (cbbTrammite.Text != "")
                 {
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    AND cnc.EDIFICIO ='" + txtEdificio.Text.ToString().Trim() + "'";
+                    string[] parts = cbbTrammite.Text.Split('-');
+                    string part1 = parts[0].Trim(); // UBICACION
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    AND cnc.UBICACION = '" + part1 + "'"; //concatenar el trámite 
                 }
-                if (txtDepto.Text.Trim() != "")
+                if (rbElaboroVenta.Checked == true)
                 {
-                    con.cadena_sql_interno = con.cadena_sql_interno + "    AND cnc.DEPTO ='" + txtDepto.Text.ToString().Trim() + "'";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "    AND cnv.USUARIO= '" + cbbUsuarioVenta.Text.ToString().Trim() + "'"; //concatenar usuario ventanilla
                 }
-            }
-            if (rbFechaIni.Checked == true)
-            {
-                con.cadena_sql_interno = con.cadena_sql_interno + "  AND cnc.FECHA  >= ' " + fecha_iniL + " ' "; //agregarle la fecha inicial a la consulta; mayor a
-                con.cadena_sql_interno = con.cadena_sql_interno + "  AND cnc.FECHA  <= ' " + fecha_finL + " ' "; //agregarle a la fecha final a la consulta ; menor a 
-            }
-            if (rbIdenticiudadano.Checked == true)
-            {
-                con.cadena_sql_interno = con.cadena_sql_interno + "   AND cnc.USUARIO = '" + cbbUsuarioCarto.Text.ToString().Trim() + "'"; //concatenar usuario cartografía
-            }
-            //** seccion fija **//
-            con.cadena_sql_interno = con.cadena_sql_interno + "       AND cnc.FOLIO_ORIGEN = cnv.FOLIO_ORIGEN";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       AND cnc.SERIE = cnv.SERIE";
-            //**  final de fijo **/
-            if (cbbTrammite.Text != "")
-            {
-                string[] parts = cbbTrammite.Text.Split('-');
-                string part1 = parts[0].Trim(); // UBICACION
-                con.cadena_sql_interno = con.cadena_sql_interno + "    AND cnc.UBICACION = '" + part1 + "'"; //concatenar el trámite 
-            }
-            if (rbElaboroVenta.Checked == true)
-            {
-                con.cadena_sql_interno = con.cadena_sql_interno + "    AND cnv.USUARIO= '" + cbbUsuarioVenta.Text.ToString().Trim() + "'"; //concatenar usuario ventanilla
-            }
-            CadenaComplemento = con.cadena_sql_interno;
+                CadenaComplemento = con.cadena_sql_interno;
 
-            //** agramos los demas opciones de bsuqueda en dado caso **// 
-            con.cadena_sql_interno = con.cadena_sql_interno + "      ORDER BY cnc.FOLIO_ORIGEN DESC"; //ordenar con el folio de manera ascendente 
-            DataTable LLENAR_GRID_1 = new DataTable();
-            con.conectar_base_interno();
-            con.open_c_interno();
-            SqlCommand cmd = new SqlCommand(con.cadena_sql_interno, con.cnn_interno);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            ///
-            ///** va contener la cadena de busqueda **//
+                //** agramos los demas opciones de bsuqueda en dado caso **// 
+                con.cadena_sql_interno = con.cadena_sql_interno + "      ORDER BY cnc.FOLIO_ORIGEN DESC"; //ordenar con el folio de manera ascendente 
+                DataTable LLENAR_GRID_1 = new DataTable();
+                con.conectar_base_interno();
+                con.open_c_interno();
+                SqlCommand cmd = new SqlCommand(con.cadena_sql_interno, con.cnn_interno);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                ///
+                ///** va contener la cadena de busqueda **//
 
-            //** contiene la cadena de busaueda**//
-            if (da.Fill(LLENAR_GRID_1) == 0)//COMPROBAR SI LA BUSQUEDA OBTUVO UN DATO, en caso de ser igual a 0; marca error 
-            {
-                MessageBox.Show("NO SE ENCONTRÓ INFORMACIÓN REFERENTE A LA BÚSQUEDA", "¡ALERTA!", MessageBoxButtons.OK, MessageBoxIcon.Error); //por si no hay nada 
-                con.cerrar_interno();
-                txtObservacionTramite.Text = string.Empty;
-                txtObservacionTramite.Enabled = false;
-                return;
-            }
-            else //en caso de encontrar un dato, se realiza toda la acción de abajo 
-            {
-                dgResultado.DataSource = LLENAR_GRID_1; //FORMA PARA LLENAR EL DATAGRIDVIEW CON LA CONSULTA 
-                con.cerrar_interno();
-                dgResultado.EnableHeadersVisualStyles = false; // Desactiva estilos predeterminados
-                dgResultado.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(159, 54, 151); //COLOR DEL ENCABEZADO CON RGB 
-                dgResultado.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold); //Microsoft sans serif para todas las celdas 
-                dgResultado.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 8); //FUENTE PARA LAS CELDAS 
-                dgResultado.ColumnHeadersDefaultCellStyle.ForeColor = Color.White; //COLOR DE LETRA DEL ENCABEZADO EN BLANCO 
-                foreach (DataGridViewColumn columna in dgResultado.Columns)
+                //** contiene la cadena de busaueda**//
+                if (da.Fill(LLENAR_GRID_1) == 0)//COMPROBAR SI LA BUSQUEDA OBTUVO UN DATO, en caso de ser igual a 0; marca error 
                 {
-                    columna.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    MessageBox.Show("NO SE ENCONTRÓ INFORMACIÓN REFERENTE A LA BÚSQUEDA", "¡ALERTA!", MessageBoxButtons.OK, MessageBoxIcon.Error); //por si no hay nada 
+                    con.cerrar_interno();
+                    txtObservacionTramite.Text = string.Empty;
+                    txtObservacionTramite.Enabled = false;
+                    return;
                 }
-                foreach (DataGridViewColumn columna in dgResultado.Columns)
+                else //en caso de encontrar un dato, se realiza toda la acción de abajo 
                 {
-                    columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                }
-                dgResultado.Columns[0].Width = 80; //SERIE
-                dgResultado.Columns[1].Width = 80; //FOLIO
-                dgResultado.Columns[2].Width = 80; //MUNICIPIO 
-                dgResultado.Columns[3].Width = 80; //ZONA 
-                dgResultado.Columns[4].Width = 80; //MANZANA
-                dgResultado.Columns[5].Width = 80; //LOTE 
-                dgResultado.Columns[6].Width = 100; //EDIFICIO
-                dgResultado.Columns[7].Width = 100; //DEPTO
-                dgResultado.Columns[8].Width = 250; //FECHA 
-                dgResultado.Columns[9].Width = 250; //CONCEPTO 
-                dgResultado.Columns[10].Width = 250; //FECHA Y HORA 
-                dgResultado.Columns[11].Width = 250; //ESTATUS
-                dgResultado.Columns[1].DefaultCellStyle.Format = "N0"; //darle formato de miles a la celda 1
-                dgResultado.SelectionMode = DataGridViewSelectionMode.FullRowSelect; //SELECCIONAR TODA LA FILA 
-                dgResultado.MultiSelect = false; // Solo permitir selección de una fila a la vez
+                    dgResultado.DataSource = LLENAR_GRID_1; //FORMA PARA LLENAR EL DATAGRIDVIEW CON LA CONSULTA 
+                    con.cerrar_interno();
+                    dgResultado.EnableHeadersVisualStyles = false; // Desactiva estilos predeterminados
+                    dgResultado.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(159, 54, 151); //COLOR DEL ENCABEZADO CON RGB 
+                    dgResultado.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold); //Microsoft sans serif para todas las celdas 
+                    dgResultado.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 8); //FUENTE PARA LAS CELDAS 
+                    dgResultado.ColumnHeadersDefaultCellStyle.ForeColor = Color.White; //COLOR DE LETRA DEL ENCABEZADO EN BLANCO 
+                    foreach (DataGridViewColumn columna in dgResultado.Columns)
+                    {
+                        columna.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    }
+                    foreach (DataGridViewColumn columna in dgResultado.Columns)
+                    {
+                        columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    }
+                    dgResultado.Columns[0].Width = 80; //SERIE
+                    dgResultado.Columns[1].Width = 80; //FOLIO
+                    dgResultado.Columns[2].Width = 80; //MUNICIPIO 
+                    dgResultado.Columns[3].Width = 80; //ZONA 
+                    dgResultado.Columns[4].Width = 80; //MANZANA
+                    dgResultado.Columns[5].Width = 80; //LOTE 
+                    dgResultado.Columns[6].Width = 100; //EDIFICIO
+                    dgResultado.Columns[7].Width = 100; //DEPTO
+                    dgResultado.Columns[8].Width = 250; //FECHA 
+                    dgResultado.Columns[9].Width = 250; //CONCEPTO 
+                    dgResultado.Columns[10].Width = 250; //FECHA Y HORA 
+                    dgResultado.Columns[11].Width = 250; //ESTATUS
+                    dgResultado.Columns[1].DefaultCellStyle.Format = "N0"; //darle formato de miles a la celda 1
+                    dgResultado.SelectionMode = DataGridViewSelectionMode.FullRowSelect; //SELECCIONAR TODA LA FILA 
+                    dgResultado.MultiSelect = false; // Solo permitir selección de una fila a la vez
 
-                // Deshabilitar edición
-                dgResultado.ReadOnly = true;
-                // Estilos visuales
-                dgResultado.DefaultCellStyle.SelectionBackColor = Color.Yellow; //AL SELECCIONAR UNA CELDA SE PONE DE COLOR AMARILLO 
-                dgResultado.DefaultCellStyle.SelectionForeColor = Color.Black; //COLOR NEGRO 
-                dgResultado.RowHeadersVisible = false; //QUITARLE LA PRIMER FILA BLANCA QUE SALE EN EL DATAGRIDVIEW 
-                lblConteo.Text = (dgResultado.Rows.Count - 1).ToString(); //contamos menos 1 para que sea sin el espacio en blanco 
-                txtObservacionTramite.Enabled = false;
-                btnMasAutoriza.Enabled = false;
-                btnMasCancel.Enabled = false;
-                // txtObservacionTramite.Focus();
-
-                ///** validamos los botones***//
-                if (dgResultado.Rows.Count == 2)
-                {
-                    btnMasCancel.Enabled = false;
+                    // Deshabilitar edición
+                    dgResultado.ReadOnly = true;
+                    // Estilos visuales
+                    dgResultado.DefaultCellStyle.SelectionBackColor = Color.Yellow; //AL SELECCIONAR UNA CELDA SE PONE DE COLOR AMARILLO 
+                    dgResultado.DefaultCellStyle.SelectionForeColor = Color.Black; //COLOR NEGRO 
+                    dgResultado.RowHeadersVisible = false; //QUITARLE LA PRIMER FILA BLANCA QUE SALE EN EL DATAGRIDVIEW 
+                    lblConteo.Text = (dgResultado.Rows.Count - 1).ToString(); //contamos menos 1 para que sea sin el espacio en blanco 
+                    txtObservacionTramite.Enabled = false;
                     btnMasAutoriza.Enabled = false;
-                    btnCancelarProceso.Enabled = true;
-                    cmdAutorizarProcesoIndividual.Enabled = true;
-                    txtObservacionTramite.Enabled = true;
-                    txtObservacionTramite.Focus();
-                }
-                else
-                {
-                    btnMasCancel.Enabled = true;
-                    btnMasAutoriza.Enabled = true;
-                    btnCancelarProceso.Enabled = false;
-                    cmdAutorizarProcesoIndividual.Enabled = false;
-                    txtObservacionTramite.Enabled = true;
-                    txtObservacionTramite.Focus();
+                    btnMasCancel.Enabled = false;
+                    // txtObservacionTramite.Focus();
+
+                    ///** validamos los botones***//
+                    if (dgResultado.Rows.Count == 2)
+                    {
+                        btnMasCancel.Enabled = false;
+                        btnMasAutoriza.Enabled = false;
+                        btnCancelarProceso.Enabled = true;
+                        cmdAutorizarProcesoIndividual.Enabled = true;
+                        txtObservacionTramite.Enabled = true;
+                        txtObservacionTramite.Focus();
+                    }
+                    else
+                    {
+                        btnMasCancel.Enabled = true;
+                        btnMasAutoriza.Enabled = true;
+                        btnCancelarProceso.Enabled = false;
+                        cmdAutorizarProcesoIndividual.Enabled = false;
+                        txtObservacionTramite.Enabled = true;
+                        txtObservacionTramite.Focus();
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al executar la consulta" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
+            }
+           
         }
         private void panel30_Paint(object sender, PaintEventArgs e)
         {
@@ -1833,35 +1845,47 @@ namespace SMACatastro.catastroRevision
         }
         void Coordenadas()
         {
-            con.conectar_base_interno();
-            con.cadena_sql_interno = "";
-            con.cadena_sql_interno = con.cadena_sql_interno + " SELECT Latitud, Longitud FROM SONG_GEOLOCALIZACION";
-            con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE Zona =" + Convert.ToInt32(dgResultado.CurrentRow.Cells[3].Value.ToString());
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND Manzana =" + Convert.ToInt32(dgResultado.CurrentRow.Cells[4].Value.ToString());
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND Lote =" + Convert.ToInt32(dgResultado.CurrentRow.Cells[5].Value.ToString());
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND Edificio =" + util.scm(dgResultado.CurrentRow.Cells[6].Value.ToString());
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND Depto =" + util.scm(dgResultado.CurrentRow.Cells[7].Value.ToString());
-            con.cadena_sql_cmd_interno();
-            con.open_c_interno();
-            con.leer_interno = con.cmd_interno.ExecuteReader();
-            if (!con.leer_interno.HasRows)
+            try
             {
-                lblLatitud.Text = string.Empty;
-                lblLatitud.Enabled = false;
-                lblLonguitud.Text = string.Empty;
-                lblLonguitud.Enabled = false;
-                btnMaps.Enabled = false;
-            }
-            else
-            {
-                while (con.leer_interno.Read())
+                con.conectar_base_interno();
+                con.cadena_sql_interno = "";
+                con.cadena_sql_interno = con.cadena_sql_interno + " SELECT Latitud, Longitud FROM SONG_GEOLOCALIZACION";
+                con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE Zona =" + Convert.ToInt32(dgResultado.CurrentRow.Cells[3].Value.ToString());
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND Manzana =" + Convert.ToInt32(dgResultado.CurrentRow.Cells[4].Value.ToString());
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND Lote =" + Convert.ToInt32(dgResultado.CurrentRow.Cells[5].Value.ToString());
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND Edificio =" + util.scm(dgResultado.CurrentRow.Cells[6].Value.ToString());
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND Depto =" + util.scm(dgResultado.CurrentRow.Cells[7].Value.ToString());
+                con.cadena_sql_cmd_interno();
+                con.open_c_interno();
+                con.leer_interno = con.cmd_interno.ExecuteReader();
+                if (!con.leer_interno.HasRows)
                 {
-                    lblLatitud.Text = con.leer_interno["Latitud"].ToString().Trim();
-                    lblLonguitud.Text = con.leer_interno["Longitud"].ToString().Trim();
+                    lblLatitud.Text = string.Empty;
+                    lblLatitud.Enabled = false;
+                    lblLonguitud.Text = string.Empty;
+                    lblLonguitud.Enabled = false;
+                    btnMaps.Enabled = false;
                 }
-                btnMaps.Enabled = true;
+                else
+                {
+                    while (con.leer_interno.Read())
+                    {
+                        lblLatitud.Text = con.leer_interno["Latitud"].ToString().Trim();
+                        lblLonguitud.Text = con.leer_interno["Longitud"].ToString().Trim();
+                    }
+                    btnMaps.Enabled = true;
+                }
+                con.cerrar_interno();
             }
-            con.cerrar_interno();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al executar el proceso N19_CALCULO_CATASTRO" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
+            }
+
         }
         void CargaRejilla()
         {
@@ -1901,31 +1925,43 @@ namespace SMACatastro.catastroRevision
 
             pnlTAPADERA.Visible = true;
             //** se llena abajo la informacion **//
-            con.conectar_base_interno();
-            con.cadena_sql_interno = "";
-            con.cadena_sql_interno = con.cadena_sql_interno + " SELECT CV.USUARIO, CC.USUARIO, CV.FOLIO_ORIGEN, CV.OBSERVACIONES, CC.OBSERVACIONES ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   FROM CAT_NEW_CARTOGRAFIA_2025 CC,  CAT_NEW_VENTANILLA_2025 CV  ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE CC.FOLIO_ORIGEN = CV.FOLIO_ORIGEN";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND CC.SERIE = CV.SERIE";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND CV.FOLIO_ORIGEN = " + folioP;
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND CC.SERIE = " + util.scm(serieP) + "";
-            con.conectar_base_interno();
-            con.cadena_sql_cmd_interno();
-            con.open_c_interno();
-            con.leer_interno = con.cmd_interno.ExecuteReader();
-            while (con.leer_interno.Read())
+            try
             {
-                if (con.leer_interno[0].ToString().Trim() != "") //Colocar en cada caja de texto cada resultado
+                con.conectar_base_interno();
+                con.cadena_sql_interno = "";
+                con.cadena_sql_interno = con.cadena_sql_interno + " SELECT CV.USUARIO, CC.USUARIO, CV.FOLIO_ORIGEN, CV.OBSERVACIONES, CC.OBSERVACIONES ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   FROM CAT_NEW_CARTOGRAFIA_2025 CC,  CAT_NEW_VENTANILLA_2025 CV  ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE CC.FOLIO_ORIGEN = CV.FOLIO_ORIGEN";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND CC.SERIE = CV.SERIE";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND CV.FOLIO_ORIGEN = " + folioP;
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND CC.SERIE = " + util.scm(serieP) + "";
+                con.conectar_base_interno();
+                con.cadena_sql_cmd_interno();
+                con.open_c_interno();
+                con.leer_interno = con.cmd_interno.ExecuteReader();
+                while (con.leer_interno.Read())
                 {
-                    lblUsuarioVentanillla.Text = con.leer_interno[0].ToString().Trim(); //Colocar en cada caja de texto cada resultado
-                    lblUsuarioCartografia.Text = con.leer_interno[1].ToString().Trim();
-                    folioTemp = Convert.ToInt32(con.leer_interno[2].ToString().Trim());
-                    lblObservacionesVentanilla.Text = con.leer_interno[3].ToString().Trim();
-                    lblObservacionesCartografia.Text = con.leer_interno[4].ToString().Trim();
+                    if (con.leer_interno[0].ToString().Trim() != "") //Colocar en cada caja de texto cada resultado
+                    {
+                        lblUsuarioVentanillla.Text = con.leer_interno[0].ToString().Trim(); //Colocar en cada caja de texto cada resultado
+                        lblUsuarioCartografia.Text = con.leer_interno[1].ToString().Trim();
+                        folioTemp = Convert.ToInt32(con.leer_interno[2].ToString().Trim());
+                        lblObservacionesVentanilla.Text = con.leer_interno[3].ToString().Trim();
+                        lblObservacionesCartografia.Text = con.leer_interno[4].ToString().Trim();
+                    }
                 }
+                //cerrar la conexión 
+                con.cerrar_interno();
             }
-            //cerrar la conexión 
-            con.cerrar_interno();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al executar" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
+            }
+
             //habilitar los botones , etc 
             cmdAutorizarProcesoIndividual.Enabled = true;
             btnCancelarProceso.Enabled = true;
@@ -1947,66 +1983,88 @@ namespace SMACatastro.catastroRevision
             if (lblDescripcionCartografia.Text == "ALTA DE CLAVE")
             {
                 pnlDatosAlta.Visible = true;
-
-                con.conectar_base_interno();
-                con.cadena_sql_interno = "";
-                con.cadena_sql_interno = con.cadena_sql_interno + " SELECT ZON_ORIGEN, TERR_PROPIO, TERR_COMUN, SUP_CON, SUP_CON_COM, FRENTE,";
-                con.cadena_sql_interno = con.cadena_sql_interno + "        FONDO, REGIMEN, COD_CALLE, IRREGULARIDAD, TOPOGRAFiA, ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "        VAL_TERRENO , VAL_TERRENO_COMUN , VAL_CONST, VAL_CONST_COMUN ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   FROM CAT_NEW_CARTOGRAFIA_2025";
-                con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE FOLIO_ORIGEN = " + folioTemp;
-                con.conectar_base_interno();
-                con.cadena_sql_cmd_interno();
-                con.open_c_interno();
-                con.leer_interno = con.cmd_interno.ExecuteReader();
-                while (con.leer_interno.Read())
+                try
                 {
-                    if (con.leer_interno[0].ToString().Trim() != "") //Colocar en cada caja de texto cada resultado
+                    con.conectar_base_interno();
+                    con.cadena_sql_interno = "";
+                    con.cadena_sql_interno = con.cadena_sql_interno + " SELECT ZON_ORIGEN, TERR_PROPIO, TERR_COMUN, SUP_CON, SUP_CON_COM, FRENTE,";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "        FONDO, REGIMEN, COD_CALLE, IRREGULARIDAD, TOPOGRAFiA, ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "        VAL_TERRENO , VAL_TERRENO_COMUN , VAL_CONST, VAL_CONST_COMUN ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   FROM CAT_NEW_CARTOGRAFIA_2025";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE FOLIO_ORIGEN = " + folioTemp;
+                    con.conectar_base_interno();
+                    con.cadena_sql_cmd_interno();
+                    con.open_c_interno();
+                    con.leer_interno = con.cmd_interno.ExecuteReader();
+                    while (con.leer_interno.Read())
                     {
-                        lblZonaOrigen.Text = con.leer_interno[0].ToString().Trim(); //Colocar en cada caja de texto cada resultado
-                        lblSupTerr.Text = Convert.ToDouble(con.leer_interno[1].ToString(), CultureInfo.InvariantCulture).ToString("N2"); //Colocar en cada caja de texto cada resultado
-                        lblSupTerrCom.Text = Convert.ToDouble(con.leer_interno[2].ToString(), CultureInfo.InvariantCulture).ToString("N2"); //Colocar en cada caja de texto cada resultado
-                        lblSupCons.Text = Convert.ToDouble(con.leer_interno[3].ToString(), CultureInfo.InvariantCulture).ToString("N2"); //Colocar en cada caja de texto cada resultado
-                        lblSupConsCom.Text = Convert.ToDouble(con.leer_interno[4].ToString(), CultureInfo.InvariantCulture).ToString("N2"); //Colocar en cada caja de texto cada resultado
-                        lblFrente.Text = Convert.ToDouble(con.leer_interno[5].ToString(), CultureInfo.InvariantCulture).ToString("N2"); //Colocar en cada caja de texto cada resultado
-                        lblFondo.Text = Convert.ToDouble(con.leer_interno[6].ToString(), CultureInfo.InvariantCulture).ToString("N2"); //Colocar en cada caja de texto cada resultado
-                        lblRegimen.Text = con.leer_interno[7].ToString().Trim(); //Colocar en cada caja de texto cada resultado
-                        lblCalle.Text = con.leer_interno[8].ToString().Trim(); //Colocar en cada caja de texto cada resultado
-                        lblDesnivel.Text = con.leer_interno[9].ToString().Trim(); //Colocar en cada caja de texto cada resultado
-                        lblAreaT.Text = con.leer_interno[10].ToString().Trim(); //Colocar en cada caja de texto cada resultado
+                        if (con.leer_interno[0].ToString().Trim() != "") //Colocar en cada caja de texto cada resultado
+                        {
+                            lblZonaOrigen.Text = con.leer_interno[0].ToString().Trim(); //Colocar en cada caja de texto cada resultado
+                            lblSupTerr.Text = Convert.ToDouble(con.leer_interno[1].ToString(), CultureInfo.InvariantCulture).ToString("N2"); //Colocar en cada caja de texto cada resultado
+                            lblSupTerrCom.Text = Convert.ToDouble(con.leer_interno[2].ToString(), CultureInfo.InvariantCulture).ToString("N2"); //Colocar en cada caja de texto cada resultado
+                            lblSupCons.Text = Convert.ToDouble(con.leer_interno[3].ToString(), CultureInfo.InvariantCulture).ToString("N2"); //Colocar en cada caja de texto cada resultado
+                            lblSupConsCom.Text = Convert.ToDouble(con.leer_interno[4].ToString(), CultureInfo.InvariantCulture).ToString("N2"); //Colocar en cada caja de texto cada resultado
+                            lblFrente.Text = Convert.ToDouble(con.leer_interno[5].ToString(), CultureInfo.InvariantCulture).ToString("N2"); //Colocar en cada caja de texto cada resultado
+                            lblFondo.Text = Convert.ToDouble(con.leer_interno[6].ToString(), CultureInfo.InvariantCulture).ToString("N2"); //Colocar en cada caja de texto cada resultado
+                            lblRegimen.Text = con.leer_interno[7].ToString().Trim(); //Colocar en cada caja de texto cada resultado
+                            lblCalle.Text = con.leer_interno[8].ToString().Trim(); //Colocar en cada caja de texto cada resultado
+                            lblDesnivel.Text = con.leer_interno[9].ToString().Trim(); //Colocar en cada caja de texto cada resultado
+                            lblAreaT.Text = con.leer_interno[10].ToString().Trim(); //Colocar en cada caja de texto cada resultado
 
-                        double resultado =
-                        (string.IsNullOrEmpty(con.leer_interno[11].ToString().Trim()) ? 0 : double.Parse(con.leer_interno[11].ToString().Trim()) +
-                        (string.IsNullOrEmpty(con.leer_interno[12].ToString().Trim()) ? 0 : double.Parse(con.leer_interno[12].ToString().Trim()) +
-                        (string.IsNullOrEmpty(con.leer_interno[13].ToString().Trim()) ? 0 : double.Parse(con.leer_interno[13].ToString().Trim()) +
-                        (string.IsNullOrEmpty(con.leer_interno[14].ToString().Trim()) ? 0 : double.Parse(con.leer_interno[14].ToString().Trim())))));
-                        // Asigna el resultado convertido a texto al Label
-                        lblValorCat.Text = resultado.ToString("N2");
+                            double resultado =
+                            (string.IsNullOrEmpty(con.leer_interno[11].ToString().Trim()) ? 0 : double.Parse(con.leer_interno[11].ToString().Trim()) +
+                            (string.IsNullOrEmpty(con.leer_interno[12].ToString().Trim()) ? 0 : double.Parse(con.leer_interno[12].ToString().Trim()) +
+                            (string.IsNullOrEmpty(con.leer_interno[13].ToString().Trim()) ? 0 : double.Parse(con.leer_interno[13].ToString().Trim()) +
+                            (string.IsNullOrEmpty(con.leer_interno[14].ToString().Trim()) ? 0 : double.Parse(con.leer_interno[14].ToString().Trim())))));
+                            // Asigna el resultado convertido a texto al Label
+                            lblValorCat.Text = resultado.ToString("N2");
 
+                        }
+                    }
+                    txtObservacionTramite.Text = string.Empty;
+                    txtObservacionTramite.Enabled = true;
+                    txtObservacionTramite.Focus();
+                    pnlDatosAlta.Enabled = true;
+                    pnlTAPAR.Enabled = false;
+                    con.cerrar_interno();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al executar " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    util.CapturarPantallaConInformacion(ex);
+                    System.Threading.Thread.Sleep(500);
+                    con.cerrar_interno();
+                    // Retornar false si ocurre un error
+                }
+
+                pnlTAPAR.Visible = false;
+                try
+                {
+                    con.conectar_base_interno();
+                    con.cadena_sql_interno = "";
+                    con.cadena_sql_interno = con.cadena_sql_interno + " SELECT NOMCALLE ";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "   FROM CALLES";
+                    con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE CODCALLE = " + util.scm(lblCalle.Text.ToString());
+                    con.conectar_base_interno();
+                    con.cadena_sql_cmd_interno();
+                    con.open_c_interno();
+                    con.leer_interno = con.cmd_interno.ExecuteReader();
+                    while (con.leer_interno.Read())
+                    {
+                        if (con.leer_interno[0].ToString().Trim() != "") //Colocar en cada caja de texto cada resultado
+                        {
+                            lblCalle.Text = con.leer_interno[0].ToString().Trim(); //Colocar en cada caja de texto cada resultado
+                        }
                     }
                 }
-                txtObservacionTramite.Text = string.Empty;
-                txtObservacionTramite.Enabled = true;
-                txtObservacionTramite.Focus();
-                pnlDatosAlta.Enabled = true;
-                pnlTAPAR.Enabled = false;
-                con.cerrar_interno();
-                pnlTAPAR.Visible = false;
-                con.conectar_base_interno();
-                con.cadena_sql_interno = "";
-                con.cadena_sql_interno = con.cadena_sql_interno + " SELECT NOMCALLE ";
-                con.cadena_sql_interno = con.cadena_sql_interno + "   FROM CALLES";
-                con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE CODCALLE = " + util.scm(lblCalle.Text.ToString());
-                con.conectar_base_interno();
-                con.cadena_sql_cmd_interno();
-                con.open_c_interno();
-                con.leer_interno = con.cmd_interno.ExecuteReader();
-                while (con.leer_interno.Read())
+                catch (Exception ex)
                 {
-                    if (con.leer_interno[0].ToString().Trim() != "") //Colocar en cada caja de texto cada resultado
-                    {
-                        lblCalle.Text = con.leer_interno[0].ToString().Trim(); //Colocar en cada caja de texto cada resultado
-                    }
+                    MessageBox.Show(ex.Message, "Error al executar " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    util.CapturarPantallaConInformacion(ex);
+                    System.Threading.Thread.Sleep(500);
+                    con.cerrar_interno();
+                    // Retornar false si ocurre un error
                 }
 
                 btnMasCancel.Enabled = false;

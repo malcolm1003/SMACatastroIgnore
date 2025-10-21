@@ -267,6 +267,10 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnConstComun = new System.Windows.Forms.Button();
+            this.btnConstLote = new System.Windows.Forms.Button();
+            this.label60 = new System.Windows.Forms.Label();
+            this.lblBloqueo = new System.Windows.Forms.Label();
             this.lblCodCalle = new System.Windows.Forms.Label();
             this.lblPredioRegPropiedad = new System.Windows.Forms.Label();
             this.lblPredioConstruccion = new System.Windows.Forms.Label();
@@ -312,12 +316,10 @@
             this.lblNoInterior = new System.Windows.Forms.Label();
             this.label82 = new System.Windows.Forms.Label();
             this.label74 = new System.Windows.Forms.Label();
-            this.label76 = new System.Windows.Forms.Label();
             this.label78 = new System.Windows.Forms.Label();
             this.label80 = new System.Windows.Forms.Label();
             this.lblPredioConstruccionComun = new System.Windows.Forms.Label();
             this.label72 = new System.Windows.Forms.Label();
-            this.label70 = new System.Windows.Forms.Label();
             this.lblPredioTerrenoComun = new System.Windows.Forms.Label();
             this.label67 = new System.Windows.Forms.Label();
             this.label65 = new System.Windows.Forms.Label();
@@ -341,16 +343,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label62 = new System.Windows.Forms.Label();
+            this.label70 = new System.Windows.Forms.Label();
+            this.label76 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmdSalida = new System.Windows.Forms.Button();
             this.btnFiltro = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tmFechaHora = new System.Windows.Forms.Timer(this.components);
             this.panel112 = new System.Windows.Forms.Panel();
-            this.label60 = new System.Windows.Forms.Label();
-            this.lblBloqueo = new System.Windows.Forms.Label();
-            this.btnConstLote = new System.Windows.Forms.Button();
-            this.btnConstComun = new System.Windows.Forms.Button();
+            this.btnManifestacion = new System.Windows.Forms.Button();
             this.PanelBarraTitulo.SuspendLayout();
             this.panel18.SuspendLayout();
             this.pnlDatosPredio.SuspendLayout();
@@ -2954,6 +2955,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(61)))), ((int)(((byte)(69)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnManifestacion);
             this.panel1.Controls.Add(this.btnConstComun);
             this.panel1.Controls.Add(this.btnConstLote);
             this.panel1.Controls.Add(this.label60);
@@ -3036,6 +3038,67 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1344, 197);
             this.panel1.TabIndex = 1374;
+            // 
+            // btnConstComun
+            // 
+            this.btnConstComun.AutoSize = true;
+            this.btnConstComun.BackColor = System.Drawing.Color.Transparent;
+            this.btnConstComun.BackgroundImage = global::SMACatastro.Properties.Resources.edificio_de_oficinas;
+            this.btnConstComun.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnConstComun.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConstComun.Enabled = false;
+            this.btnConstComun.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(17)))), ((int)(((byte)(146)))));
+            this.btnConstComun.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(17)))), ((int)(((byte)(146)))));
+            this.btnConstComun.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConstComun.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnConstComun.Location = new System.Drawing.Point(648, 141);
+            this.btnConstComun.Name = "btnConstComun";
+            this.btnConstComun.Size = new System.Drawing.Size(23, 22);
+            this.btnConstComun.TabIndex = 1465;
+            this.btnConstComun.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnConstComun.UseVisualStyleBackColor = false;
+            this.btnConstComun.Click += new System.EventHandler(this.btnConstComun_Click);
+            // 
+            // btnConstLote
+            // 
+            this.btnConstLote.AutoSize = true;
+            this.btnConstLote.BackColor = System.Drawing.Color.Transparent;
+            this.btnConstLote.BackgroundImage = global::SMACatastro.Properties.Resources.casa__1_;
+            this.btnConstLote.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnConstLote.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConstLote.Enabled = false;
+            this.btnConstLote.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(17)))), ((int)(((byte)(146)))));
+            this.btnConstLote.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(17)))), ((int)(((byte)(146)))));
+            this.btnConstLote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConstLote.Location = new System.Drawing.Point(487, 141);
+            this.btnConstLote.Name = "btnConstLote";
+            this.btnConstLote.Size = new System.Drawing.Size(23, 22);
+            this.btnConstLote.TabIndex = 1464;
+            this.btnConstLote.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnConstLote.UseVisualStyleBackColor = false;
+            this.btnConstLote.Click += new System.EventHandler(this.btnConstLote_Click);
+            // 
+            // label60
+            // 
+            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label60.ForeColor = System.Drawing.Color.White;
+            this.label60.Location = new System.Drawing.Point(928, 101);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(101, 36);
+            this.label60.TabIndex = 1463;
+            this.label60.Text = "Observacion\r\nBloqueo:";
+            this.label60.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lblBloqueo
+            // 
+            this.lblBloqueo.BackColor = System.Drawing.Color.White;
+            this.lblBloqueo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblBloqueo.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBloqueo.Location = new System.Drawing.Point(1036, 98);
+            this.lblBloqueo.Name = "lblBloqueo";
+            this.lblBloqueo.Size = new System.Drawing.Size(293, 64);
+            this.lblBloqueo.TabIndex = 1462;
+            this.lblBloqueo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblCodCalle
             // 
@@ -3544,17 +3607,6 @@
             this.label74.Text = "A. Inscripta:";
             this.label74.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label76
-            // 
-            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label76.ForeColor = System.Drawing.Color.White;
-            this.label76.Location = new System.Drawing.Point(369, 167);
-            this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(62, 15);
-            this.label76.TabIndex = 1416;
-            this.label76.Text = "Desnivel:";
-            this.label76.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // label78
             // 
             this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
@@ -3598,17 +3650,6 @@
             this.label72.TabIndex = 1410;
             this.label72.Text = "Constr. Comun:";
             this.label72.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label70
-            // 
-            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label70.ForeColor = System.Drawing.Color.White;
-            this.label70.Location = new System.Drawing.Point(345, 145);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(87, 15);
-            this.label70.TabIndex = 1408;
-            this.label70.Text = "Construccion:";
-            this.label70.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblPredioTerrenoComun
             // 
@@ -3860,6 +3901,28 @@
             this.label62.Text = "Cod Calle:";
             this.label62.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // label70
+            // 
+            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label70.ForeColor = System.Drawing.Color.White;
+            this.label70.Location = new System.Drawing.Point(345, 145);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(87, 15);
+            this.label70.TabIndex = 1408;
+            this.label70.Text = "Construccion:";
+            this.label70.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label76
+            // 
+            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label76.ForeColor = System.Drawing.Color.White;
+            this.label76.Location = new System.Drawing.Point(369, 167);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(62, 15);
+            this.label76.TabIndex = 1416;
+            this.label76.Text = "Desnivel:";
+            this.label76.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
@@ -3927,7 +3990,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(12, 357);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
@@ -3951,66 +4014,19 @@
             this.panel112.Size = new System.Drawing.Size(7, 950);
             this.panel112.TabIndex = 1732;
             // 
-            // label60
+            // btnManifestacion
             // 
-            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label60.ForeColor = System.Drawing.Color.White;
-            this.label60.Location = new System.Drawing.Point(928, 101);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(101, 36);
-            this.label60.TabIndex = 1463;
-            this.label60.Text = "Observacion\r\nBloqueo:";
-            this.label60.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // lblBloqueo
-            // 
-            this.lblBloqueo.BackColor = System.Drawing.Color.White;
-            this.lblBloqueo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.lblBloqueo.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBloqueo.Location = new System.Drawing.Point(1036, 98);
-            this.lblBloqueo.Name = "lblBloqueo";
-            this.lblBloqueo.Size = new System.Drawing.Size(293, 64);
-            this.lblBloqueo.TabIndex = 1462;
-            this.lblBloqueo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnConstLote
-            // 
-            this.btnConstLote.AutoSize = true;
-            this.btnConstLote.BackColor = System.Drawing.Color.Transparent;
-            this.btnConstLote.BackgroundImage = global::SMACatastro.Properties.Resources.casa__1_;
-            this.btnConstLote.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnConstLote.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnConstLote.Enabled = false;
-            this.btnConstLote.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(17)))), ((int)(((byte)(146)))));
-            this.btnConstLote.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(17)))), ((int)(((byte)(146)))));
-            this.btnConstLote.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConstLote.Location = new System.Drawing.Point(487, 141);
-            this.btnConstLote.Name = "btnConstLote";
-            this.btnConstLote.Size = new System.Drawing.Size(23, 22);
-            this.btnConstLote.TabIndex = 1464;
-            this.btnConstLote.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnConstLote.UseVisualStyleBackColor = false;
-            this.btnConstLote.Click += new System.EventHandler(this.btnConstLote_Click);
-            // 
-            // btnConstComun
-            // 
-            this.btnConstComun.AutoSize = true;
-            this.btnConstComun.BackColor = System.Drawing.Color.Transparent;
-            this.btnConstComun.BackgroundImage = global::SMACatastro.Properties.Resources.edificio_de_oficinas;
-            this.btnConstComun.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnConstComun.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnConstComun.Enabled = false;
-            this.btnConstComun.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(17)))), ((int)(((byte)(146)))));
-            this.btnConstComun.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(17)))), ((int)(((byte)(146)))));
-            this.btnConstComun.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConstComun.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnConstComun.Location = new System.Drawing.Point(648, 141);
-            this.btnConstComun.Name = "btnConstComun";
-            this.btnConstComun.Size = new System.Drawing.Size(23, 22);
-            this.btnConstComun.TabIndex = 1465;
-            this.btnConstComun.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnConstComun.UseVisualStyleBackColor = false;
-            this.btnConstComun.Click += new System.EventHandler(this.btnConstComun_Click);
+            this.btnManifestacion.BackColor = System.Drawing.Color.Cyan;
+            this.btnManifestacion.Enabled = false;
+            this.btnManifestacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManifestacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManifestacion.Location = new System.Drawing.Point(1035, 165);
+            this.btnManifestacion.Name = "btnManifestacion";
+            this.btnManifestacion.Size = new System.Drawing.Size(131, 23);
+            this.btnManifestacion.TabIndex = 1466;
+            this.btnManifestacion.Text = "MANIFESTACIÓN";
+            this.btnManifestacion.UseVisualStyleBackColor = false;
+            this.btnManifestacion.Click += new System.EventHandler(this.btnManifestacion_Click);
             // 
             // frmCatastro03BusquedaCatastro
             // 
@@ -4056,7 +4072,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmCatastro03BusquedaCatastro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCatastro03BusquedaCatastro";
@@ -4425,5 +4441,6 @@
         private System.Windows.Forms.Label lblBloqueo;
         private System.Windows.Forms.Button btnConstLote;
         private System.Windows.Forms.Button btnConstComun;
+        private System.Windows.Forms.Button btnManifestacion;
     }
 }

@@ -2016,6 +2016,8 @@ namespace SMACatastro.catastroCartografia
 
             txtLatitud.Text = "";
             txtLongitud.Text = "";
+            txtLatitudG.Text = "";
+            txtLongitudG.Text = "";
 
             txtObservaciones.Text = "";
             gMapControl1.Visible = false;
@@ -2643,7 +2645,7 @@ namespace SMACatastro.catastroCartografia
 
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error"  + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 util.CapturarPantallaConInformacion(ex);
                 System.Threading.Thread.Sleep(500);
                 con.cerrar_interno();
@@ -2696,7 +2698,7 @@ namespace SMACatastro.catastroCartografia
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al buscar el maximo folio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error al buscar el maximo folio" + ex.Message , MessageBoxButtons.OK, MessageBoxIcon.Error);
                 util.CapturarPantallaConInformacion(ex);
                 System.Threading.Thread.Sleep(500);
                 con.cerrar_interno();
@@ -2773,7 +2775,7 @@ namespace SMACatastro.catastroCartografia
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error al executar el proceso N19_CALCULO_CATASTRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error al executar el proceso N19_CALCULO_CATASTRO" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 util.CapturarPantallaConInformacion(ex);
                 System.Threading.Thread.Sleep(500);
                 con.cerrar_interno();
@@ -3504,16 +3506,6 @@ namespace SMACatastro.catastroCartografia
                 return 0; // Retornar false si ocurre un error
             }
         }
-
-
-
-
-
-
-
-
-
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             int resultado = 0;
@@ -3623,6 +3615,8 @@ namespace SMACatastro.catastroCartografia
 
             txtLatitud.Text = "";
             txtLongitud.Text = "";
+            txtLatitudG.Text = "";
+            txtLongitudG.Text = "";
         }
 
         private void frmCatastro01UbicacionAlta_Activated(object sender, EventArgs e)
@@ -3724,11 +3718,23 @@ namespace SMACatastro.catastroCartografia
                 MessageBox.Show("Por favor, ingrese la latitud y longitud antes de abrir Google Maps.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            string latitud = txtLatitud.Text.Trim();
-            string longitud = txtLongitud.Text.Trim();
+            string latitud2 = txtLatitud.Text.Trim();
+            string longitud2 = txtLongitud.Text.Trim();
 
             //return $"https://www.google.com/maps?q={latitud},{longitud}";
-            Process.Start($"https://www.google.com/maps?q={latitud},{longitud}");
+            Process.Start($"https://www.google.com/maps?q={latitud2},{longitud2}");
+            if (txtLatitudG.Text.Length == 16 && txtLongitudG.Text.Length == 16 )
+            {
+                string latitud = txtLatitud.Text.Trim();
+                string longitud = txtLongitud.Text.Trim();
+
+                //return $"https://www.google.com/maps?q={latitud},{longitud}";
+                Process.Start($"https://www.google.com/maps?q={latitud},{longitud}");
+            }
+            else
+            {
+                MessageBox.Show("LAS COORDENADAS NO CUENTAN CON EL FORMATO CORRECTO", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void gMapControl1_MouseDoubleClick(object sender, MouseEventArgs e)

@@ -41,7 +41,7 @@ namespace SMACatastro
         internal static int idUsuarioI = 0;
         internal static int noEmpleadoI = 0;
 
-        internal static string acceso_usuario = "SONGUI22";
+        internal static string acceso_usuario = "SONGUI22"; //es la variable de solo los 10 digitos; colocar esa.
         internal static string acceso_contraseña = "";
 
         internal static string acceso_nombre_usuario = "";

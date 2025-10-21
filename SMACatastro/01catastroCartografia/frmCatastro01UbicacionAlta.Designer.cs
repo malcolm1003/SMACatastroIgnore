@@ -49,6 +49,7 @@
             this.btnMinimizar = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel14 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -133,7 +134,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cmdSalida = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.panel14 = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
             this.PanelBarraTitulo.SuspendLayout();
             this.mtcInformacion.SuspendLayout();
@@ -215,7 +215,7 @@
             this.tabPage1.Controls.Add(this.label31);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(605, 97);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "ALTA  DE  LOTE";
@@ -367,6 +367,15 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(7, 950);
             this.panel3.TabIndex = 1178;
+            // 
+            // panel14
+            // 
+            this.panel14.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(24)))), ((int)(((byte)(151)))));
+            this.panel14.Location = new System.Drawing.Point(0, 0);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(7, 950);
+            this.panel14.TabIndex = 1179;
             // 
             // panel4
             // 
@@ -611,7 +620,6 @@
             // 
             this.pnlDatosPredio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(61)))), ((int)(((byte)(69)))));
             this.pnlDatosPredio.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlDatosPredio.Controls.Add(this.txtLongitudG);
             this.pnlDatosPredio.Controls.Add(this.txtLatitudG);
             this.pnlDatosPredio.Controls.Add(this.btnConstComun);
             this.pnlDatosPredio.Controls.Add(this.btnConstLote);
@@ -622,7 +630,6 @@
             this.pnlDatosPredio.Controls.Add(this.txtSupContComn);
             this.pnlDatosPredio.Controls.Add(this.btnRefresh);
             this.pnlDatosPredio.Controls.Add(this.txtLatitud);
-            this.pnlDatosPredio.Controls.Add(this.txtLongitud);
             this.pnlDatosPredio.Controls.Add(this.label28);
             this.pnlDatosPredio.Controls.Add(this.label29);
             this.pnlDatosPredio.Controls.Add(this.btnZonaOrigen);
@@ -651,6 +658,8 @@
             this.pnlDatosPredio.Controls.Add(this.txtZonaOrigen);
             this.pnlDatosPredio.Controls.Add(this.cboRegimenPropiedad);
             this.pnlDatosPredio.Controls.Add(this.label23);
+            this.pnlDatosPredio.Controls.Add(this.txtLongitudG);
+            this.pnlDatosPredio.Controls.Add(this.txtLongitud);
             this.pnlDatosPredio.Location = new System.Drawing.Point(12, 148);
             this.pnlDatosPredio.Name = "pnlDatosPredio";
             this.pnlDatosPredio.Size = new System.Drawing.Size(628, 237);
@@ -660,7 +669,7 @@
             // 
             this.txtLongitudG.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtLongitudG.Location = new System.Drawing.Point(466, 206);
-            this.txtLongitudG.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLongitudG.Margin = new System.Windows.Forms.Padding(2);
             this.txtLongitudG.MaxLength = 13;
             this.txtLongitudG.Name = "txtLongitudG";
             this.txtLongitudG.Size = new System.Drawing.Size(129, 20);
@@ -672,7 +681,7 @@
             // 
             this.txtLatitudG.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtLatitudG.Location = new System.Drawing.Point(147, 206);
-            this.txtLatitudG.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLatitudG.Margin = new System.Windows.Forms.Padding(2);
             this.txtLatitudG.MaxLength = 13;
             this.txtLatitudG.Name = "txtLatitudG";
             this.txtLatitudG.Size = new System.Drawing.Size(129, 20);
@@ -1463,15 +1472,6 @@
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             this.btnBuscar.MouseHover += new System.EventHandler(this.btnBuscar_MouseHover);
-            // 
-            // panel14
-            // 
-            this.panel14.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(24)))), ((int)(((byte)(151)))));
-            this.panel14.Location = new System.Drawing.Point(0, 0);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(7, 950);
-            this.panel14.TabIndex = 1179;
             // 
             // panel15
             // 

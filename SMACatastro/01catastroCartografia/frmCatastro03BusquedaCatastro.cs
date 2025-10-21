@@ -80,32 +80,6 @@ namespace SMACatastro.catastroCartografia
         {
             inicio();
         }
-
-        //private void TextBox_Enter(object sender, EventArgs e)
-        //{
-        //    TextBox currentTextBox = (TextBox)sender;
-        //    currentTextBox.BackColor = Color.Yellow;
-
-        //    // Opcional: Restaurar color cuando pierde el foco
-        //    currentTextBox.Leave += (s, args) => 
-        //    {
-        //        currentTextBox.BackColor = SystemColors.Window;
-        //    };
-        //}
-
-        //private void RadioButon_Enter(object sender, EventArgs e)
-        //{
-        //    RadioButton radioButton = (RadioButton)sender;
-        //    radioButton.BackColor = Color.Yellow;
-
-        //    // Opcional: Restaurar color cuando pierde el foco
-        //    radioButton.Leave += (s, args) => 
-        //    {
-        //        radioButton.BackColor = SystemColors.Window;
-        //    };
-        //}
-
-
         private void inicio()
         {
             inabilitarBotones();
@@ -114,9 +88,6 @@ namespace SMACatastro.catastroCartografia
             label27.Text = "USUARIO: " + Program.nombre_usuario.ToString();
             txtZona.Focus();
         }
-
-
-
         private void inicios()
         {
             // limpiamos la clave catastral
@@ -154,16 +125,16 @@ namespace SMACatastro.catastroCartografia
 
         private void consulta()
         {
-            if (txtZona.Text.Trim() == "") { MessageBox.Show("NO SE TIENE LA ZONA", "ERROR", MessageBoxButtons.OK); txtZona.Focus(); return; }
-            if (txtZona.Text.Length < 2) { MessageBox.Show("SE DEBEN DE TENER 2 DIGITOS EN ZONA", "ERROR", MessageBoxButtons.OK); txtZona.Focus(); return; }
-            if (txtMzna.Text.Trim() == "") { MessageBox.Show("NO SE TIENE LA MANZANA", "ERROR", MessageBoxButtons.OK); txtMzna.Focus(); return; }
-            if (txtMzna.Text.Length < 3) { MessageBox.Show("SE DEBEN DE TENER 3 DIGITOS EN MANZANA", "ERROR", MessageBoxButtons.OK); txtMzna.Focus(); return; }
-            if (txtLote.Text.Trim() == "") { MessageBox.Show("NO SE TIENE EL LOTE", "ERROR", MessageBoxButtons.OK); txtLote.Focus(); return; }
-            if (txtLote.Text.Length < 2) { MessageBox.Show("SE DEBEN DE TENER 2 DIGITOS EN EL LOTE", "ERROR", MessageBoxButtons.OK); txtLote.Focus(); return; }
+            if (txtZona.Text.Trim() == "")     { MessageBox.Show("NO SE TIENE LA ZONA", "ERROR", MessageBoxButtons.OK); txtZona.Focus(); return; }
+            if (txtZona.Text.Length < 2)       { MessageBox.Show("SE DEBEN DE TENER 2 DIGITOS EN ZONA", "ERROR", MessageBoxButtons.OK); txtZona.Focus(); return; }
+            if (txtMzna.Text.Trim() == "")     { MessageBox.Show("NO SE TIENE LA MANZANA", "ERROR", MessageBoxButtons.OK); txtMzna.Focus(); return; }
+            if (txtMzna.Text.Length < 3)       { MessageBox.Show("SE DEBEN DE TENER 3 DIGITOS EN MANZANA", "ERROR", MessageBoxButtons.OK); txtMzna.Focus(); return; }
+            if (txtLote.Text.Trim() == "")     { MessageBox.Show("NO SE TIENE EL LOTE", "ERROR", MessageBoxButtons.OK); txtLote.Focus(); return; }
+            if (txtLote.Text.Length < 2)       { MessageBox.Show("SE DEBEN DE TENER 2 DIGITOS EN EL LOTE", "ERROR", MessageBoxButtons.OK); txtLote.Focus(); return; }
             if (txtEdificio.Text.Trim() == "") { MessageBox.Show("NO SE TIENE EL EDIFICIO", "ERROR", MessageBoxButtons.OK); txtEdificio.Focus(); return; }
-            if (txtEdificio.Text.Length < 2) { MessageBox.Show("SE DEBEN DE TENER 2 DIGITOS EN EL EDIFICIO", "ERROR", MessageBoxButtons.OK); txtEdificio.Focus(); return; }
-            if (txtDepto.Text.Trim() == "") { MessageBox.Show("NO SE TIENE EL DEPARTAMENTO", "ERROR", MessageBoxButtons.OK); txtDepto.Focus(); return; }
-            if (txtDepto.Text.Length < 4) { MessageBox.Show("SE DEBEN DE TENER 4 DIGITOS EN EL DEPARTAMENTO", "ERROR", MessageBoxButtons.OK); txtDepto.Focus(); return; }
+            if (txtEdificio.Text.Length < 2)   { MessageBox.Show("SE DEBEN DE TENER 2 DIGITOS EN EL EDIFICIO", "ERROR", MessageBoxButtons.OK); txtEdificio.Focus(); return; }
+            if (txtDepto.Text.Trim() == "")    { MessageBox.Show("NO SE TIENE EL DEPARTAMENTO", "ERROR", MessageBoxButtons.OK); txtDepto.Focus(); return; }
+            if (txtDepto.Text.Length < 4)      { MessageBox.Show("SE DEBEN DE TENER 4 DIGITOS EN EL DEPARTAMENTO", "ERROR", MessageBoxButtons.OK); txtDepto.Focus(); return; }
 
             Program.municipioV = Program.Vmunicipio;
             Program.zonaV = txtZona.Text.Trim();
@@ -173,7 +144,7 @@ namespace SMACatastro.catastroCartografia
             Program.deptoV = txtDepto.Text.Trim();
 
             //------------------------------- OBTENEMOS LA INFROMACION DE LA CLAVE CATASTRAL.
-
+            
             con.conectar_base_interno();
             con.cadena_sql_interno = " ";
             con.cadena_sql_interno = con.cadena_sql_interno + "SELECT p.PmnProp, pr.Domicilio, pr.Zona, c.NomCalle, pr.NumExt, pr.CodPost,";
@@ -220,9 +191,9 @@ namespace SMACatastro.catastroCartografia
             if (!con.leer_interno.HasRows)
             {
                 MessageBox.Show("NO SE ENCONTRO NINGUNA CLAVE CATASTRAL", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                con.cerrar_interno();
-                inicio();
-                return; // Retornar si no hay resultados
+                con.cerrar_interno(); 
+                inicio(); 
+                return; // Retornar si no hay resultados ( REGRESO )
             }
 
             while (con.leer_interno.Read())
@@ -315,43 +286,38 @@ namespace SMACatastro.catastroCartografia
                 //código que se agregó para el código de la calle solicitado por giovanna
                 lblCodCalle.Text = con.leer_interno[30].ToString().Trim();
             }
-
             con.cerrar_interno();
 
             //------------------------------- OBTENEMOS LA ULTIMA LATITUD Y LONGITUD.
 
             con.conectar_base_interno();
             con.cadena_sql_interno = " ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "SELECT TOP 1 ID, Latitud, Longitud";
-            con.cadena_sql_interno = con.cadena_sql_interno + "  FROM SONG_GEOLOCALIZACION";
-            con.cadena_sql_interno = con.cadena_sql_interno + " WHERE Estado      =  " + Program.Vestado;
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND Municipio   =  " + Program.municipioV;
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND Zona        =  " + Program.zonaV;
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND Manzana     =  " + Program.manzanaV;
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND Lote        =  " + Program.loteV;
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND Edificio    = '" + Program.edificioV + "'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND Depto       = '" + Program.deptoV + "'";
-            con.cadena_sql_interno = con.cadena_sql_interno + " ORDER BY id DESC     ";
-
+            con.cadena_sql_interno = con.cadena_sql_interno + "   SELECT TOP 1 ID, Latitud, Longitud";
+            con.cadena_sql_interno = con.cadena_sql_interno + "     FROM SONG_GEOLOCALIZACION";
+            con.cadena_sql_interno = con.cadena_sql_interno + "    WHERE Estado      =  " + Program.Vestado;
+            con.cadena_sql_interno = con.cadena_sql_interno + "      AND Municipio   =  " + Program.municipioV;
+            con.cadena_sql_interno = con.cadena_sql_interno + "      AND Zona        =  " + Program.zonaV;
+            con.cadena_sql_interno = con.cadena_sql_interno + "      AND Manzana     =  " + Program.manzanaV;
+            con.cadena_sql_interno = con.cadena_sql_interno + "      AND Lote        =  " + Program.loteV;
+            con.cadena_sql_interno = con.cadena_sql_interno + "      AND Edificio    = '" + Program.edificioV + "'";
+            con.cadena_sql_interno = con.cadena_sql_interno + "      AND Depto       = '" + Program.deptoV + "'";
+            con.cadena_sql_interno = con.cadena_sql_interno + " ORDER BY ID DESC     ";
             con.cadena_sql_cmd_interno();
             con.open_c_interno();
             con.leer_interno = con.cmd_interno.ExecuteReader();
-
             if (!con.leer_interno.HasRows)
             {
                 txtLatitud.Text = "";
                 txtLongitud.Text = "";
             }
-
             while (con.leer_interno.Read())
             {
                 txtLatitud.Text = con.leer_interno[1].ToString().Trim();
                 txtLongitud.Text = con.leer_interno[2].ToString().Trim();
             }
-
             con.cerrar_interno();
 
-            //------------------------------- OBTENEMOS LA ULTIMA LATITUD Y LONGITUD.
+            //------------------------------- OBTENEMOS EL TIPO DE PREDIO.
 
             int ubicacionEntero = Convert.ToInt32(lblPredioUbicacion.Text.Trim());
             switch (ubicacionEntero)
@@ -506,8 +472,18 @@ namespace SMACatastro.catastroCartografia
             picDerechaDos.Enabled = true;
             picDerechaTres.Enabled = true;
 
-            btnConstComun.Enabled = true;
-            btnConstLote.Enabled = true;
+            //aquí debe ser el if con los niveles //confirmar 
+            if (Program.acceso_nivel_acceso == 9)
+            {
+                btnConstComun.Enabled = false;
+                btnConstLote.Enabled = false;
+            }
+            else
+            {
+                btnConstComun.Enabled = true;
+                btnConstLote.Enabled = true;
+            }
+            btnManifestacion.Enabled = true;
             cmdSalida.Enabled = false;
         }
 
@@ -1478,7 +1454,7 @@ namespace SMACatastro.catastroCartografia
                 con.cerrar_interno();
                 dataGridView1.Visible = true;
 
-                double numRegistro = Convert.ToDouble(dataGridView1.Rows.Count);
+                double numRegistro = Convert.ToDouble(dataGridView1.Rows.Count - 1);
                 lblNumRegistro.Text = string.Format("{0:#,0}", numRegistro);
             }
             //----------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -2145,6 +2121,33 @@ namespace SMACatastro.catastroCartografia
                 //fs.Show();
                 frmCatastro01UbicacionAlta.ActiveForm.Opacity = 1.0;
             }
+        }
+        //botón para abrir la manifestación catastral
+        private void btnManifestacion_Click(object sender, EventArgs e)
+        {
+
+            int ZONA = Convert.ToInt32(txtZona.Text.ToString().Trim());
+            int MANZANA = Convert.ToInt32(txtMzna.Text.ToString().Trim());
+            int LOTE = Convert.ToInt32(txtLote.Text.ToString().Trim());
+            string EDIFICIO = txtEdificio.Text.ToString().Trim();
+            string DEPTO = txtDepto.Text.ToString().Trim();
+
+            /*
+            //spFECHA_INI = DateTime.Parse(cboAño1.Text + "-" + cboMes1.Text.Substring(0, 2) + "-" + cboDia1.Text + "T00:00:00");
+            //spFECHA_FIN = DateTime.Parse(cboAño2.Text + "-" + cboMes2.Text.Substring(0, 2) + "-" + cboDia2.Text + "T23:59:59");
+            //ABRIMOS EL REPORTE 
+            formaReporte.mostrarManifestacion mostrarReporteV = new formaReporte.mostrarManifestacion();
+            ////////// LOS PARAMETROS QUE VOY A MANDAR DEL FORMULARIO DE AQUÍ 
+            mostrarReporteV.ZONA = ZONA; //SACAMOS EL ÁREA EMISORA DEL COMBOBOX, CON SOLO LOS DOS PRIMEROS CARACTERES
+            mostrarReporteV.MANZANA = MANZANA; //SACAMOS EL ÁREA EMISORA DEL COMBOBOX, CON SOLO LOS DOS PRIMEROS CARACTERES
+            mostrarReporteV.LOTE = LOTE ; //DATETIME PARA LA FECHA INICIAL //DATETIME PARA LA FECHA FINAL 
+            mostrarReporteV.EDIFICIO= EDIFICIO ; //Ubicación cortada del combobox para el procedimiento almacenado
+            mostrarReporteV.DEPTO= DEPTO ; //Ubicación cortada del combobox para el procedimiento almacenado
+            
+            MessageBox.Show("PROCEDE A IMPRIMIR LA MANIFESTACIÓN", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            mostrarReporteV.ShowDialog();
+            */
+            
         }
     }
 }

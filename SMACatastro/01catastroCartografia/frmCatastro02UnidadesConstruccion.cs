@@ -17,6 +17,9 @@ namespace SMACatastro.catastroCartografia
         Util util = new Util();
         public int maxUnidad = 0;
         public int tipoGuardado = 0;    // 1 = nuevo, 2 = modificar
+        double estado2, valorV, valor_constt = 0.0;
+        int ResultadoV = 0;
+
 
         public frmCatastro02UnidadesConstruccion()
         {
@@ -56,243 +59,272 @@ namespace SMACatastro.catastroCartografia
             Program.indexTipologiaC = 0;
             string tipologiasSS = "";
 
-            con.conectar_base_interno();
-            con.cadena_sql_interno = "";
-
-            con.cadena_sql_interno = con.cadena_sql_interno + " SELECT RTRIM(Uso), RTRIM(claseConst), RTRIM(categConst), RTRIM(DescrClCat), ValM2Const";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   FROM TIPO_CONST";
-            con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE AnioVigVUC = " + Program.añoActual;
-            con.cadena_sql_interno = con.cadena_sql_interno + "  ORDER BY Uso";
-
-            con.cadena_sql_cmd_interno();
-            con.open_c_interno();
-            con.leer_interno = con.cmd_interno.ExecuteReader();
-
-            while (con.leer_interno.Read())
+            try
             {
-                acumalativoS = Convert.ToString(acumulativoI);
-                tipologiasSS = con.leer_interno[0].ToString().Trim() + con.leer_interno[1].ToString().Trim() + con.leer_interno[2].ToString().Trim() + "   " + con.leer_interno[3].ToString().Trim();
+                con.conectar_base_interno();
+                con.cadena_sql_interno = "";
 
-                if (Program.tipologiaC.Trim() == tipologiasSS.Trim()) { Program.indexTipologiaC = acumulativoI; }
+                con.cadena_sql_interno = con.cadena_sql_interno + " SELECT RTRIM(Uso), RTRIM(claseConst), RTRIM(categConst), RTRIM(DescrClCat), ValM2Const";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   FROM TIPO_CONST";
+                con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE AnioVigVUC = " + Program.añoActual;
+                con.cadena_sql_interno = con.cadena_sql_interno + "  ORDER BY Uso";
 
-                cboUnidades.Items.Add(con.leer_interno[0].ToString().Trim() + con.leer_interno[1].ToString().Trim() + con.leer_interno[2].ToString().Trim() + "  " + con.leer_interno[3].ToString().Trim());
+                con.cadena_sql_cmd_interno();
+                con.open_c_interno();
+                con.leer_interno = con.cmd_interno.ExecuteReader();
 
-                //if (acumalativoS.Trim().Length == 1) { cboUnidades.Items.Add(acumalativoS + "     " + con.leer_interno[0].ToString().Trim() + con.leer_interno[1].ToString().Trim() + con.leer_interno[2].ToString().Trim() + "  " + con.leer_interno[3].ToString().Trim()); }
-                //if (acumalativoS.Trim().Length == 2) { cboUnidades.Items.Add(acumalativoS + "   " + con.leer_interno[0].ToString().Trim() + con.leer_interno[1].ToString().Trim() + con.leer_interno[2].ToString().Trim() + "  " + con.leer_interno[3].ToString().Trim()); }
-                //if (acumalativoS.Trim().Length == 3) { cboUnidades.Items.Add(acumalativoS + " " + con.leer_interno[0].ToString().Trim() + con.leer_interno[1].ToString().Trim() + con.leer_interno[2].ToString().Trim() + "  " + con.leer_interno[3].ToString().Trim()); }
+                while (con.leer_interno.Read())
+                {
+                    acumalativoS = Convert.ToString(acumulativoI);
+                    tipologiasSS = con.leer_interno[0].ToString().Trim() + con.leer_interno[1].ToString().Trim() + con.leer_interno[2].ToString().Trim() + "   " + con.leer_interno[3].ToString().Trim();
 
-                acumulativoI = acumulativoI + 1;
+                    if (Program.tipologiaC.Trim() == tipologiasSS.Trim()) { Program.indexTipologiaC = acumulativoI; }
+
+                    cboUnidades.Items.Add(con.leer_interno[0].ToString().Trim() + con.leer_interno[1].ToString().Trim() + con.leer_interno[2].ToString().Trim() + "  " + con.leer_interno[3].ToString().Trim());
+
+                    //if (acumalativoS.Trim().Length == 1) { cboUnidades.Items.Add(acumalativoS + "     " + con.leer_interno[0].ToString().Trim() + con.leer_interno[1].ToString().Trim() + con.leer_interno[2].ToString().Trim() + "  " + con.leer_interno[3].ToString().Trim()); }
+                    //if (acumalativoS.Trim().Length == 2) { cboUnidades.Items.Add(acumalativoS + "   " + con.leer_interno[0].ToString().Trim() + con.leer_interno[1].ToString().Trim() + con.leer_interno[2].ToString().Trim() + "  " + con.leer_interno[3].ToString().Trim()); }
+                    //if (acumalativoS.Trim().Length == 3) { cboUnidades.Items.Add(acumalativoS + " " + con.leer_interno[0].ToString().Trim() + con.leer_interno[1].ToString().Trim() + con.leer_interno[2].ToString().Trim() + "  " + con.leer_interno[3].ToString().Trim()); }
+
+                    acumulativoI = acumulativoI + 1;
+                }
+                con.cerrar_interno();
             }
-            con.cerrar_interno();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al llenar combos" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
+            }
+            
         }
         private void llenarGridUnidades()
         {
-            //con.cadena_sql_interno = "";
-            //con.cadena_sql_interno = con.cadena_sql_interno + " SELECT NumUnidad, Uso, ClaseConst, CategConst, SupCons, ValorCons, AniodeCons, EstadoCons, NivCons";
-            //con.cadena_sql_interno = con.cadena_sql_interno + "   FROM UNID_CONST";
-            //con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE Zona = " + txtZona.Text.Trim();
-            //con.cadena_sql_interno = con.cadena_sql_interno + "    AND Manzana =" + txtMzna.Text.Trim();
-            //con.cadena_sql_interno = con.cadena_sql_interno + "    AND Lote = " + txtLote.Text.Trim();
-            //con.cadena_sql_interno = con.cadena_sql_interno + "    AND Edificio = " + txtEdificio.Text.Trim();
-            //con.cadena_sql_interno = con.cadena_sql_interno + "    AND Depto =" + txtDepto.Text.Trim();
+            try
+            {
+                con.cadena_sql_interno = "";
+                con.cadena_sql_interno = con.cadena_sql_interno + "SELECT Unidad            = RTRIM(uc.NumUnidad),";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       Tipologia         = RTRIM(uc.Uso) + '' + RTRIM(uc.ClaseConst) + '' + RTRIM(uc.CategConst) + '   ' + RTRIM(tc.DescrClCat),";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       Construc          = CAST(RTRIM(uc.SupCons) as float),";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       Valor_M2          = CAST(RTRIM(tc.ValM2Const) as float),";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       Año               = RTRIM(uc.AniodeCons),";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       Conservacion      = RTRIM(f.DescFact),";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       Niveles           = RTRIM(uc.NivCons),";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       V_Unidad          = CAST(RTRIM(uc.ValorCons) as float),";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       Folio             = RTRIM(uc.FOLIO)";
+                con.cadena_sql_interno = con.cadena_sql_interno + "  FROM UNID_CONST uc,";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       TIPO_CONST tc,";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       FACTORES f";
+                con.cadena_sql_interno = con.cadena_sql_interno + " WHERE Zona              = " + txtZona.Text.Trim();
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND Manzana           = " + txtMzna.Text.Trim();
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND Lote              = " + txtLote.Text.Trim();
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND uc.Uso            = tc.Uso";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND uc.ClaseConst     = tc.ClaseConst";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND uc.CategConst     = tc.CategConst";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND tc.AnioVigVUC     = " + Program.añoActual;
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND uc.EstadoCons     = f.RangoInf";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND f.AnioVigMD       = " + Program.añoActual;
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND f.TipoMerDem      = 3";
+                con.cadena_sql_interno = con.cadena_sql_interno + " ORDER BY uc.NumUnidad";
 
-            con.cadena_sql_interno = "";
-            con.cadena_sql_interno = con.cadena_sql_interno + "SELECT Unidad            = RTRIM(uc.NumUnidad),";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       Tipologia         = RTRIM(uc.Uso) + '' + RTRIM(uc.ClaseConst) + '' + RTRIM(uc.CategConst) + '   ' + RTRIM(tc.DescrClCat),";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       Construc          = CAST(RTRIM(uc.SupCons) as float),";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       Valor_M2          = CAST(RTRIM(tc.ValM2Const) as float),";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       Año               = RTRIM(uc.AniodeCons),";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       Conservacion      = RTRIM(f.DescFact),";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       Niveles           = RTRIM(uc.NivCons),";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       V_Unidad          = CAST(RTRIM(uc.ValorCons) as float),";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       Folio             = RTRIM(uc.FOLIO)";
-            con.cadena_sql_interno = con.cadena_sql_interno + "  FROM UNID_CONST uc,";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       TIPO_CONST tc,";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       FACTORES f";
-            con.cadena_sql_interno = con.cadena_sql_interno + " WHERE Zona              = " + txtZona.Text.Trim();
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND Manzana           = " + txtMzna.Text.Trim();
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND Lote              = " + txtLote.Text.Trim();
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND uc.Uso            = tc.Uso";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND uc.ClaseConst     = tc.ClaseConst";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND uc.CategConst     = tc.CategConst";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND tc.AnioVigVUC     = " + Program.añoActual;
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND uc.EstadoCons     = f.RangoInf";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND f.AnioVigMD       = " + Program.añoActual;
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND f.TipoMerDem      = 3";
-            con.cadena_sql_interno = con.cadena_sql_interno + " ORDER BY uc.NumUnidad";
+                con.conectar_base_interno();
+                con.cadena_sql_cmd_interno();
+                con.open_c_interno();
+                SqlDataAdapter da = new SqlDataAdapter(con.cmd_interno);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
 
-            con.conectar_base_interno();
-            con.cadena_sql_cmd_interno();
-            con.open_c_interno();
-            SqlDataAdapter da = new SqlDataAdapter(con.cmd_interno);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
+                dataGridView1.EnableHeadersVisualStyles = false;
+                dataGridView1.AllowUserToResizeColumns = false;
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = ColorTranslator.FromHtml("159, 24, 151");
 
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.AllowUserToResizeColumns = false;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = ColorTranslator.FromHtml("159, 24, 151");
-
-            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold); //Microsoft sans serif para todas las celdas
+                dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold); //Microsoft sans serif para todas las celdas
 
 
-            dataGridView1.Columns[2].HeaderText = "Construccion";
+                dataGridView1.Columns[2].HeaderText = "Construccion";
 
-            dataGridView1.Columns[0].Width = 75;        // unidad
-            dataGridView1.Columns[1].Width = 540;       // tipologia
-            dataGridView1.Columns[2].Width = 130;       // construccion
-            dataGridView1.Columns[3].Width = 120;       // valor x metro cuadrado
-            dataGridView1.Columns[4].Width = 60;        // Año
-            dataGridView1.Columns[5].Width = 130;       // conservacion
-            dataGridView1.Columns[6].Width = 80;        // niveles
-            dataGridView1.Columns[7].Width = 130;       // valor por unidad
-            dataGridView1.Columns[8].Width = 80;        // folio
+                dataGridView1.Columns[0].Width = 75;        // unidad
+                dataGridView1.Columns[1].Width = 540;       // tipologia
+                dataGridView1.Columns[2].Width = 130;       // construccion
+                dataGridView1.Columns[3].Width = 120;       // valor x metro cuadrado
+                dataGridView1.Columns[4].Width = 60;        // Año
+                dataGridView1.Columns[5].Width = 130;       // conservacion
+                dataGridView1.Columns[6].Width = 80;        // niveles
+                dataGridView1.Columns[7].Width = 130;       // valor por unidad
+                dataGridView1.Columns[8].Width = 80;        // folio
 
-            dataGridView1.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView1.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            dataGridView1.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;    // unidad
-            dataGridView1.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;      // tipologia
-            dataGridView1.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;    // construccion
-            dataGridView1.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;    // valor x metro cuadrado
-            dataGridView1.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;    // Año
-            dataGridView1.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;    // conservacion
-            dataGridView1.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;    // niveles
-            dataGridView1.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;    // valor por unidad
-            dataGridView1.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;    // folio
+                dataGridView1.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;    // unidad
+                dataGridView1.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;      // tipologia
+                dataGridView1.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;    // construccion
+                dataGridView1.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;    // valor x metro cuadrado
+                dataGridView1.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;    // Año
+                dataGridView1.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;    // conservacion
+                dataGridView1.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;    // niveles
+                dataGridView1.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;    // valor por unidad
+                dataGridView1.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;    // folio
 
-            dataGridView1.Columns[2].DefaultCellStyle.Format = "###,###,##0.##";
+                dataGridView1.Columns[2].DefaultCellStyle.Format = "###,###,##0.##";
 
-            dataGridView1.Columns[3].DefaultCellStyle.Format = "C2";
-            dataGridView1.Columns[7].DefaultCellStyle.Format = "C2";
+                dataGridView1.Columns[3].DefaultCellStyle.Format = "C2";
+                dataGridView1.Columns[7].DefaultCellStyle.Format = "C2";
 
 
-            //dataGridView1.Columns["Valor_M2"].DefaultCellStyle.Format = "##,##0.##";
-            //dataGridView1.Columns["V_Unidad"].DefaultCellStyle.Format = "##,##0.#0";
-            //dataGridView1.Columns["Construc"].DefaultCellStyle.Format = "##,##0.##";
-            //dataGridView1.Columns["V_Unidad"].DefaultCellStyle.Format = "##,##0.##";
+                //dataGridView1.Columns["Valor_M2"].DefaultCellStyle.Format = "##,##0.##";
+                //dataGridView1.Columns["V_Unidad"].DefaultCellStyle.Format = "##,##0.#0";
+                //dataGridView1.Columns["Construc"].DefaultCellStyle.Format = "##,##0.##";
+                //dataGridView1.Columns["V_Unidad"].DefaultCellStyle.Format = "##,##0.##";
 
-            //dataGridView1.Columns["V_Unidad"].DefaultCellStyle.Format = "C2";
+                //dataGridView1.Columns["V_Unidad"].DefaultCellStyle.Format = "C2";
 
-            //dataGridView1.Columns[0].Width = 65;        // unidad
-            //dataGridView1.Columns[1].Width = 450;       // tipologia
-            //dataGridView1.Columns[2].Width = 120;        // construccion
-            //dataGridView1.Columns[3].Width = 100;        // valor x metro cuadrado
-            //dataGridView1.Columns[4].Width = 60;        // Año
-            //dataGridView1.Columns[5].Width = 130;       // conservacion
-            //dataGridView1.Columns[6].Width = 80;        // niveles
-            //dataGridView1.Columns[7].Width = 130;       // valor por unidad
-            //dataGridView1.Columns[8].Width = 150;       // privada o comun
-            //dataGridView1.Columns[9].Width = 80;        // folio
+                //dataGridView1.Columns[0].Width = 65;        // unidad
+                //dataGridView1.Columns[1].Width = 450;       // tipologia
+                //dataGridView1.Columns[2].Width = 120;        // construccion
+                //dataGridView1.Columns[3].Width = 100;        // valor x metro cuadrado
+                //dataGridView1.Columns[4].Width = 60;        // Año
+                //dataGridView1.Columns[5].Width = 130;       // conservacion
+                //dataGridView1.Columns[6].Width = 80;        // niveles
+                //dataGridView1.Columns[7].Width = 130;       // valor por unidad
+                //dataGridView1.Columns[8].Width = 150;       // privada o comun
+                //dataGridView1.Columns[9].Width = 80;        // folio
 
 
 
 
-            //dataGridView1.Columns["Construc"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //dataGridView1.Columns["Unidad"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //dataGridView1.Columns["Valor_M2"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //dataGridView1.Columns["Año"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //dataGridView1.Columns["Conservacion"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //dataGridView1.Columns["Niveles"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //dataGridView1.Columns["V_Unidad"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //dataGridView1.Columns["Pri=0_Com=1"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //dataGridView1.Columns["Folio"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns["Construc"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns["Unidad"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns["Valor_M2"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns["Año"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns["Conservacion"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns["Niveles"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns["V_Unidad"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns["Pri=0_Com=1"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns["Folio"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            //dataGridView1.Columns["Unidad"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //dataGridView1.Columns["Tipologia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            //dataGridView1.Columns["Construc"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //dataGridView1.Columns["Valor_M2"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //dataGridView1.Columns["Año"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //dataGridView1.Columns["Conservacion"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //dataGridView1.Columns["Niveles"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //dataGridView1.Columns["V_Unidad"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            //dataGridView1.Columns["Pri=0_Com=1"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //dataGridView1.Columns["Folio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns["Unidad"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns["Tipologia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                //dataGridView1.Columns["Construc"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns["Valor_M2"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns["Año"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns["Conservacion"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns["Niveles"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns["V_Unidad"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                //dataGridView1.Columns["Pri=0_Com=1"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //dataGridView1.Columns["Folio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                //dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                con.cerrar_interno();
 
-
-
-
-
-
-
-            con.cerrar_interno();
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al llenar el grid de unidades" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
+            }
+           
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             ///
-
-            con.conectar_base_interno();
-            con.cadena_sql_interno = "";
-
-            con.cadena_sql_interno = con.cadena_sql_interno + " SELECT sum(SupCons), sum(ValorCons) ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   FROM UNID_CONST";
-            con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE Zona = " + txtZona.Text.Trim();
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND Manzana = " + txtMzna.Text.Trim();
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND Lote = " + txtLote.Text.Trim();
-
-            con.cadena_sql_cmd_interno();
-            con.open_c_interno();
-            con.leer_interno = con.cmd_interno.ExecuteReader();
-
-            double sumaTotal = 0.00;
-            double cantidadTotal = 0.00;
-
-            while (con.leer_interno.Read())
+            try
             {
-                if (con.leer_interno[0].ToString().Trim() == "")
-                {
-                    lblConstTotal.Text = "0.00";
-                    lblValorConstTotal.Text = "0.00";
-                }
-                else
-                {
-                    sumaTotal = Convert.ToDouble(con.leer_interno[0].ToString().Trim());
-                    cantidadTotal = Convert.ToDouble(con.leer_interno[1].ToString().Trim());
+                con.conectar_base_interno();
+                con.cadena_sql_interno = "";
 
-                    lblConstTotal.Text = Convert.ToString(sumaTotal.ToString("###,###,###,###.##"));
-                    lblValorConstTotal.Text = Convert.ToString(cantidadTotal.ToString("###,###,###,###.##"));
+                con.cadena_sql_interno = con.cadena_sql_interno + " SELECT sum(SupCons), sum(ValorCons) ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   FROM UNID_CONST";
+                con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE Zona = " + txtZona.Text.Trim();
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND Manzana = " + txtMzna.Text.Trim();
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND Lote = " + txtLote.Text.Trim();
 
-                    maxUnidad = Convert.ToInt32(con.leer_interno[0].ToString().Trim()) + 1;
+                con.cadena_sql_cmd_interno();
+                con.open_c_interno();
+                con.leer_interno = con.cmd_interno.ExecuteReader();
+
+                double sumaTotal = 0.00;
+                double cantidadTotal = 0.00;
+
+                while (con.leer_interno.Read())
+                {
+                    if (con.leer_interno[0].ToString().Trim() == "")
+                    {
+                        lblConstTotal.Text = "0.00";
+                        lblValorConstTotal.Text = "0.00";
+                    }
+                    else
+                    {
+                        sumaTotal = Convert.ToDouble(con.leer_interno[0].ToString().Trim());
+                        cantidadTotal = Convert.ToDouble(con.leer_interno[1].ToString().Trim());
+
+                        lblConstTotal.Text = Convert.ToString(sumaTotal.ToString("###,###,###,###.##"));
+                        lblValorConstTotal.Text = Convert.ToString(cantidadTotal.ToString("###,###,###,###.##"));
+
+                        maxUnidad = Convert.ToInt32(con.leer_interno[0].ToString().Trim()) + 1;
+                    }
                 }
+                con.cerrar_interno();
             }
-            con.cerrar_interno();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al obtener valores / suma " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
+            }
         }
         private void maximoValorUnidad()
         {
             maxUnidad = 0;
-
-            con.conectar_base_interno();
-            con.cadena_sql_interno = "";
-            con.cadena_sql_interno = con.cadena_sql_interno + " SELECT max(NumUnidad)";
-            con.cadena_sql_interno = con.cadena_sql_interno + "              FROM UNID_CONST";
-            con.cadena_sql_interno = con.cadena_sql_interno + "             WHERE MUNICIPIO = " + Program.municipioT;
-            con.cadena_sql_interno = con.cadena_sql_interno + "               AND ZONA = " + txtZona.Text.Trim();
-            con.cadena_sql_interno = con.cadena_sql_interno + "               AND MANZANA = " + txtMzna.Text.Trim();
-            con.cadena_sql_interno = con.cadena_sql_interno + "               AND LOTE = " + txtLote.Text.Trim();
-            //con.cadena_sql_interno = con.cadena_sql_interno + "               AND EDIFICIO = " + txtEdificio.Text.Trim();
-            //con.cadena_sql_interno = con.cadena_sql_interno + "               AND DEPTO = " + txtDepto.Text.Trim();
-
-            con.cadena_sql_cmd_interno();
-            con.open_c_interno();
-            con.leer_interno = con.cmd_interno.ExecuteReader();
-
-            while (con.leer_interno.Read())
+            try
             {
-                if (con.leer_interno[0].ToString().Trim() == "") { maxUnidad = 1; }
-                else
+                con.conectar_base_interno();
+                con.cadena_sql_interno = "";
+                con.cadena_sql_interno = con.cadena_sql_interno + " SELECT max(NumUnidad)";
+                con.cadena_sql_interno = con.cadena_sql_interno + "              FROM UNID_CONST";
+                con.cadena_sql_interno = con.cadena_sql_interno + "             WHERE MUNICIPIO = " + Program.municipioT;
+                con.cadena_sql_interno = con.cadena_sql_interno + "               AND ZONA = " + txtZona.Text.Trim();
+                con.cadena_sql_interno = con.cadena_sql_interno + "               AND MANZANA = " + txtMzna.Text.Trim();
+                con.cadena_sql_interno = con.cadena_sql_interno + "               AND LOTE = " + txtLote.Text.Trim();
+                //con.cadena_sql_interno = con.cadena_sql_interno + "               AND EDIFICIO = " + txtEdificio.Text.Trim();
+                //con.cadena_sql_interno = con.cadena_sql_interno + "               AND DEPTO = " + txtDepto.Text.Trim();
+
+                con.cadena_sql_cmd_interno();
+                con.open_c_interno();
+                con.leer_interno = con.cmd_interno.ExecuteReader();
+
+                while (con.leer_interno.Read())
                 {
-                    maxUnidad = Convert.ToInt32(con.leer_interno[0].ToString().Trim()) + 1;
+                    if (con.leer_interno[0].ToString().Trim() == "") { maxUnidad = 1; }
+                    else
+                    {
+                        maxUnidad = Convert.ToInt32(con.leer_interno[0].ToString().Trim()) + 1;
+                    }
                 }
+                con.cerrar_interno();
             }
-            con.cerrar_interno();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al sacar la máxima unidad" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
+            }
+            
         }
         private void cajas_amarilla(int x)
         {
@@ -384,50 +416,74 @@ namespace SMACatastro.catastroCartografia
             ///*********************************************************************************************************///
             /// obtenemos el facedcon
             ///*********************************************************************************************************///
-
-            con.conectar_base_interno();
-            con.cadena_sql_interno = "";
-            con.cadena_sql_interno = con.cadena_sql_interno + " SELECT CoefDemA";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   FROM FACEDCON";
-            con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE AnioVigVUC =" + Program.añoActual;
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND Uso = '" + bb1V + "'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND ClaseConst = '" + bb2V + "'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND CategConst = " + bb3V;
-
-            con.cadena_sql_cmd_interno();
-            con.open_c_interno();
-            con.leer_interno = con.cmd_interno.ExecuteReader();
-
-            while (con.leer_interno.Read())
+            try
             {
-                AA = Convert.ToDouble(con.leer_interno[0].ToString().Trim());
+                con.conectar_base_interno();
+                con.cadena_sql_interno = "";
+                con.cadena_sql_interno = con.cadena_sql_interno + " SELECT CoefDemA";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   FROM FACEDCON";
+                con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE AnioVigVUC =" + Program.añoActual;
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND Uso = '" + bb1V + "'";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND ClaseConst = '" + bb2V + "'";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND CategConst = " + bb3V;
+
+                con.cadena_sql_cmd_interno();
+                con.open_c_interno();
+                con.leer_interno = con.cmd_interno.ExecuteReader();
+
+                while (con.leer_interno.Read())
+                {
+                    AA = Convert.ToDouble(con.leer_interno[0].ToString().Trim());
+                }
+                con.cerrar_interno();
             }
-            con.cerrar_interno();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al obtener facedcon" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
+            }
+
+           
 
             ///*********************************************************************************************************///
             /// Factores de Estado
             ///*********************************************************************************************************///
-
-            con.conectar_base_interno();
-            con.cadena_sql_interno = "";
-            con.cadena_sql_interno = con.cadena_sql_interno + " SELECT Factor";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   FROM FACTORES";
-            con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE CptoMerDem = 'C'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND TipoMerDem = 3";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND AnioVigMD  = " + Program.añoActual;
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND NumFactor  = " + estadoV;
-
-            con.cadena_sql_cmd_interno();
-            con.open_c_interno();
-            con.leer_interno = con.cmd_interno.ExecuteReader();
-
-            double estado2 = 1;
-            while (con.leer_interno.Read())
+            try
             {
-                estado2 = Convert.ToDouble(con.leer_interno[0].ToString().Trim());
-            }
-            con.cerrar_interno();
+                con.conectar_base_interno();
+                con.cadena_sql_interno = "";
+                con.cadena_sql_interno = con.cadena_sql_interno + " SELECT Factor";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   FROM FACTORES";
+                con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE CptoMerDem = 'C'";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND TipoMerDem = 3";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND AnioVigMD  = " + Program.añoActual;
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND NumFactor  = " + estadoV;
 
+                con.cadena_sql_cmd_interno();
+                con.open_c_interno();
+                con.leer_interno = con.cmd_interno.ExecuteReader();
+
+                estado2 = 1;
+                while (con.leer_interno.Read())
+                {
+                    estado2 = Convert.ToDouble(con.leer_interno[0].ToString().Trim());
+                }
+                con.cerrar_interno();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al executar " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
+            }
+
+           
             ///*********************************************************************************************************///
             /// Factores para la edad
             ///*********************************************************************************************************///
@@ -488,127 +544,164 @@ namespace SMACatastro.catastroCartografia
             ///*********************************************************************************************************///
             /// Obtenemos el valor por metro cuadrado de construccion 
             ///*********************************************************************************************************///
-
-            con.conectar_base_interno();
-            con.cadena_sql_interno = "";
-            con.cadena_sql_interno = con.cadena_sql_interno + " SELECT ValM2Const";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   FROM TIPO_CONST";
-            con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE AnioVigVUC = " + Program.añoActual;
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND Uso        = '" + bb1V + "'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND ClaseConst = '" + bb2V + "'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND CategConst = " + bb3V;
-
-            con.cadena_sql_cmd_interno();
-            con.open_c_interno();
-            con.leer_interno = con.cmd_interno.ExecuteReader();
-
-            double valorV = 1;
-            while (con.leer_interno.Read())
+            try
             {
-                valorV = Convert.ToDouble(con.leer_interno[0].ToString().Trim());
+                con.conectar_base_interno();
+                con.cadena_sql_interno = "";
+                con.cadena_sql_interno = con.cadena_sql_interno + " SELECT ValM2Const";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   FROM TIPO_CONST";
+                con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE AnioVigVUC = " + Program.añoActual;
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND Uso        = '" + bb1V + "'";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND ClaseConst = '" + bb2V + "'";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND CategConst = " + bb3V;
+
+                con.cadena_sql_cmd_interno();
+                con.open_c_interno();
+                con.leer_interno = con.cmd_interno.ExecuteReader();
+
+                valorV = 1;
+                while (con.leer_interno.Read())
+                {
+                    valorV = Convert.ToDouble(con.leer_interno[0].ToString().Trim());
+                }
+                con.cerrar_interno();
             }
-            con.cerrar_interno();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al executar " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
+            }
+
+           
 
             double valor_const = valorV * sup_total * sum_factores;
             double valor_constt = Math.Round(valor_const, 5);
             int ResultadoV = 0;
 
-            if (lblTipoConstr.Text == "Privada")
+            if (lblTipoConstr.Text == "Privada") //Aquí va el try 
             {
-                con.conectar_base_interno();
-                con.open_c_interno();
-
-                SqlCommand cmd = new SqlCommand("SongInsertarPrivadaConstr", con.cnn_interno);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@estado", SqlDbType.Int, 8).Value = 15;
-                cmd.Parameters.Add("@municipio", SqlDbType.Int, 8).Value = 041;
-                cmd.Parameters.Add("@zona", SqlDbType.Int, 8).Value = Convert.ToInt32(txtZona.Text.Trim());
-                cmd.Parameters.Add("@manzana", SqlDbType.Int, 8).Value = Convert.ToInt32(txtMzna.Text.Trim());
-                cmd.Parameters.Add("@lote", SqlDbType.Int, 8).Value = Convert.ToInt32(txtLote.Text.Trim());
-                cmd.Parameters.Add("@edificio", SqlDbType.VarChar, 2).Value = txtEdificio.Text.Trim();
-                cmd.Parameters.Add("@depto", SqlDbType.VarChar, 4).Value = txtDepto.Text.Trim();
-                cmd.Parameters.Add("@unidad", SqlDbType.Int, 8).Value = Convert.ToInt32(txtNumero.Text.Trim());
-                cmd.Parameters.Add("@supTotal", SqlDbType.Float, 50).Value = sup_total;
-                cmd.Parameters.Add("@bb1", SqlDbType.VarChar, 1).Value = bb1V;
-                cmd.Parameters.Add("@bb2", SqlDbType.VarChar, 1).Value = bb2V;
-                cmd.Parameters.Add("@bb3", SqlDbType.Int, 1).Value = bb3V;
-
-                cmd.Parameters.Add("@añosConstr", SqlDbType.Int, 4).Value = años_cons_años;
-                cmd.Parameters.Add("@estados", SqlDbType.Int, 8).Value = estadoV;
-                cmd.Parameters.Add("@niveles", SqlDbType.Int, 8).Value = niveles2;
-                cmd.Parameters.Add("@factor_e", SqlDbType.Float, 12).Value = factor_ee;
-                cmd.Parameters.Add("@factor_c", SqlDbType.Float, 12).Value = factor_cc;
-                cmd.Parameters.Add("@factor_n", SqlDbType.Float, 12).Value = factor_nn;
-                cmd.Parameters.Add("@valorConst", SqlDbType.Float, 12).Value = valor_constt;
-
-                cmd.Parameters.Add("@fechaCap", SqlDbType.VarChar, 10).Value = fechaSql;
-                cmd.Parameters.Add("@usuario", SqlDbType.VarChar, 10).Value = Program.acceso_usuario;
-
-                if (tipoGuardado == 1)
+                try
                 {
-                    cmd.Parameters.Add("@tipoMod", SqlDbType.Int, 8).Value = 1;
-                    lblFolio.Text = "0";
-                }       /// alta
-                if (tipoGuardado == 2) { cmd.Parameters.Add("@tipoMod", SqlDbType.Int, 8).Value = 2; }       /// guardado
-                if (tipoGuardado == 3) { cmd.Parameters.Add("@tipoMod", SqlDbType.Int, 8).Value = 3; }       /// baja
-                cmd.Parameters.Add("@folio", SqlDbType.Int, 8).Value = Convert.ToInt32(lblFolio.Text.Trim());
+                    con.conectar_base_interno();
+                    con.open_c_interno();
 
-                cmd.Parameters.Add("@respuesta", SqlDbType.Int, 8).Direction = ParameterDirection.Output;
-                cmd.Connection = con.cnn_interno;
-                cmd.ExecuteNonQuery();
+                    SqlCommand cmd = new SqlCommand("SongInsertarPrivadaConstr", con.cnn_interno);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@estado", SqlDbType.Int, 8).Value = 15;
+                    cmd.Parameters.Add("@municipio", SqlDbType.Int, 8).Value = 041;
+                    cmd.Parameters.Add("@zona", SqlDbType.Int, 8).Value = Convert.ToInt32(txtZona.Text.Trim());
+                    cmd.Parameters.Add("@manzana", SqlDbType.Int, 8).Value = Convert.ToInt32(txtMzna.Text.Trim());
+                    cmd.Parameters.Add("@lote", SqlDbType.Int, 8).Value = Convert.ToInt32(txtLote.Text.Trim());
+                    cmd.Parameters.Add("@edificio", SqlDbType.VarChar, 2).Value = txtEdificio.Text.Trim();
+                    cmd.Parameters.Add("@depto", SqlDbType.VarChar, 4).Value = txtDepto.Text.Trim();
+                    cmd.Parameters.Add("@unidad", SqlDbType.Int, 8).Value = Convert.ToInt32(txtNumero.Text.Trim());
+                    cmd.Parameters.Add("@supTotal", SqlDbType.Float, 50).Value = sup_total;
+                    cmd.Parameters.Add("@bb1", SqlDbType.VarChar, 1).Value = bb1V;
+                    cmd.Parameters.Add("@bb2", SqlDbType.VarChar, 1).Value = bb2V;
+                    cmd.Parameters.Add("@bb3", SqlDbType.Int, 1).Value = bb3V;
 
-                ResultadoV = Convert.ToInt32(cmd.Parameters["@respuesta"].Value);
+                    cmd.Parameters.Add("@añosConstr", SqlDbType.Int, 4).Value = años_cons_años;
+                    cmd.Parameters.Add("@estados", SqlDbType.Int, 8).Value = estadoV;
+                    cmd.Parameters.Add("@niveles", SqlDbType.Int, 8).Value = niveles2;
+                    cmd.Parameters.Add("@factor_e", SqlDbType.Float, 12).Value = factor_ee;
+                    cmd.Parameters.Add("@factor_c", SqlDbType.Float, 12).Value = factor_cc;
+                    cmd.Parameters.Add("@factor_n", SqlDbType.Float, 12).Value = factor_nn;
+                    cmd.Parameters.Add("@valorConst", SqlDbType.Float, 12).Value = valor_constt;
 
-                con.cerrar_interno();
+                    cmd.Parameters.Add("@fechaCap", SqlDbType.VarChar, 10).Value = fechaSql;
+                    cmd.Parameters.Add("@usuario", SqlDbType.VarChar, 10).Value = Program.acceso_usuario;
+
+                    if (tipoGuardado == 1)
+                    {
+                        cmd.Parameters.Add("@tipoMod", SqlDbType.Int, 8).Value = 1;
+                        lblFolio.Text = "0";
+                    }       /// alta
+                    if (tipoGuardado == 2) { cmd.Parameters.Add("@tipoMod", SqlDbType.Int, 8).Value = 2; }       /// guardado
+                    if (tipoGuardado == 3) { cmd.Parameters.Add("@tipoMod", SqlDbType.Int, 8).Value = 3; }       /// baja
+                    cmd.Parameters.Add("@folio", SqlDbType.Int, 8).Value = Convert.ToInt32(lblFolio.Text.Trim());
+
+                    cmd.Parameters.Add("@respuesta", SqlDbType.Int, 8).Direction = ParameterDirection.Output;
+                    cmd.Connection = con.cnn_interno;
+                    cmd.ExecuteNonQuery();
+
+                    ResultadoV = Convert.ToInt32(cmd.Parameters["@respuesta"].Value);
+
+                    con.cerrar_interno();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al executar " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    util.CapturarPantallaConInformacion(ex);
+                    System.Threading.Thread.Sleep(500);
+                    con.cerrar_interno();
+                    // Retornar false si ocurre un error
+                }
+
+                
             }
 
             if (lblTipoConstr.Text == "Comun")
             {
-                con.conectar_base_interno();
-                con.open_c_interno();
-
-                SqlCommand cmd = new SqlCommand("SongInsertarComunConstr", con.cnn_interno);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@estado", SqlDbType.Int, 8).Value = 15;
-                cmd.Parameters.Add("@municipio", SqlDbType.Int, 8).Value = 041;
-                cmd.Parameters.Add("@zona", SqlDbType.Int, 8).Value = Convert.ToInt32(txtZona.Text.Trim());
-                cmd.Parameters.Add("@manzana", SqlDbType.Int, 8).Value = Convert.ToInt32(txtMzna.Text.Trim());
-                cmd.Parameters.Add("@lote", SqlDbType.Int, 8).Value = Convert.ToInt32(txtLote.Text.Trim());
-                cmd.Parameters.Add("@edificio", SqlDbType.VarChar, 2).Value = txtEdificio.Text.Trim();
-                cmd.Parameters.Add("@depto", SqlDbType.VarChar, 4).Value = txtDepto.Text.Trim();
-                cmd.Parameters.Add("@unidad", SqlDbType.Int, 8).Value = Convert.ToInt32(txtNumero.Text.Trim());
-                cmd.Parameters.Add("@supTotal", SqlDbType.Float, 50).Value = sup_total;
-                cmd.Parameters.Add("@bb1", SqlDbType.VarChar, 1).Value = bb1V;
-                cmd.Parameters.Add("@bb2", SqlDbType.VarChar, 1).Value = bb2V;
-                cmd.Parameters.Add("@bb3", SqlDbType.Int, 1).Value = bb3V;
-
-                cmd.Parameters.Add("@añosConstr", SqlDbType.Int, 4).Value = años_cons_años;
-                cmd.Parameters.Add("@estados", SqlDbType.Int, 8).Value = estadoV;
-                cmd.Parameters.Add("@niveles", SqlDbType.Int, 8).Value = niveles2;
-                cmd.Parameters.Add("@factor_e", SqlDbType.Float, 12).Value = factor_ee;
-                cmd.Parameters.Add("@factor_c", SqlDbType.Float, 12).Value = factor_cc;
-                cmd.Parameters.Add("@factor_n", SqlDbType.Float, 12).Value = factor_nn;
-                cmd.Parameters.Add("@valorConst", SqlDbType.Float, 12).Value = valor_constt;
-
-                cmd.Parameters.Add("@fechaCap", SqlDbType.VarChar, 10).Value = fechaSql;
-                cmd.Parameters.Add("@usuario", SqlDbType.VarChar, 10).Value = Program.acceso_usuario;
-
-                if (tipoGuardado == 1)
+                try
                 {
-                    cmd.Parameters.Add("@tipoMod", SqlDbType.Int, 8).Value = 1;
-                    lblFolio.Text = "0";
-                }       /// alta
-                if (tipoGuardado == 2) { cmd.Parameters.Add("@tipoMod", SqlDbType.Int, 8).Value = 2; }       /// guardado
-                if (tipoGuardado == 3) { cmd.Parameters.Add("@tipoMod", SqlDbType.Int, 8).Value = 3; }       /// baja
-                cmd.Parameters.Add("@folio", SqlDbType.Int, 8).Value = Convert.ToInt32(lblFolio.Text.Trim());
+                    con.conectar_base_interno();
+                    con.open_c_interno();
 
-                cmd.Parameters.Add("@respuesta", SqlDbType.Int, 8).Direction = ParameterDirection.Output;
-                cmd.Connection = con.cnn_interno;
-                cmd.ExecuteNonQuery();
+                    SqlCommand cmd = new SqlCommand("SongInsertarComunConstr", con.cnn_interno);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@estado", SqlDbType.Int, 8).Value = 15;
+                    cmd.Parameters.Add("@municipio", SqlDbType.Int, 8).Value = 041;
+                    cmd.Parameters.Add("@zona", SqlDbType.Int, 8).Value = Convert.ToInt32(txtZona.Text.Trim());
+                    cmd.Parameters.Add("@manzana", SqlDbType.Int, 8).Value = Convert.ToInt32(txtMzna.Text.Trim());
+                    cmd.Parameters.Add("@lote", SqlDbType.Int, 8).Value = Convert.ToInt32(txtLote.Text.Trim());
+                    cmd.Parameters.Add("@edificio", SqlDbType.VarChar, 2).Value = txtEdificio.Text.Trim();
+                    cmd.Parameters.Add("@depto", SqlDbType.VarChar, 4).Value = txtDepto.Text.Trim();
+                    cmd.Parameters.Add("@unidad", SqlDbType.Int, 8).Value = Convert.ToInt32(txtNumero.Text.Trim());
+                    cmd.Parameters.Add("@supTotal", SqlDbType.Float, 50).Value = sup_total;
+                    cmd.Parameters.Add("@bb1", SqlDbType.VarChar, 1).Value = bb1V;
+                    cmd.Parameters.Add("@bb2", SqlDbType.VarChar, 1).Value = bb2V;
+                    cmd.Parameters.Add("@bb3", SqlDbType.Int, 1).Value = bb3V;
 
-                ResultadoV = Convert.ToInt32(cmd.Parameters["@respuesta"].Value);
+                    cmd.Parameters.Add("@añosConstr", SqlDbType.Int, 4).Value = años_cons_años;
+                    cmd.Parameters.Add("@estados", SqlDbType.Int, 8).Value = estadoV;
+                    cmd.Parameters.Add("@niveles", SqlDbType.Int, 8).Value = niveles2;
+                    cmd.Parameters.Add("@factor_e", SqlDbType.Float, 12).Value = factor_ee;
+                    cmd.Parameters.Add("@factor_c", SqlDbType.Float, 12).Value = factor_cc;
+                    cmd.Parameters.Add("@factor_n", SqlDbType.Float, 12).Value = factor_nn;
+                    cmd.Parameters.Add("@valorConst", SqlDbType.Float, 12).Value = valor_constt;
 
-                con.cerrar_interno();
+                    cmd.Parameters.Add("@fechaCap", SqlDbType.VarChar, 10).Value = fechaSql;
+                    cmd.Parameters.Add("@usuario", SqlDbType.VarChar, 10).Value = Program.acceso_usuario;
+
+                    if (tipoGuardado == 1)
+                    {
+                        cmd.Parameters.Add("@tipoMod", SqlDbType.Int, 8).Value = 1;
+                        lblFolio.Text = "0";
+                    }       /// alta
+                    if (tipoGuardado == 2) { cmd.Parameters.Add("@tipoMod", SqlDbType.Int, 8).Value = 2; }       /// guardado
+                    if (tipoGuardado == 3) { cmd.Parameters.Add("@tipoMod", SqlDbType.Int, 8).Value = 3; }       /// baja
+                    cmd.Parameters.Add("@folio", SqlDbType.Int, 8).Value = Convert.ToInt32(lblFolio.Text.Trim());
+
+                    cmd.Parameters.Add("@respuesta", SqlDbType.Int, 8).Direction = ParameterDirection.Output;
+                    cmd.Connection = con.cnn_interno;
+                    cmd.ExecuteNonQuery();
+
+                    ResultadoV = Convert.ToInt32(cmd.Parameters["@respuesta"].Value);
+
+                    con.cerrar_interno();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al executar" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    util.CapturarPantallaConInformacion(ex);
+                    System.Threading.Thread.Sleep(500);
+                    con.cerrar_interno();
+                    // Retornar false si ocurre un error
+                }
+
             }
 
             lblFolio.Text = "";
@@ -712,49 +805,73 @@ namespace SMACatastro.catastroCartografia
             ///*********************************************************************************************************///
             /// obtenemos el facedcon
             ///*********************************************************************************************************///
-
-            con.conectar_base_interno();
-            con.cadena_sql_interno = "";
-            con.cadena_sql_interno = con.cadena_sql_interno + " SELECT CoefDemA";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   FROM FACEDCON";
-            con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE AnioVigVUC =" + Program.añoActual;
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND Uso = '" + bb1V + "'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND ClaseConst = '" + bb2V + "'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND CategConst = " + bb3V;
-
-            con.cadena_sql_cmd_interno();
-            con.open_c_interno();
-            con.leer_interno = con.cmd_interno.ExecuteReader();
-
-            while (con.leer_interno.Read())
+            try
             {
-                AA = Convert.ToDouble(con.leer_interno[0].ToString().Trim());
+                con.conectar_base_interno();
+                con.cadena_sql_interno = "";
+                con.cadena_sql_interno = con.cadena_sql_interno + " SELECT CoefDemA";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   FROM FACEDCON";
+                con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE AnioVigVUC =" + Program.añoActual;
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND Uso = '" + bb1V + "'";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND ClaseConst = '" + bb2V + "'";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND CategConst = " + bb3V;
+
+                con.cadena_sql_cmd_interno();
+                con.open_c_interno();
+                con.leer_interno = con.cmd_interno.ExecuteReader();
+
+                while (con.leer_interno.Read())
+                {
+                    AA = Convert.ToDouble(con.leer_interno[0].ToString().Trim());
+                }
+                con.cerrar_interno();
             }
-            con.cerrar_interno();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al executar el proceso N19_CALCULO_CATASTRO" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
+            }
+
+          
 
             ///*********************************************************************************************************///
             /// Factores de Estado
             ///*********************************************************************************************************///
-
-            con.conectar_base_interno();
-            con.cadena_sql_interno = "";
-            con.cadena_sql_interno = con.cadena_sql_interno + " SELECT Factor";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   FROM FACTORES";
-            con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE CptoMerDem = 'C'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND TipoMerDem = 3";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND AnioVigMD  = " + Program.añoActual;
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND NumFactor  = " + estadoV;
-
-            con.cadena_sql_cmd_interno();
-            con.open_c_interno();
-            con.leer_interno = con.cmd_interno.ExecuteReader();
-
-            double estado2 = 1;
-            while (con.leer_interno.Read())
+            try
             {
-                estado2 = Convert.ToDouble(con.leer_interno[0].ToString().Trim());
+
+                con.conectar_base_interno();
+                con.cadena_sql_interno = "";
+                con.cadena_sql_interno = con.cadena_sql_interno + " SELECT Factor";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   FROM FACTORES";
+                con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE CptoMerDem = 'C'";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND TipoMerDem = 3";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND AnioVigMD  = " + Program.añoActual;
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND NumFactor  = " + estadoV;
+
+                con.cadena_sql_cmd_interno();
+                con.open_c_interno();
+                con.leer_interno = con.cmd_interno.ExecuteReader();
+
+                double estado2 = 1;
+                while (con.leer_interno.Read())
+                {
+                    estado2 = Convert.ToDouble(con.leer_interno[0].ToString().Trim());
+                }
+                con.cerrar_interno();
             }
-            con.cerrar_interno();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al executar " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
+            }
+
 
             ///*********************************************************************************************************///
             /// Factores para la edad
@@ -816,114 +933,150 @@ namespace SMACatastro.catastroCartografia
             ///*********************************************************************************************************///
             /// Obtenemos el valor por metro cuadrado de construccion 
             ///*********************************************************************************************************///
-
-            con.conectar_base_interno();
-            con.cadena_sql_interno = "";
-            con.cadena_sql_interno = con.cadena_sql_interno + " SELECT ValM2Const";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   FROM TIPO_CONST";
-            con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE AnioVigVUC = " + Program.añoActual;
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND Uso        = '" + bb1V + "'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND ClaseConst = '" + bb2V + "'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    AND CategConst = " + bb3V;
-
-            con.cadena_sql_cmd_interno();
-            con.open_c_interno();
-            con.leer_interno = con.cmd_interno.ExecuteReader();
-
-            double valorV = 1;
-            while (con.leer_interno.Read())
+            try
             {
-                valorV = Convert.ToDouble(con.leer_interno[0].ToString().Trim());
-            }
-            con.cerrar_interno();
+                con.conectar_base_interno();
+                con.cadena_sql_interno = "";
+                con.cadena_sql_interno = con.cadena_sql_interno + " SELECT ValM2Const";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   FROM TIPO_CONST";
+                con.cadena_sql_interno = con.cadena_sql_interno + "  WHERE AnioVigVUC = " + Program.añoActual;
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND Uso        = '" + bb1V + "'";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND ClaseConst = '" + bb2V + "'";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    AND CategConst = " + bb3V;
 
-            double valor_const = valorV * sup_total * sum_factores;
-            double valor_constt = Math.Round(valor_const, 5);
-            int ResultadoV = 0;
+                con.cadena_sql_cmd_interno();
+                con.open_c_interno();
+                con.leer_interno = con.cmd_interno.ExecuteReader();
+
+                double valorV = 1;
+                while (con.leer_interno.Read())
+                {
+                    valorV = Convert.ToDouble(con.leer_interno[0].ToString().Trim());
+                }
+                con.cerrar_interno();
+
+                double valor_const = valorV * sup_total * sum_factores;
+                double valor_constt = Math.Round(valor_const, 5);
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al executar " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
+            }
+
+           
 
             if (lblTipoConstr.Text == "Privada")
             {
-                con.conectar_base_interno();
-                con.open_c_interno();
+                try
+                {
+                    con.conectar_base_interno();
+                    con.open_c_interno();
 
-                SqlCommand cmd = new SqlCommand("SongInsertarPrivadaConstr", con.cnn_interno);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@estado", SqlDbType.Int, 8).Value = 15;
-                cmd.Parameters.Add("@municipio", SqlDbType.Int, 8).Value = 041;
-                cmd.Parameters.Add("@zona", SqlDbType.Int, 8).Value = Convert.ToInt32(txtZona.Text.Trim());
-                cmd.Parameters.Add("@manzana", SqlDbType.Int, 8).Value = Convert.ToInt32(txtMzna.Text.Trim());
-                cmd.Parameters.Add("@lote", SqlDbType.Int, 8).Value = Convert.ToInt32(txtLote.Text.Trim());
-                cmd.Parameters.Add("@edificio", SqlDbType.VarChar, 2).Value = txtEdificio.Text.Trim();
-                cmd.Parameters.Add("@depto", SqlDbType.VarChar, 4).Value = txtDepto.Text.Trim();
-                cmd.Parameters.Add("@unidad", SqlDbType.Int, 8).Value = Convert.ToInt32(txtNumero.Text.Trim());
-                cmd.Parameters.Add("@supTotal", SqlDbType.Float, 50).Value = sup_total;
-                cmd.Parameters.Add("@bb1", SqlDbType.VarChar, 1).Value = bb1V;
-                cmd.Parameters.Add("@bb2", SqlDbType.VarChar, 1).Value = bb2V;
-                cmd.Parameters.Add("@bb3", SqlDbType.Int, 1).Value = bb3V;
+                    SqlCommand cmd = new SqlCommand("SongInsertarPrivadaConstr", con.cnn_interno);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@estado", SqlDbType.Int, 8).Value = 15;
+                    cmd.Parameters.Add("@municipio", SqlDbType.Int, 8).Value = 041;
+                    cmd.Parameters.Add("@zona", SqlDbType.Int, 8).Value = Convert.ToInt32(txtZona.Text.Trim());
+                    cmd.Parameters.Add("@manzana", SqlDbType.Int, 8).Value = Convert.ToInt32(txtMzna.Text.Trim());
+                    cmd.Parameters.Add("@lote", SqlDbType.Int, 8).Value = Convert.ToInt32(txtLote.Text.Trim());
+                    cmd.Parameters.Add("@edificio", SqlDbType.VarChar, 2).Value = txtEdificio.Text.Trim();
+                    cmd.Parameters.Add("@depto", SqlDbType.VarChar, 4).Value = txtDepto.Text.Trim();
+                    cmd.Parameters.Add("@unidad", SqlDbType.Int, 8).Value = Convert.ToInt32(txtNumero.Text.Trim());
+                    cmd.Parameters.Add("@supTotal", SqlDbType.Float, 50).Value = sup_total;
+                    cmd.Parameters.Add("@bb1", SqlDbType.VarChar, 1).Value = bb1V;
+                    cmd.Parameters.Add("@bb2", SqlDbType.VarChar, 1).Value = bb2V;
+                    cmd.Parameters.Add("@bb3", SqlDbType.Int, 1).Value = bb3V;
 
-                cmd.Parameters.Add("@añosConstr", SqlDbType.Int, 4).Value = años_cons_años;
-                cmd.Parameters.Add("@estados", SqlDbType.Int, 8).Value = estadoV;
-                cmd.Parameters.Add("@niveles", SqlDbType.Int, 8).Value = niveles2;
-                cmd.Parameters.Add("@factor_e", SqlDbType.Float, 12).Value = factor_ee;
-                cmd.Parameters.Add("@factor_c", SqlDbType.Float, 12).Value = factor_cc;
-                cmd.Parameters.Add("@factor_n", SqlDbType.Float, 12).Value = factor_nn;
-                cmd.Parameters.Add("@valorConst", SqlDbType.Float, 12).Value = valor_constt;
+                    cmd.Parameters.Add("@añosConstr", SqlDbType.Int, 4).Value = años_cons_años;
+                    cmd.Parameters.Add("@estados", SqlDbType.Int, 8).Value = estadoV;
+                    cmd.Parameters.Add("@niveles", SqlDbType.Int, 8).Value = niveles2;
+                    cmd.Parameters.Add("@factor_e", SqlDbType.Float, 12).Value = factor_ee;
+                    cmd.Parameters.Add("@factor_c", SqlDbType.Float, 12).Value = factor_cc;
+                    cmd.Parameters.Add("@factor_n", SqlDbType.Float, 12).Value = factor_nn;
+                    cmd.Parameters.Add("@valorConst", SqlDbType.Float, 12).Value = valor_constt;
 
-                cmd.Parameters.Add("@fechaCap", SqlDbType.VarChar, 10).Value = fechaSql;
-                cmd.Parameters.Add("@usuario", SqlDbType.VarChar, 10).Value = Program.acceso_usuario;
+                    cmd.Parameters.Add("@fechaCap", SqlDbType.VarChar, 10).Value = fechaSql;
+                    cmd.Parameters.Add("@usuario", SqlDbType.VarChar, 10).Value = Program.acceso_usuario;
 
-                if (tipoGuardado == 1) { cmd.Parameters.Add("@tipoMod", SqlDbType.Int, 8).Value = 1; }       /// alta
-                if (tipoGuardado == 2) { cmd.Parameters.Add("@tipoMod", SqlDbType.Int, 8).Value = 2; }       /// guardado
-                if (tipoGuardado == 3) { cmd.Parameters.Add("@tipoMod", SqlDbType.Int, 8).Value = 3; }
-                cmd.Parameters.Add("@folio", SqlDbType.Int, 8).Value = Convert.ToInt32(lblFolio.Text.Trim());
+                    if (tipoGuardado == 1) { cmd.Parameters.Add("@tipoMod", SqlDbType.Int, 8).Value = 1; }       /// alta
+                    if (tipoGuardado == 2) { cmd.Parameters.Add("@tipoMod", SqlDbType.Int, 8).Value = 2; }       /// guardado
+                    if (tipoGuardado == 3) { cmd.Parameters.Add("@tipoMod", SqlDbType.Int, 8).Value = 3; }
+                    cmd.Parameters.Add("@folio", SqlDbType.Int, 8).Value = Convert.ToInt32(lblFolio.Text.Trim());
 
-                cmd.Parameters.Add("@respuesta", SqlDbType.Int, 8).Direction = ParameterDirection.Output;
-                cmd.Connection = con.cnn_interno;
-                cmd.ExecuteNonQuery();
+                    cmd.Parameters.Add("@respuesta", SqlDbType.Int, 8).Direction = ParameterDirection.Output;
+                    cmd.Connection = con.cnn_interno;
+                    cmd.ExecuteNonQuery();
 
-                ResultadoV = Convert.ToInt32(cmd.Parameters["@respuesta"].Value);
+                    ResultadoV = Convert.ToInt32(cmd.Parameters["@respuesta"].Value);
 
-                con.cerrar_interno();
+                    con.cerrar_interno();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al executar" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    util.CapturarPantallaConInformacion(ex);
+                    System.Threading.Thread.Sleep(500);
+                    con.cerrar_interno();
+                    // Retornar false si ocurre un error
+                }
+
+              
             }
 
             if (lblTipoConstr.Text == "Comun")
             {
-                con.conectar_base_interno();
-                con.open_c_interno();
+                try
+                {
+                    con.conectar_base_interno();
+                    con.open_c_interno();
 
-                SqlCommand cmd = new SqlCommand("SongInsertarComunConstr.", con.cnn_interno);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@estado", SqlDbType.Int, 8).Value = "15";
-                cmd.Parameters.Add("@municipio", SqlDbType.Int, 8).Value = "041";
-                cmd.Parameters.Add("@zona", SqlDbType.Int, 8).Value = txtZona.Text.Trim();
-                cmd.Parameters.Add("@manzana", SqlDbType.Int, 8).Value = txtMzna.Text.Trim();
-                cmd.Parameters.Add("@lote", SqlDbType.Int, 8).Value = txtLote.Text.Trim();
-                cmd.Parameters.Add("@edificio", SqlDbType.VarChar, 2).Value = txtEdificio.Text.Trim();
-                cmd.Parameters.Add("@depto", SqlDbType.VarChar, 4).Value = txtDepto.Text.Trim();
-                cmd.Parameters.Add("@unidad", SqlDbType.Int, 8).Value = Convert.ToInt32(txtNumero.Text.Trim());
-                cmd.Parameters.Add("@supTotal", SqlDbType.Float, 50).Value = sup_total;
-                cmd.Parameters.Add("@bb1", SqlDbType.VarChar, 1).Value = bb1V;
-                cmd.Parameters.Add("@bb2", SqlDbType.VarChar, 1).Value = bb2V;
-                cmd.Parameters.Add("@bb3", SqlDbType.Int, 1).Value = bb3V;
+                    SqlCommand cmd = new SqlCommand("SongInsertarComunConstr.", con.cnn_interno);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@estado", SqlDbType.Int, 8).Value = "15";
+                    cmd.Parameters.Add("@municipio", SqlDbType.Int, 8).Value = "041";
+                    cmd.Parameters.Add("@zona", SqlDbType.Int, 8).Value = txtZona.Text.Trim();
+                    cmd.Parameters.Add("@manzana", SqlDbType.Int, 8).Value = txtMzna.Text.Trim();
+                    cmd.Parameters.Add("@lote", SqlDbType.Int, 8).Value = txtLote.Text.Trim();
+                    cmd.Parameters.Add("@edificio", SqlDbType.VarChar, 2).Value = txtEdificio.Text.Trim();
+                    cmd.Parameters.Add("@depto", SqlDbType.VarChar, 4).Value = txtDepto.Text.Trim();
+                    cmd.Parameters.Add("@unidad", SqlDbType.Int, 8).Value = Convert.ToInt32(txtNumero.Text.Trim());
+                    cmd.Parameters.Add("@supTotal", SqlDbType.Float, 50).Value = sup_total;
+                    cmd.Parameters.Add("@bb1", SqlDbType.VarChar, 1).Value = bb1V;
+                    cmd.Parameters.Add("@bb2", SqlDbType.VarChar, 1).Value = bb2V;
+                    cmd.Parameters.Add("@bb3", SqlDbType.Int, 1).Value = bb3V;
 
-                cmd.Parameters.Add("@añosConstr", SqlDbType.Int, 4).Value = años_cons_años;
-                cmd.Parameters.Add("@estados", SqlDbType.Int, 8).Value = estadoV;
-                cmd.Parameters.Add("@niveles", SqlDbType.Int, 8).Value = niveles2;
-                cmd.Parameters.Add("@factor_e", SqlDbType.Float, 12).Value = factor_ee;
-                cmd.Parameters.Add("@factor_c", SqlDbType.Float, 12).Value = factor_cc;
-                cmd.Parameters.Add("@factor_n", SqlDbType.Float, 12).Value = factor_nn;
-                cmd.Parameters.Add("@valorConst", SqlDbType.Float, 12).Value = valorV;
+                    cmd.Parameters.Add("@añosConstr", SqlDbType.Int, 4).Value = años_cons_años;
+                    cmd.Parameters.Add("@estados", SqlDbType.Int, 8).Value = estadoV;
+                    cmd.Parameters.Add("@niveles", SqlDbType.Int, 8).Value = niveles2;
+                    cmd.Parameters.Add("@factor_e", SqlDbType.Float, 12).Value = factor_ee;
+                    cmd.Parameters.Add("@factor_c", SqlDbType.Float, 12).Value = factor_cc;
+                    cmd.Parameters.Add("@factor_n", SqlDbType.Float, 12).Value = factor_nn;
+                    cmd.Parameters.Add("@valorConst", SqlDbType.Float, 12).Value = valorV;
 
-                cmd.Parameters.Add("@fechaCap", SqlDbType.VarChar, 50).Value = fechasTimbrado;
-                cmd.Parameters.Add("@usuario", SqlDbType.VarChar, 50).Value = Program.acceso_usuario;
-                cmd.Parameters.Add("@tipoMod", SqlDbType.VarChar, 50).Value = 1;
+                    cmd.Parameters.Add("@fechaCap", SqlDbType.VarChar, 50).Value = fechasTimbrado;
+                    cmd.Parameters.Add("@usuario", SqlDbType.VarChar, 50).Value = Program.acceso_usuario;
+                    cmd.Parameters.Add("@tipoMod", SqlDbType.VarChar, 50).Value = 1;
 
-                cmd.Parameters.Add("@respuesta", SqlDbType.Int, 8).Direction = ParameterDirection.Output;
-                cmd.Connection = con.cnn_interno;
-                cmd.ExecuteNonQuery();
+                    cmd.Parameters.Add("@respuesta", SqlDbType.Int, 8).Direction = ParameterDirection.Output;
+                    cmd.Connection = con.cnn_interno;
+                    cmd.ExecuteNonQuery();
 
-                ResultadoV = Convert.ToInt32(cmd.Parameters["@respuesta"].Value);
-                con.cerrar_interno();
+                    ResultadoV = Convert.ToInt32(cmd.Parameters["@respuesta"].Value);
+                    con.cerrar_interno();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al executar " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    util.CapturarPantallaConInformacion(ex);
+                    System.Threading.Thread.Sleep(500);
+                    con.cerrar_interno();
+                    // Retornar false si ocurre un error
+                }
             }
 
             lblFolio.Text = "";
@@ -1110,42 +1263,53 @@ namespace SMACatastro.catastroCartografia
             if (cboNiveles.Text.Trim() == "") { MessageBox.Show("SE DEBEN DE TENER LOS NIVELES DE CONSTRUCCION", "ERROR", MessageBoxButtons.OK); txtDepto.Focus(); return; }
             if (cboConservacion.Text.Trim() == "") { MessageBox.Show("SE DEBEN DE TENER EL GRADO DE CONSERVACION", "ERROR", MessageBoxButtons.OK); txtDepto.Focus(); return; }
             if (cboAñoConstruccion.Text.Trim() == "") { MessageBox.Show("SE DEBEN DE TENER EL AÑO DE CONSTRUCCION", "ERROR", MessageBoxButtons.OK); txtDepto.Focus(); return; }
+            try
+            {
+                con.conectar_base_interno();
+                con.open_c_interno();
 
-            con.conectar_base_interno();
-            con.open_c_interno();
+                SqlCommand cmd = new SqlCommand("SongCalculoContrUnidad", con.cnn_interno);
+                cmd.CommandType = CommandType.StoredProcedure;
 
-            SqlCommand cmd = new SqlCommand("SongCalculoContrUnidad", con.cnn_interno);
-            cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@uso", SqlDbType.VarChar, 1).Value = cboUnidades.Text.Trim().Substring(0, 1);
+                cmd.Parameters.Add("@claseConst", SqlDbType.VarChar, 1).Value = cboUnidades.Text.Trim().Substring(1, 1);
+                cmd.Parameters.Add("@categConst", SqlDbType.Int, 12).Value = Convert.ToInt32(cboUnidades.Text.Trim().Substring(2, 1));
+                cmd.Parameters.Add("@anioVigVUC", SqlDbType.Int, 12).Value = Program.añoActual;
+                cmd.Parameters.Add("@estadoCons", SqlDbType.Int, 12).Value = Convert.ToInt32(cboConservacion.Text.Trim().Substring(0, 1));
+                cmd.Parameters.Add("@aniodeCons", SqlDbType.Int, 12).Value = Convert.ToInt32(cboAñoConstruccion.Text.Trim().Substring(0, 4));
+                cmd.Parameters.Add("@nivCons", SqlDbType.Int, 12).Value = Convert.ToInt32(cboNiveles.Text.Trim().Substring(0, 1));
+                cmd.Parameters.Add("@total_sup_const", SqlDbType.Float, 16).Value = Convert.ToDouble(txtSupCont.Text.Trim());
+                cmd.Parameters.Add("@valorConstruccion", SqlDbType.Float, 16).Direction = ParameterDirection.Output;
 
-            cmd.Parameters.Add("@uso", SqlDbType.VarChar, 1).Value = cboUnidades.Text.Trim().Substring(0, 1);
-            cmd.Parameters.Add("@claseConst", SqlDbType.VarChar, 1).Value = cboUnidades.Text.Trim().Substring(1, 1);
-            cmd.Parameters.Add("@categConst", SqlDbType.Int, 12).Value = Convert.ToInt32(cboUnidades.Text.Trim().Substring(2, 1));
-            cmd.Parameters.Add("@anioVigVUC", SqlDbType.Int, 12).Value = Program.añoActual;
-            cmd.Parameters.Add("@estadoCons", SqlDbType.Int, 12).Value = Convert.ToInt32(cboConservacion.Text.Trim().Substring(0, 1));
-            cmd.Parameters.Add("@aniodeCons", SqlDbType.Int, 12).Value = Convert.ToInt32(cboAñoConstruccion.Text.Trim().Substring(0, 4));
-            cmd.Parameters.Add("@nivCons", SqlDbType.Int, 12).Value = Convert.ToInt32(cboNiveles.Text.Trim().Substring(0, 1));
-            cmd.Parameters.Add("@total_sup_const", SqlDbType.Float, 16).Value = Convert.ToDouble(txtSupCont.Text.Trim());
-            cmd.Parameters.Add("@valorConstruccion", SqlDbType.Float, 16).Direction = ParameterDirection.Output;
+                cmd.Connection = con.cnn_interno;
+                cmd.ExecuteNonQuery();
+                double valorConstruccionUnidad = Convert.ToDouble(cmd.Parameters["@valorConstruccion"].Value);
 
-            cmd.Connection = con.cnn_interno;
-            cmd.ExecuteNonQuery();
-            double valorConstruccionUnidad = Convert.ToDouble(cmd.Parameters["@valorConstruccion"].Value);
+                con.cerrar_interno();
 
-            con.cerrar_interno();
+                lblSupConstruccion.Text = "";
+                lblValConstruccion.Text = "";
 
-            lblSupConstruccion.Text = "";
-            lblValConstruccion.Text = "";
+                lblSupConstruccion.Text = txtSupCont.Text.Trim();
+                lblValConstruccion.Text = String.Format("{0:#,##0.00}", valorConstruccionUnidad);
 
-            lblSupConstruccion.Text = txtSupCont.Text.Trim();
-            lblValConstruccion.Text = String.Format("{0:#,##0.00}", valorConstruccionUnidad);
+                lblSupConstruccion.Text = Convert.ToString(Convert.ToDouble(txtSupCont.Text.Trim()).ToString("###,###,###,###.##"));
+                //lblValConstruccion.Text = valorConstruccionUnidad.ToString("###,###,###,###.##");
 
-            lblSupConstruccion.Text = Convert.ToString(Convert.ToDouble(txtSupCont.Text.Trim()).ToString("###,###,###,###.##"));
-            //lblValConstruccion.Text = valorConstruccionUnidad.ToString("###,###,###,###.##");
-
-            cmdAutorisa.Enabled = true;
-            btnGuardar.Enabled = true;
-            cmdBorrarUno.Enabled = true;
-            cmdAplica.Enabled = true;
+                cmdAutorisa.Enabled = true;
+                btnGuardar.Enabled = true;
+                cmdBorrarUno.Enabled = true;
+                cmdAplica.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al executar " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
+            }
+          
         }
 
         private void cmdAutorisa_Click(object sender, EventArgs e)
@@ -1435,5 +1599,6 @@ namespace SMACatastro.catastroCartografia
             System.Windows.Forms.ToolTip toolTip = new System.Windows.Forms.ToolTip();
             toolTip.SetToolTip(btnMinimizar, "MINIMIZAR");
         }
-    }
+
+}
 }

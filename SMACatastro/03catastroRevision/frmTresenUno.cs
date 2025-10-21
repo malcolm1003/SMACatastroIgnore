@@ -289,28 +289,39 @@ namespace SMACatastro.catastroRevision
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "Error al ejecutar la consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         util.CapturarPantallaConInformacion(ex);
                         System.Threading.Thread.Sleep(500);
                         con.cerrar_interno();
                         return; // Retornar false si ocurre un error
                     }
                     //OBTENEMOS EÑ NOMBRE DEL TITULAR QUE FIRMA EL CERTIFICADO
-                    con.conectar_base_interno();
-                    con.cadena_sql_interno = "";
-                    con.cadena_sql_interno = con.cadena_sql_interno + " SELECT NOMBRE ";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "   From PERSONAS_IMPORTANTES WHERE ID = 2 ";
-
-                    con.cadena_sql_cmd_interno();
-                    con.open_c_interno();
-                    con.leer_interno = con.cmd_interno.ExecuteReader();
-
-                    while (con.leer_interno.Read())
+                    try
                     {
-                        NOMBRE_IMPORTANTE = con.leer_interno[0].ToString();
+                        con.conectar_base_interno();
+                        con.cadena_sql_interno = "";
+                        con.cadena_sql_interno = con.cadena_sql_interno + " SELECT NOMBRE ";
+                        con.cadena_sql_interno = con.cadena_sql_interno + "   From PERSONAS_IMPORTANTES WHERE ID = 2 ";
 
+                        con.cadena_sql_cmd_interno();
+                        con.open_c_interno();
+                        con.leer_interno = con.cmd_interno.ExecuteReader();
+
+                        while (con.leer_interno.Read())
+                        {
+                            NOMBRE_IMPORTANTE = con.leer_interno[0].ToString();
+
+                        }
+                        con.cerrar_interno();
                     }
-                    con.cerrar_interno();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error al executar la consulta de personas importantes" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        util.CapturarPantallaConInformacion(ex);
+                        System.Threading.Thread.Sleep(500);
+                        con.cerrar_interno();
+                        // Retornar false si ocurre un error
+                    }
                     //CREAMOS EL CERTIFICADO DE APORTACION A MEJORAS
                     ACTUALIZAR_CDV();
                     Rcertificado.FOLIO_CER = folio3_3_1;
@@ -424,23 +435,35 @@ namespace SMACatastro.catastroRevision
                         con.cerrar_interno();
                         return; // Retornar false si ocurre un error
                     }
-
-                    con.conectar_base_interno();
-                    con.cadena_sql_interno = "";
-
-                    con.cadena_sql_interno = " SELECT NOMBRE ";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "  From PERSONAS_IMPORTANTES WHERE ID = 1 ";
-
-                    con.cadena_sql_cmd_interno();
-                    con.open_c_interno();
-                    con.leer_interno = con.cmd_interno.ExecuteReader();
-
-                    while (con.leer_interno.Read())
+                    //try aquí falló 
+                    try
                     {
-                        NOMBRE_IMPORTANTE = con.leer_interno[0].ToString();
+                        con.conectar_base_interno();
+                        con.cadena_sql_interno = "";
 
+                        con.cadena_sql_interno = " SELECT NOMBRE ";
+                        con.cadena_sql_interno = con.cadena_sql_interno + "  From PERSONAS_IMPORTANTES WHERE ID = 1 ";
+
+                        con.cadena_sql_cmd_interno();
+                        con.open_c_interno();
+                        con.leer_interno = con.cmd_interno.ExecuteReader();
+
+                        while (con.leer_interno.Read())
+                        {
+                            NOMBRE_IMPORTANTE = con.leer_interno[0].ToString();
+
+                        }
+                        con.cerrar_interno();
                     }
-                    con.cerrar_interno();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error al executar " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        util.CapturarPantallaConInformacion(ex);
+                        System.Threading.Thread.Sleep(500);
+                        con.cerrar_interno();
+                        // Retornar false si ocurre un error
+                    }
+                  
 
                     ACTUALIZAR_CDV();
                     //CREAMOS EL CERTIFICADO DE CLAVE Y VALOR CATASTRAL
@@ -558,21 +581,34 @@ namespace SMACatastro.catastroRevision
                         return; // Retornar false si ocurre un error
                     }
 
-                    con.conectar_base_interno();
-                    con.cadena_sql_interno = "";
-                    con.cadena_sql_interno = con.cadena_sql_interno + " SELECT NOMBRE ";
-                    con.cadena_sql_interno = con.cadena_sql_interno + "   From PERSONAS_IMPORTANTES WHERE ID = 2 ";
-
-                    con.cadena_sql_cmd_interno();
-                    con.open_c_interno();
-                    con.leer_interno = con.cmd_interno.ExecuteReader();
-
-                    while (con.leer_interno.Read())
+                    //try 
+                    try
                     {
-                        NOMBRE_IMPORTANTE = con.leer_interno[0].ToString();
+                        con.conectar_base_interno();
+                        con.cadena_sql_interno = "";
+                        con.cadena_sql_interno = con.cadena_sql_interno + " SELECT NOMBRE ";
+                        con.cadena_sql_interno = con.cadena_sql_interno + "   From PERSONAS_IMPORTANTES WHERE ID = 2 ";
 
+                        con.cadena_sql_cmd_interno();
+                        con.open_c_interno();
+                        con.leer_interno = con.cmd_interno.ExecuteReader();
+
+                        while (con.leer_interno.Read())
+                        {
+                            NOMBRE_IMPORTANTE = con.leer_interno[0].ToString();
+
+                        }
+                        con.cerrar_interno();
                     }
-                    con.cerrar_interno();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error al executar " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        util.CapturarPantallaConInformacion(ex);
+                        System.Threading.Thread.Sleep(500);
+                        con.cerrar_interno();
+                        // Retornar false si ocurre un error
+                    }
+
                     ACTUALIZAR_CDV();
 
                     Rcertificado.FOLIO_CER = folio3_3_1;
@@ -972,154 +1008,164 @@ namespace SMACatastro.catastroRevision
             if (rbFecharango.Checked == true) { if (cbomesf.Text.Trim() == "") { MessageBox.Show("FAVOR DE SELECCIONAR UN MES PARA EL FINAL DEL RANGO", "¡ALERTA!", MessageBoxButtons.OK, MessageBoxIcon.Warning); cbomesf.Focus(); return; } }
             if (rbFecharango.Checked == true) { if (cbodiaf.Text.Trim() == "") { MessageBox.Show("FAVOR DE SELECCIONAR UN AÑO PARA EL FINAL DEL RANGO", "¡ALERTA!", MessageBoxButtons.OK, MessageBoxIcon.Warning); cbodiaf.Focus(); return; } }
 
+            //aquí debe ir el try y catch 
             // SE ARMA EL query DE BUSQUEDA CONSULTA SQL 
-            con.cadena_sql_interno = "";
-            con.cadena_sql_interno = con.cadena_sql_interno + "  SELECT   tu.SERIE, tu.FOLIO, tu.clave_catastral, RTRIM(tu.nombre_contri), RTRIM(tu.domicilio_fis),  ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "           tu.valor_clave_catastral, sc.Certificado ,RTRIM(tu.observaciones), tu.municipio, ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "           tu.zona, tu.manzana,tu.lote, tu.edificio,tu.depto ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "    FROM   TRES_EN_UNO_2025 tu, song_certificaciones sc";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   WHERE  tu.tipo_certificacion = sc.id_certificado";
-
-            // tipo de certificado
-            if (rbCertificado.Checked == true) { con.cadena_sql_interno = con.cadena_sql_interno + " AND tu.tipo_certificacion = " + Cbo_Certificado.Text.Trim().Substring(0, 2); }
-            // ciudadano
-            if (rbIdenticiudadano.Checked == true) { con.cadena_sql_interno = con.cadena_sql_interno + " AND tu.nombre_contri = " + util.scm(txtpersona.Text.Trim()); }
-            if (rbSimilarciudadano.Checked == true) { con.cadena_sql_interno = con.cadena_sql_interno + " AND tu.nombre_contri LIKE '%" + txtpersona.Text.Trim() + "%'"; }
-            //domicilio
-            if (rbIdentiDomicilio.Checked == true) { con.cadena_sql_interno = con.cadena_sql_interno + " AND tu.domicilio_fis = " + util.scm(txtDomicilio.Text.Trim()); }
-            if (rbSimiliarDomicilio.Checked == true) { con.cadena_sql_interno = con.cadena_sql_interno + " AND tu.domicilio_fis LIKE '%" + txtDomicilio.Text.Trim() + "%'"; }
-            //clave catastral
-            if (rbCveCatastral.Checked == true)
+            try
             {
-                if (txtZonab.Text.Trim() != "")
-                {
-                    con.cadena_sql_interno = con.cadena_sql_interno + " AND r.zona = " + txtZonab.Text.Trim();
-                }
-                if (txtMznab.Text.Trim() != "")
-                {
-                    con.cadena_sql_interno = con.cadena_sql_interno + " AND r.manzana = " + txtMznab.Text.Trim();
-                }
-                if (txtLoteb.Text.Trim() != "")
-                {
-                    con.cadena_sql_interno = con.cadena_sql_interno + " AND r.lote = " + txtLoteb.Text.Trim();
-                }
-                if (txtEdificiob.Text.Trim() != "")
-                {
-                    con.cadena_sql_interno = con.cadena_sql_interno + " AND r.edificio = " + util.scm(txtEdificiob.Text.Trim());
-                }
-                if (txtEdificiob.Text.Trim() != "")
-                {
-                    con.cadena_sql_interno = con.cadena_sql_interno + " AND r.depto = " + util.scm(txtDeptob.Text.Trim());
-                }
-            }
-            //fechas
-            if (rbFecha.Checked == true)
-            {
-                if (rbFecharango.Checked == true)
-                {
-                    DateTime F1 = Convert.ToDateTime(cboAño.Text + "-" + cboMes.Text + "-" + cboDia.Text);
-                    DateTime F2 = Convert.ToDateTime(cboañoF.Text + "-" + cbomesf.Text + "-" + cbodiaf.Text);
+                con.cadena_sql_interno = "";
+                con.cadena_sql_interno = con.cadena_sql_interno + "  SELECT   tu.SERIE, tu.FOLIO, tu.clave_catastral, RTRIM(tu.nombre_contri), RTRIM(tu.domicilio_fis),  ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "           tu.valor_clave_catastral, sc.Certificado ,RTRIM(tu.observaciones), tu.municipio, ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "           tu.zona, tu.manzana,tu.lote, tu.edificio,tu.depto ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "    FROM   TRES_EN_UNO_2025 tu, song_certificaciones sc";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   WHERE  tu.tipo_certificacion = sc.id_certificado";
 
-                    if (F1 > F2)
+                // tipo de certificado
+                if (rbCertificado.Checked == true) { con.cadena_sql_interno = con.cadena_sql_interno + " AND tu.tipo_certificacion = " + Cbo_Certificado.Text.Trim().Substring(0, 2); }
+                // ciudadano
+                if (rbIdenticiudadano.Checked == true) { con.cadena_sql_interno = con.cadena_sql_interno + " AND tu.nombre_contri = " + util.scm(txtpersona.Text.Trim()); }
+                if (rbSimilarciudadano.Checked == true) { con.cadena_sql_interno = con.cadena_sql_interno + " AND tu.nombre_contri LIKE '%" + txtpersona.Text.Trim() + "%'"; }
+                //domicilio
+                if (rbIdentiDomicilio.Checked == true) { con.cadena_sql_interno = con.cadena_sql_interno + " AND tu.domicilio_fis = " + util.scm(txtDomicilio.Text.Trim()); }
+                if (rbSimiliarDomicilio.Checked == true) { con.cadena_sql_interno = con.cadena_sql_interno + " AND tu.domicilio_fis LIKE '%" + txtDomicilio.Text.Trim() + "%'"; }
+                //clave catastral
+                if (rbCveCatastral.Checked == true)
+                {
+                    if (txtZonab.Text.Trim() != "")
                     {
-                        MessageBox.Show("FECHA FINAL NO PUEDE SER MENOR QUE LA FECHA INICIAL", "¡ALERTA!", MessageBoxButtons.OK, MessageBoxIcon.Warning); return;
+                        con.cadena_sql_interno = con.cadena_sql_interno + " AND r.zona = " + txtZonab.Text.Trim();
                     }
-                    con.cadena_sql_interno = con.cadena_sql_interno + " AND tu.Fecha_alta >= '" + cboAño.Text.Trim() + cboMes.Text.Substring(0, 2) + cboDia.Text.Trim() + " 00:00:00'";
-                    con.cadena_sql_interno = con.cadena_sql_interno + " AND tu.Fecha_alta <= '" + cboañoF.Text.Trim() + cbomesf.Text.Substring(0, 2) + cbodiaf.Text.Trim() + " 23:59:59'";
+                    if (txtMznab.Text.Trim() != "")
+                    {
+                        con.cadena_sql_interno = con.cadena_sql_interno + " AND r.manzana = " + txtMznab.Text.Trim();
+                    }
+                    if (txtLoteb.Text.Trim() != "")
+                    {
+                        con.cadena_sql_interno = con.cadena_sql_interno + " AND r.lote = " + txtLoteb.Text.Trim();
+                    }
+                    if (txtEdificiob.Text.Trim() != "")
+                    {
+                        con.cadena_sql_interno = con.cadena_sql_interno + " AND r.edificio = " + util.scm(txtEdificiob.Text.Trim());
+                    }
+                    if (txtEdificiob.Text.Trim() != "")
+                    {
+                        con.cadena_sql_interno = con.cadena_sql_interno + " AND r.depto = " + util.scm(txtDeptob.Text.Trim());
+                    }
                 }
-                else
+                //fechas
+                if (rbFecha.Checked == true)
                 {
-                    con.cadena_sql_interno = con.cadena_sql_interno + " AND tu.Fecha_alta  >= '" + cboAño.Text.Trim() + cboMes.Text.Substring(0, 2) + cboDia.Text.Trim() + " 00:00:00'";
-                    con.cadena_sql_interno = con.cadena_sql_interno + " AND tu.Fecha_alta  <= '" + cboAño.Text.Trim() + cboMes.Text.Substring(0, 2) + cboDia.Text.Trim() + " 23:59:59'";
+                    if (rbFecharango.Checked == true)
+                    {
+                        DateTime F1 = Convert.ToDateTime(cboAño.Text + "-" + cboMes.Text + "-" + cboDia.Text);
+                        DateTime F2 = Convert.ToDateTime(cboañoF.Text + "-" + cbomesf.Text + "-" + cbodiaf.Text);
+
+                        if (F1 > F2)
+                        {
+                            MessageBox.Show("FECHA FINAL NO PUEDE SER MENOR QUE LA FECHA INICIAL", "¡ALERTA!", MessageBoxButtons.OK, MessageBoxIcon.Warning); return;
+                        }
+                        con.cadena_sql_interno = con.cadena_sql_interno + " AND tu.Fecha_alta >= '" + cboAño.Text.Trim() + cboMes.Text.Substring(0, 2) + cboDia.Text.Trim() + " 00:00:00'";
+                        con.cadena_sql_interno = con.cadena_sql_interno + " AND tu.Fecha_alta <= '" + cboañoF.Text.Trim() + cbomesf.Text.Substring(0, 2) + cbodiaf.Text.Trim() + " 23:59:59'";
+                    }
+                    else
+                    {
+                        con.cadena_sql_interno = con.cadena_sql_interno + " AND tu.Fecha_alta  >= '" + cboAño.Text.Trim() + cboMes.Text.Substring(0, 2) + cboDia.Text.Trim() + " 00:00:00'";
+                        con.cadena_sql_interno = con.cadena_sql_interno + " AND tu.Fecha_alta  <= '" + cboAño.Text.Trim() + cboMes.Text.Substring(0, 2) + cboDia.Text.Trim() + " 23:59:59'";
+                    }
+                }
+                con.cadena_sql_interno = con.cadena_sql_interno + " ORDER BY tu.SERIE, tu.FOLIO DESC";
+
+                DataTable LLENAR_GRID_1 = new DataTable();
+                con.conectar_base_interno();
+                con.open_c_interno();
+
+                SqlCommand cmd = new SqlCommand(con.cadena_sql_interno, con.cnn_interno);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                //da.Fill(LLENAR_GRID_1);
+
+                if (da.Fill(LLENAR_GRID_1) == 0)     //COMPROBAR SI LA BUSQUEDA OBTUVO UN DATO, en caso de ser igual a 0; marca error 
+                {
+                    MessageBox.Show("NO SE ENCONTRÓ INFORMACIÓN", "¡ALERTA!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else //en caso de encontrar un dato, se realiza toda la acción de abajo 
+                {
+                    // da.Fill(dt);
+                    DGVRESULTADO.DataSource = LLENAR_GRID_1;
+
+                    DGVRESULTADO.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold); //Microsoft sans serif para todas las celdas 
+                    DGVRESULTADO.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                    //dgResultado.EnableHeadersVisualStyles = false; // Desactiva estilos predeterminados
+                    DGVRESULTADO.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(159, 24, 151);
+                    DGVRESULTADO.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
+                    foreach (DataGridViewColumn columna in DGVRESULTADO.Columns)
+                    {
+                        columna.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    }
+
+                    foreach (DataGridViewColumn columna in DGVRESULTADO.Columns)
+                    {
+                        columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    }
+
+                    // Configuración de selección
+                    DGVRESULTADO.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    // dgResultado.MultiSelect = false; // Solo permitir selección de una fila a la vez
+
+                    // Deshabilitar edición
+                    DGVRESULTADO.ReadOnly = true;
+                    // Estilos visuales
+                    DGVRESULTADO.DefaultCellStyle.SelectionBackColor = Color.Yellow;
+                    DGVRESULTADO.DefaultCellStyle.SelectionForeColor = Color.Black;
+                    //Para los encabezados del datagridview
+                    DGVRESULTADO.Columns[0].HeaderText = "SERIE";                      //          
+                    DGVRESULTADO.Columns[1].HeaderText = "FOLIO";                      // 
+                    DGVRESULTADO.Columns[2].HeaderText = "CLAVE CATASTRAL";       // 
+                    DGVRESULTADO.Columns[3].HeaderText = "NOMBRE DEL PROPÍETARIO";                        // 
+                    DGVRESULTADO.Columns[4].HeaderText = "DOMICILIO";               //
+                    DGVRESULTADO.Columns[5].HeaderText = "VALOR CATASTRAL";                  //
+                    DGVRESULTADO.Columns[6].HeaderText = "CERTIFICADO";             //
+                    DGVRESULTADO.Columns[7].HeaderText = "OBSERVACIONES";                      //
+
+
+
+                    DGVRESULTADO.Columns[8].Visible = false; // Ocultar columna de municipio
+                    DGVRESULTADO.Columns[9].Visible = false; // Ocultar columna de zona
+                    DGVRESULTADO.Columns[10].Visible = false; // Ocultar columna de manzana
+                    DGVRESULTADO.Columns[11].Visible = false; // Ocultar columna de lote
+                    DGVRESULTADO.Columns[12].Visible = false; // Ocultar columna de edificio
+                    DGVRESULTADO.Columns[13].Visible = false; // Ocultar columna de departamento
+
+                    DGVRESULTADO.Columns[0].Width = 50; // Ajusta el ancho de la columna SERIE
+                    DGVRESULTADO.Columns[1].Width = 50; // Ajusta el ancho de la columna FOLIO
+                    DGVRESULTADO.Columns[2].Width = 180; // Ajusta el ancho de la columna CLAVE CATASTRAL
+                    DGVRESULTADO.Columns[3].Width = 250; // Ajusta el ancho de la columna NOMBRE DEL PROPÍETARIO
+                    DGVRESULTADO.Columns[4].Width = 410; // Ajusta el ancho de la columna DOMICILIO
+                    DGVRESULTADO.Columns[5].Width = 190; // Ajusta el ancho de la columna VALOR CATASTRAL
+                    DGVRESULTADO.Columns[6].Width = 550; // Ajusta el ancho de la columna CERTIFICADO
+                    DGVRESULTADO.Columns[7].Width = 400; // Ajusta el ancho de la columna OBSERVACIONES
+
+
+
+
+                    int CONTEO;
+                    CONTEO = DGVRESULTADO.Rows.Count - 1;
+                    lblNumRegistro.Text = CONTEO.ToString(); //Se limpia el label de conteo de registros
+                    DGVRESULTADO.Enabled = true;
+
+
+
+                    con.cerrar_interno(); //Cerramos la conexión después de llenar el DataTable
                 }
             }
-            con.cadena_sql_interno = con.cadena_sql_interno + " ORDER BY tu.SERIE, tu.FOLIO DESC"; 
-
-            DataTable LLENAR_GRID_1 = new DataTable();
-            con.conectar_base_interno();
-            con.open_c_interno();
-
-            SqlCommand cmd = new SqlCommand(con.cadena_sql_interno, con.cnn_interno);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-
-            //da.Fill(LLENAR_GRID_1);
-
-            if (da.Fill(LLENAR_GRID_1) == 0)     //COMPROBAR SI LA BUSQUEDA OBTUVO UN DATO, en caso de ser igual a 0; marca error 
+            catch (Exception ex)
             {
-                MessageBox.Show("NO SE ENCONTRÓ INFORMACIÓN", "¡ALERTA!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error al executar la consulta" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
             }
-            else //en caso de encontrar un dato, se realiza toda la acción de abajo 
-            {
-                // da.Fill(dt);
-                DGVRESULTADO.DataSource = LLENAR_GRID_1;
-
-                DGVRESULTADO.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 8, FontStyle.Bold); //Microsoft sans serif para todas las celdas 
-                DGVRESULTADO.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-                //dgResultado.EnableHeadersVisualStyles = false; // Desactiva estilos predeterminados
-                DGVRESULTADO.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(159, 24, 151);
-                DGVRESULTADO.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-
-                foreach (DataGridViewColumn columna in DGVRESULTADO.Columns)
-                {
-                    columna.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                }
-
-                foreach (DataGridViewColumn columna in DGVRESULTADO.Columns)
-                {
-                    columna.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                }
-
-                // Configuración de selección
-                DGVRESULTADO.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                // dgResultado.MultiSelect = false; // Solo permitir selección de una fila a la vez
-
-                // Deshabilitar edición
-                DGVRESULTADO.ReadOnly = true;
-                // Estilos visuales
-                DGVRESULTADO.DefaultCellStyle.SelectionBackColor = Color.Yellow;
-                DGVRESULTADO.DefaultCellStyle.SelectionForeColor = Color.Black;
-                //Para los encabezados del datagridview
-                DGVRESULTADO.Columns[0].HeaderText = "SERIE";                      //          
-                DGVRESULTADO.Columns[1].HeaderText = "FOLIO";                      // 
-                DGVRESULTADO.Columns[2].HeaderText = "CLAVE CATASTRAL";       // 
-                DGVRESULTADO.Columns[3].HeaderText = "NOMBRE DEL PROPÍETARIO";                        // 
-                DGVRESULTADO.Columns[4].HeaderText = "DOMICILIO";               //
-                DGVRESULTADO.Columns[5].HeaderText = "VALOR CATASTRAL";                  //
-                DGVRESULTADO.Columns[6].HeaderText = "CERTIFICADO";             //
-                DGVRESULTADO.Columns[7].HeaderText = "OBSERVACIONES";                      //
-
-
-
-                DGVRESULTADO.Columns[8].Visible = false; // Ocultar columna de municipio
-                DGVRESULTADO.Columns[9].Visible = false; // Ocultar columna de zona
-                DGVRESULTADO.Columns[10].Visible = false; // Ocultar columna de manzana
-                DGVRESULTADO.Columns[11].Visible = false; // Ocultar columna de lote
-                DGVRESULTADO.Columns[12].Visible = false; // Ocultar columna de edificio
-                DGVRESULTADO.Columns[13].Visible = false; // Ocultar columna de departamento
-
-                DGVRESULTADO.Columns[0].Width = 50; // Ajusta el ancho de la columna SERIE
-                DGVRESULTADO.Columns[1].Width = 50; // Ajusta el ancho de la columna FOLIO
-                DGVRESULTADO.Columns[2].Width = 180; // Ajusta el ancho de la columna CLAVE CATASTRAL
-                DGVRESULTADO.Columns[3].Width = 250; // Ajusta el ancho de la columna NOMBRE DEL PROPÍETARIO
-                DGVRESULTADO.Columns[4].Width = 410; // Ajusta el ancho de la columna DOMICILIO
-                DGVRESULTADO.Columns[5].Width = 190; // Ajusta el ancho de la columna VALOR CATASTRAL
-                DGVRESULTADO.Columns[6].Width = 550; // Ajusta el ancho de la columna CERTIFICADO
-                DGVRESULTADO.Columns[7].Width = 400; // Ajusta el ancho de la columna OBSERVACIONES
-
-
-
-
-                int CONTEO;
-                CONTEO = DGVRESULTADO.Rows.Count - 1;
-                lblNumRegistro.Text = CONTEO.ToString(); //Se limpia el label de conteo de registros
-                DGVRESULTADO.Enabled = true;
-
-
-
-                con.cerrar_interno(); //Cerramos la conexión después de llenar el DataTable
-            }
-
-
         }
 
         private void rbCertificado_CheckedChanged(object sender, EventArgs e)

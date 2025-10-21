@@ -1139,7 +1139,7 @@ namespace SMACatastro.catastroRevision
             }
 
             //** agramos los demas opciones de bsuqueda en dado caso **// 
-            con.cadena_sql_interno = con.cadena_sql_interno + "      ORDER BY cnc.FOLIO_ORIGEN ASC"; //ordenar con el folio de manera ascendente 
+            con.cadena_sql_interno = con.cadena_sql_interno + "      ORDER BY cnc.FOLIO_ORIGEN DESC"; //ordenar con el folio de manera ascendente 
             DataTable LLENAR_GRID_1 = new DataTable();
             con.conectar_base_interno();
             con.open_c_interno();

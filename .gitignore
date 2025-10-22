@@ -416,3 +416,22 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Directorios de resultados de compilación
+[Bb]in/
+[Oo]bj/
+
+# Paquetes NuGet
+[Pp]ackages/
+# Carpeta de paquetes global (si se usa)
+.nuget/packages/
+
+# Archivos de la solución/proyecto
+*.suo
+*.user
+*.~*
+
+# Archivos de Visual Studio Code (si lo utilizas)
+.vscode/
+
+# Puedes añadir cualquier otro archivo generado o sensible (como credenciales)

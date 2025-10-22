@@ -2132,11 +2132,11 @@ namespace SMACatastro.catastroCartografia
             string EDIFICIO = txtEdificio.Text.ToString().Trim();
             string DEPTO = txtDepto.Text.ToString().Trim();
 
-            /*
+           
             //spFECHA_INI = DateTime.Parse(cboAño1.Text + "-" + cboMes1.Text.Substring(0, 2) + "-" + cboDia1.Text + "T00:00:00");
             //spFECHA_FIN = DateTime.Parse(cboAño2.Text + "-" + cboMes2.Text.Substring(0, 2) + "-" + cboDia2.Text + "T23:59:59");
             //ABRIMOS EL REPORTE 
-            formaReporte.mostrarManifestacion mostrarReporteV = new formaReporte.mostrarManifestacion();
+            formaReporte.mostrarManifestacionCatastral mostrarReporteV = new formaReporte.mostrarManifestacionCatastral();
             ////////// LOS PARAMETROS QUE VOY A MANDAR DEL FORMULARIO DE AQUÍ 
             mostrarReporteV.ZONA = ZONA; //SACAMOS EL ÁREA EMISORA DEL COMBOBOX, CON SOLO LOS DOS PRIMEROS CARACTERES
             mostrarReporteV.MANZANA = MANZANA; //SACAMOS EL ÁREA EMISORA DEL COMBOBOX, CON SOLO LOS DOS PRIMEROS CARACTERES
@@ -2146,7 +2146,7 @@ namespace SMACatastro.catastroCartografia
             
             MessageBox.Show("PROCEDE A IMPRIMIR LA MANIFESTACIÓN", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
             mostrarReporteV.ShowDialog();
-            */
+        
             
         }
     }

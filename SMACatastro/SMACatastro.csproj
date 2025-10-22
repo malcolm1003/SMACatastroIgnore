@@ -451,6 +451,12 @@
     <Compile Include="formaReporte\mostrarFoliosAutorizadosPendientes.Designer.cs">
       <DependentUpon>mostrarFoliosAutorizadosPendientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="formaReporte\mostrarManifestacionCatastral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formaReporte\mostrarManifestacionCatastral.Designer.cs">
+      <DependentUpon>mostrarManifestacionCatastral.cs</DependentUpon>
+    </Compile>
     <Compile Include="formaReporte\MostrarOrden.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -600,6 +606,9 @@
     <EmbeddedResource Include="formaReporte\mostrarFoliosAutorizadosPendientes.resx">
       <DependentUpon>mostrarFoliosAutorizadosPendientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formaReporte\mostrarManifestacionCatastral.resx">
+      <DependentUpon>mostrarManifestacionCatastral.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formaReporte\MostrarOrden.resx">
       <DependentUpon>MostrarOrden.cs</DependentUpon>
     </EmbeddedResource>
@@ -627,6 +636,7 @@
     <EmbeddedResource Include="formaReporte\rptCertificado3en1.rdlc" />
     <EmbeddedResource Include="formaReporte\rptCertificados.rdlc" />
     <EmbeddedResource Include="formaReporte\rptCertificadosCveValor.rdlc" />
+    <EmbeddedResource Include="formaReporte\rptMan3en1.rdlc" />
     <EmbeddedResource Include="formaReporte\rptRevision.rdlc" />
     <EmbeddedResource Include="formaReporte\rptVenta.rdlc" />
     <EmbeddedResource Include="frmPrueba.resx">

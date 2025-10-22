@@ -29,6 +29,7 @@ using System.Windows.Media.Media3D;
 using Telerik.WinControls;
 using USLibV4.Utilerias;
 using Utilerias;
+using ZstdSharp.Unsafe;
 using static log4net.Appender.FileAppender;
 using static QRCoder.PayloadGenerator;
 using DataTable = System.Data.DataTable;
@@ -49,7 +50,8 @@ namespace SMACatastro.catastroSistemas
         decimal facArea = 0;
         decimal facTopo = 0;
         decimal facPosicion = 0;
-
+        string usoSueloV = "";
+        string destinoV = "";
 
 
 
@@ -1610,8 +1612,12 @@ namespace SMACatastro.catastroSistemas
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 1; // Retornar false si ocurre un error
+                MessageBox.Show(ex.Message, "Error al executar " + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                return 1;
+                // Retornar false si ocurre un error
             }
 
             if (bloqueoCat == 1) { return 2; }      // la clave catastral se encuentra bloqueada
@@ -1681,8 +1687,12 @@ namespace SMACatastro.catastroSistemas
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 2; // Retornar false si ocurre un error                                          // 1 error de consulta en red
+                MessageBox.Show(ex.Message, "Error al executar" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                return 2;
+                // Retornar false si ocurre un error
             }
 
             if (Autorizado == 0) { return 3; }
@@ -1743,8 +1753,12 @@ namespace SMACatastro.catastroSistemas
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 1; // Retornar false si ocurre un error                                          // 1 error de consulta en red
+                MessageBox.Show(ex.Message, "Error al executar" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                return 1;
+                // Retornar false si ocurre un error
             }
 
 
@@ -1858,142 +1872,152 @@ namespace SMACatastro.catastroSistemas
             Program.deptoV = txtDepto.Text.Trim();
 
             //------------------------------- consulta general para llenar los datos del predio y propiedades
-
-            con.conectar_base_interno();
-            con.cadena_sql_interno = " ";
-            con.cadena_sql_interno = con.cadena_sql_interno + "SELECT pr.TipoPredio, pr.Domicilio, pr.ZonaOrig, pr.CodCalle, c.NomCalle,";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       pr.NumExt, pr.EntCalle, pr.YCalle, pr.CodPost, co.Colonia, co.NomCol, re.RegProp,";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       pr.Ubicacion, f.DescFact, pr.SupTerrTot, pr.SupCons, pr.SupTerrCom, pr.SupConsCom,";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       pr.Frente, pr.Fondo, pr.Desnivel, pr.AreaInscr, pr.cObsPred,";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       p.NumIntP, p.PmnProp, p.DomFis, p.Uso, d.UsoEsp, d.Descrip, p.STerrProp,";
-            con.cadena_sql_interno = con.cadena_sql_interno + "       p.STerrCom, p.SConsProp, p.SConsCom, p.PtjeCondom, p.cObsProp";
-            con.cadena_sql_interno = con.cadena_sql_interno + "  FROM PROPIEDADES p, PREDIOS pr, CALLES c, COLONIAS co, REGIMEN re, FACTORES f, DESTINO d";
-
-            con.cadena_sql_interno = con.cadena_sql_interno + " WHERE p.Estado      =  " + Program.Vestado;
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Municipio   =  " + Program.municipioV;
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Zona        =  " + Program.zonaV;
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Manzana     =  " + Program.manzanaV;
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Lote        =  " + Program.loteV;
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Edificio    = '" + Program.edificioV + "'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Depto       = '" + Program.deptoV + "'";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Estado      = pr.Estado";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Municipio   = pr.Municipio";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Zona        = pr.Zona";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Manzana     = pr.Manzana";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Lote        = pr.Lote";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND pr.Estado     = c.Estado";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND pr.Municipio  = c.Municipio";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND pr.ZonaOrig   = c.ZonaOrig";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND pr.CodCalle   = c.CodCalle";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND pr.Estado     = co.Estado";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND pr.Municipio  = co.Municipio";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND pr.Colonia    = co.Colonia";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND pr.RegProp    = re.RegProp";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND pr.Ubicacion  = f.NumFactor";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND f.AnioVigMD   = " + Program.añoActual;
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND f.TipoMerDem  = 6";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Uso         = d.Uso";
-            con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.UsoEsp      = d.UsoEsp";
-
-            con.cadena_sql_cmd_interno();
-            con.open_c_interno();
-            con.leer_interno = con.cmd_interno.ExecuteReader();
-
-            if (!con.leer_interno.HasRows)
+            try
             {
-                MessageBox.Show("NO SE ENCONTRO NINGUNA CLAVE CATASTRAL", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                con.conectar_base_interno();
+                con.cadena_sql_interno = " ";
+                con.cadena_sql_interno = con.cadena_sql_interno + "SELECT pr.TipoPredio, pr.Domicilio, pr.ZonaOrig, pr.CodCalle, c.NomCalle,";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       pr.NumExt, pr.EntCalle, pr.YCalle, pr.CodPost, co.Colonia, co.NomCol, re.RegProp,";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       pr.Ubicacion, f.DescFact, pr.SupTerrTot, pr.SupCons, pr.SupTerrCom, pr.SupConsCom,";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       pr.Frente, pr.Fondo, pr.Desnivel, pr.AreaInscr, pr.cObsPred,";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       p.NumIntP, p.PmnProp, p.DomFis, p.Uso, d.UsoEsp, d.Descrip, p.STerrProp,";
+                con.cadena_sql_interno = con.cadena_sql_interno + "       p.STerrCom, p.SConsProp, p.SConsCom, p.PtjeCondom, p.cObsProp";
+                con.cadena_sql_interno = con.cadena_sql_interno + "  FROM PROPIEDADES p, PREDIOS pr, CALLES c, COLONIAS co, REGIMEN re, FACTORES f, DESTINO d";
+
+                con.cadena_sql_interno = con.cadena_sql_interno + " WHERE p.Estado      =  " + Program.Vestado;
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Municipio   =  " + Program.municipioV;
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Zona        =  " + Program.zonaV;
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Manzana     =  " + Program.manzanaV;
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Lote        =  " + Program.loteV;
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Edificio    = '" + Program.edificioV + "'";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Depto       = '" + Program.deptoV + "'";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Estado      = pr.Estado";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Municipio   = pr.Municipio";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Zona        = pr.Zona";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Manzana     = pr.Manzana";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Lote        = pr.Lote";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND pr.Estado     = c.Estado";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND pr.Municipio  = c.Municipio";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND pr.ZonaOrig   = c.ZonaOrig";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND pr.CodCalle   = c.CodCalle";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND pr.Estado     = co.Estado";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND pr.Municipio  = co.Municipio";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND pr.Colonia    = co.Colonia";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND pr.RegProp    = re.RegProp";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND pr.Ubicacion  = f.NumFactor";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND f.AnioVigMD   = " + Program.añoActual;
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND f.TipoMerDem  = 6";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.Uso         = d.Uso";
+                con.cadena_sql_interno = con.cadena_sql_interno + "   AND p.UsoEsp      = d.UsoEsp";
+
+                con.cadena_sql_cmd_interno();
+                con.open_c_interno();
+                con.leer_interno = con.cmd_interno.ExecuteReader();
+
+                if (!con.leer_interno.HasRows)
+                {
+                    MessageBox.Show("NO SE ENCONTRO NINGUNA CLAVE CATASTRAL", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    con.cerrar_interno();
+                    inicio();
+                    return 2; // Retornar si no hay resultados
+                }
+
+                int tipoPredioV = 0;
+                double edoPredioV = 0;
+                int regPropV = 0;
+                int ubicacionV = 0;
+
+
+                while (con.leer_interno.Read())
+                {
+                    tipoPredioV = Convert.ToInt32(con.leer_interno[0].ToString().Trim());
+                    if (tipoPredioV == 0) { cboTipoPredio.SelectedIndex = 1; }
+                    if (tipoPredioV == 1) { cboTipoPredio.SelectedIndex = 0; }
+
+                    edoPredioV = Convert.ToInt32(con.leer_interno[31].ToString().Trim()) + Convert.ToInt32(con.leer_interno[32].ToString().Trim());
+
+                    if (edoPredioV > 0) { lblEdoPredio.Text = "1 CONSTRUIDO"; }
+                    if (edoPredioV <= 0) { lblEdoPredio.Text = "0 BALDIO"; }
+
+                    txtDomicilioPredio.Text = con.leer_interno[1].ToString().Trim();
+                    txtZonaOrigen.Text = con.leer_interno[2].ToString().Trim();
+                    txtCodigoCalle.Text = con.leer_interno[3].ToString().Trim().PadLeft(3, '0'); //este comentario
+
+                    txtNoExterior.Text = con.leer_interno[5].ToString().Trim();
+                    txtEnCalle.Text = con.leer_interno[6].ToString().Trim();
+                    txtYcalle.Text = con.leer_interno[7].ToString().Trim();
+                    txtCodigoPostal.Text = con.leer_interno[8].ToString().Trim();
+                    txtColonia.Text = con.leer_interno[10].ToString().Trim();
+
+                    regPropV = Convert.ToInt32(con.leer_interno[11].ToString().Trim());
+                    cboRegimenPropiedad.SelectedIndex = regPropV;
+
+                    ubicacionV = Convert.ToInt32(con.leer_interno[12].ToString().Trim());
+                    cboUbicacion.SelectedIndex = ubicacionV;
+
+                    /* estos debemos de pasar a formato de 2 decimales  */
+                    /* --------------------------------------------------------------------------------------- */
+
+                    txtSupTerreno.Text = con.leer_interno[14].ToString().Trim();
+                    txtSupConstruccion.Text = con.leer_interno[15].ToString().Trim();
+                    txtSupTerrenoComun.Text = con.leer_interno[16].ToString().Trim();
+                    txtSupConstruccionComun.Text = con.leer_interno[17].ToString().Trim();
+                    txtFrente.Text = con.leer_interno[18].ToString().Trim();
+                    txtFondo.Text = con.leer_interno[19].ToString().Trim();
+                    txtDesnivel.Text = con.leer_interno[20].ToString().Trim();
+                    txtArea.Text = con.leer_interno[21].ToString().Trim();
+
+                    if (txtSupTerreno.Text.Trim() == "") { txtSupTerreno.Text = "0.00"; } else { txtSupTerreno.Text = string.Format("{0:#,##0.00}", double.Parse(txtSupTerreno.Text)); }
+                    if (txtSupConstruccion.Text.Trim() == "") { txtSupConstruccion.Text = "0.00"; } else { txtSupConstruccion.Text = string.Format("{0:#,##0.00}", double.Parse(txtSupConstruccion.Text)); }
+                    if (txtSupTerrenoComun.Text.Trim() == "") { txtSupTerrenoComun.Text = "0.00"; } else { txtSupTerrenoComun.Text = string.Format("{0:#,##0.00}", double.Parse(txtSupTerrenoComun.Text)); }
+                    if (txtSupConstruccionComun.Text.Trim() == "") { txtSupConstruccionComun.Text = "0.00"; } else { txtSupConstruccionComun.Text = string.Format("{0:#,##0.00}", double.Parse(txtSupConstruccionComun.Text)); }
+                    if (txtFrente.Text.Trim() == "") { txtFrente.Text = "0.00"; } else { txtFrente.Text = string.Format("{0:#,##0.00}", double.Parse(txtFrente.Text)); }
+                    if (txtFondo.Text.Trim() == "") { txtFondo.Text = "0.00"; } else { txtFondo.Text = string.Format("{0:#,##0.00}", double.Parse(txtFondo.Text)); }
+                    if (txtDesnivel.Text.Trim() == "") { txtDesnivel.Text = "0.00"; } else { txtDesnivel.Text = string.Format("{0:#,##0.00}", double.Parse(txtDesnivel.Text)); }
+                    if (txtArea.Text.Trim() == "") { txtArea.Text = "0.00"; } else { txtArea.Text = string.Format("{0:#,##0.00}", double.Parse(txtArea.Text)); }
+
+                    /* --------------------------------------------------------------------------------------- */
+
+                    txtObservaciones.Text = con.leer_interno[22].ToString().Trim();
+                    txtNoIntrior.Text = con.leer_interno[23].ToString().Trim();
+                    txtPropietario.Text = con.leer_interno[24].ToString().Trim();
+                    txtDomicilioPropietario.Text = con.leer_interno[25].ToString().Trim();
+                    txtDomicilioFiscal.Text = con.leer_interno[25].ToString().Trim();
+
+                    usoSueloV = con.leer_interno[26].ToString().Trim();
+                    destinoV = con.leer_interno[27].ToString().Trim();
+
+                    /* estos debemos de pasar a formato de 2 decimales  */
+                    /* --------------------------------------------------------------------------------------- */
+
+                    txtSupTerrenoPro.Text = con.leer_interno[29].ToString().Trim();
+                    txtSupTerrenoComunPro.Text = con.leer_interno[30].ToString().Trim();
+                    txtSupConstruccionPro.Text = con.leer_interno[31].ToString().Trim();
+                    txtSupConstruccionComunPro.Text = con.leer_interno[32].ToString().Trim();
+                    txtIndiviso.Text = con.leer_interno[33].ToString().Trim();
+
+                    if (txtSupTerrenoPro.Text.Trim() == "") { txtSupTerrenoPro.Text = "0.00"; } else { txtSupTerrenoPro.Text = string.Format("{0:#,##0.00}", double.Parse(txtSupTerrenoPro.Text)); }
+                    if (txtSupTerrenoComunPro.Text.Trim() == "") { txtSupTerrenoComunPro.Text = "0.00"; } else { txtSupTerrenoComunPro.Text = string.Format("{0:#,##0.00}", double.Parse(txtSupTerrenoComunPro.Text)); }
+                    if (txtSupConstruccionPro.Text.Trim() == "") { txtSupConstruccionPro.Text = "0.00"; } else { txtSupConstruccionPro.Text = string.Format("{0:#,##0.00}", double.Parse(txtSupConstruccionPro.Text)); }
+                    if (txtSupConstruccionComunPro.Text.Trim() == "") { txtSupConstruccionComunPro.Text = "0.00"; } else { txtSupConstruccionComunPro.Text = string.Format("{0:#,##0.00}", double.Parse(txtSupConstruccionComunPro.Text)); }
+                    if (txtIndiviso.Text.Trim() == "") { txtIndiviso.Text = "0.00"; } else { txtIndiviso.Text = string.Format("{0:#,##0.00}", double.Parse(txtIndiviso.Text)); }
+
+                    /* --------------------------------------------------------------------------------------- */
+
+                    txtObservacionPro.Text = con.leer_interno[34].ToString().Trim();
+                }
+
                 con.cerrar_interno();
-                inicio();
-                return 2; // Retornar si no hay resultados
             }
-
-            int tipoPredioV = 0;
-            double edoPredioV = 0;
-            int regPropV = 0;
-            int ubicacionV = 0;
-            string usoSueloV = "";
-            string destinoV = "";
-
-            while (con.leer_interno.Read())
+            catch (Exception ex)
             {
-                tipoPredioV = Convert.ToInt32(con.leer_interno[0].ToString().Trim());
-                if (tipoPredioV == 0) { cboTipoPredio.SelectedIndex = 1; }
-                if (tipoPredioV == 1) { cboTipoPredio.SelectedIndex = 0; }
-
-                edoPredioV = Convert.ToInt32(con.leer_interno[31].ToString().Trim()) + Convert.ToInt32(con.leer_interno[32].ToString().Trim());
-
-                if (edoPredioV > 0) { lblEdoPredio.Text = "1 CONSTRUIDO"; }
-                if (edoPredioV <= 0) { lblEdoPredio.Text = "0 BALDIO"; }
-
-                txtDomicilioPredio.Text = con.leer_interno[1].ToString().Trim();
-                txtZonaOrigen.Text = con.leer_interno[2].ToString().Trim();
-                txtCodigoCalle.Text = con.leer_interno[3].ToString().Trim().PadLeft(3, '0'); //este comentario
-                 
-                txtNoExterior.Text = con.leer_interno[5].ToString().Trim();
-                txtEnCalle.Text = con.leer_interno[6].ToString().Trim();
-                txtYcalle.Text = con.leer_interno[7].ToString().Trim();
-                txtCodigoPostal.Text = con.leer_interno[8].ToString().Trim();
-                txtColonia.Text = con.leer_interno[10].ToString().Trim();
-
-                regPropV = Convert.ToInt32(con.leer_interno[11].ToString().Trim());
-                cboRegimenPropiedad.SelectedIndex = regPropV;
-
-                ubicacionV = Convert.ToInt32(con.leer_interno[12].ToString().Trim());
-                cboUbicacion.SelectedIndex = ubicacionV;
-
-                /* estos debemos de pasar a formato de 2 decimales  */
-                /* --------------------------------------------------------------------------------------- */
-
-                txtSupTerreno.Text = con.leer_interno[14].ToString().Trim();
-                txtSupConstruccion.Text = con.leer_interno[15].ToString().Trim();
-                txtSupTerrenoComun.Text = con.leer_interno[16].ToString().Trim();
-                txtSupConstruccionComun.Text = con.leer_interno[17].ToString().Trim();
-                txtFrente.Text = con.leer_interno[18].ToString().Trim();
-                txtFondo.Text = con.leer_interno[19].ToString().Trim();
-                txtDesnivel.Text = con.leer_interno[20].ToString().Trim();
-                txtArea.Text = con.leer_interno[21].ToString().Trim();
-
-                if (txtSupTerreno.Text.Trim() == "")           { txtSupTerreno.Text = "0.00"; }             else { txtSupTerreno.Text = string.Format("{0:#,##0.00}",           double.Parse(txtSupTerreno.Text)); }
-                if (txtSupConstruccion.Text.Trim() == "")      { txtSupConstruccion.Text = "0.00"; }        else { txtSupConstruccion.Text = string.Format("{0:#,##0.00}",      double.Parse(txtSupConstruccion.Text)); }
-                if (txtSupTerrenoComun.Text.Trim() == "")      { txtSupTerrenoComun.Text = "0.00"; }        else { txtSupTerrenoComun.Text = string.Format("{0:#,##0.00}",      double.Parse(txtSupTerrenoComun.Text)); }
-                if (txtSupConstruccionComun.Text.Trim() == "") { txtSupConstruccionComun.Text = "0.00"; }   else { txtSupConstruccionComun.Text = string.Format("{0:#,##0.00}", double.Parse(txtSupConstruccionComun.Text)); }
-                if (txtFrente.Text.Trim() == "")               { txtFrente.Text = "0.00"; }                 else { txtFrente.Text = string.Format("{0:#,##0.00}",               double.Parse(txtFrente.Text)); }
-                if (txtFondo.Text.Trim() == "")                { txtFondo.Text = "0.00"; }                  else { txtFondo.Text = string.Format("{0:#,##0.00}",                double.Parse(txtFondo.Text)); }
-                if (txtDesnivel.Text.Trim() == "")             { txtDesnivel.Text = "0.00"; }               else { txtDesnivel.Text = string.Format("{0:#,##0.00}",             double.Parse(txtDesnivel.Text)); }
-                if (txtArea.Text.Trim() == "")                 { txtArea.Text = "0.00"; }                   else { txtArea.Text = string.Format("{0:#,##0.00}",                 double.Parse(txtArea.Text)); }
-
-                /* --------------------------------------------------------------------------------------- */
-
-                txtObservaciones.Text = con.leer_interno[22].ToString().Trim();
-                txtNoIntrior.Text = con.leer_interno[23].ToString().Trim();
-                txtPropietario.Text = con.leer_interno[24].ToString().Trim();
-                txtDomicilioPropietario.Text = con.leer_interno[25].ToString().Trim();
-                txtDomicilioFiscal.Text = con.leer_interno[25].ToString().Trim();
-
-                usoSueloV = con.leer_interno[26].ToString().Trim();
-                destinoV = con.leer_interno[27].ToString().Trim();
-
-                /* estos debemos de pasar a formato de 2 decimales  */
-                /* --------------------------------------------------------------------------------------- */
-
-                txtSupTerrenoPro.Text = con.leer_interno[29].ToString().Trim();
-                txtSupTerrenoComunPro.Text = con.leer_interno[30].ToString().Trim();
-                txtSupConstruccionPro.Text = con.leer_interno[31].ToString().Trim();
-                txtSupConstruccionComunPro.Text = con.leer_interno[32].ToString().Trim();
-                txtIndiviso.Text = con.leer_interno[33].ToString().Trim();
-
-                if (txtSupTerrenoPro.Text.Trim() == "")            { txtSupTerrenoPro.Text = "0.00"; }            else { txtSupTerrenoPro.Text = string.Format("{0:#,##0.00}",           double.Parse(txtSupTerrenoPro.Text)); }
-                if (txtSupTerrenoComunPro.Text.Trim() == "")       { txtSupTerrenoComunPro.Text = "0.00"; }       else { txtSupTerrenoComunPro.Text = string.Format("{0:#,##0.00}",      double.Parse(txtSupTerrenoComunPro.Text)); }
-                if (txtSupConstruccionPro.Text.Trim() == "")       { txtSupConstruccionPro.Text = "0.00"; }       else { txtSupConstruccionPro.Text = string.Format("{0:#,##0.00}",      double.Parse(txtSupConstruccionPro.Text)); }
-                if (txtSupConstruccionComunPro.Text.Trim() == "")  { txtSupConstruccionComunPro.Text = "0.00"; }  else { txtSupConstruccionComunPro.Text = string.Format("{0:#,##0.00}", double.Parse(txtSupConstruccionComunPro.Text)); }
-                if (txtIndiviso.Text.Trim() == "")                 { txtIndiviso.Text = "0.00"; }                 else { txtIndiviso.Text = string.Format("{0:#,##0.00}",                double.Parse(txtIndiviso.Text)); }
-
-                /* --------------------------------------------------------------------------------------- */
-
-                txtObservacionPro.Text = con.leer_interno[34].ToString().Trim();
+                MessageBox.Show(ex.Message, "Error al executar consulta" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                // Retornar false si ocurre un error
             }
 
-            con.cerrar_interno();
 
             for (int i = 0; i < cboUsoSuelo.Items.Count; i++)
             {
@@ -2083,8 +2107,12 @@ namespace SMACatastro.catastroSistemas
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 1; // Retornar false si ocurre un error
+                MessageBox.Show(ex.Message, "Error al executar el proceso N19_CONSULTA_PREDIO" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                return 1;
+                // Retornar false si ocurre un error
             }
 
             /********************************************************************************/
@@ -2124,8 +2152,12 @@ namespace SMACatastro.catastroSistemas
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error de Red", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 1; // Retornar false si ocurre un error
+                MessageBox.Show(ex.Message, "Error al consultar coordenadas" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                util.CapturarPantallaConInformacion(ex);
+                System.Threading.Thread.Sleep(500);
+                con.cerrar_interno();
+                return 1;
+                // Retornar false si ocurre un error
             }
 
             return 0;

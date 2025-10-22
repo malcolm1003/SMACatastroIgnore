@@ -28,6 +28,8 @@ namespace SMACatastro {
         
         private SP_REPORTE_TRAMITESDataTable tableSP_REPORTE_TRAMITES;
         
+        private Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -61,6 +63,9 @@ namespace SMACatastro {
                 }
                 if ((ds.Tables["SP_REPORTE_TRAMITES"] != null)) {
                     base.Tables.Add(new SP_REPORTE_TRAMITESDataTable(ds.Tables["SP_REPORTE_TRAMITES"]));
+                }
+                if ((ds.Tables["Song_Sp_Consulta_Datos_Para_Manifestacion_2025"] != null)) {
+                    base.Tables.Add(new Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable(ds.Tables["Song_Sp_Consulta_Datos_Para_Manifestacion_2025"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -97,6 +102,16 @@ namespace SMACatastro {
         public SP_REPORTE_TRAMITESDataTable SP_REPORTE_TRAMITES {
             get {
                 return this.tableSP_REPORTE_TRAMITES;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable Song_Sp_Consulta_Datos_Para_Manifestacion_2025 {
+            get {
+                return this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025;
             }
         }
         
@@ -173,6 +188,9 @@ namespace SMACatastro {
                 if ((ds.Tables["SP_REPORTE_TRAMITES"] != null)) {
                     base.Tables.Add(new SP_REPORTE_TRAMITESDataTable(ds.Tables["SP_REPORTE_TRAMITES"]));
                 }
+                if ((ds.Tables["Song_Sp_Consulta_Datos_Para_Manifestacion_2025"] != null)) {
+                    base.Tables.Add(new Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable(ds.Tables["Song_Sp_Consulta_Datos_Para_Manifestacion_2025"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -218,6 +236,12 @@ namespace SMACatastro {
                     this.tableSP_REPORTE_TRAMITES.InitVars();
                 }
             }
+            this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025 = ((Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable)(base.Tables["Song_Sp_Consulta_Datos_Para_Manifestacion_2025"]));
+            if ((initTable == true)) {
+                if ((this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025 != null)) {
+                    this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -232,6 +256,8 @@ namespace SMACatastro {
             base.Tables.Add(this.tableSPMALCOLM);
             this.tableSP_REPORTE_TRAMITES = new SP_REPORTE_TRAMITESDataTable();
             base.Tables.Add(this.tableSP_REPORTE_TRAMITES);
+            this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025 = new Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable();
+            base.Tables.Add(this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -243,6 +269,12 @@ namespace SMACatastro {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private bool ShouldSerializeSP_REPORTE_TRAMITES() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeSong_Sp_Consulta_Datos_Para_Manifestacion_2025() {
             return false;
         }
         
@@ -306,6 +338,9 @@ namespace SMACatastro {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void SP_REPORTE_TRAMITESRowChangeEventHandler(object sender, SP_REPORTE_TRAMITESRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowChangeEventHandler(object sender, Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -972,6 +1007,768 @@ namespace SMACatastro {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable : global::System.Data.TypedTableBase<Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row> {
+            
+            private global::System.Data.DataColumn columnPmnProp;
+            
+            private global::System.Data.DataColumn columnDomicilio;
+            
+            private global::System.Data.DataColumn columnZona;
+            
+            private global::System.Data.DataColumn columnNomCalle;
+            
+            private global::System.Data.DataColumn columnNumExt;
+            
+            private global::System.Data.DataColumn columnCodPost;
+            
+            private global::System.Data.DataColumn columnUbicacion;
+            
+            private global::System.Data.DataColumn columnRegProp;
+            
+            private global::System.Data.DataColumn columnNomCol;
+            
+            private global::System.Data.DataColumn columnSupTerrTot;
+            
+            private global::System.Data.DataColumn columnSupTerrCom;
+            
+            private global::System.Data.DataColumn columnSupCons;
+            
+            private global::System.Data.DataColumn columnSupConsCom;
+            
+            private global::System.Data.DataColumn columnFrente;
+            
+            private global::System.Data.DataColumn columnFondo;
+            
+            private global::System.Data.DataColumn columnDesnivel;
+            
+            private global::System.Data.DataColumn columnAreaInscr;
+            
+            private global::System.Data.DataColumn columnPtjeCondom;
+            
+            private global::System.Data.DataColumn columnDomicilio1;
+            
+            private global::System.Data.DataColumn columnNumIntP;
+            
+            private global::System.Data.DataColumn columnSTerrProp;
+            
+            private global::System.Data.DataColumn columnSTerrCom;
+            
+            private global::System.Data.DataColumn columnSConsProp;
+            
+            private global::System.Data.DataColumn columnSConsCom;
+            
+            private global::System.Data.DataColumn columnVALOR_TERRENO_P;
+            
+            private global::System.Data.DataColumn columnVALOR_TERRENO_C;
+            
+            private global::System.Data.DataColumn columnVALOR_CONSTRUCCION_P;
+            
+            private global::System.Data.DataColumn columnVALOR_CONSTRUCCION_C;
+            
+            private global::System.Data.DataColumn columnVALOR_CATASTRAL;
+            
+            private global::System.Data.DataColumn columncObsProp;
+            
+            private global::System.Data.DataColumn columnCodCalle;
+            
+            private global::System.Data.DataColumn columnNomLoc;
+            
+            private global::System.Data.DataColumn columnDescrUso;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable() {
+                this.TableName = "Song_Sp_Consulta_Datos_Para_Manifestacion_2025";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PmnPropColumn {
+                get {
+                    return this.columnPmnProp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DomicilioColumn {
+                get {
+                    return this.columnDomicilio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ZonaColumn {
+                get {
+                    return this.columnZona;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NomCalleColumn {
+                get {
+                    return this.columnNomCalle;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NumExtColumn {
+                get {
+                    return this.columnNumExt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CodPostColumn {
+                get {
+                    return this.columnCodPost;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn UbicacionColumn {
+                get {
+                    return this.columnUbicacion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn RegPropColumn {
+                get {
+                    return this.columnRegProp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NomColColumn {
+                get {
+                    return this.columnNomCol;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SupTerrTotColumn {
+                get {
+                    return this.columnSupTerrTot;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SupTerrComColumn {
+                get {
+                    return this.columnSupTerrCom;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SupConsColumn {
+                get {
+                    return this.columnSupCons;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SupConsComColumn {
+                get {
+                    return this.columnSupConsCom;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FrenteColumn {
+                get {
+                    return this.columnFrente;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FondoColumn {
+                get {
+                    return this.columnFondo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DesnivelColumn {
+                get {
+                    return this.columnDesnivel;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn AreaInscrColumn {
+                get {
+                    return this.columnAreaInscr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PtjeCondomColumn {
+                get {
+                    return this.columnPtjeCondom;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn Domicilio1Column {
+                get {
+                    return this.columnDomicilio1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NumIntPColumn {
+                get {
+                    return this.columnNumIntP;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn STerrPropColumn {
+                get {
+                    return this.columnSTerrProp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn STerrComColumn {
+                get {
+                    return this.columnSTerrCom;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SConsPropColumn {
+                get {
+                    return this.columnSConsProp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SConsComColumn {
+                get {
+                    return this.columnSConsCom;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn VALOR_TERRENO_PColumn {
+                get {
+                    return this.columnVALOR_TERRENO_P;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn VALOR_TERRENO_CColumn {
+                get {
+                    return this.columnVALOR_TERRENO_C;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn VALOR_CONSTRUCCION_PColumn {
+                get {
+                    return this.columnVALOR_CONSTRUCCION_P;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn VALOR_CONSTRUCCION_CColumn {
+                get {
+                    return this.columnVALOR_CONSTRUCCION_C;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn VALOR_CATASTRALColumn {
+                get {
+                    return this.columnVALOR_CATASTRAL;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn cObsPropColumn {
+                get {
+                    return this.columncObsProp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CodCalleColumn {
+                get {
+                    return this.columnCodCalle;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NomLocColumn {
+                get {
+                    return this.columnNomLoc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn DescrUsoColumn {
+                get {
+                    return this.columnDescrUso;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row this[int index] {
+                get {
+                    return ((Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowChangeEventHandler Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowChangeEventHandler Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowChangeEventHandler Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowChangeEventHandler Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddSong_Sp_Consulta_Datos_Para_Manifestacion_2025Row(Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row AddSong_Sp_Consulta_Datos_Para_Manifestacion_2025Row(
+                        string PmnProp, 
+                        string Domicilio, 
+                        short Zona, 
+                        string NomCalle, 
+                        string NumExt, 
+                        int CodPost, 
+                        short Ubicacion, 
+                        short RegProp, 
+                        string NomCol, 
+                        double SupTerrTot, 
+                        double SupTerrCom, 
+                        double SupCons, 
+                        double SupConsCom, 
+                        double Frente, 
+                        double Fondo, 
+                        double Desnivel, 
+                        double AreaInscr, 
+                        double PtjeCondom, 
+                        string Domicilio1, 
+                        string NumIntP, 
+                        double STerrProp, 
+                        double STerrCom, 
+                        double SConsProp, 
+                        double SConsCom, 
+                        double VALOR_TERRENO_P, 
+                        double VALOR_TERRENO_C, 
+                        double VALOR_CONSTRUCCION_P, 
+                        double VALOR_CONSTRUCCION_C, 
+                        double VALOR_CATASTRAL, 
+                        string cObsProp, 
+                        short CodCalle, 
+                        string NomLoc, 
+                        string DescrUso) {
+                Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row rowSong_Sp_Consulta_Datos_Para_Manifestacion_2025Row = ((Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        PmnProp,
+                        Domicilio,
+                        Zona,
+                        NomCalle,
+                        NumExt,
+                        CodPost,
+                        Ubicacion,
+                        RegProp,
+                        NomCol,
+                        SupTerrTot,
+                        SupTerrCom,
+                        SupCons,
+                        SupConsCom,
+                        Frente,
+                        Fondo,
+                        Desnivel,
+                        AreaInscr,
+                        PtjeCondom,
+                        Domicilio1,
+                        NumIntP,
+                        STerrProp,
+                        STerrCom,
+                        SConsProp,
+                        SConsCom,
+                        VALOR_TERRENO_P,
+                        VALOR_TERRENO_C,
+                        VALOR_CONSTRUCCION_P,
+                        VALOR_CONSTRUCCION_C,
+                        VALOR_CATASTRAL,
+                        cObsProp,
+                        CodCalle,
+                        NomLoc,
+                        DescrUso};
+                rowSong_Sp_Consulta_Datos_Para_Manifestacion_2025Row.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSong_Sp_Consulta_Datos_Para_Manifestacion_2025Row);
+                return rowSong_Sp_Consulta_Datos_Para_Manifestacion_2025Row;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable cln = ((Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnPmnProp = base.Columns["PmnProp"];
+                this.columnDomicilio = base.Columns["Domicilio"];
+                this.columnZona = base.Columns["Zona"];
+                this.columnNomCalle = base.Columns["NomCalle"];
+                this.columnNumExt = base.Columns["NumExt"];
+                this.columnCodPost = base.Columns["CodPost"];
+                this.columnUbicacion = base.Columns["Ubicacion"];
+                this.columnRegProp = base.Columns["RegProp"];
+                this.columnNomCol = base.Columns["NomCol"];
+                this.columnSupTerrTot = base.Columns["SupTerrTot"];
+                this.columnSupTerrCom = base.Columns["SupTerrCom"];
+                this.columnSupCons = base.Columns["SupCons"];
+                this.columnSupConsCom = base.Columns["SupConsCom"];
+                this.columnFrente = base.Columns["Frente"];
+                this.columnFondo = base.Columns["Fondo"];
+                this.columnDesnivel = base.Columns["Desnivel"];
+                this.columnAreaInscr = base.Columns["AreaInscr"];
+                this.columnPtjeCondom = base.Columns["PtjeCondom"];
+                this.columnDomicilio1 = base.Columns["Domicilio1"];
+                this.columnNumIntP = base.Columns["NumIntP"];
+                this.columnSTerrProp = base.Columns["STerrProp"];
+                this.columnSTerrCom = base.Columns["STerrCom"];
+                this.columnSConsProp = base.Columns["SConsProp"];
+                this.columnSConsCom = base.Columns["SConsCom"];
+                this.columnVALOR_TERRENO_P = base.Columns["VALOR_TERRENO_P"];
+                this.columnVALOR_TERRENO_C = base.Columns["VALOR_TERRENO_C"];
+                this.columnVALOR_CONSTRUCCION_P = base.Columns["VALOR_CONSTRUCCION_P"];
+                this.columnVALOR_CONSTRUCCION_C = base.Columns["VALOR_CONSTRUCCION_C"];
+                this.columnVALOR_CATASTRAL = base.Columns["VALOR_CATASTRAL"];
+                this.columncObsProp = base.Columns["cObsProp"];
+                this.columnCodCalle = base.Columns["CodCalle"];
+                this.columnNomLoc = base.Columns["NomLoc"];
+                this.columnDescrUso = base.Columns["DescrUso"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnPmnProp = new global::System.Data.DataColumn("PmnProp", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPmnProp);
+                this.columnDomicilio = new global::System.Data.DataColumn("Domicilio", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDomicilio);
+                this.columnZona = new global::System.Data.DataColumn("Zona", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnZona);
+                this.columnNomCalle = new global::System.Data.DataColumn("NomCalle", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNomCalle);
+                this.columnNumExt = new global::System.Data.DataColumn("NumExt", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNumExt);
+                this.columnCodPost = new global::System.Data.DataColumn("CodPost", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodPost);
+                this.columnUbicacion = new global::System.Data.DataColumn("Ubicacion", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUbicacion);
+                this.columnRegProp = new global::System.Data.DataColumn("RegProp", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRegProp);
+                this.columnNomCol = new global::System.Data.DataColumn("NomCol", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNomCol);
+                this.columnSupTerrTot = new global::System.Data.DataColumn("SupTerrTot", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSupTerrTot);
+                this.columnSupTerrCom = new global::System.Data.DataColumn("SupTerrCom", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSupTerrCom);
+                this.columnSupCons = new global::System.Data.DataColumn("SupCons", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSupCons);
+                this.columnSupConsCom = new global::System.Data.DataColumn("SupConsCom", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSupConsCom);
+                this.columnFrente = new global::System.Data.DataColumn("Frente", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFrente);
+                this.columnFondo = new global::System.Data.DataColumn("Fondo", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFondo);
+                this.columnDesnivel = new global::System.Data.DataColumn("Desnivel", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDesnivel);
+                this.columnAreaInscr = new global::System.Data.DataColumn("AreaInscr", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAreaInscr);
+                this.columnPtjeCondom = new global::System.Data.DataColumn("PtjeCondom", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPtjeCondom);
+                this.columnDomicilio1 = new global::System.Data.DataColumn("Domicilio1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDomicilio1);
+                this.columnNumIntP = new global::System.Data.DataColumn("NumIntP", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNumIntP);
+                this.columnSTerrProp = new global::System.Data.DataColumn("STerrProp", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSTerrProp);
+                this.columnSTerrCom = new global::System.Data.DataColumn("STerrCom", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSTerrCom);
+                this.columnSConsProp = new global::System.Data.DataColumn("SConsProp", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSConsProp);
+                this.columnSConsCom = new global::System.Data.DataColumn("SConsCom", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSConsCom);
+                this.columnVALOR_TERRENO_P = new global::System.Data.DataColumn("VALOR_TERRENO_P", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVALOR_TERRENO_P);
+                this.columnVALOR_TERRENO_C = new global::System.Data.DataColumn("VALOR_TERRENO_C", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVALOR_TERRENO_C);
+                this.columnVALOR_CONSTRUCCION_P = new global::System.Data.DataColumn("VALOR_CONSTRUCCION_P", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVALOR_CONSTRUCCION_P);
+                this.columnVALOR_CONSTRUCCION_C = new global::System.Data.DataColumn("VALOR_CONSTRUCCION_C", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVALOR_CONSTRUCCION_C);
+                this.columnVALOR_CATASTRAL = new global::System.Data.DataColumn("VALOR_CATASTRAL", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVALOR_CATASTRAL);
+                this.columncObsProp = new global::System.Data.DataColumn("cObsProp", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncObsProp);
+                this.columnCodCalle = new global::System.Data.DataColumn("CodCalle", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodCalle);
+                this.columnNomLoc = new global::System.Data.DataColumn("NomLoc", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNomLoc);
+                this.columnDescrUso = new global::System.Data.DataColumn("DescrUso", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescrUso);
+                this.columnPmnProp.AllowDBNull = false;
+                this.columnPmnProp.MaxLength = 100;
+                this.columnDomicilio.AllowDBNull = false;
+                this.columnDomicilio.MaxLength = 80;
+                this.columnZona.AllowDBNull = false;
+                this.columnNomCalle.AllowDBNull = false;
+                this.columnNomCalle.MaxLength = 30;
+                this.columnNumExt.MaxLength = 10;
+                this.columnUbicacion.AllowDBNull = false;
+                this.columnRegProp.AllowDBNull = false;
+                this.columnNomCol.AllowDBNull = false;
+                this.columnNomCol.MaxLength = 30;
+                this.columnSupTerrTot.AllowDBNull = false;
+                this.columnSupTerrCom.AllowDBNull = false;
+                this.columnSupCons.AllowDBNull = false;
+                this.columnSupConsCom.AllowDBNull = false;
+                this.columnFrente.AllowDBNull = false;
+                this.columnFondo.AllowDBNull = false;
+                this.columnDesnivel.AllowDBNull = false;
+                this.columnAreaInscr.AllowDBNull = false;
+                this.columnPtjeCondom.AllowDBNull = false;
+                this.columnDomicilio1.AllowDBNull = false;
+                this.columnDomicilio1.MaxLength = 80;
+                this.columnNumIntP.MaxLength = 15;
+                this.columnSTerrProp.AllowDBNull = false;
+                this.columnSTerrCom.AllowDBNull = false;
+                this.columnSConsProp.AllowDBNull = false;
+                this.columnSConsCom.AllowDBNull = false;
+                this.columncObsProp.MaxLength = 100;
+                this.columnCodCalle.AllowDBNull = false;
+                this.columnNomLoc.AllowDBNull = false;
+                this.columnNomLoc.MaxLength = 40;
+                this.columnDescrUso.AllowDBNull = false;
+                this.columnDescrUso.MaxLength = 15;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row NewSong_Sp_Consulta_Datos_Para_Manifestacion_2025Row() {
+                return ((Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowChanged != null)) {
+                    this.Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowChanged(this, new Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowChangeEvent(((Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowChanging != null)) {
+                    this.Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowChanging(this, new Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowChangeEvent(((Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowDeleted != null)) {
+                    this.Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowDeleted(this, new Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowChangeEvent(((Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowDeleting != null)) {
+                    this.Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowDeleting(this, new Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowChangeEvent(((Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveSong_Sp_Consulta_Datos_Para_Manifestacion_2025Row(Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet ds = new DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class SPMALCOLMRow : global::System.Data.DataRow {
@@ -1399,6 +2196,546 @@ namespace SMACatastro {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row : global::System.Data.DataRow {
+            
+            private Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025 = ((Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string PmnProp {
+                get {
+                    return ((string)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.PmnPropColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.PmnPropColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Domicilio {
+                get {
+                    return ((string)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.DomicilioColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.DomicilioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public short Zona {
+                get {
+                    return ((short)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.ZonaColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.ZonaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string NomCalle {
+                get {
+                    return ((string)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.NomCalleColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.NomCalleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string NumExt {
+                get {
+                    try {
+                        return ((string)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.NumExtColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NumExt\' de la tabla \'Song_Sp_Consulta_Datos_Para_Manifest" +
+                                "acion_2025\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.NumExtColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int CodPost {
+                get {
+                    try {
+                        return ((int)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.CodPostColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CodPost\' de la tabla \'Song_Sp_Consulta_Datos_Para_Manifes" +
+                                "tacion_2025\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.CodPostColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public short Ubicacion {
+                get {
+                    return ((short)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.UbicacionColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.UbicacionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public short RegProp {
+                get {
+                    return ((short)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.RegPropColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.RegPropColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string NomCol {
+                get {
+                    return ((string)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.NomColColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.NomColColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double SupTerrTot {
+                get {
+                    return ((double)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.SupTerrTotColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.SupTerrTotColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double SupTerrCom {
+                get {
+                    return ((double)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.SupTerrComColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.SupTerrComColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double SupCons {
+                get {
+                    return ((double)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.SupConsColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.SupConsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double SupConsCom {
+                get {
+                    return ((double)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.SupConsComColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.SupConsComColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double Frente {
+                get {
+                    return ((double)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.FrenteColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.FrenteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double Fondo {
+                get {
+                    return ((double)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.FondoColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.FondoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double Desnivel {
+                get {
+                    return ((double)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.DesnivelColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.DesnivelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double AreaInscr {
+                get {
+                    return ((double)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.AreaInscrColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.AreaInscrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double PtjeCondom {
+                get {
+                    return ((double)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.PtjeCondomColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.PtjeCondomColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Domicilio1 {
+                get {
+                    return ((string)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.Domicilio1Column]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.Domicilio1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string NumIntP {
+                get {
+                    try {
+                        return ((string)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.NumIntPColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NumIntP\' de la tabla \'Song_Sp_Consulta_Datos_Para_Manifes" +
+                                "tacion_2025\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.NumIntPColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double STerrProp {
+                get {
+                    return ((double)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.STerrPropColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.STerrPropColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double STerrCom {
+                get {
+                    return ((double)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.STerrComColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.STerrComColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double SConsProp {
+                get {
+                    return ((double)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.SConsPropColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.SConsPropColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double SConsCom {
+                get {
+                    return ((double)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.SConsComColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.SConsComColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double VALOR_TERRENO_P {
+                get {
+                    try {
+                        return ((double)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_TERRENO_PColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'VALOR_TERRENO_P\' de la tabla \'Song_Sp_Consulta_Datos_Para" +
+                                "_Manifestacion_2025\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_TERRENO_PColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double VALOR_TERRENO_C {
+                get {
+                    try {
+                        return ((double)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_TERRENO_CColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'VALOR_TERRENO_C\' de la tabla \'Song_Sp_Consulta_Datos_Para" +
+                                "_Manifestacion_2025\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_TERRENO_CColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double VALOR_CONSTRUCCION_P {
+                get {
+                    try {
+                        return ((double)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_CONSTRUCCION_PColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'VALOR_CONSTRUCCION_P\' de la tabla \'Song_Sp_Consulta_Datos" +
+                                "_Para_Manifestacion_2025\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_CONSTRUCCION_PColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double VALOR_CONSTRUCCION_C {
+                get {
+                    try {
+                        return ((double)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_CONSTRUCCION_CColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'VALOR_CONSTRUCCION_C\' de la tabla \'Song_Sp_Consulta_Datos" +
+                                "_Para_Manifestacion_2025\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_CONSTRUCCION_CColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public double VALOR_CATASTRAL {
+                get {
+                    try {
+                        return ((double)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_CATASTRALColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'VALOR_CATASTRAL\' de la tabla \'Song_Sp_Consulta_Datos_Para" +
+                                "_Manifestacion_2025\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_CATASTRALColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string cObsProp {
+                get {
+                    try {
+                        return ((string)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.cObsPropColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'cObsProp\' de la tabla \'Song_Sp_Consulta_Datos_Para_Manife" +
+                                "stacion_2025\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.cObsPropColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public short CodCalle {
+                get {
+                    return ((short)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.CodCalleColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.CodCalleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string NomLoc {
+                get {
+                    return ((string)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.NomLocColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.NomLocColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string DescrUso {
+                get {
+                    return ((string)(this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.DescrUsoColumn]));
+                }
+                set {
+                    this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.DescrUsoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsNumExtNull() {
+                return this.IsNull(this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.NumExtColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetNumExtNull() {
+                this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.NumExtColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsCodPostNull() {
+                return this.IsNull(this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.CodPostColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetCodPostNull() {
+                this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.CodPostColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsNumIntPNull() {
+                return this.IsNull(this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.NumIntPColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetNumIntPNull() {
+                this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.NumIntPColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsVALOR_TERRENO_PNull() {
+                return this.IsNull(this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_TERRENO_PColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetVALOR_TERRENO_PNull() {
+                this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_TERRENO_PColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsVALOR_TERRENO_CNull() {
+                return this.IsNull(this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_TERRENO_CColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetVALOR_TERRENO_CNull() {
+                this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_TERRENO_CColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsVALOR_CONSTRUCCION_PNull() {
+                return this.IsNull(this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_CONSTRUCCION_PColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetVALOR_CONSTRUCCION_PNull() {
+                this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_CONSTRUCCION_PColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsVALOR_CONSTRUCCION_CNull() {
+                return this.IsNull(this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_CONSTRUCCION_CColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetVALOR_CONSTRUCCION_CNull() {
+                this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_CONSTRUCCION_CColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsVALOR_CATASTRALNull() {
+                return this.IsNull(this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_CATASTRALColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetVALOR_CATASTRALNull() {
+                this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.VALOR_CATASTRALColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IscObsPropNull() {
+                return this.IsNull(this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.cObsPropColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetcObsPropNull() {
+                this[this.tableSong_Sp_Consulta_Datos_Para_Manifestacion_2025.cObsPropColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -1452,6 +2789,40 @@ namespace SMACatastro {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public SP_REPORTE_TRAMITESRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowChangeEvent : global::System.EventArgs {
+            
+            private Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public Song_Sp_Consulta_Datos_Para_Manifestacion_2025RowChangeEvent(Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public Song_Sp_Consulta_Datos_Para_Manifestacion_2025Row Row {
                 get {
                     return this.eventRow;
                 }
@@ -1865,6 +3236,297 @@ namespace SMACatastro.DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSetTableAdapter
                 this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet.SP_REPORTE_TRAMITESDataTable dataTable = new DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet.SP_REPORTE_TRAMITESDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class Song_Sp_Consulta_Datos_Para_Manifestacion_2025TableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public Song_Sp_Consulta_Datos_Para_Manifestacion_2025TableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Song_Sp_Consulta_Datos_Para_Manifestacion_2025";
+            tableMapping.ColumnMappings.Add("PmnProp", "PmnProp");
+            tableMapping.ColumnMappings.Add("Domicilio", "Domicilio");
+            tableMapping.ColumnMappings.Add("Zona", "Zona");
+            tableMapping.ColumnMappings.Add("NomCalle", "NomCalle");
+            tableMapping.ColumnMappings.Add("NumExt", "NumExt");
+            tableMapping.ColumnMappings.Add("CodPost", "CodPost");
+            tableMapping.ColumnMappings.Add("Ubicacion", "Ubicacion");
+            tableMapping.ColumnMappings.Add("RegProp", "RegProp");
+            tableMapping.ColumnMappings.Add("NomCol", "NomCol");
+            tableMapping.ColumnMappings.Add("SupTerrTot", "SupTerrTot");
+            tableMapping.ColumnMappings.Add("SupTerrCom", "SupTerrCom");
+            tableMapping.ColumnMappings.Add("SupCons", "SupCons");
+            tableMapping.ColumnMappings.Add("SupConsCom", "SupConsCom");
+            tableMapping.ColumnMappings.Add("Frente", "Frente");
+            tableMapping.ColumnMappings.Add("Fondo", "Fondo");
+            tableMapping.ColumnMappings.Add("Desnivel", "Desnivel");
+            tableMapping.ColumnMappings.Add("AreaInscr", "AreaInscr");
+            tableMapping.ColumnMappings.Add("PtjeCondom", "PtjeCondom");
+            tableMapping.ColumnMappings.Add("Domicilio1", "Domicilio1");
+            tableMapping.ColumnMappings.Add("NumIntP", "NumIntP");
+            tableMapping.ColumnMappings.Add("STerrProp", "STerrProp");
+            tableMapping.ColumnMappings.Add("STerrCom", "STerrCom");
+            tableMapping.ColumnMappings.Add("SConsProp", "SConsProp");
+            tableMapping.ColumnMappings.Add("SConsCom", "SConsCom");
+            tableMapping.ColumnMappings.Add("VALOR_TERRENO_P", "VALOR_TERRENO_P");
+            tableMapping.ColumnMappings.Add("VALOR_TERRENO_C", "VALOR_TERRENO_C");
+            tableMapping.ColumnMappings.Add("VALOR_CONSTRUCCION_P", "VALOR_CONSTRUCCION_P");
+            tableMapping.ColumnMappings.Add("VALOR_CONSTRUCCION_C", "VALOR_CONSTRUCCION_C");
+            tableMapping.ColumnMappings.Add("VALOR_CATASTRAL", "VALOR_CATASTRAL");
+            tableMapping.ColumnMappings.Add("cObsProp", "cObsProp");
+            tableMapping.ColumnMappings.Add("CodCalle", "CodCalle");
+            tableMapping.ColumnMappings.Add("NomLoc", "NomLoc");
+            tableMapping.ColumnMappings.Add("DescrUso", "DescrUso");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::SMACatastro.Properties.Settings.Default.DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "dbo.Song_Sp_Consulta_Datos_Para_Manifestacion_2025";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ESTADO", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MUNICIPIO", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ZONA", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MANZANA", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LOTE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EDIFICIO", global::System.Data.SqlDbType.VarChar, 2, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DEPTO", global::System.Data.SqlDbType.VarChar, 4, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet.Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable dataTable, global::System.Nullable<int> ESTADO, global::System.Nullable<int> MUNICIPIO, global::System.Nullable<int> ZONA, global::System.Nullable<int> MANZANA, global::System.Nullable<int> LOTE, string EDIFICIO, string DEPTO) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((ESTADO.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(ESTADO.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((MUNICIPIO.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(MUNICIPIO.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((ZONA.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((int)(ZONA.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((MANZANA.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((int)(MANZANA.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((LOTE.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[5].Value = ((int)(LOTE.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((EDIFICIO == null)) {
+                this.Adapter.SelectCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[6].Value = ((string)(EDIFICIO));
+            }
+            if ((DEPTO == null)) {
+                this.Adapter.SelectCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[7].Value = ((string)(DEPTO));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet.Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable GetData(global::System.Nullable<int> ESTADO, global::System.Nullable<int> MUNICIPIO, global::System.Nullable<int> ZONA, global::System.Nullable<int> MANZANA, global::System.Nullable<int> LOTE, string EDIFICIO, string DEPTO) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((ESTADO.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(ESTADO.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((MUNICIPIO.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(MUNICIPIO.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((ZONA.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((int)(ZONA.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((MANZANA.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((int)(MANZANA.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((LOTE.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[5].Value = ((int)(LOTE.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((EDIFICIO == null)) {
+                this.Adapter.SelectCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[6].Value = ((string)(EDIFICIO));
+            }
+            if ((DEPTO == null)) {
+                this.Adapter.SelectCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[7].Value = ((string)(DEPTO));
+            }
+            DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet.Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable dataTable = new DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet.Song_Sp_Consulta_Datos_Para_Manifestacion_2025DataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

@@ -2,65 +2,161 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="DataSet1">
+    <DataSource Name="DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>f95e52e0-6413-4c40-bf62-ab74372fb44f</rd:DataSourceID>
+      <rd:DataSourceID>40d97a6a-0b41-4e45-98ff-6234b843084e</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet1">
       <Query>
-        <DataSourceName>DataSet1</DataSourceName>
+        <DataSourceName>DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="NumUnidad">
-          <DataField>NumUnidad</DataField>
+        <Field Name="PmnProp">
+          <DataField>PmnProp</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Domicilio">
+          <DataField>Domicilio</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Zona">
+          <DataField>Zona</DataField>
           <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="NomCalle">
+          <DataField>NomCalle</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NumExt">
+          <DataField>NumExt</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CodPost">
+          <DataField>CodPost</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Ubicacion">
+          <DataField>Ubicacion</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="RegProp">
+          <DataField>RegProp</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="NomCol">
+          <DataField>NomCol</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SupTerrTot">
+          <DataField>SupTerrTot</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="SupTerrCom">
+          <DataField>SupTerrCom</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="SupCons">
           <DataField>SupCons</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
-        <Field Name="Uso">
-          <DataField>Uso</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ClaseConst">
-          <DataField>ClaseConst</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="CategConst">
-          <DataField>CategConst</DataField>
-          <rd:TypeName>System.Int16</rd:TypeName>
-        </Field>
-        <Field Name="AniodeCons">
-          <DataField>AniodeCons</DataField>
-          <rd:TypeName>System.Int16</rd:TypeName>
-        </Field>
-        <Field Name="EstadoCons">
-          <DataField>EstadoCons</DataField>
-          <rd:TypeName>System.Int16</rd:TypeName>
-        </Field>
-        <Field Name="NivCons">
-          <DataField>NivCons</DataField>
-          <rd:TypeName>System.Int16</rd:TypeName>
-        </Field>
-        <Field Name="ValorCons">
-          <DataField>ValorCons</DataField>
+        <Field Name="SupConsCom">
+          <DataField>SupConsCom</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Frente">
+          <DataField>Frente</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Fondo">
+          <DataField>Fondo</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Desnivel">
+          <DataField>Desnivel</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="AreaInscr">
+          <DataField>AreaInscr</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="PtjeCondom">
+          <DataField>PtjeCondom</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Domicilio1">
+          <DataField>Domicilio1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NumIntP">
+          <DataField>NumIntP</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="STerrProp">
+          <DataField>STerrProp</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="STerrCom">
+          <DataField>STerrCom</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="SConsProp">
+          <DataField>SConsProp</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="SConsCom">
+          <DataField>SConsCom</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="VALOR_TERRENO_P">
+          <DataField>VALOR_TERRENO_P</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="VALOR_TERRENO_C">
+          <DataField>VALOR_TERRENO_C</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="VALOR_CONSTRUCCION_P">
+          <DataField>VALOR_CONSTRUCCION_P</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="VALOR_CONSTRUCCION_C">
+          <DataField>VALOR_CONSTRUCCION_C</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="VALOR_CATASTRAL">
+          <DataField>VALOR_CATASTRAL</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="cObsProp">
+          <DataField>cObsProp</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CodCalle">
+          <DataField>CodCalle</DataField>
+          <rd:TypeName>System.Int16</rd:TypeName>
+        </Field>
+        <Field Name="NomLoc">
+          <DataField>NomLoc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DescrUso">
+          <DataField>DescrUso</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>DataSet1</rd:DataSetName>
-        <rd:SchemaPath>D:\SMAv2.0\SMAv2.0\DataSet1.xsd</rd:SchemaPath>
-        <rd:TableName>MANIFESTACION_2025</rd:TableName>
+        <rd:DataSetName>DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\malso\Desktop\SMACatastro\SMACatastro\SMACatastro\SMACatastro\DB_INTMIOD_ATENCO_DESARROLLO_SEPTIEMBREDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>Song_Sp_Consulta_Datos_Para_Manifestacion_2025</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>MANIFESTACION_2025TableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>Song_Sp_Consulta_Datos_Para_Manifestacion_2025TableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -75,8 +171,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=IIF( 
-Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -108,75 +203,25 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.25398cm</Width>
+                  <Width>3.13938cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.46135cm</Width>
+                  <Width>1.85802cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.93213cm</Width>
+                  <Width>2.23499cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.35253cm</Width>
+                  <Width>2.78581cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.36378cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>1.41817cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>1.72036cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>1.23801cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>2.0555cm</Width>
+                  <Width>2.5cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
                   <Height>0.6cm</Height>
                   <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox103">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>No.</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox103</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BottomBorder>
-                              <Style>None</Style>
-                            </BottomBorder>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox83">
@@ -186,10 +231,10 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>SUP.</Value>
+                                  <Value>SUP. CONSTRUCCION</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -241,10 +286,10 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>TIPOLOGIA</Value>
+                                  <Value>TIPO</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -285,11 +330,8 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <ColSpan>3</ColSpan>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell />
-                    <TablixCell />
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox91">
@@ -299,10 +341,10 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>CONSTRUCCIONES</Value>
+                                  <Value>NIVEL</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -343,11 +385,8 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <ColSpan>3</ColSpan>
                       </CellContents>
                     </TablixCell>
-                    <TablixCell />
-                    <TablixCell />
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox106">
@@ -357,7 +396,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>VALOR</Value>
+                                  <Value>AÑO</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -386,21 +425,16 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                         </Textbox>
                       </CellContents>
                     </TablixCell>
-                  </TablixCells>
-                </TablixRow>
-                <TablixRow>
-                  <Height>0.6cm</Height>
-                  <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox105">
+                        <Textbox Name="Textbox1">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>UNIDA</Value>
+                                  <Value>CONS</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -412,438 +446,15 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox105</rd:DefaultName>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>Red</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
+                            <BottomBorder>
                               <Style>None</Style>
-                            </TopBorder>
-                            <PaddingLeft>0.5pt</PaddingLeft>
-                            <PaddingRight>0.5pt</PaddingRight>
-                            <PaddingTop>0.5pt</PaddingTop>
-                            <PaddingBottom>0.5pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox8">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>CONST.</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox8</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <TopBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
                             </BottomBorder>
-                            <LeftBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox11">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>USO</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox11</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <TopBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox89">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>CLASE</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox89</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <TopBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox86">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>CATEG.</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox86</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <TopBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox92">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>AÑOS</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox92</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <TopBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox95">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>ESTADO</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox95</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <TopBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox98">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>NIVEL</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox98</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <TopBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox107">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>CATASTRAL</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox107</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <TopBorder>
-                              <Style>None</Style>
-                            </TopBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -857,40 +468,6 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                 <TablixRow>
                   <Height>0.6cm</Height>
                   <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="NumUnidad2">
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!NumUnidad.Value</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>NumUnidad2</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>0.5pt</PaddingTop>
-                            <PaddingBottom>0.5pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="SupCons1">
@@ -899,7 +476,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!SupCons.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -928,81 +505,13 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Uso">
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Uso.Value</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Uso</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="ClaseConst">
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!ClaseConst.Value</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>ClaseConst</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
                         <Textbox Name="CategConst">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!CategConst.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -1030,81 +539,13 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="AniodeCons">
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!AniodeCons.Value</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>AniodeCons</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="EstadoCons">
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!EstadoCons.Value</Value>
-                                  <Style>
-                                    <FontFamily>Times New Roman</FontFamily>
-                                    <FontSize>9pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>EstadoCons</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>Red</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
                         <Textbox Name="NivCons">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!NivCons.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -1138,7 +579,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ValorCons.Value</Value>
+                                  <Value />
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>9pt</FontSize>
@@ -1166,16 +607,47 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                         </Textbox>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox2">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontFamily>Times New Roman</FontFamily>
+                                    <FontSize>9pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox2</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>Red</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>0.5pt</PaddingTop>
+                            <PaddingBottom>0.5pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
                   </TablixCells>
                 </TablixRow>
               </TablixRows>
             </TablixBody>
             <TablixColumnHierarchy>
               <TablixMembers>
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
@@ -1189,18 +661,15 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                   <KeepWithGroup>After</KeepWithGroup>
                 </TablixMember>
                 <TablixMember>
-                  <KeepWithGroup>After</KeepWithGroup>
-                </TablixMember>
-                <TablixMember>
                   <Group Name="Detalles" />
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>16.75288cm</Top>
+            <Top>16.30838cm</Top>
             <Left>0.26472cm</Left>
-            <Height>1.8cm</Height>
-            <Width>12.79581cm</Width>
+            <Height>1.2cm</Height>
+            <Width>12.5182cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1272,7 +741,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(0)</Value>
+                    <Value>=First(Fields!PmnProp.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -1307,7 +776,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(1)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -1377,7 +846,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(2)</Value>
+                    <Value>=First(Fields!Domicilio.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -1447,7 +916,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(3)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -1517,7 +986,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(4)</Value>
+                    <Value>=First(Fields!NumIntP.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -1587,7 +1056,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(5)</Value>
+                    <Value>=First(Fields!NomCol.Value, "DataSet1")</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -1601,7 +1070,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               </Paragraph>
             </Paragraphs>
             <Top>1.90605cm</Top>
-            <Left>5.45169cm</Left>
+            <Left>5.48697cm</Left>
             <Height>0.6cm</Height>
             <Width>9.10014cm</Width>
             <ZIndex>12</ZIndex>
@@ -1657,7 +1126,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(6)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -1727,7 +1196,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(7)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -1765,7 +1234,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                     <Value>SE HACEN DE SU CONOCIMIENTO LOS DATOS RELATIVOS AL INMUEBLE INSCRITO A SU NOMBRE EN EL PADRÓN CATASTRAL, A EFECTO DE FACILITARLE EL LLENADO DE ESTE FORMATO DE MANIFESTACIÓN DE VALOR CATASTRAL, PARA SU PRESENTACIÓN ANTE LA AUTORIDAD CATASTRAL MUNICIPAL, DE ACUERDO A LO QUE ESTABLECEN LOS ARTÍCULOS 107, 175, 176, 177, 178 Y 184 DEL CÓDIGO FINANCIERO DEL ESTADO DE MÉXICO Y MUNICIPIOS.</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
-                      <FontSize>9pt</FontSize>
+                      <FontSize>8pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1820,9 +1289,10 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <ZIndex>18</ZIndex>
             <Style>
               <Border>
-                <Style>None</Style>
+                <Color>Red</Color>
+                <Style>Solid</Style>
               </Border>
-              <BackgroundColor>Red</BackgroundColor>
+              <BackgroundColor>White</BackgroundColor>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -1836,12 +1306,11 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(8)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
-                      <FontSize>16pt</FontSize>
+                      <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
-                      <Color>White</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1849,113 +1318,10 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               </Paragraph>
             </Paragraphs>
             <Top>5.4238cm</Top>
-            <Left>5.21689cm</Left>
+            <Left>5.98826cm</Left>
             <Height>0.6cm</Height>
-            <Width>7.04464cm</Width>
+            <Width>14.00687cm</Width>
             <ZIndex>19</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>0.5pt</PaddingLeft>
-              <PaddingRight>0.5pt</PaddingRight>
-              <PaddingTop>0.5pt</PaddingTop>
-              <PaddingBottom>0.5pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Clave_Barras">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Parameters!Parametro1.Value(10)</Value>
-                    <Style>
-                      <FontFamily>Code 128</FontFamily>
-                      <FontSize>20pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                      <Color>White</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <Top>5.33588cm</Top>
-            <Left>12.82951cm</Left>
-            <Height>0.84667cm</Height>
-            <Width>3.32626cm</Width>
-            <ZIndex>20</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>0.5pt</PaddingLeft>
-              <PaddingRight>0.5pt</PaddingRight>
-              <PaddingTop>0.5pt</PaddingTop>
-              <PaddingBottom>0.5pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox25">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>FOLIO:</Value>
-                    <Style>
-                      <FontFamily>Times New Roman</FontFamily>
-                      <FontWeight>Bold</FontWeight>
-                      <Color>White</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox17</rd:DefaultName>
-            <Top>5.4238cm</Top>
-            <Left>16.52971cm</Left>
-            <Height>0.6cm</Height>
-            <Width>1.52633cm</Width>
-            <ZIndex>21</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>0.5pt</PaddingLeft>
-              <PaddingRight>0.5pt</PaddingRight>
-              <PaddingTop>0.5pt</PaddingTop>
-              <PaddingBottom>0.5pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="folio">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Parameters!Parametro1.Value(11)</Value>
-                    <Style>
-                      <FontFamily>Times New Roman</FontFamily>
-                      <FontWeight>Bold</FontWeight>
-                      <Color>White</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <Top>5.4238cm</Top>
-            <Left>18.10543cm</Left>
-            <Height>0.6cm</Height>
-            <Width>1.93203cm</Width>
-            <ZIndex>22</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1987,8 +1353,8 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Top>6.46477cm</Top>
             <Left>0.28589cm</Left>
             <Height>0.64233cm</Height>
-            <Width>4.44141cm</Width>
-            <ZIndex>23</ZIndex>
+            <Width>4.79901cm</Width>
+            <ZIndex>20</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2006,7 +1372,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(12)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -2018,10 +1384,10 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               </Paragraph>
             </Paragraphs>
             <Top>6.48594cm</Top>
-            <Left>4.84019cm</Left>
+            <Left>5.19073cm</Left>
             <Height>0.6cm</Height>
-            <Width>15.15494cm</Width>
-            <ZIndex>24</ZIndex>
+            <Width>14.8044cm</Width>
+            <ZIndex>21</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2054,7 +1420,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>0.28589cm</Left>
             <Height>0.6cm</Height>
             <Width>2.88113cm</Width>
-            <ZIndex>25</ZIndex>
+            <ZIndex>22</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2072,7 +1438,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(13)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -2087,7 +1453,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>3.21641cm</Left>
             <Height>0.6cm</Height>
             <Width>10.28658cm</Width>
-            <ZIndex>26</ZIndex>
+            <ZIndex>23</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2120,7 +1486,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>13.64763cm</Left>
             <Height>0.6cm</Height>
             <Width>1.44166cm</Width>
-            <ZIndex>27</ZIndex>
+            <ZIndex>24</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2138,7 +1504,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(3)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -2153,7 +1519,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>15.09282cm</Left>
             <Height>0.6cm</Height>
             <Width>1.44287cm</Width>
-            <ZIndex>28</ZIndex>
+            <ZIndex>25</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2186,7 +1552,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>16.68033cm</Left>
             <Height>0.6cm</Height>
             <Width>1.42864cm</Width>
-            <ZIndex>29</ZIndex>
+            <ZIndex>26</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2204,7 +1570,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(4)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -2219,7 +1585,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>18.18658cm</Left>
             <Height>0.6cm</Height>
             <Width>1.82971cm</Width>
-            <ZIndex>30</ZIndex>
+            <ZIndex>27</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2252,7 +1618,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>16.17694cm</Left>
             <Height>0.6cm</Height>
             <Width>1.87558cm</Width>
-            <ZIndex>31</ZIndex>
+            <ZIndex>28</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2270,7 +1636,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(7)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -2285,7 +1651,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>18.18658cm</Left>
             <Height>0.6cm</Height>
             <Width>1.82972cm</Width>
-            <ZIndex>32</ZIndex>
+            <ZIndex>29</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2318,7 +1684,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>0.28589cm</Left>
             <Height>0.6cm</Height>
             <Width>1.11358cm</Width>
-            <ZIndex>33</ZIndex>
+            <ZIndex>30</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2336,7 +1702,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(5)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -2351,7 +1717,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>1.44886cm</Left>
             <Height>0.6cm</Height>
             <Width>9.16131cm</Width>
-            <ZIndex>34</ZIndex>
+            <ZIndex>31</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2384,7 +1750,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>10.78655cm</Left>
             <Height>0.6cm</Height>
             <Width>1.27233cm</Width>
-            <ZIndex>35</ZIndex>
+            <ZIndex>32</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2402,7 +1768,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(6)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -2417,7 +1783,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>12.17177cm</Left>
             <Height>0.6cm</Height>
             <Width>3.82878cm</Width>
-            <ZIndex>36</ZIndex>
+            <ZIndex>33</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2451,7 +1817,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>0.28589cm</Left>
             <Height>0.6cm</Height>
             <Width>5.68558cm</Width>
-            <ZIndex>37</ZIndex>
+            <ZIndex>34</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2483,8 +1849,8 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Top>9.67616cm</Top>
             <Left>0.26472cm</Left>
             <Height>0.6cm</Height>
-            <Width>3.81114cm</Width>
-            <ZIndex>38</ZIndex>
+            <Width>3.90181cm</Width>
+            <ZIndex>35</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2517,7 +1883,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>4.30764cm</Left>
             <Height>0.6cm</Height>
             <Width>1.36758cm</Width>
-            <ZIndex>39</ZIndex>
+            <ZIndex>36</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2535,7 +1901,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=IIF(Parameters!Parametro1.Value(14) = "2 PRIVADA CONDOMINIO", "X", " ")</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -2553,7 +1919,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>8.8393cm</Left>
             <Height>0.6cm</Height>
             <Width>1.14024cm</Width>
-            <ZIndex>40</ZIndex>
+            <ZIndex>37</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2586,7 +1952,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>6.93197cm</Left>
             <Height>0.6cm</Height>
             <Width>1.90733cm</Width>
-            <ZIndex>41</ZIndex>
+            <ZIndex>38</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2604,7 +1970,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=IIF(Parameters!Parametro1.Value(14) = "3 EJIDAL", "X", " ")</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -2622,7 +1988,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>11.57918cm</Left>
             <Height>0.6cm</Height>
             <Width>1.20374cm</Width>
-            <ZIndex>42</ZIndex>
+            <ZIndex>39</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2655,7 +2021,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>10.57143cm</Left>
             <Height>0.6cm</Height>
             <Width>1.07125cm</Width>
-            <ZIndex>43</ZIndex>
+            <ZIndex>40</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2673,14 +2039,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=IIF(
-    Mid(Parameters!Parametro1.Value(14), 1, 1) = "0" OR
-    Mid(Parameters!Parametro1.Value(14), 1, 1) = "4" OR
-    Mid(Parameters!Parametro1.Value(14), 1, 1) = "5" OR
-    Mid(Parameters!Parametro1.Value(14), 1, 1) = "6",
-    "X",
-    " "
-)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -2698,7 +2057,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>14.75973cm</Left>
             <Height>0.6cm</Height>
             <Width>1.20374cm</Width>
-            <ZIndex>44</ZIndex>
+            <ZIndex>41</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2731,7 +2090,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>13.26515cm</Left>
             <Height>0.6cm</Height>
             <Width>1.55808cm</Width>
-            <ZIndex>45</ZIndex>
+            <ZIndex>42</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2764,7 +2123,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>16.69121cm</Left>
             <Height>0.5365cm</Height>
             <Width>1.31467cm</Width>
-            <ZIndex>46</ZIndex>
+            <ZIndex>43</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2782,7 +2141,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=IIF(Parameters!Parametro1.Value(28) = "H" , "X", " ")</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -2800,7 +2159,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>5.6443cm</Left>
             <Height>0.6cm</Height>
             <Width>1.14024cm</Width>
-            <ZIndex>47</ZIndex>
+            <ZIndex>44</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2833,7 +2192,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>3.3983cm</Left>
             <Height>0.6cm</Height>
             <Width>2.21425cm</Width>
-            <ZIndex>48</ZIndex>
+            <ZIndex>45</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2851,8 +2210,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=IIF(Parameters!Parametro1.Value(28) = "C" 
-, "X", " ")</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -2870,7 +2228,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>8.8393cm</Left>
             <Height>0.6cm</Height>
             <Width>1.14024cm</Width>
-            <ZIndex>49</ZIndex>
+            <ZIndex>46</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2903,7 +2261,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>7.12247cm</Left>
             <Height>0.6cm</Height>
             <Width>1.71683cm</Width>
-            <ZIndex>50</ZIndex>
+            <ZIndex>47</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2921,7 +2279,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=IIF(Parameters!Parametro1.Value(28) = "A", "X", " ")</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -2939,7 +2297,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>11.57918cm</Left>
             <Height>0.6cm</Height>
             <Width>1.20374cm</Width>
-            <ZIndex>51</ZIndex>
+            <ZIndex>48</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2972,7 +2330,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>10.07479cm</Left>
             <Height>0.6cm</Height>
             <Width>1.56012cm</Width>
-            <ZIndex>52</ZIndex>
+            <ZIndex>49</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2990,18 +2348,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=IIF(
-    Parameters!Parametro1.Value(29) = "-" OR 
-    Parameters!Parametro1.Value(29) = "I" OR
-    Parameters!Parametro1.Value(29) = "B" OR 
-    Parameters!Parametro1.Value(29) = "E" OR 
-    Parameters!Parametro1.Value(29) = "F" OR 
-    Parameters!Parametro1.Value(29) = "G" OR 
-    Parameters!Parametro1.Value(29) = "L" OR 
-    Parameters!Parametro1.Value(29) = "Q", 
-    "X", 
-    " "
-	)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -3019,7 +2366,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>14.75973cm</Left>
             <Height>0.6cm</Height>
             <Width>1.20374cm</Width>
-            <ZIndex>53</ZIndex>
+            <ZIndex>50</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3052,7 +2399,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>13.0429cm</Left>
             <Height>0.6cm</Height>
             <Width>1.78033cm</Width>
-            <ZIndex>54</ZIndex>
+            <ZIndex>51</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3087,7 +2434,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>2.41525cm</Left>
             <Height>0.6cm</Height>
             <Width>0.722cm</Width>
-            <ZIndex>55</ZIndex>
+            <ZIndex>52</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3120,7 +2467,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>0.38819cm</Left>
             <Height>0.6cm</Height>
             <Width>1.27233cm</Width>
-            <ZIndex>56</ZIndex>
+            <ZIndex>53</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3138,7 +2485,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(15)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -3154,7 +2501,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>1.72671cm</Left>
             <Height>0.6cm</Height>
             <Width>1.33011cm</Width>
-            <ZIndex>57</ZIndex>
+            <ZIndex>54</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3187,7 +2534,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>3.7513cm</Left>
             <Height>0.6cm</Height>
             <Width>1.20883cm</Width>
-            <ZIndex>58</ZIndex>
+            <ZIndex>55</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3205,7 +2552,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(16)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -3218,10 +2565,10 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               </Paragraph>
             </Paragraphs>
             <Top>12.00719cm</Top>
-            <Left>5.02632cm</Left>
+            <Left>5.06596cm</Left>
             <Height>0.6cm</Height>
             <Width>1.51694cm</Width>
-            <ZIndex>59</ZIndex>
+            <ZIndex>56</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3254,7 +2601,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>7.18597cm</Left>
             <Height>0.6cm</Height>
             <Width>2.42944cm</Width>
-            <ZIndex>60</ZIndex>
+            <ZIndex>57</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3272,7 +2619,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(17)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -3287,7 +2634,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>9.6816cm</Left>
             <Height>0.6cm</Height>
             <Width>2.8772cm</Width>
-            <ZIndex>61</ZIndex>
+            <ZIndex>58</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3320,7 +2667,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>12.9159cm</Left>
             <Height>0.6cm</Height>
             <Width>3.71162cm</Width>
-            <ZIndex>62</ZIndex>
+            <ZIndex>59</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3338,7 +2685,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(18)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -3350,10 +2697,10 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               </Paragraph>
             </Paragraphs>
             <Top>12.00719cm</Top>
-            <Left>16.78896cm</Left>
+            <Left>16.8145cm</Left>
             <Height>0.6cm</Height>
             <Width>3.22297cm</Width>
-            <ZIndex>63</ZIndex>
+            <ZIndex>60</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3388,7 +2735,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>0.26472cm</Left>
             <Height>0.6cm</Height>
             <Width>4.66412cm</Width>
-            <ZIndex>64</ZIndex>
+            <ZIndex>61</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3406,7 +2753,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(19)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -3421,7 +2768,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>5.20753cm</Left>
             <Height>0.6cm</Height>
             <Width>2.65159cm</Width>
-            <ZIndex>65</ZIndex>
+            <ZIndex>62</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3454,7 +2801,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>7.99754cm</Left>
             <Height>0.6cm</Height>
             <Width>6.53312cm</Width>
-            <ZIndex>66</ZIndex>
+            <ZIndex>63</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3472,7 +2819,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(20)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -3487,7 +2834,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>14.72822cm</Left>
             <Height>0.6cm</Height>
             <Width>2.65159cm</Width>
-            <ZIndex>67</ZIndex>
+            <ZIndex>64</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3522,7 +2869,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>0.26472cm</Left>
             <Height>0.6cm</Height>
             <Width>4.66412cm</Width>
-            <ZIndex>68</ZIndex>
+            <ZIndex>65</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3540,7 +2887,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(21)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -3555,7 +2902,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>5.19073cm</Left>
             <Height>0.6cm</Height>
             <Width>2.65159cm</Width>
-            <ZIndex>69</ZIndex>
+            <ZIndex>66</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3590,7 +2937,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>0.26472cm</Left>
             <Height>0.6cm</Height>
             <Width>4.66412cm</Width>
-            <ZIndex>70</ZIndex>
+            <ZIndex>67</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3608,7 +2955,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(22)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -3623,7 +2970,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>5.19073cm</Left>
             <Height>0.6cm</Height>
             <Width>2.65159cm</Width>
-            <ZIndex>71</ZIndex>
+            <ZIndex>68</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3656,7 +3003,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>8.14061cm</Left>
             <Height>0.6cm</Height>
             <Width>1.79222cm</Width>
-            <ZIndex>72</ZIndex>
+            <ZIndex>69</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3674,7 +3021,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(23)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -3689,7 +3036,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>10.13039cm</Left>
             <Height>0.6cm</Height>
             <Width>3.11711cm</Width>
-            <ZIndex>73</ZIndex>
+            <ZIndex>70</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3720,11 +3067,11 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox17</rd:DefaultName>
-            <Top>14.38843cm</Top>
+            <Top>15.53143cm</Top>
             <Left>13.30497cm</Left>
             <Height>0.6cm</Height>
             <Width>3.8983cm</Width>
-            <ZIndex>74</ZIndex>
+            <ZIndex>71</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3742,7 +3089,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(24)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>11pt</FontSize>
@@ -3756,11 +3103,11 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>14.4096cm</Top>
+            <Top>15.5526cm</Top>
             <Left>17.22713cm</Left>
             <Height>0.6cm</Height>
             <Width>2.96909cm</Width>
-            <ZIndex>75</ZIndex>
+            <ZIndex>72</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3791,11 +3138,11 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox17</rd:DefaultName>
-            <Top>15.05899cm</Top>
+            <Top>16.20199cm</Top>
             <Left>13.28292cm</Left>
             <Height>0.6cm</Height>
             <Width>3.8983cm</Width>
-            <ZIndex>76</ZIndex>
+            <ZIndex>73</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3813,7 +3160,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(25)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>11pt</FontSize>
@@ -3827,11 +3174,11 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>15.08016cm</Top>
+            <Top>16.22316cm</Top>
             <Left>17.20508cm</Left>
             <Height>0.6cm</Height>
             <Width>2.96909cm</Width>
-            <ZIndex>77</ZIndex>
+            <ZIndex>74</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3862,11 +3209,11 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox17</rd:DefaultName>
-            <Top>16.18375cm</Top>
+            <Top>16.81875cm</Top>
             <Left>13.30496cm</Left>
             <Height>0.6cm</Height>
             <Width>3.8983cm</Width>
-            <ZIndex>78</ZIndex>
+            <ZIndex>75</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3884,7 +3231,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(26)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>11pt</FontSize>
@@ -3898,11 +3245,11 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>16.20492cm</Top>
+            <Top>16.83992cm</Top>
             <Left>17.22712cm</Left>
             <Height>0.6cm</Height>
             <Width>2.96909cm</Width>
-            <ZIndex>79</ZIndex>
+            <ZIndex>76</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3933,11 +3280,11 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox17</rd:DefaultName>
-            <Top>16.85431cm</Top>
+            <Top>17.48931cm</Top>
             <Left>13.28291cm</Left>
             <Height>0.6cm</Height>
             <Width>3.8983cm</Width>
-            <ZIndex>80</ZIndex>
+            <ZIndex>77</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -3955,7 +3302,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(27)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>11pt</FontSize>
@@ -3969,11 +3316,11 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>16.87548cm</Top>
+            <Top>17.51048cm</Top>
             <Left>17.20507cm</Left>
             <Height>0.6cm</Height>
             <Width>2.96909cm</Width>
-            <ZIndex>81</ZIndex>
+            <ZIndex>78</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4003,11 +3350,11 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox17</rd:DefaultName>
-            <Top>15.97649cm</Top>
+            <Top>15.53199cm</Top>
             <Left>0.28589cm</Left>
             <Height>0.6cm</Height>
             <Width>6.02891cm</Width>
-            <ZIndex>82</ZIndex>
+            <ZIndex>79</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4023,27 +3370,23 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>0.01072cm</Left>
             <Height>0cm</Height>
             <Width>20.21207cm</Width>
-            <ZIndex>83</ZIndex>
+            <ZIndex>80</ZIndex>
             <Style>
               <Border>
-                <Color>MediumVioletRed</Color>
+                <Color>Red</Color>
                 <Style>Solid</Style>
                 <Width>2pt</Width>
               </Border>
               <TopBorder>
-                <Color>MediumVioletRed</Color>
                 <Style>Solid</Style>
               </TopBorder>
               <BottomBorder>
-                <Color>MediumVioletRed</Color>
                 <Style>Solid</Style>
               </BottomBorder>
               <LeftBorder>
-                <Color>MediumVioletRed</Color>
                 <Style>Solid</Style>
               </LeftBorder>
               <RightBorder>
-                <Color>MediumVioletRed</Color>
                 <Style>Solid</Style>
               </RightBorder>
             </Style>
@@ -4053,10 +3396,10 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Left>0.01072cm</Left>
             <Height>0cm</Height>
             <Width>20.21207cm</Width>
-            <ZIndex>84</ZIndex>
+            <ZIndex>81</ZIndex>
             <Style>
               <Border>
-                <Color>RoyalBlue</Color>
+                <Color>DarkRed</Color>
                 <Style>Solid</Style>
                 <Width>2.25pt</Width>
               </Border>
@@ -4075,44 +3418,14 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             </Style>
           </Line>
           <Line Name="Line7">
-            <Top>15.83538cm</Top>
+            <Top>15.39088cm</Top>
             <Left>0.01072cm</Left>
             <Height>0cm</Height>
             <Width>20.27557cm</Width>
-            <ZIndex>85</ZIndex>
+            <ZIndex>82</ZIndex>
             <Style>
               <Border>
-                <Color>SeaGreen</Color>
-                <Style>Solid</Style>
-                <Width>2.25pt</Width>
-              </Border>
-              <TopBorder>
-                <Style>Solid</Style>
-                <Width>2.25pt</Width>
-              </TopBorder>
-              <BottomBorder>
-                <Style>Solid</Style>
-                <Width>2.25pt</Width>
-              </BottomBorder>
-              <LeftBorder>
-                <Style>Solid</Style>
-                <Width>2.25pt</Width>
-              </LeftBorder>
-              <RightBorder>
-                <Style>Solid</Style>
-                <Width>2.25pt</Width>
-              </RightBorder>
-            </Style>
-          </Line>
-          <Line Name="Line8">
-            <Top>17.95288cm</Top>
-            <Left>13.15194cm</Left>
-            <Height>0cm</Height>
-            <Width>7.06757cm</Width>
-            <ZIndex>86</ZIndex>
-            <Style>
-              <Border>
-                <Color>Gold</Color>
+                <Color>DarkRed</Color>
                 <Style>Solid</Style>
                 <Width>2.25pt</Width>
               </Border>
@@ -4154,11 +3467,11 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox17</rd:DefaultName>
-            <Top>18.90788cm</Top>
+            <Top>18.46338cm</Top>
             <Left>13.31466cm</Left>
             <Height>0.6cm</Height>
             <Width>3.86655cm</Width>
-            <ZIndex>87</ZIndex>
+            <ZIndex>83</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4176,7 +3489,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!Parametro1.Value(29)</Value>
+                    <Value EvaluationMode="Constant" />
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>11pt</FontSize>
@@ -4190,11 +3503,11 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>18.90788cm</Top>
+            <Top>18.46338cm</Top>
             <Left>17.22713cm</Left>
             <Height>0.6cm</Height>
             <Width>2.94703cm</Width>
-            <ZIndex>88</ZIndex>
+            <ZIndex>84</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4206,14 +3519,14 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             </Style>
           </Textbox>
           <Line Name="Line11">
-            <Top>18.83252cm</Top>
+            <Top>18.38802cm</Top>
             <Left>0.05349cm</Left>
             <Height>0cm</Height>
             <Width>20.24382cm</Width>
-            <ZIndex>89</ZIndex>
+            <ZIndex>85</ZIndex>
             <Style>
               <Border>
-                <Color>Red</Color>
+                <Color>DarkRed</Color>
                 <Style>Solid</Style>
                 <Width>2.25pt</Width>
               </Border>
@@ -4242,11 +3555,11 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>CLAVE CATASTRAL</Value>
+                    <Value>CLAVE CATASTRAL DEL INMUEBLE</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
-                      <Color>White</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -4257,8 +3570,8 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
             <Top>5.4238cm</Top>
             <Left>0.45169cm</Left>
             <Height>0.6cm</Height>
-            <Width>4.27561cm</Width>
-            <ZIndex>90</ZIndex>
+            <Width>5.16086cm</Width>
+            <ZIndex>86</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4269,6 +3582,20 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <PaddingBottom>0.5pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Line Name="Line8">
+            <Top>15.33843cm</Top>
+            <Left>12.98787cm</Left>
+            <Height>3.0765cm</Height>
+            <Width>-0.00825cm</Width>
+            <ZIndex>87</ZIndex>
+            <Style>
+              <Border>
+                <Color>DarkRed</Color>
+                <Style>Solid</Style>
+                <Width>2.25pt</Width>
+              </Border>
+            </Style>
+          </Line>
         </ReportItems>
         <Height>7.72749in</Height>
         <Style />
@@ -4280,20 +3607,6 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Image Name="Image1">
-              <Source>Embedded</Source>
-              <Value>logosnmateo</Value>
-              <Sizing>FitProportional</Sizing>
-              <Top>0.00847cm</Top>
-              <Left>17.37516cm</Left>
-              <Height>2.68533cm</Height>
-              <Width>2.93933cm</Width>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-              </Style>
-            </Image>
             <Textbox Name="Textbox3">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
@@ -4320,7 +3633,6 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Left>3.19158cm</Left>
               <Height>1.1715cm</Height>
               <Width>13.96402cm</Width>
-              <ZIndex>1</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -4357,7 +3669,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Left>3.19158cm</Left>
               <Height>0.76934cm</Height>
               <Width>13.96402cm</Width>
-              <ZIndex>2</ZIndex>
+              <ZIndex>1</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -4375,7 +3687,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Left>0.21697cm</Left>
               <Height>2.68533cm</Height>
               <Width>2.5795cm</Width>
-              <ZIndex>3</ZIndex>
+              <ZIndex>2</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -4389,7 +3701,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>MANIFESTACION "CLAVE Y VALOR CATASTRAL" AUTORIZADA PARA TRES EN UNO</Value>
+                      <Value>MANIFESTACION DE VALOR CATASTRAL</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
                         <FontFamily>Times New Roman</FontFamily>
@@ -4408,7 +3720,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Top>3.07339cm</Top>
               <Height>0.84667cm</Height>
               <Width>20.31449cm</Width>
-              <ZIndex>4</ZIndex>
+              <ZIndex>3</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -4425,7 +3737,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Left>2.88078cm</Left>
               <Height>0cm</Height>
               <Width>14.27482cm</Width>
-              <ZIndex>5</ZIndex>
+              <ZIndex>4</ZIndex>
               <Style>
                 <Border>
                   <Color>MediumVioletRed</Color>
@@ -4455,7 +3767,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Left>2.88333cm</Left>
               <Height>0cm</Height>
               <Width>14.27482cm</Width>
-              <ZIndex>6</ZIndex>
+              <ZIndex>5</ZIndex>
               <Style>
                 <Border>
                   <Color>RoyalBlue</Color>
@@ -4481,7 +3793,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Left>2.81983cm</Left>
               <Height>0cm</Height>
               <Width>14.90982cm</Width>
-              <ZIndex>7</ZIndex>
+              <ZIndex>6</ZIndex>
               <Style>
                 <Border>
                   <Color>SeaGreen</Color>
@@ -4511,7 +3823,7 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
               <Left>2.79079cm</Left>
               <Height>0cm</Height>
               <Width>14.90982cm</Width>
-              <ZIndex>8</ZIndex>
+              <ZIndex>7</ZIndex>
               <Style>
                 <Border>
                   <Color>Gold</Color>
@@ -4536,6 +3848,21 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                 </RightBorder>
               </Style>
             </Line>
+            <Image Name="Image1">
+              <Source>Embedded</Source>
+              <Value>logosnmateo</Value>
+              <Sizing>FitProportional</Sizing>
+              <Top>0.00847cm</Top>
+              <Left>17.37516cm</Left>
+              <Height>2.68533cm</Height>
+              <Width>2.93933cm</Width>
+              <ZIndex>8</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Image>
           </ReportItems>
           <Style>
             <Border>
@@ -4732,54 +4059,6 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Textbox Name="Textbox119">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>MANIFIESTO BAJO PROTETA DE DECIR VERDAD, que los datos asentados, así como los documentos que se anexan me fueron proporcionados por el/la solicitante del servicio municipal, sabedor(a) de las penas en que incurren aquellos quienes declaren con falsedad ante autoridad; falsifican documentos públicos o privados o hagan uso de documentos falsos, de conformidad con los artículos 156 párrafo I, 167, 168, 169 y 173 del Código Penal para el Estado de México.</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox119</rd:DefaultName>
-              <Top>2.24035cm</Top>
-              <Left>0.26471cm</Left>
-              <Height>1.76417cm</Height>
-              <Width>19.73042cm</Width>
-              <ZIndex>4</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Image Name="Image2">
-              <Source>Database</Source>
-              <Value>=Parameters!ParametroQR.Value</Value>
-              <MIMEType>image/png</MIMEType>
-              <Sizing>FitProportional</Sizing>
-              <Top>0.04621cm</Top>
-              <Left>0.38818cm</Left>
-              <Height>2.05303cm</Height>
-              <Width>2.05303cm</Width>
-              <ZIndex>5</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-              </Style>
-            </Image>
           </ReportItems>
           <Style>
             <Border>
@@ -4800,34 +4079,10 @@ Parameters!Parametro1.Value(14)="1 PRIVADA INDIVIDUAL","X"," ")</Value>
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParameters>
-    <ReportParameter Name="Parametro1">
-      <DataType>String</DataType>
-      <AllowBlank>true</AllowBlank>
-      <Prompt>ReportParameter1</Prompt>
-      <MultiValue>true</MultiValue>
-    </ReportParameter>
-    <ReportParameter Name="ParametroQR">
-      <DataType>String</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-  </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
       <NumberOfRows>2</NumberOfRows>
-      <CellDefinitions>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>Parametro1</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>ParametroQR</ParameterName>
-        </CellDefinition>
-      </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <EmbeddedImages>

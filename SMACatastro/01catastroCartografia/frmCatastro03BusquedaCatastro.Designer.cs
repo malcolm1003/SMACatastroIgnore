@@ -267,6 +267,7 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnManifestacion = new System.Windows.Forms.Button();
             this.btnConstComun = new System.Windows.Forms.Button();
             this.btnConstLote = new System.Windows.Forms.Button();
             this.label60 = new System.Windows.Forms.Label();
@@ -351,7 +352,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tmFechaHora = new System.Windows.Forms.Timer(this.components);
             this.panel112 = new System.Windows.Forms.Panel();
-            this.btnManifestacion = new System.Windows.Forms.Button();
             this.PanelBarraTitulo.SuspendLayout();
             this.panel18.SuspendLayout();
             this.pnlDatosPredio.SuspendLayout();
@@ -3039,6 +3039,21 @@
             this.panel1.Size = new System.Drawing.Size(1344, 197);
             this.panel1.TabIndex = 1374;
             // 
+            // btnManifestacion
+            // 
+            this.btnManifestacion.BackColor = System.Drawing.Color.Cyan;
+            this.btnManifestacion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnManifestacion.Enabled = false;
+            this.btnManifestacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManifestacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManifestacion.Location = new System.Drawing.Point(1035, 165);
+            this.btnManifestacion.Name = "btnManifestacion";
+            this.btnManifestacion.Size = new System.Drawing.Size(131, 23);
+            this.btnManifestacion.TabIndex = 1466;
+            this.btnManifestacion.Text = "MANIFESTACIÓN";
+            this.btnManifestacion.UseVisualStyleBackColor = false;
+            this.btnManifestacion.Click += new System.EventHandler(this.btnManifestacion_Click);
+            // 
             // btnConstComun
             // 
             this.btnConstComun.AutoSize = true;
@@ -4013,20 +4028,6 @@
             this.panel112.Name = "panel112";
             this.panel112.Size = new System.Drawing.Size(7, 950);
             this.panel112.TabIndex = 1732;
-            // 
-            // btnManifestacion
-            // 
-            this.btnManifestacion.BackColor = System.Drawing.Color.Cyan;
-            this.btnManifestacion.Enabled = false;
-            this.btnManifestacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManifestacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManifestacion.Location = new System.Drawing.Point(1035, 165);
-            this.btnManifestacion.Name = "btnManifestacion";
-            this.btnManifestacion.Size = new System.Drawing.Size(131, 23);
-            this.btnManifestacion.TabIndex = 1466;
-            this.btnManifestacion.Text = "MANIFESTACIÓN";
-            this.btnManifestacion.UseVisualStyleBackColor = false;
-            this.btnManifestacion.Click += new System.EventHandler(this.btnManifestacion_Click);
             // 
             // frmCatastro03BusquedaCatastro
             // 
